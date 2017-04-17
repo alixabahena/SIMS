@@ -40,29 +40,11 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="databaseManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="users.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="sqlite3.c">
-      <Filter>Header Files</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_studentView.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_studentView.cpp">
       <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="studentView.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="adminView.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_adminView.cpp">
       <Filter>Generated Files\Debug</Filter>
@@ -73,52 +55,58 @@
     <ClCompile Include="GeneratedFiles\qrc_loginView.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source Files\adminView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source Files\databaseManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source Files\loginView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source Files\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source Files\studentView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source Files\users.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Header Files\sqlite3.c">
+      <Filter>Header Files</Filter>
+    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_loginView.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_loginView.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="loginView.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="studentView.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="studentView.ui">
+    <CustomBuild Include="Form Files\adminView.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="adminView.ui">
+    <CustomBuild Include="Form Files\loginView.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="adminView.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="loginView.ui">
+    <CustomBuild Include="Form Files\studentView.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="loginView.h">
+    <CustomBuild Include="Header Files\adminView.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="loginView.qrc">
+    <CustomBuild Include="Header Files\studentView.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Resource Files\loginView.qrc">
       <Filter>Resource Files</Filter>
     </CustomBuild>
+    <CustomBuild Include="Header Files\loginView.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="sqlite3.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="sqlite3ext.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="users.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="databaseManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_studentView.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
@@ -127,6 +115,18 @@
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_loginView.h">
       <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\databaseManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\sqlite3ext.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\sqlite3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\users.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

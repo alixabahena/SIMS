@@ -1,11 +1,11 @@
 
 #include <iostream>
 #include <string>
-#include "sqlite3.h"
+#include "Header Files\sqlite3.h"
 #include <vector>
-#include <loginView.h>
-#include "users.h"
-#include "databaseManager.h"
+#include "Header Files\loginView.h"
+#include "Header Files\users.h"
+#include "Header Files\databaseManager.h"
 
 using namespace std;
 

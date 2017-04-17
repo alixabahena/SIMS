@@ -1,4 +1,4 @@
-#include "studentView.h"
+#include "Header Files\studentView.h"
 
 studentView::studentView(QWidget *parent)
 	: QWidget(parent)

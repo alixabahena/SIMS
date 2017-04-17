@@ -1,14 +1,14 @@
-#include "loginView.h"
+#include "Header Files\loginView.h"
 #include <qsqldatabase.h>
 #include <qdir.h>
 #include <qsqlquery.h>
 #include <string>
-#include "sqlite3.h"
+#include "Header Files\sqlite3.h"
 #include <vector>
-#include "users.h"
-#include "databaseManager.h"
-#include "studentView.h"
-#include "adminView.h"
+#include "Header Files\users.h"
+#include "Header Files\databaseManager.h"
+#include "Header Files\studentView.h"
+#include "Header Files\adminView.h"
 
 
 

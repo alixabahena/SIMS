@@ -1,4 +1,4 @@
-#include "QtGuiApplication1.h"
+#include "loginView.h"
 #include <qsqldatabase.h>
 #include <qdir.h>
 #include <qsqlquery.h>
@@ -14,7 +14,7 @@
 
 vector<users>allusers = populateUsers();
 
-QtGuiApplication1::QtGuiApplication1(QWidget *parent)
+loginView::loginView(QWidget *parent)
 	: QMainWindow(parent)
 {
 	
@@ -24,7 +24,7 @@ QtGuiApplication1::QtGuiApplication1(QWidget *parent)
 }
 
 
-void QtGuiApplication1::on_okButton_clicked()
+void loginView::on_okButton_clicked()
 {
 	
 	

@@ -1,4 +1,4 @@
-#include "QtGuiApplication1.h"
+#include "loginView.h"
 #include <QtWidgets/QApplication>
 #include "sqlite3.h"
 #include "sqlite3ext.h"
@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
 {
 
 	QApplication a(argc, argv);
-	QtGuiApplication1 w;
+	loginView w;
 	
 	w.show();
 	return a.exec();

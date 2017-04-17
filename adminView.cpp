@@ -1,5 +1,5 @@
 
-#include "QtGuiApplication1.h"
+#include "loginView.h"
 #include <qsqldatabase.h>
 #include <qdir.h>
 #include <qsqlquery.h>

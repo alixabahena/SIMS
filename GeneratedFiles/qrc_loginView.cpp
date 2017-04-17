@@ -26,21 +26,21 @@ namespace QT_NAMESPACE {
 }
 #endif
 
-int QT_RCC_MANGLE_NAMESPACE(qInitResources_QtGuiApplication1)();
-int QT_RCC_MANGLE_NAMESPACE(qInitResources_QtGuiApplication1)()
+int QT_RCC_MANGLE_NAMESPACE(qInitResources_loginView)();
+int QT_RCC_MANGLE_NAMESPACE(qInitResources_loginView)()
 {
     return 1;
 }
 
-int QT_RCC_MANGLE_NAMESPACE(qCleanupResources_QtGuiApplication1)();
-int QT_RCC_MANGLE_NAMESPACE(qCleanupResources_QtGuiApplication1)()
+int QT_RCC_MANGLE_NAMESPACE(qCleanupResources_loginView)();
+int QT_RCC_MANGLE_NAMESPACE(qCleanupResources_loginView)()
 {
     return 1;
 }
 
 namespace {
    struct initializer {
-       initializer() { QT_RCC_MANGLE_NAMESPACE(qInitResources_QtGuiApplication1)(); }
-       ~initializer() { QT_RCC_MANGLE_NAMESPACE(qCleanupResources_QtGuiApplication1)(); }
+       initializer() { QT_RCC_MANGLE_NAMESPACE(qInitResources_loginView)(); }
+       ~initializer() { QT_RCC_MANGLE_NAMESPACE(qCleanupResources_loginView)(); }
    } dummy;
 }

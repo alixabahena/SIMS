@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>QtGuiApplication1Class</class>
- <widget class="QMainWindow" name="QtGuiApplication1Class">
+ <class>loginView</class>
+ <widget class="QMainWindow" name="loginView">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -197,7 +197,7 @@
      <x>0</x>
      <y>0</y>
      <width>866</width>
-     <height>31</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
@@ -223,7 +223,7 @@
   <connection>
    <sender>cancelButton</sender>
    <signal>clicked()</signal>
-   <receiver>QtGuiApplication1Class</receiver>
+   <receiver>loginView</receiver>
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">

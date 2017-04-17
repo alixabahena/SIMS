@@ -3,7 +3,7 @@
 #include <string>
 #include "sqlite3.h"
 #include <vector>
-#include <QtGuiApplication1.h>
+#include <loginView.h>
 #include "users.h"
 #include "databaseManager.h"
 

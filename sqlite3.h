@@ -1,6 +1,6 @@
 
 #include "users.h"
-#include "QtGuiApplication1.h"
+#include "loginView.h"
 /*
 ** 2001 September 15
 **

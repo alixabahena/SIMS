@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'QtGuiApplication1.ui'
+** Form generated from reading UI file 'loginView.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.8.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef UI_QTGUIAPPLICATION1_H
-#define UI_QTGUIAPPLICATION1_H
+#ifndef UI_LOGINVIEW_H
+#define UI_LOGINVIEW_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
@@ -27,7 +27,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_QtGuiApplication1Class
+class Ui_loginView
 {
 public:
     QWidget *centralWidget;
@@ -47,20 +47,20 @@ public:
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
-    void setupUi(QMainWindow *QtGuiApplication1Class)
+    void setupUi(QMainWindow *loginView)
     {
-        if (QtGuiApplication1Class->objectName().isEmpty())
-            QtGuiApplication1Class->setObjectName(QStringLiteral("QtGuiApplication1Class"));
-        QtGuiApplication1Class->resize(866, 523);
+        if (loginView->objectName().isEmpty())
+            loginView->setObjectName(QStringLiteral("loginView"));
+        loginView->resize(866, 523);
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(QtGuiApplication1Class->sizePolicy().hasHeightForWidth());
-        QtGuiApplication1Class->setSizePolicy(sizePolicy);
-        QtGuiApplication1Class->setMinimumSize(QSize(866, 523));
-        QtGuiApplication1Class->setMaximumSize(QSize(866, 523));
-        QtGuiApplication1Class->setTabShape(QTabWidget::Rounded);
-        centralWidget = new QWidget(QtGuiApplication1Class);
+        sizePolicy.setHeightForWidth(loginView->sizePolicy().hasHeightForWidth());
+        loginView->setSizePolicy(sizePolicy);
+        loginView->setMinimumSize(QSize(866, 523));
+        loginView->setMaximumSize(QSize(866, 523));
+        loginView->setTabShape(QTabWidget::Rounded);
+        centralWidget = new QWidget(loginView);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         label = new QLabel(centralWidget);
         label->setObjectName(QStringLiteral("label"));
@@ -119,46 +119,46 @@ public:
         cancelButton->setObjectName(QStringLiteral("cancelButton"));
         cancelButton->setFont(font2);
         splitter->addWidget(cancelButton);
-        QtGuiApplication1Class->setCentralWidget(centralWidget);
-        menuBar = new QMenuBar(QtGuiApplication1Class);
+        loginView->setCentralWidget(centralWidget);
+        menuBar = new QMenuBar(loginView);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 866, 31));
-        QtGuiApplication1Class->setMenuBar(menuBar);
-        mainToolBar = new QToolBar(QtGuiApplication1Class);
+        menuBar->setGeometry(QRect(0, 0, 866, 21));
+        loginView->setMenuBar(menuBar);
+        mainToolBar = new QToolBar(loginView);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
-        QtGuiApplication1Class->addToolBar(Qt::TopToolBarArea, mainToolBar);
-        statusBar = new QStatusBar(QtGuiApplication1Class);
+        loginView->addToolBar(Qt::TopToolBarArea, mainToolBar);
+        statusBar = new QStatusBar(loginView);
         statusBar->setObjectName(QStringLiteral("statusBar"));
         statusBar->setSizeGripEnabled(true);
-        QtGuiApplication1Class->setStatusBar(statusBar);
+        loginView->setStatusBar(statusBar);
 
-        retranslateUi(QtGuiApplication1Class);
-        QObject::connect(cancelButton, SIGNAL(clicked()), QtGuiApplication1Class, SLOT(close()));
+        retranslateUi(loginView);
+        QObject::connect(cancelButton, SIGNAL(clicked()), loginView, SLOT(close()));
 
         okButton->setDefault(true);
 
 
-        QMetaObject::connectSlotsByName(QtGuiApplication1Class);
+        QMetaObject::connectSlotsByName(loginView);
     } // setupUi
 
-    void retranslateUi(QMainWindow *QtGuiApplication1Class)
+    void retranslateUi(QMainWindow *loginView)
     {
-        QtGuiApplication1Class->setWindowTitle(QApplication::translate("QtGuiApplication1Class", "Login", Q_NULLPTR));
-        label->setText(QApplication::translate("QtGuiApplication1Class", "Student Information Management System", Q_NULLPTR));
+        loginView->setWindowTitle(QApplication::translate("loginView", "Login", Q_NULLPTR));
+        label->setText(QApplication::translate("loginView", "Student Information Management System", Q_NULLPTR));
         loginStatus->setText(QString());
-        groupBox->setTitle(QApplication::translate("QtGuiApplication1Class", "Please Login Below:", Q_NULLPTR));
-        usernameLabel->setText(QApplication::translate("QtGuiApplication1Class", "Username:", Q_NULLPTR));
-        PasswordLabel->setText(QApplication::translate("QtGuiApplication1Class", "Password:", Q_NULLPTR));
-        okButton->setText(QApplication::translate("QtGuiApplication1Class", "OK", Q_NULLPTR));
-        cancelButton->setText(QApplication::translate("QtGuiApplication1Class", "Cancel", Q_NULLPTR));
+        groupBox->setTitle(QApplication::translate("loginView", "Please Login Below:", Q_NULLPTR));
+        usernameLabel->setText(QApplication::translate("loginView", "Username:", Q_NULLPTR));
+        PasswordLabel->setText(QApplication::translate("loginView", "Password:", Q_NULLPTR));
+        okButton->setText(QApplication::translate("loginView", "OK", Q_NULLPTR));
+        cancelButton->setText(QApplication::translate("loginView", "Cancel", Q_NULLPTR));
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class QtGuiApplication1Class: public Ui_QtGuiApplication1Class {};
+    class loginView: public Ui_loginView {};
 } // namespace Ui
 
 QT_END_NAMESPACE
 
-#endif // UI_QTGUIAPPLICATION1_H
+#endif // UI_LOGINVIEW_H

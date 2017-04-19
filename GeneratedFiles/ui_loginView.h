@@ -122,7 +122,7 @@ public:
         loginView->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(loginView);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 866, 21));
+        menuBar->setGeometry(QRect(0, 0, 866, 31));
         loginView->setMenuBar(menuBar);
         mainToolBar = new QToolBar(loginView);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));

@@ -18,6 +18,7 @@
 #include <QtWidgets/QApplication>
 #include <QPushButton>
 #include <qmainwindow.h>
+#include <qwidget.h>
 
 //normal libraries
 #include <string>

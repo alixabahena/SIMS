@@ -1,10 +1,6 @@
 #pragma once
 
-#include <iostream>
-#include <string>
-#include "sqlite3.h"
-#include <vector>
-#include "loginView.h"
+#include "stdafx.h"
 
 using namespace std;
 

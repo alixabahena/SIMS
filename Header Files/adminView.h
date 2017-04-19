@@ -1,7 +1,18 @@
 #pragma once
-
+#include <qmainwindow.h>
+#include <qobject.h>
+#include <qwidget.h>
+#include <ui_adminView.h>
+#include <qsqldatabase.h>
+#include <qdir.h>
+#include <qsqlquery.h>
 #include <QWidget>
-#include "ui_adminView.h"
+#include <QtWidgets/QMainWindow>
+#include "qmessagebox.h"
+#include <qobject.h>
+#include <QtWidgets/QApplication>
+#include <QPushButton>
+#include <qmainwindow.h>
 
 class adminView : public QMainWindow
 {

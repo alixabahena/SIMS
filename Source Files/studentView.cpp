@@ -1,10 +1,21 @@
 #include "Header Files\stdafx.h"
 
-
 studentView::studentView(QWidget *parent)
 	: QWidget(parent)
 {
 	ui.setupUi(this);
+	ui.usernameLabel->setText("");
+	ui.stackedWidget->setCurrentIndex(0);
+	ui.backButton->hide();
+	
+}
+
+studentView::studentView(QString userName)
+{
+
+	QString user = userName;
+	ui.setupUi(this);
+	ui.usernameLabel->setText(user);
 	ui.stackedWidget->setCurrentIndex(0);
 	ui.backButton->hide();
 }

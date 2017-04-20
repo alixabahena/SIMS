@@ -2,6 +2,7 @@
 
 vector<users>allusers = populateUsers();
 
+
 loginView::loginView(QWidget *parent)
 	: QMainWindow(parent)
 {
@@ -16,7 +17,7 @@ void loginView::on_okButton_clicked()
 	
 	string username = ui.usernameField->text().toStdString();
 	string password = ui.passwordFIeld->text().toStdString();
-	
+	QString user = QString::fromStdString(username);
 
 	int userlocation = 0;
 	bool TryUser = 0;
@@ -56,7 +57,7 @@ void loginView::on_okButton_clicked()
 			else if (allusers[userlocation].access_type == "student")
 			{
 				this->hide();
-				studentView *studentview = new studentView();
+				studentView *studentview = new studentView(user);
 				studentview->show();
 			}
 			else

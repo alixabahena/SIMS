@@ -10,10 +10,12 @@ class studentView : public QWidget
 
 public:
 	studentView(QWidget *parent = Q_NULLPTR);
+	studentView(QString userName);
 public slots:
 	void on_viewScheduleButton_clicked();
 	void on_backButton_clicked();
 	void on_logoutButton_clicked();
+	
 private:
 	Ui::studentView ui;
 };

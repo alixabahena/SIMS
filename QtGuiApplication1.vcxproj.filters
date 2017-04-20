@@ -85,6 +85,9 @@
     <ClCompile Include="Source Files\stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source Files\faculty.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="Source Files\Student.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -156,6 +159,9 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="Header Files\Student.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\faculty.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

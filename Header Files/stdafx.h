@@ -7,6 +7,8 @@
 #include "adminView.h"
 #include "Student.h"
 #include "facultyView.h"
+#include "faculty.h"
+
 
 //QT
 #include <qsqldatabase.h>

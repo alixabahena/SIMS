@@ -44,6 +44,43 @@ vector<Student> populateStudents()
 	return Students;
 }
 
+vector<faculty> populateFaculty()
+{
+	sqlite3 *db;
+	char *zErrMsg = 0;
+	int rc;
+	char *sql;
+	const char* data = "";
+	const char* dbName = "Students.db";
+	vector<faculty> Faculty;
+	sqlite3_stmt *stmt;
+	/* Open database */
+	rc = sqlite3_open(dbName, &db);
+		;
+		rc = sqlite3_prepare_v2(db, "select First Name, Last Name, username from Faculty"
+		,
+		-1, &stmt, NULL);
+	if (rc != SQLITE_OK) {
+		cerr << "SELECT failed: " << sqlite3_errmsg(db) << endl;
+
+	}
+	while ((rc = sqlite3_step(stmt)) == SQLITE_ROW) {
+		const char* firstName = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0));
+		const char* lastName = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 1));
+		const char* username = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 2));
+		// let's assume some fields can be NULL:
+		Faculty.push_back(faculty(firstName, lastName, username));
+
+	}
+	if (rc != SQLITE_DONE) {
+		cerr << "SELECT failed: " << sqlite3_errmsg(db) << endl;
+		// if you return/throw here, don't forget the finalize
+	}
+	sqlite3_finalize(stmt);
+
+	return Faculty;
+}
+
 vector<users> populateUsers()
 {
 	sqlite3 *db;

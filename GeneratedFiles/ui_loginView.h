@@ -72,7 +72,7 @@ public:
         label->setAlignment(Qt::AlignCenter);
         loginStatus = new QLabel(centralWidget);
         loginStatus->setObjectName(QStringLiteral("loginStatus"));
-        loginStatus->setGeometry(QRect(30, 430, 811, 41));
+        loginStatus->setGeometry(QRect(50, 420, 771, 41));
         loginStatus->setAlignment(Qt::AlignCenter);
         groupBox = new QGroupBox(centralWidget);
         groupBox->setObjectName(QStringLiteral("groupBox"));
@@ -84,7 +84,7 @@ public:
         groupBox->setSizePolicy(sizePolicy1);
         horizontalLayoutWidget = new QWidget(groupBox);
         horizontalLayoutWidget->setObjectName(QStringLiteral("horizontalLayoutWidget"));
-        horizontalLayoutWidget->setGeometry(QRect(130, 279, 511, 71));
+        horizontalLayoutWidget->setGeometry(QRect(10, 240, 741, 71));
         horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
         horizontalLayout->setSpacing(6);
         horizontalLayout->setContentsMargins(11, 11, 11, 11);
@@ -118,7 +118,7 @@ public:
 
         verticalLayoutWidget = new QWidget(groupBox);
         verticalLayoutWidget->setObjectName(QStringLiteral("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(180, 60, 451, 171));
+        verticalLayoutWidget->setGeometry(QRect(220, 30, 451, 171));
         verticalLayout = new QVBoxLayout(verticalLayoutWidget);
         verticalLayout->setSpacing(6);
         verticalLayout->setContentsMargins(11, 11, 11, 11);
@@ -150,12 +150,17 @@ public:
 
         usernameLabel = new QLabel(groupBox);
         usernameLabel->setObjectName(QStringLiteral("usernameLabel"));
-        usernameLabel->setGeometry(QRect(50, 70, 116, 29));
+        usernameLabel->setGeometry(QRect(80, 40, 116, 29));
         usernameLabel->setFont(font2);
         PasswordLabel = new QLabel(groupBox);
         PasswordLabel->setObjectName(QStringLiteral("PasswordLabel"));
-        PasswordLabel->setGeometry(QRect(50, 180, 109, 29));
+        PasswordLabel->setGeometry(QRect(80, 160, 109, 29));
         PasswordLabel->setFont(font2);
+        horizontalLayoutWidget->raise();
+        verticalLayoutWidget->raise();
+        usernameLabel->raise();
+        PasswordLabel->raise();
+        usernameField->raise();
         loginView->setCentralWidget(centralWidget);
         statusBar = new QStatusBar(loginView);
         statusBar->setObjectName(QStringLiteral("statusBar"));

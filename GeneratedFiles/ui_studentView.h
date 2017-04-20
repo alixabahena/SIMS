@@ -18,9 +18,9 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QSplitter>
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QTableView>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -32,7 +32,8 @@ public:
     QStackedWidget *stackedWidget;
     QWidget *page;
     QGroupBox *optionsGroupBox;
-    QSplitter *splitter;
+    QWidget *verticalLayoutWidget;
+    QVBoxLayout *verticalLayout;
     QPushButton *viewScheduleButton;
     QPushButton *manageClassesButton;
     QPushButton *viewClassesButton;
@@ -42,6 +43,7 @@ public:
     QLabel *scheduleLabel;
     QFrame *line;
     QPushButton *backButton;
+    QLabel *usernameLabel;
 
     void setupUi(QWidget *studentView)
     {
@@ -63,23 +65,34 @@ public:
         optionsGroupBox = new QGroupBox(page);
         optionsGroupBox->setObjectName(QStringLiteral("optionsGroupBox"));
         optionsGroupBox->setGeometry(QRect(10, 30, 581, 391));
-        splitter = new QSplitter(optionsGroupBox);
-        splitter->setObjectName(QStringLiteral("splitter"));
-        splitter->setGeometry(QRect(30, 40, 531, 331));
-        splitter->setOrientation(Qt::Vertical);
-        splitter->setHandleWidth(30);
-        viewScheduleButton = new QPushButton(splitter);
+        verticalLayoutWidget = new QWidget(optionsGroupBox);
+        verticalLayoutWidget->setObjectName(QStringLiteral("verticalLayoutWidget"));
+        verticalLayoutWidget->setGeometry(QRect(39, 40, 501, 321));
+        verticalLayout = new QVBoxLayout(verticalLayoutWidget);
+        verticalLayout->setSpacing(5);
+        verticalLayout->setContentsMargins(11, 11, 11, 11);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        viewScheduleButton = new QPushButton(verticalLayoutWidget);
         viewScheduleButton->setObjectName(QStringLiteral("viewScheduleButton"));
-        splitter->addWidget(viewScheduleButton);
-        manageClassesButton = new QPushButton(splitter);
+
+        verticalLayout->addWidget(viewScheduleButton);
+
+        manageClassesButton = new QPushButton(verticalLayoutWidget);
         manageClassesButton->setObjectName(QStringLiteral("manageClassesButton"));
-        splitter->addWidget(manageClassesButton);
-        viewClassesButton = new QPushButton(splitter);
+
+        verticalLayout->addWidget(manageClassesButton);
+
+        viewClassesButton = new QPushButton(verticalLayoutWidget);
         viewClassesButton->setObjectName(QStringLiteral("viewClassesButton"));
-        splitter->addWidget(viewClassesButton);
-        logoutButton = new QPushButton(splitter);
+
+        verticalLayout->addWidget(viewClassesButton);
+
+        logoutButton = new QPushButton(verticalLayoutWidget);
         logoutButton->setObjectName(QStringLiteral("logoutButton"));
-        splitter->addWidget(logoutButton);
+
+        verticalLayout->addWidget(logoutButton);
+
         stackedWidget->addWidget(page);
         page_2 = new QWidget();
         page_2->setObjectName(QStringLiteral("page_2"));
@@ -104,10 +117,14 @@ public:
         backButton->setObjectName(QStringLiteral("backButton"));
         backButton->setEnabled(false);
         backButton->setGeometry(QRect(30, 520, 101, 31));
+        usernameLabel = new QLabel(studentView);
+        usernameLabel->setObjectName(QStringLiteral("usernameLabel"));
+        usernameLabel->setGeometry(QRect(167, 80, 301, 20));
+        usernameLabel->setAlignment(Qt::AlignCenter);
 
         retranslateUi(studentView);
 
-        stackedWidget->setCurrentIndex(1);
+        stackedWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(studentView);
@@ -124,6 +141,7 @@ public:
         logoutButton->setText(QApplication::translate("studentView", "Logout", Q_NULLPTR));
         scheduleLabel->setText(QApplication::translate("studentView", "Current Student Semester Schedule", Q_NULLPTR));
         backButton->setText(QApplication::translate("studentView", "Back", Q_NULLPTR));
+        usernameLabel->setText(QString());
     } // retranslateUi
 
 };

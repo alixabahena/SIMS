@@ -59,41 +59,45 @@
      <property name="title">
       <string>Options</string>
      </property>
-     <widget class="QSplitter" name="splitter_2">
+     <widget class="QWidget" name="verticalLayoutWidget">
       <property name="geometry">
        <rect>
-        <x>30</x>
+        <x>39</x>
         <y>40</y>
-        <width>531</width>
-        <height>331</height>
+        <width>511</width>
+        <height>321</height>
        </rect>
       </property>
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
-      </property>
-      <property name="handleWidth">
-       <number>30</number>
-      </property>
-      <widget class="QPushButton" name="viewCoursesButton">
-       <property name="text">
-        <string>View Courses</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="manageCoursesButton">
-       <property name="text">
-        <string>Manage Courses</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="changePassButton">
-       <property name="text">
-        <string>Change Password</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="logoutButton_2">
-       <property name="text">
-        <string>Logout</string>
-       </property>
-      </widget>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QPushButton" name="manageCoursesButton">
+         <property name="text">
+          <string>Manage Courses</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="viewCoursesButton">
+         <property name="text">
+          <string>View Courses</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="changePassButton">
+         <property name="text">
+          <string>Change Password</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="logoutButton_2">
+         <property name="text">
+          <string>Logout</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </widget>
     <widget class="QLabel" name="usernameLabel">

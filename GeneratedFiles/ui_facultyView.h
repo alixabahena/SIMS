@@ -18,9 +18,9 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QSplitter>
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QTableView>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -32,9 +32,10 @@ public:
     QStackedWidget *stackedWidget;
     QWidget *page;
     QGroupBox *optionsGroupBox;
-    QSplitter *splitter_2;
-    QPushButton *viewCoursesButton;
+    QWidget *verticalLayoutWidget;
+    QVBoxLayout *verticalLayout;
     QPushButton *manageCoursesButton;
+    QPushButton *viewCoursesButton;
     QPushButton *changePassButton;
     QPushButton *logoutButton_2;
     QLabel *usernameLabel;
@@ -64,23 +65,32 @@ public:
         optionsGroupBox = new QGroupBox(page);
         optionsGroupBox->setObjectName(QStringLiteral("optionsGroupBox"));
         optionsGroupBox->setGeometry(QRect(10, 30, 581, 391));
-        splitter_2 = new QSplitter(optionsGroupBox);
-        splitter_2->setObjectName(QStringLiteral("splitter_2"));
-        splitter_2->setGeometry(QRect(30, 40, 531, 331));
-        splitter_2->setOrientation(Qt::Vertical);
-        splitter_2->setHandleWidth(30);
-        viewCoursesButton = new QPushButton(splitter_2);
-        viewCoursesButton->setObjectName(QStringLiteral("viewCoursesButton"));
-        splitter_2->addWidget(viewCoursesButton);
-        manageCoursesButton = new QPushButton(splitter_2);
+        verticalLayoutWidget = new QWidget(optionsGroupBox);
+        verticalLayoutWidget->setObjectName(QStringLiteral("verticalLayoutWidget"));
+        verticalLayoutWidget->setGeometry(QRect(39, 40, 511, 321));
+        verticalLayout = new QVBoxLayout(verticalLayoutWidget);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        manageCoursesButton = new QPushButton(verticalLayoutWidget);
         manageCoursesButton->setObjectName(QStringLiteral("manageCoursesButton"));
-        splitter_2->addWidget(manageCoursesButton);
-        changePassButton = new QPushButton(splitter_2);
+
+        verticalLayout->addWidget(manageCoursesButton);
+
+        viewCoursesButton = new QPushButton(verticalLayoutWidget);
+        viewCoursesButton->setObjectName(QStringLiteral("viewCoursesButton"));
+
+        verticalLayout->addWidget(viewCoursesButton);
+
+        changePassButton = new QPushButton(verticalLayoutWidget);
         changePassButton->setObjectName(QStringLiteral("changePassButton"));
-        splitter_2->addWidget(changePassButton);
-        logoutButton_2 = new QPushButton(splitter_2);
+
+        verticalLayout->addWidget(changePassButton);
+
+        logoutButton_2 = new QPushButton(verticalLayoutWidget);
         logoutButton_2->setObjectName(QStringLiteral("logoutButton_2"));
-        splitter_2->addWidget(logoutButton_2);
+
+        verticalLayout->addWidget(logoutButton_2);
+
         usernameLabel = new QLabel(page);
         usernameLabel->setObjectName(QStringLiteral("usernameLabel"));
         usernameLabel->setGeometry(QRect(160, 10, 301, 20));
@@ -123,8 +133,8 @@ public:
         facultyView->setWindowTitle(QApplication::translate("facultyView", "Form", Q_NULLPTR));
         welcomeLabel->setText(QApplication::translate("facultyView", "Welcome Faculty", Q_NULLPTR));
         optionsGroupBox->setTitle(QApplication::translate("facultyView", "Options", Q_NULLPTR));
-        viewCoursesButton->setText(QApplication::translate("facultyView", "View Courses", Q_NULLPTR));
         manageCoursesButton->setText(QApplication::translate("facultyView", "Manage Courses", Q_NULLPTR));
+        viewCoursesButton->setText(QApplication::translate("facultyView", "View Courses", Q_NULLPTR));
         changePassButton->setText(QApplication::translate("facultyView", "Change Password", Q_NULLPTR));
         logoutButton_2->setText(QApplication::translate("facultyView", "Logout", Q_NULLPTR));
         usernameLabel->setText(QString());

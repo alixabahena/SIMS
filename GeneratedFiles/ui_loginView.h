@@ -84,7 +84,7 @@ public:
         groupBox->setSizePolicy(sizePolicy1);
         horizontalLayoutWidget = new QWidget(groupBox);
         horizontalLayoutWidget->setObjectName(QStringLiteral("horizontalLayoutWidget"));
-        horizontalLayoutWidget->setGeometry(QRect(130, 289, 511, 61));
+        horizontalLayoutWidget->setGeometry(QRect(130, 279, 511, 71));
         horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
         horizontalLayout->setSpacing(6);
         horizontalLayout->setContentsMargins(11, 11, 11, 11);
@@ -103,7 +103,7 @@ public:
 
         horizontalLayout->addWidget(cancelButton);
 
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
 
         horizontalLayout->addItem(horizontalSpacer);
 
@@ -161,6 +161,9 @@ public:
         statusBar->setObjectName(QStringLiteral("statusBar"));
         statusBar->setSizeGripEnabled(true);
         loginView->setStatusBar(statusBar);
+        QWidget::setTabOrder(usernameField, passwordFIeld);
+        QWidget::setTabOrder(passwordFIeld, cancelButton);
+        QWidget::setTabOrder(cancelButton, okButton);
 
         retranslateUi(loginView);
         QObject::connect(cancelButton, SIGNAL(clicked()), loginView, SLOT(close()));

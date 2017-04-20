@@ -6,8 +6,6 @@ loginView::loginView(QWidget *parent)
 	: QMainWindow(parent)
 {
 	
-	
-
 	ui.setupUi(this);
 }
 
@@ -77,4 +75,22 @@ void loginView::on_okButton_clicked()
 		ui.loginStatus->setText("Incorrect Username or Password.");
 		ui.loginStatus->setStyleSheet("QLabel { background-color : red; color : white; }");
 	}
+}
+
+bool loginView::eventFilter(QObject * obj, QEvent * event)
+{
+	if (event->type() == QEvent::KeyPress) {
+		QKeyEvent* key = static_cast<QKeyEvent*>(event);
+		if ((key->key() == Qt::Key_Enter) || (key->key() == Qt::Key_Return)) {
+			//Enter or return was pressed
+		}
+		else {
+			return QObject::eventFilter(obj, event);
+		}
+		return true;
+	}
+	else {
+		return QObject::eventFilter(obj, event);
+	}
+	return false;
 }

@@ -114,8 +114,34 @@
      <height>31</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuMenu">
+    <property name="title">
+     <string>Menu</string>
+    </property>
+    <addaction name="separator"/>
+    <addaction name="actionStudent_VIew"/>
+    <addaction name="actionFaculty_VIew"/>
+    <addaction name="separator"/>
+    <addaction name="actionLogout"/>
+   </widget>
+   <addaction name="menuMenu"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionStudent_VIew">
+   <property name="text">
+    <string>Student VIew</string>
+   </property>
+  </action>
+  <action name="actionFaculty_VIew">
+   <property name="text">
+    <string>Faculty VIew</string>
+   </property>
+  </action>
+  <action name="actionLogout">
+   <property name="text">
+    <string>Logout</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>

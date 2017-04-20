@@ -4,7 +4,6 @@
 #include <ui_studentView.h>
 
 
-
 class studentView : public QWidget
 {
 	Q_OBJECT
@@ -14,6 +13,7 @@ public:
 public slots:
 	void on_viewScheduleButton_clicked();
 	void on_backButton_clicked();
+	void on_logoutButton_clicked();
 private:
 	Ui::studentView ui;
 };

@@ -10,6 +10,7 @@ class loginView : public QMainWindow
 
 public:
 	loginView(QWidget *parent = Q_NULLPTR);
+	bool eventFilter(QObject* obj, QEvent* event);
 
 public slots:
 void on_okButton_clicked();

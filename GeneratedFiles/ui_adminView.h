@@ -17,6 +17,7 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSplitter>
@@ -28,6 +29,9 @@ QT_BEGIN_NAMESPACE
 class Ui_adminView
 {
 public:
+    QAction *actionStudent_VIew;
+    QAction *actionFaculty_VIew;
+    QAction *actionLogout;
     QWidget *centralwidget;
     QGroupBox *optionsGroupBox;
     QSplitter *splitter;
@@ -40,6 +44,7 @@ public:
     QPushButton *viewClassesButton_2;
     QLabel *welcomeLabel;
     QMenuBar *menubar;
+    QMenu *menuMenu;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *adminView)
@@ -47,6 +52,12 @@ public:
         if (adminView->objectName().isEmpty())
             adminView->setObjectName(QStringLiteral("adminView"));
         adminView->resize(800, 600);
+        actionStudent_VIew = new QAction(adminView);
+        actionStudent_VIew->setObjectName(QStringLiteral("actionStudent_VIew"));
+        actionFaculty_VIew = new QAction(adminView);
+        actionFaculty_VIew->setObjectName(QStringLiteral("actionFaculty_VIew"));
+        actionLogout = new QAction(adminView);
+        actionLogout->setObjectName(QStringLiteral("actionLogout"));
         centralwidget = new QWidget(adminView);
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
         optionsGroupBox = new QGroupBox(centralwidget);
@@ -89,10 +100,19 @@ public:
         menubar = new QMenuBar(adminView);
         menubar->setObjectName(QStringLiteral("menubar"));
         menubar->setGeometry(QRect(0, 0, 800, 31));
+        menuMenu = new QMenu(menubar);
+        menuMenu->setObjectName(QStringLiteral("menuMenu"));
         adminView->setMenuBar(menubar);
         statusbar = new QStatusBar(adminView);
         statusbar->setObjectName(QStringLiteral("statusbar"));
         adminView->setStatusBar(statusbar);
+
+        menubar->addAction(menuMenu->menuAction());
+        menuMenu->addSeparator();
+        menuMenu->addAction(actionStudent_VIew);
+        menuMenu->addAction(actionFaculty_VIew);
+        menuMenu->addSeparator();
+        menuMenu->addAction(actionLogout);
 
         retranslateUi(adminView);
 
@@ -102,6 +122,9 @@ public:
     void retranslateUi(QMainWindow *adminView)
     {
         adminView->setWindowTitle(QApplication::translate("adminView", "MainWindow", Q_NULLPTR));
+        actionStudent_VIew->setText(QApplication::translate("adminView", "Student VIew", Q_NULLPTR));
+        actionFaculty_VIew->setText(QApplication::translate("adminView", "Faculty VIew", Q_NULLPTR));
+        actionLogout->setText(QApplication::translate("adminView", "Logout", Q_NULLPTR));
         optionsGroupBox->setTitle(QApplication::translate("adminView", "Options", Q_NULLPTR));
         viewScheduleButton->setText(QApplication::translate("adminView", "View Classes", Q_NULLPTR));
         manageClassesButton->setText(QApplication::translate("adminView", "Add Classes", Q_NULLPTR));
@@ -110,6 +133,7 @@ public:
         manageClassesButton_2->setText(QApplication::translate("adminView", "Add Account", Q_NULLPTR));
         viewClassesButton_2->setText(QApplication::translate("adminView", "Remove Account", Q_NULLPTR));
         welcomeLabel->setText(QApplication::translate("adminView", "Administrator Panel", Q_NULLPTR));
+        menuMenu->setTitle(QApplication::translate("adminView", "Menu", Q_NULLPTR));
     } // retranslateUi
 
 };

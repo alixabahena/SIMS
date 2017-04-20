@@ -108,6 +108,9 @@
     <CustomBuild Include="Header Files\loginView.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
+    <CustomBuild Include="facultyView.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_studentView.h">
@@ -133,6 +136,9 @@
     </ClInclude>
     <ClInclude Include="Header Files\stdafx.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_facultyView.h">
+      <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -20,6 +20,8 @@
 #include <qmainwindow.h>
 #include <qwidget.h>
 #include <qboxlayout.h>
+#include <qkeyeventtransition.h>
+#include <qevent.h>
 
 //normal libraries
 #include <string>

@@ -266,6 +266,12 @@
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>usernameField</tabstop>
+  <tabstop>passwordFIeld</tabstop>
+  <tabstop>cancelButton</tabstop>
+  <tabstop>okButton</tabstop>
+ </tabstops>
  <resources>
   <include location="../Resource Files/loginView.qrc"/>
  </resources>

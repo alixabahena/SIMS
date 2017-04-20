@@ -1,5 +1,7 @@
 #include "Header Files\stdafx.h"
 
+vector<Student>allStudents = populateStudents();
+
 studentView::studentView(QWidget *parent)
 	: QWidget(parent)
 {
@@ -14,8 +16,20 @@ studentView::studentView(QString userName)
 {
 
 	QString user = userName;
+	string username = user.toStdString();
+	QString fullName;
+	string name;
+	for (int i = 0; i < allStudents.size(); i++)
+	{
+		if (allStudents[i].userName == username)
+		{
+			name = allStudents[i].firstName + " " + allStudents[i].lastName;
+		}
+
+	}
+	fullName = QString::fromStdString(name);
 	ui.setupUi(this);
-	ui.usernameLabel->setText(user);
+	ui.usernameLabel->setText(fullName);
 	ui.stackedWidget->setCurrentIndex(0);
 	ui.backButton->hide();
 }

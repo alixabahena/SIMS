@@ -40,7 +40,6 @@ public:
     QSplitter *splitter_2;
     QLineEdit *usernameField;
     QLineEdit *passwordFIeld;
-    QSplitter *splitter;
     QPushButton *okButton;
     QPushButton *cancelButton;
     QMenuBar *menuBar;
@@ -103,22 +102,18 @@ public:
         passwordFIeld->setFont(font1);
         passwordFIeld->setEchoMode(QLineEdit::Password);
         splitter_2->addWidget(passwordFIeld);
-        splitter = new QSplitter(groupBox);
-        splitter->setObjectName(QStringLiteral("splitter"));
-        splitter->setGeometry(QRect(50, 230, 571, 51));
-        splitter->setOrientation(Qt::Horizontal);
-        splitter->setHandleWidth(100);
-        okButton = new QPushButton(splitter);
+        okButton = new QPushButton(groupBox);
         okButton->setObjectName(QStringLiteral("okButton"));
+        okButton->setGeometry(QRect(430, 230, 191, 51));
         QFont font2;
         font2.setPointSize(9);
         okButton->setFont(font2);
         okButton->setAutoDefault(true);
-        splitter->addWidget(okButton);
-        cancelButton = new QPushButton(splitter);
+        cancelButton = new QPushButton(groupBox);
         cancelButton->setObjectName(QStringLiteral("cancelButton"));
+        cancelButton->setGeometry(QRect(40, 230, 191, 51));
+        cancelButton->setMinimumSize(QSize(108, 0));
         cancelButton->setFont(font2);
-        splitter->addWidget(cancelButton);
         loginView->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(loginView);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -134,6 +129,7 @@ public:
 
         retranslateUi(loginView);
         QObject::connect(cancelButton, SIGNAL(clicked()), loginView, SLOT(close()));
+        QObject::connect(cancelButton, SIGNAL(pressed()), loginView, SLOT(close()));
 
         okButton->setDefault(true);
 
@@ -149,8 +145,8 @@ public:
         groupBox->setTitle(QApplication::translate("loginView", "Please Login Below:", Q_NULLPTR));
         usernameLabel->setText(QApplication::translate("loginView", "Username:", Q_NULLPTR));
         PasswordLabel->setText(QApplication::translate("loginView", "Password:", Q_NULLPTR));
-        okButton->setText(QApplication::translate("loginView", "OK", Q_NULLPTR));
-        cancelButton->setText(QApplication::translate("loginView", "Cancel", Q_NULLPTR));
+        okButton->setText(QApplication::translate("loginView", "Login", Q_NULLPTR));
+        cancelButton->setText(QApplication::translate("loginView", "Exit", Q_NULLPTR));
     } // retranslateUi
 
 };

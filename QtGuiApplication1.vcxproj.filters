@@ -91,6 +91,15 @@
     <ClCompile Include="Source Files\Student.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_facultyView.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Source Files\facultyView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_facultyView.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Form Files\adminView.ui">
@@ -114,8 +123,11 @@
     <CustomBuild Include="Header Files\loginView.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="facultyView.ui">
+    <CustomBuild Include="Form Files\facultyView.ui">
       <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Header Files\facultyView.h">
+      <Filter>Header Files</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>

@@ -14,15 +14,15 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QGroupBox>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QSplitter>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStatusBar>
-#include <QtWidgets/QToolBar>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -34,16 +34,18 @@ public:
     QLabel *label;
     QLabel *loginStatus;
     QGroupBox *groupBox;
-    QSplitter *splitter_3;
+    QWidget *horizontalLayoutWidget;
+    QHBoxLayout *horizontalLayout;
+    QPushButton *cancelButton;
+    QSpacerItem *horizontalSpacer;
+    QPushButton *okButton;
+    QWidget *verticalLayoutWidget;
+    QVBoxLayout *verticalLayout;
+    QLineEdit *usernameField;
+    QSpacerItem *verticalSpacer_2;
+    QLineEdit *passwordFIeld;
     QLabel *usernameLabel;
     QLabel *PasswordLabel;
-    QSplitter *splitter_2;
-    QLineEdit *usernameField;
-    QLineEdit *passwordFIeld;
-    QPushButton *okButton;
-    QPushButton *cancelButton;
-    QMenuBar *menuBar;
-    QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
     void setupUi(QMainWindow *loginView)
@@ -74,54 +76,87 @@ public:
         loginStatus->setAlignment(Qt::AlignCenter);
         groupBox = new QGroupBox(centralWidget);
         groupBox->setObjectName(QStringLiteral("groupBox"));
-        groupBox->setGeometry(QRect(99, 109, 661, 311));
-        splitter_3 = new QSplitter(groupBox);
-        splitter_3->setObjectName(QStringLiteral("splitter_3"));
-        splitter_3->setGeometry(QRect(50, 50, 131, 141));
-        splitter_3->setOrientation(Qt::Vertical);
-        usernameLabel = new QLabel(splitter_3);
-        usernameLabel->setObjectName(QStringLiteral("usernameLabel"));
-        QFont font1;
-        font1.setPointSize(12);
-        usernameLabel->setFont(font1);
-        splitter_3->addWidget(usernameLabel);
-        PasswordLabel = new QLabel(splitter_3);
-        PasswordLabel->setObjectName(QStringLiteral("PasswordLabel"));
-        PasswordLabel->setFont(font1);
-        splitter_3->addWidget(PasswordLabel);
-        splitter_2 = new QSplitter(groupBox);
-        splitter_2->setObjectName(QStringLiteral("splitter_2"));
-        splitter_2->setGeometry(QRect(203, 49, 441, 141));
-        splitter_2->setOrientation(Qt::Vertical);
-        usernameField = new QLineEdit(splitter_2);
-        usernameField->setObjectName(QStringLiteral("usernameField"));
-        usernameField->setFont(font1);
-        splitter_2->addWidget(usernameField);
-        passwordFIeld = new QLineEdit(splitter_2);
-        passwordFIeld->setObjectName(QStringLiteral("passwordFIeld"));
-        passwordFIeld->setFont(font1);
-        passwordFIeld->setEchoMode(QLineEdit::Password);
-        splitter_2->addWidget(passwordFIeld);
-        okButton = new QPushButton(groupBox);
-        okButton->setObjectName(QStringLiteral("okButton"));
-        okButton->setGeometry(QRect(430, 230, 191, 51));
-        QFont font2;
-        font2.setPointSize(9);
-        okButton->setFont(font2);
-        okButton->setAutoDefault(true);
-        cancelButton = new QPushButton(groupBox);
+        groupBox->setGeometry(QRect(49, 89, 771, 391));
+        QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Preferred);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(groupBox->sizePolicy().hasHeightForWidth());
+        groupBox->setSizePolicy(sizePolicy1);
+        horizontalLayoutWidget = new QWidget(groupBox);
+        horizontalLayoutWidget->setObjectName(QStringLiteral("horizontalLayoutWidget"));
+        horizontalLayoutWidget->setGeometry(QRect(130, 289, 511, 61));
+        horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
+        horizontalLayout->setSpacing(6);
+        horizontalLayout->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        cancelButton = new QPushButton(horizontalLayoutWidget);
         cancelButton->setObjectName(QStringLiteral("cancelButton"));
-        cancelButton->setGeometry(QRect(40, 230, 191, 51));
-        cancelButton->setMinimumSize(QSize(108, 0));
-        cancelButton->setFont(font2);
+        QSizePolicy sizePolicy2(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(cancelButton->sizePolicy().hasHeightForWidth());
+        cancelButton->setSizePolicy(sizePolicy2);
+        QFont font1;
+        font1.setPointSize(9);
+        cancelButton->setFont(font1);
+
+        horizontalLayout->addWidget(cancelButton);
+
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer);
+
+        okButton = new QPushButton(horizontalLayoutWidget);
+        okButton->setObjectName(QStringLiteral("okButton"));
+        sizePolicy2.setHeightForWidth(okButton->sizePolicy().hasHeightForWidth());
+        okButton->setSizePolicy(sizePolicy2);
+        okButton->setFont(font1);
+        okButton->setAutoDefault(true);
+
+        horizontalLayout->addWidget(okButton);
+
+        verticalLayoutWidget = new QWidget(groupBox);
+        verticalLayoutWidget->setObjectName(QStringLiteral("verticalLayoutWidget"));
+        verticalLayoutWidget->setGeometry(QRect(180, 60, 451, 171));
+        verticalLayout = new QVBoxLayout(verticalLayoutWidget);
+        verticalLayout->setSpacing(6);
+        verticalLayout->setContentsMargins(11, 11, 11, 11);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        usernameField = new QLineEdit(verticalLayoutWidget);
+        usernameField->setObjectName(QStringLiteral("usernameField"));
+        sizePolicy2.setHeightForWidth(usernameField->sizePolicy().hasHeightForWidth());
+        usernameField->setSizePolicy(sizePolicy2);
+        QFont font2;
+        font2.setPointSize(12);
+        usernameField->setFont(font2);
+
+        verticalLayout->addWidget(usernameField);
+
+        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout->addItem(verticalSpacer_2);
+
+        passwordFIeld = new QLineEdit(verticalLayoutWidget);
+        passwordFIeld->setObjectName(QStringLiteral("passwordFIeld"));
+        sizePolicy2.setHeightForWidth(passwordFIeld->sizePolicy().hasHeightForWidth());
+        passwordFIeld->setSizePolicy(sizePolicy2);
+        passwordFIeld->setFont(font2);
+        passwordFIeld->setEchoMode(QLineEdit::Password);
+        passwordFIeld->setClearButtonEnabled(false);
+
+        verticalLayout->addWidget(passwordFIeld);
+
+        usernameLabel = new QLabel(groupBox);
+        usernameLabel->setObjectName(QStringLiteral("usernameLabel"));
+        usernameLabel->setGeometry(QRect(50, 70, 116, 29));
+        usernameLabel->setFont(font2);
+        PasswordLabel = new QLabel(groupBox);
+        PasswordLabel->setObjectName(QStringLiteral("PasswordLabel"));
+        PasswordLabel->setGeometry(QRect(50, 180, 109, 29));
+        PasswordLabel->setFont(font2);
         loginView->setCentralWidget(centralWidget);
-        menuBar = new QMenuBar(loginView);
-        menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 866, 31));
-        loginView->setMenuBar(menuBar);
-        mainToolBar = new QToolBar(loginView);
-        mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
-        loginView->addToolBar(Qt::TopToolBarArea, mainToolBar);
         statusBar = new QStatusBar(loginView);
         statusBar->setObjectName(QStringLiteral("statusBar"));
         statusBar->setSizeGripEnabled(true);
@@ -129,7 +164,6 @@ public:
 
         retranslateUi(loginView);
         QObject::connect(cancelButton, SIGNAL(clicked()), loginView, SLOT(close()));
-        QObject::connect(cancelButton, SIGNAL(pressed()), loginView, SLOT(close()));
 
         okButton->setDefault(true);
 
@@ -143,10 +177,10 @@ public:
         label->setText(QApplication::translate("loginView", "Student Information Management System", Q_NULLPTR));
         loginStatus->setText(QString());
         groupBox->setTitle(QApplication::translate("loginView", "Please Login Below:", Q_NULLPTR));
+        cancelButton->setText(QApplication::translate("loginView", "Exit", Q_NULLPTR));
+        okButton->setText(QApplication::translate("loginView", "Login", Q_NULLPTR));
         usernameLabel->setText(QApplication::translate("loginView", "Username:", Q_NULLPTR));
         PasswordLabel->setText(QApplication::translate("loginView", "Password:", Q_NULLPTR));
-        okButton->setText(QApplication::translate("loginView", "Login", Q_NULLPTR));
-        cancelButton->setText(QApplication::translate("loginView", "Exit", Q_NULLPTR));
     } // retranslateUi
 
 };

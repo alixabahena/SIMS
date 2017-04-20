@@ -12,10 +12,6 @@ studentView::studentView(QWidget *parent)
 
 void studentView::on_viewScheduleButton_clicked()
 {
-	//QWidget *schedulePage = new QWidget;
-	//QWidget *classesPage = new QWidget;
-	//ui.stackedWidget->addWidget(schedulePage);
-	//ui.stackedWidget->addWidget(classesPage);
 	ui.stackedWidget->setCurrentIndex(1);
 
 	//change header text
@@ -24,8 +20,6 @@ void studentView::on_viewScheduleButton_clicked()
 	ui.backButton->show();
 	ui.backButton->setEnabled(true);
 
-	//QVBoxLayout* layout = new QVBoxLayout();
-	//setLayout(layout);
 	
 }
 

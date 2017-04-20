@@ -34,55 +34,133 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QGroupBox" name="optionsGroupBox">
+  <widget class="QStackedWidget" name="stackedWidget">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>100</y>
-     <width>581</width>
-     <height>91</height>
+     <x>20</x>
+     <y>90</y>
+     <width>591</width>
+     <height>431</height>
     </rect>
    </property>
-   <property name="title">
-    <string>Options</string>
+   <property name="currentIndex">
+    <number>1</number>
    </property>
-   <widget class="QSplitter" name="splitter">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>40</y>
-      <width>501</width>
-      <height>34</height>
-     </rect>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
-    </property>
-    <widget class="QPushButton" name="viewScheduleButton">
-     <property name="text">
-      <string>View Schedule</string>
+   <widget class="QWidget" name="page">
+    <widget class="QGroupBox" name="optionsGroupBox">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>581</width>
+       <height>391</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Options</string>
+     </property>
+     <widget class="QSplitter" name="splitter">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>40</y>
+        <width>531</width>
+        <height>331</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="handleWidth">
+       <number>30</number>
+      </property>
+      <widget class="QPushButton" name="viewScheduleButton">
+       <property name="text">
+        <string>View Schedule</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="manageClassesButton">
+       <property name="text">
+        <string>Manage Classes</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="viewClassesButton">
+       <property name="text">
+        <string>View Classes</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="logoutButton">
+       <property name="text">
+        <string>Logout</string>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="page_2">
+    <widget class="QTableView" name="scheduleTableView">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>110</y>
+       <width>581</width>
+       <height>291</height>
+      </rect>
      </property>
     </widget>
-    <widget class="QPushButton" name="manageClassesButton">
+    <widget class="QLabel" name="scheduleLabel">
+     <property name="geometry">
+      <rect>
+       <x>16</x>
+       <y>49</y>
+       <width>571</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="midLineWidth">
+      <number>4</number>
+     </property>
      <property name="text">
-      <string>Manage Classes</string>
+      <string>Current Student Semester Schedule</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QPushButton" name="viewClassesButton">
-     <property name="text">
-      <string>View Classes</string>
+    <widget class="Line" name="line">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>80</y>
+       <width>591</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
      </property>
     </widget>
    </widget>
   </widget>
-  <widget class="QTableView" name="tableView">
+  <widget class="QPushButton" name="backButton">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>220</y>
-     <width>581</width>
-     <height>321</height>
+     <y>520</y>
+     <width>101</width>
+     <height>31</height>
     </rect>
+   </property>
+   <property name="text">
+    <string>Back</string>
    </property>
   </widget>
  </widget>

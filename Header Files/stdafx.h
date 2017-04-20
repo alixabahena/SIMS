@@ -19,6 +19,7 @@
 #include <QPushButton>
 #include <qmainwindow.h>
 #include <qwidget.h>
+#include <qboxlayout.h>
 
 //normal libraries
 #include <string>

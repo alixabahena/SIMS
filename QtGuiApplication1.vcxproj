@@ -126,6 +126,7 @@
     <ClCompile Include="GeneratedFiles\Release\moc_studentView.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="Source Files\faculty.cpp" />
     <ClCompile Include="Source Files\main.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
@@ -172,6 +173,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_facultyView.h" />
+    <ClInclude Include="Header Files\faculty.h" />
     <ClInclude Include="Header Files\stdafx.h" />
     <CustomBuild Include="Header Files\adminView.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>

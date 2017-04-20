@@ -6,7 +6,7 @@
 #include "studentView.h"
 #include "adminView.h"
 #include "Student.h"
-
+#include "facultyView.h"
 
 //QT
 #include <qsqldatabase.h>
@@ -36,3 +36,4 @@
 #include "ui_studentView.h"
 #include "ui_adminView.h"
 #include "ui_loginView.h"
+#include "ui_facultyView.h"

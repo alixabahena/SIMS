@@ -5,6 +5,7 @@
 #include "databaseManager.h"
 #include "studentView.h"
 #include "adminView.h"
+#include "Student.h"
 #include "faculty.h"
 
 

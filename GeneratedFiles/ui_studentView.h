@@ -14,10 +14,11 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QFrame>
-#include <QtWidgets/QGroupBox>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QTableView>
 #include <QtWidgets/QVBoxLayout>
@@ -28,11 +29,16 @@ QT_BEGIN_NAMESPACE
 class Ui_studentView
 {
 public:
+    QVBoxLayout *verticalLayout_5;
+    QVBoxLayout *verticalLayout_2;
+    QVBoxLayout *verticalLayout_4;
     QLabel *welcomeLabel;
+    QLabel *usernameLabel;
+    QFrame *line_2;
     QStackedWidget *stackedWidget;
     QWidget *page;
-    QGroupBox *optionsGroupBox;
-    QWidget *verticalLayoutWidget;
+    QVBoxLayout *verticalLayout_3;
+    QHBoxLayout *horizontalLayout;
     QVBoxLayout *verticalLayout;
     QPushButton *viewScheduleButton;
     QPushButton *manageClassesButton;
@@ -40,110 +46,180 @@ public:
     QPushButton *pushButton;
     QPushButton *logoutButton;
     QWidget *page_2;
-    QTableView *scheduleTableView;
+    QVBoxLayout *verticalLayout_7;
+    QVBoxLayout *verticalLayout_6;
+    QSpacerItem *verticalSpacer_2;
     QLabel *scheduleLabel;
+    QTableView *scheduleTableView;
+    QSpacerItem *verticalSpacer;
     QFrame *line;
     QPushButton *backButton;
-    QLabel *usernameLabel;
 
     void setupUi(QWidget *studentView)
     {
         if (studentView->objectName().isEmpty())
             studentView->setObjectName(QStringLiteral("studentView"));
-        studentView->resize(637, 559);
+        studentView->resize(721, 614);
+        verticalLayout_5 = new QVBoxLayout(studentView);
+        verticalLayout_5->setSpacing(6);
+        verticalLayout_5->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_5->setObjectName(QStringLiteral("verticalLayout_5"));
+        verticalLayout_2 = new QVBoxLayout();
+        verticalLayout_2->setSpacing(6);
+        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        verticalLayout_4 = new QVBoxLayout();
+        verticalLayout_4->setSpacing(6);
+        verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
+
+        verticalLayout_2->addLayout(verticalLayout_4);
+
         welcomeLabel = new QLabel(studentView);
         welcomeLabel->setObjectName(QStringLiteral("welcomeLabel"));
-        welcomeLabel->setGeometry(QRect(27, 20, 581, 61));
         QFont font;
         font.setPointSize(20);
         welcomeLabel->setFont(font);
         welcomeLabel->setAlignment(Qt::AlignCenter);
+
+        verticalLayout_2->addWidget(welcomeLabel);
+
+        usernameLabel = new QLabel(studentView);
+        usernameLabel->setObjectName(QStringLiteral("usernameLabel"));
+        usernameLabel->setAlignment(Qt::AlignCenter);
+
+        verticalLayout_2->addWidget(usernameLabel);
+
+        line_2 = new QFrame(studentView);
+        line_2->setObjectName(QStringLiteral("line_2"));
+        line_2->setFrameShape(QFrame::HLine);
+        line_2->setFrameShadow(QFrame::Sunken);
+
+        verticalLayout_2->addWidget(line_2);
+
         stackedWidget = new QStackedWidget(studentView);
         stackedWidget->setObjectName(QStringLiteral("stackedWidget"));
-        stackedWidget->setGeometry(QRect(20, 90, 591, 431));
         page = new QWidget();
         page->setObjectName(QStringLiteral("page"));
-        optionsGroupBox = new QGroupBox(page);
-        optionsGroupBox->setObjectName(QStringLiteral("optionsGroupBox"));
-        optionsGroupBox->setGeometry(QRect(10, 30, 581, 391));
-        verticalLayoutWidget = new QWidget(optionsGroupBox);
-        verticalLayoutWidget->setObjectName(QStringLiteral("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(39, 40, 501, 321));
-        verticalLayout = new QVBoxLayout(verticalLayoutWidget);
-        verticalLayout->setSpacing(15);
-        verticalLayout->setContentsMargins(11, 11, 11, 11);
-        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        verticalLayout->setContentsMargins(0, 0, 0, 0);
-        viewScheduleButton = new QPushButton(verticalLayoutWidget);
-        viewScheduleButton->setObjectName(QStringLiteral("viewScheduleButton"));
-        QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
+        QSizePolicy sizePolicy(QSizePolicy::Maximum, QSizePolicy::Maximum);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(viewScheduleButton->sizePolicy().hasHeightForWidth());
-        viewScheduleButton->setSizePolicy(sizePolicy);
+        sizePolicy.setHeightForWidth(page->sizePolicy().hasHeightForWidth());
+        page->setSizePolicy(sizePolicy);
+        verticalLayout_3 = new QVBoxLayout(page);
+        verticalLayout_3->setSpacing(6);
+        verticalLayout_3->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setSpacing(6);
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        verticalLayout = new QVBoxLayout();
+        verticalLayout->setSpacing(15);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        viewScheduleButton = new QPushButton(page);
+        viewScheduleButton->setObjectName(QStringLiteral("viewScheduleButton"));
+        QSizePolicy sizePolicy1(QSizePolicy::Minimum, QSizePolicy::Minimum);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(viewScheduleButton->sizePolicy().hasHeightForWidth());
+        viewScheduleButton->setSizePolicy(sizePolicy1);
 
         verticalLayout->addWidget(viewScheduleButton);
 
-        manageClassesButton = new QPushButton(verticalLayoutWidget);
+        manageClassesButton = new QPushButton(page);
         manageClassesButton->setObjectName(QStringLiteral("manageClassesButton"));
-        sizePolicy.setHeightForWidth(manageClassesButton->sizePolicy().hasHeightForWidth());
-        manageClassesButton->setSizePolicy(sizePolicy);
+        sizePolicy1.setHeightForWidth(manageClassesButton->sizePolicy().hasHeightForWidth());
+        manageClassesButton->setSizePolicy(sizePolicy1);
 
         verticalLayout->addWidget(manageClassesButton);
 
-        viewClassesButton = new QPushButton(verticalLayoutWidget);
+        viewClassesButton = new QPushButton(page);
         viewClassesButton->setObjectName(QStringLiteral("viewClassesButton"));
-        sizePolicy.setHeightForWidth(viewClassesButton->sizePolicy().hasHeightForWidth());
-        viewClassesButton->setSizePolicy(sizePolicy);
+        sizePolicy1.setHeightForWidth(viewClassesButton->sizePolicy().hasHeightForWidth());
+        viewClassesButton->setSizePolicy(sizePolicy1);
 
         verticalLayout->addWidget(viewClassesButton);
 
-        pushButton = new QPushButton(verticalLayoutWidget);
+        pushButton = new QPushButton(page);
         pushButton->setObjectName(QStringLiteral("pushButton"));
-        sizePolicy.setHeightForWidth(pushButton->sizePolicy().hasHeightForWidth());
-        pushButton->setSizePolicy(sizePolicy);
+        sizePolicy1.setHeightForWidth(pushButton->sizePolicy().hasHeightForWidth());
+        pushButton->setSizePolicy(sizePolicy1);
 
         verticalLayout->addWidget(pushButton);
 
-        logoutButton = new QPushButton(verticalLayoutWidget);
+        logoutButton = new QPushButton(page);
         logoutButton->setObjectName(QStringLiteral("logoutButton"));
-        sizePolicy.setHeightForWidth(logoutButton->sizePolicy().hasHeightForWidth());
-        logoutButton->setSizePolicy(sizePolicy);
+        sizePolicy1.setHeightForWidth(logoutButton->sizePolicy().hasHeightForWidth());
+        logoutButton->setSizePolicy(sizePolicy1);
 
         verticalLayout->addWidget(logoutButton);
+
+
+        horizontalLayout->addLayout(verticalLayout);
+
+
+        verticalLayout_3->addLayout(horizontalLayout);
 
         stackedWidget->addWidget(page);
         page_2 = new QWidget();
         page_2->setObjectName(QStringLiteral("page_2"));
-        scheduleTableView = new QTableView(page_2);
-        scheduleTableView->setObjectName(QStringLiteral("scheduleTableView"));
-        scheduleTableView->setGeometry(QRect(10, 110, 581, 291));
+        sizePolicy.setHeightForWidth(page_2->sizePolicy().hasHeightForWidth());
+        page_2->setSizePolicy(sizePolicy);
+        verticalLayout_7 = new QVBoxLayout(page_2);
+        verticalLayout_7->setSpacing(6);
+        verticalLayout_7->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_7->setObjectName(QStringLiteral("verticalLayout_7"));
+        verticalLayout_6 = new QVBoxLayout();
+        verticalLayout_6->setSpacing(6);
+        verticalLayout_6->setObjectName(QStringLiteral("verticalLayout_6"));
+        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_6->addItem(verticalSpacer_2);
+
         scheduleLabel = new QLabel(page_2);
         scheduleLabel->setObjectName(QStringLiteral("scheduleLabel"));
-        scheduleLabel->setGeometry(QRect(16, 49, 571, 41));
         QFont font1;
         font1.setPointSize(12);
         scheduleLabel->setFont(font1);
         scheduleLabel->setMidLineWidth(4);
         scheduleLabel->setAlignment(Qt::AlignCenter);
+
+        verticalLayout_6->addWidget(scheduleLabel);
+
+        scheduleTableView = new QTableView(page_2);
+        scheduleTableView->setObjectName(QStringLiteral("scheduleTableView"));
+
+        verticalLayout_6->addWidget(scheduleTableView);
+
+        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_6->addItem(verticalSpacer);
+
         line = new QFrame(page_2);
         line->setObjectName(QStringLiteral("line"));
-        line->setGeometry(QRect(0, 80, 591, 16));
         line->setFrameShape(QFrame::HLine);
         line->setFrameShadow(QFrame::Sunken);
+
+        verticalLayout_6->addWidget(line);
+
+
+        verticalLayout_7->addLayout(verticalLayout_6);
+
         stackedWidget->addWidget(page_2);
+
+        verticalLayout_2->addWidget(stackedWidget);
+
         backButton = new QPushButton(studentView);
         backButton->setObjectName(QStringLiteral("backButton"));
         backButton->setEnabled(false);
-        backButton->setGeometry(QRect(30, 520, 101, 31));
-        usernameLabel = new QLabel(studentView);
-        usernameLabel->setObjectName(QStringLiteral("usernameLabel"));
-        usernameLabel->setGeometry(QRect(167, 80, 301, 20));
-        usernameLabel->setAlignment(Qt::AlignCenter);
+
+        verticalLayout_2->addWidget(backButton);
+
+
+        verticalLayout_5->addLayout(verticalLayout_2);
+
 
         retranslateUi(studentView);
 
-        stackedWidget->setCurrentIndex(0);
+        stackedWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(studentView);
@@ -153,7 +229,7 @@ public:
     {
         studentView->setWindowTitle(QApplication::translate("studentView", "studentView", Q_NULLPTR));
         welcomeLabel->setText(QApplication::translate("studentView", "Welcome Student", Q_NULLPTR));
-        optionsGroupBox->setTitle(QApplication::translate("studentView", "Options", Q_NULLPTR));
+        usernameLabel->setText(QString());
         viewScheduleButton->setText(QApplication::translate("studentView", "View Schedule", Q_NULLPTR));
         manageClassesButton->setText(QApplication::translate("studentView", "Manage Classes", Q_NULLPTR));
         viewClassesButton->setText(QApplication::translate("studentView", "View Classes", Q_NULLPTR));
@@ -161,7 +237,6 @@ public:
         logoutButton->setText(QApplication::translate("studentView", "Logout", Q_NULLPTR));
         scheduleLabel->setText(QApplication::translate("studentView", "Current Student Semester Schedule", Q_NULLPTR));
         backButton->setText(QApplication::translate("studentView", "Back", Q_NULLPTR));
-        usernameLabel->setText(QString());
     } // retranslateUi
 
 };

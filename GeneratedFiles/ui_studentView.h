@@ -37,6 +37,7 @@ public:
     QPushButton *viewScheduleButton;
     QPushButton *manageClassesButton;
     QPushButton *viewClassesButton;
+    QPushButton *pushButton;
     QPushButton *logoutButton;
     QWidget *page_2;
     QTableView *scheduleTableView;
@@ -69,27 +70,45 @@ public:
         verticalLayoutWidget->setObjectName(QStringLiteral("verticalLayoutWidget"));
         verticalLayoutWidget->setGeometry(QRect(39, 40, 501, 321));
         verticalLayout = new QVBoxLayout(verticalLayoutWidget);
-        verticalLayout->setSpacing(5);
+        verticalLayout->setSpacing(15);
         verticalLayout->setContentsMargins(11, 11, 11, 11);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
         viewScheduleButton = new QPushButton(verticalLayoutWidget);
         viewScheduleButton->setObjectName(QStringLiteral("viewScheduleButton"));
+        QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(viewScheduleButton->sizePolicy().hasHeightForWidth());
+        viewScheduleButton->setSizePolicy(sizePolicy);
 
         verticalLayout->addWidget(viewScheduleButton);
 
         manageClassesButton = new QPushButton(verticalLayoutWidget);
         manageClassesButton->setObjectName(QStringLiteral("manageClassesButton"));
+        sizePolicy.setHeightForWidth(manageClassesButton->sizePolicy().hasHeightForWidth());
+        manageClassesButton->setSizePolicy(sizePolicy);
 
         verticalLayout->addWidget(manageClassesButton);
 
         viewClassesButton = new QPushButton(verticalLayoutWidget);
         viewClassesButton->setObjectName(QStringLiteral("viewClassesButton"));
+        sizePolicy.setHeightForWidth(viewClassesButton->sizePolicy().hasHeightForWidth());
+        viewClassesButton->setSizePolicy(sizePolicy);
 
         verticalLayout->addWidget(viewClassesButton);
 
+        pushButton = new QPushButton(verticalLayoutWidget);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+        sizePolicy.setHeightForWidth(pushButton->sizePolicy().hasHeightForWidth());
+        pushButton->setSizePolicy(sizePolicy);
+
+        verticalLayout->addWidget(pushButton);
+
         logoutButton = new QPushButton(verticalLayoutWidget);
         logoutButton->setObjectName(QStringLiteral("logoutButton"));
+        sizePolicy.setHeightForWidth(logoutButton->sizePolicy().hasHeightForWidth());
+        logoutButton->setSizePolicy(sizePolicy);
 
         verticalLayout->addWidget(logoutButton);
 
@@ -138,6 +157,7 @@ public:
         viewScheduleButton->setText(QApplication::translate("studentView", "View Schedule", Q_NULLPTR));
         manageClassesButton->setText(QApplication::translate("studentView", "Manage Classes", Q_NULLPTR));
         viewClassesButton->setText(QApplication::translate("studentView", "View Classes", Q_NULLPTR));
+        pushButton->setText(QApplication::translate("studentView", "Change Password", Q_NULLPTR));
         logoutButton->setText(QApplication::translate("studentView", "Logout", Q_NULLPTR));
         scheduleLabel->setText(QApplication::translate("studentView", "Current Student Semester Schedule", Q_NULLPTR));
         backButton->setText(QApplication::translate("studentView", "Back", Q_NULLPTR));

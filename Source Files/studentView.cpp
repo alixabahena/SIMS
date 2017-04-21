@@ -40,10 +40,18 @@ void studentView::on_viewScheduleButton_clicked()
 
 	//change header text
 	ui.welcomeLabel->setText("View Schedule");
+
 	//enable back button
 	ui.backButton->show();
 	ui.backButton->setEnabled(true);
+
+	//display schedule
+	ui.scheduleTableWidget->setColumnCount(3);
+	ui.scheduleTableWidget->setRowCount(2);
+//	ui.scheduleTableWidget->setHorizontalHeaderLabels("Class Name<<Instructor<<Grades");
+
 }
+
 
 void studentView::on_backButton_clicked()
 {

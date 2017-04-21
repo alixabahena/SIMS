@@ -20,7 +20,7 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStackedWidget>
-#include <QtWidgets/QTableView>
+#include <QtWidgets/QTableWidget>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -50,7 +50,7 @@ public:
     QVBoxLayout *verticalLayout_6;
     QSpacerItem *verticalSpacer_2;
     QLabel *scheduleLabel;
-    QTableView *scheduleTableView;
+    QTableWidget *scheduleTableWidget;
     QSpacerItem *verticalSpacer;
     QFrame *line;
     QPushButton *backButton;
@@ -184,10 +184,10 @@ public:
 
         verticalLayout_6->addWidget(scheduleLabel);
 
-        scheduleTableView = new QTableView(page_2);
-        scheduleTableView->setObjectName(QStringLiteral("scheduleTableView"));
+        scheduleTableWidget = new QTableWidget(page_2);
+        scheduleTableWidget->setObjectName(QStringLiteral("scheduleTableWidget"));
 
-        verticalLayout_6->addWidget(scheduleTableView);
+        verticalLayout_6->addWidget(scheduleTableWidget);
 
         verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 

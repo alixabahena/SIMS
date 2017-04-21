@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>380</width>
-    <height>182</height>
+    <width>472</width>
+    <height>259</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -250,6 +250,22 @@
     <hint type="destinationlabel">
      <x>248</x>
      <y>174</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>passwordFIeld</sender>
+   <signal>returnPressed()</signal>
+   <receiver>okButton</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>288</x>
+     <y>144</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>386</x>
+     <y>197</y>
     </hint>
    </hints>
   </connection>

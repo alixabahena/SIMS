@@ -54,7 +54,7 @@ public:
     {
         if (loginView->objectName().isEmpty())
             loginView->setObjectName(QStringLiteral("loginView"));
-        loginView->resize(380, 182);
+        loginView->resize(472, 259);
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -182,6 +182,7 @@ public:
 
         retranslateUi(loginView);
         QObject::connect(cancelButton, SIGNAL(clicked()), loginView, SLOT(close()));
+        QObject::connect(passwordFIeld, SIGNAL(returnPressed()), okButton, SLOT(click()));
 
         okButton->setDefault(true);
 

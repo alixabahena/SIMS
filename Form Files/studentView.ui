@@ -184,7 +184,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QTableView" name="scheduleTableView"/>
+            <widget class="QTableWidget" name="scheduleTableWidget"/>
            </item>
            <item>
             <spacer name="verticalSpacer">

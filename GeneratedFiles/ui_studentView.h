@@ -20,7 +20,6 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStackedWidget>
-#include <QtWidgets/QTableWidget>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -41,7 +40,7 @@ public:
     QWidget *page;
     QVBoxLayout *verticalLayout_3;
     QHBoxLayout *horizontalLayout;
-    QTextEdit *studentInfoBrowser;
+    QLabel *studentInfoBrowser;
     QSpacerItem *horizontalSpacer;
     QVBoxLayout *verticalLayout;
     QPushButton *viewScheduleButton;
@@ -54,7 +53,7 @@ public:
     QVBoxLayout *verticalLayout_6;
     QSpacerItem *verticalSpacer_2;
     QLabel *scheduleLabel;
-    QTableWidget *scheduleTableWidget;
+    QTextEdit *semesterScheduleView;
     QSpacerItem *verticalSpacer;
     QFrame *line;
     QPushButton *backButton;
@@ -124,25 +123,17 @@ public:
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        studentInfoBrowser = new QTextEdit(page);
+        studentInfoBrowser = new QLabel(page);
         studentInfoBrowser->setObjectName(QStringLiteral("studentInfoBrowser"));
-        studentInfoBrowser->setEnabled(false);
+        studentInfoBrowser->setEnabled(true);
         QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Expanding);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(0);
         sizePolicy1.setHeightForWidth(studentInfoBrowser->sizePolicy().hasHeightForWidth());
         studentInfoBrowser->setSizePolicy(sizePolicy1);
-        QFont font2;
-        font2.setPointSize(10);
-        font2.setBold(true);
-        font2.setWeight(75);
-        studentInfoBrowser->setFont(font2);
-        studentInfoBrowser->viewport()->setProperty("cursor", QVariant(QCursor(Qt::ArrowCursor)));
-        studentInfoBrowser->setContextMenuPolicy(Qt::DefaultContextMenu);
+        studentInfoBrowser->setFont(font1);
         studentInfoBrowser->setFrameShape(QFrame::StyledPanel);
-        studentInfoBrowser->setFrameShadow(QFrame::Plain);
-        studentInfoBrowser->setReadOnly(true);
-        studentInfoBrowser->setTextInteractionFlags(Qt::NoTextInteraction);
+        studentInfoBrowser->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
 
         horizontalLayout->addWidget(studentInfoBrowser);
 
@@ -218,10 +209,11 @@ public:
 
         verticalLayout_6->addWidget(scheduleLabel);
 
-        scheduleTableWidget = new QTableWidget(page_2);
-        scheduleTableWidget->setObjectName(QStringLiteral("scheduleTableWidget"));
+        semesterScheduleView = new QTextEdit(page_2);
+        semesterScheduleView->setObjectName(QStringLiteral("semesterScheduleView"));
+        semesterScheduleView->setEnabled(false);
 
-        verticalLayout_6->addWidget(scheduleTableWidget);
+        verticalLayout_6->addWidget(semesterScheduleView);
 
         verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
@@ -265,7 +257,7 @@ public:
         welcomeLabel->setText(QApplication::translate("studentView", "Student Portal", Q_NULLPTR));
         usernameLabel->setText(QString());
         label->setText(QApplication::translate("studentView", "Student Information and Options", Q_NULLPTR));
-        studentInfoBrowser->setDocumentTitle(QApplication::translate("studentView", "Student Information", Q_NULLPTR));
+        studentInfoBrowser->setText(QString());
         viewScheduleButton->setText(QApplication::translate("studentView", "View Schedule", Q_NULLPTR));
         manageClassesButton->setText(QApplication::translate("studentView", "Manage Classes", Q_NULLPTR));
         viewClassesButton->setText(QApplication::translate("studentView", "View Classes", Q_NULLPTR));

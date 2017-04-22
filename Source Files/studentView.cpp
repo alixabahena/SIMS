@@ -1,6 +1,7 @@
 #include "Header Files\stdafx.h"
 
 vector<Student>allStudents = populateStudents();
+int userlocation = 0;
 
 studentView::studentView(QWidget *parent)
 	: QWidget(parent)
@@ -26,7 +27,7 @@ studentView::studentView(QString userName)
 	string username = user.toStdString();
 	string name;
 	
-	int userlocation = 0;
+	
 	for (int i = 0; i < allStudents.size(); i++)
 	{
 		if (allStudents[i].userName == username)
@@ -46,7 +47,7 @@ studentView::studentView(QString userName)
 
 	ui.setupUi(this);
 
-	ui.studentInfoBrowser->setText("Student Name: " + fullName + "\nStudent Username: "+ user +"\nStudent ID: "+ id +"\nStudent DOB: "+ dob +"\nSemester Enrolled: "+ semester +"\nGPA: ");
+	ui.studentInfoBrowser->setText("Name: " + fullName + "\n\nUsername: "+ user +"\nStudent ID: "+ id +"\nDate of Birth: "+ dob +"\nSemester Enrolled: "+ semester +"\n\nSemester GPA: ");
 
 	ui.usernameLabel->setText(fullName);
 	ui.stackedWidget->setCurrentIndex(0);
@@ -56,18 +57,18 @@ studentView::studentView(QString userName)
 void studentView::on_viewScheduleButton_clicked()
 {
 	ui.stackedWidget->setCurrentIndex(1);
+	QString classes;
+
 
 	//change header text
 	ui.welcomeLabel->setText("View Schedule");
-
+	ui.semesterScheduleView->setText("Classes here");
 	//enable back button
 	ui.backButton->show();
 	ui.backButton->setEnabled(true);
 
 	//display schedule
-	ui.scheduleTableWidget->setColumnCount(3);
-	ui.scheduleTableWidget->setRowCount(2);
-//	ui.scheduleTableWidget->setHorizontalHeaderLabels("Class Name<<Instructor<<Grades");
+	
 
 }
 

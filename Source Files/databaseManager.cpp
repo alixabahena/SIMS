@@ -16,7 +16,7 @@ vector<Student> populateStudents()
 	/* Open database */
 	rc = sqlite3_open(dbName, &db);
 
-	rc = sqlite3_prepare_v2(db, "SELECT a.First_Name , a.Last_Name,a.username, group_concat(c.Name || \" \" || c.CRN) AS 'Class Name',group_concat(ca.Grade) AS 'Class Grade', group_concat(c.Instructor) AS Instructor FROM  Students AS a LEFT OUTER JOIN Records AS ca ON ca.username = a.username LEFT OUTER JOIN  Classes AS c ON ca.CRN = c.CRN GROUP  BY a.Last_Name, a.First_Name, a.username"
+	rc = sqlite3_prepare_v2(db, "SELECT a.First_Name , a.Last_Name,a.username,a.ID,a.DOB,a.enrolledSemester,group_concat(c.Name || \" \" || c.CRN) AS 'Class Name',group_concat(ca.Grade) AS 'Class Grade', group_concat(c.Instructor) AS Instructor FROM  Students AS a LEFT OUTER JOIN Records AS ca ON ca.username = a.username LEFT OUTER JOIN  Classes AS c ON ca.CRN = c.CRN GROUP  BY a.Last_Name, a.First_Name, a.username"
 		,
 		-1, &stmt, NULL);
 	if (rc != SQLITE_OK) {
@@ -27,12 +27,14 @@ vector<Student> populateStudents()
 		const char* firstName = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0));
 		const char* lastName = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 1));
 		const char* username = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 2));
-		//const char* crn = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 3));
-		const char* classname = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 3));
-		const char* grade = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 4));
-		const char* instructor = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 5));
+		const char* id = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 3));
+		const char* dob = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 4));
+		const char* enrolledSemester = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 5));
+		const char* classname = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 6));
+		const char* grade = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 7));
+		const char* instructor = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 8));
 		// let's assume some fields can be NULL:
-		Students.push_back(Student(firstName, lastName, username, classname ? classname : "-", grade ? grade : "-", instructor ? instructor : "-"));
+		Students.push_back(Student(firstName, lastName, username, id ,dob , enrolledSemester,classname ? classname : "-", grade ? grade : "-", instructor ? instructor : "-"));
 		
 	}
 	if (rc != SQLITE_DONE) {

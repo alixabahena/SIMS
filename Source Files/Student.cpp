@@ -9,11 +9,14 @@ Student::Student()
 
 }
 
-Student::Student(const string & FirstName, const string& LastName, string username, string className, string grade, string instructor)
+Student::Student(const string & FirstName, const string& LastName, string username,string id, string dob, string enrolledsemester, string className, string grade, string instructor)
 {
 	lastName = LastName;
 	firstName = FirstName;
 	userName = username;
+	studentID = id;
+	DOB = dob;
+	semesterEnrolled = enrolledsemester;
 	classes.push_back(className);
 	classGrades.push_back(grade);
 
@@ -41,7 +44,7 @@ void Student::SetSemesterEnrolled(string SemesterEnrolled)
 	semesterEnrolled = SemesterEnrolled;
 }
 
-void Student::SetStudentID(unsigned long StudentID)
+void Student::SetStudentID(string StudentID)
 {
 	studentID = StudentID;
 }
@@ -61,6 +64,11 @@ void Student::SetGPA(float GPA)
 	gpa = GPA;
 }
 
+void Student::setDOB(string dob)
+{
+	DOB = dob;
+}
+
 string Student::GetLastName()
 {
 	return lastName;
@@ -76,12 +84,17 @@ string Student::GetUserName()
 	return userName;
 }
 
+string Student::GetDOB()
+{
+	return DOB;
+}
+
 string Student::GetSemesterEnrolled()
 {
 	return semesterEnrolled;
 }
 
-unsigned long Student::GetStudentID()
+string Student::GetStudentID()
 {
 	return studentID;
 }

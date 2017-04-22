@@ -14,21 +14,40 @@ studentView::studentView(QWidget *parent)
 
 studentView::studentView(QString userName)
 {
-
+	//QStrings
 	QString user = userName;
-	string username = user.toStdString();
 	QString fullName;
+	QString dob;
+	QString id;
+	QString semester;
+	QString gpa;
+
+	//strings
+	string username = user.toStdString();
 	string name;
+	
+	int userlocation = 0;
 	for (int i = 0; i < allStudents.size(); i++)
 	{
 		if (allStudents[i].userName == username)
 		{
-			name = allStudents[i].firstName + " " + allStudents[i].lastName;
+			userlocation = i;
+			break;
 		}
 
 	}
+	name = allStudents[userlocation].firstName + " " + allStudents[userlocation].lastName;
+
 	fullName = QString::fromStdString(name);
+	dob = QString::fromStdString(allStudents[userlocation].DOB);
+	id = QString::fromStdString(allStudents[userlocation].studentID);
+	semester = QString::fromStdString(allStudents[userlocation].semesterEnrolled);
+	
+
 	ui.setupUi(this);
+
+	ui.studentInfoBrowser->setText("Student Name: " + fullName + "\nStudent Username: "+ user +"\nStudent ID: "+ id +"\nStudent DOB: "+ dob +"\nSemester Enrolled: "+ semester +"\nGPA: ");
+
 	ui.usernameLabel->setText(fullName);
 	ui.stackedWidget->setCurrentIndex(0);
 	ui.backButton->hide();

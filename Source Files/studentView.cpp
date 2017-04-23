@@ -82,12 +82,39 @@ void studentView::on_viewScheduleButton_clicked()
 
 	//display schedule
 	
+}
+
+void studentView::on_changePasswordButton_clicked()
+{
+
+	ui.stackedWidget->setCurrentIndex(3);
+	
+	//change header text
+	ui.welcomeLabel->setText("Change Password");
+
+	//enable back button
+	ui.backButton->show();
+	ui.backButton->setEnabled(true);
+
+	//display schedule
 
 }
+
 
 void studentView::on_viewClassesButton_clicked()
 {
 	ui.stackedWidget->setCurrentIndex(2);
+	//change header text
+	ui.welcomeLabel->setText("View Classes");
+	//combobox implement
+	ui.classesSearchBox->addItem("CRN");
+	ui.classesSearchBox->addItem("Subject");
+	ui.classesSearchBox->addItem("Course ID");
+	ui.classesSearchBox->addItem("Name");
+	ui.classesSearchBox->addItem("Semester");
+	ui.classesSearchBox->addItem("Days");
+	ui.classesSearchBox->addItem("Instructor");
+	ui.classesSearchBox->addItem("Room");
 	//enable back button
 	ui.backButton->show();
 	ui.backButton->setEnabled(true);

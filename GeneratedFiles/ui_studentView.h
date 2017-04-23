@@ -13,13 +13,17 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QFrame>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QPlainTextEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStackedWidget>
+#include <QtWidgets/QTableView>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -56,6 +60,15 @@ public:
     QTextEdit *semesterScheduleView;
     QSpacerItem *verticalSpacer;
     QFrame *line;
+    QWidget *page_3;
+    QVBoxLayout *verticalLayout_8;
+    QGridLayout *gridLayout;
+    QSpacerItem *verticalSpacer_3;
+    QLabel *searchLabel;
+    QPlainTextEdit *plainTextEdit;
+    QComboBox *classesSearchBox;
+    QTableView *tableView;
+    QFrame *line_3;
     QPushButton *backButton;
 
     void setupUi(QWidget *studentView)
@@ -230,6 +243,71 @@ public:
         verticalLayout_7->addLayout(verticalLayout_6);
 
         stackedWidget->addWidget(page_2);
+        page_3 = new QWidget();
+        page_3->setObjectName(QStringLiteral("page_3"));
+        verticalLayout_8 = new QVBoxLayout(page_3);
+        verticalLayout_8->setSpacing(6);
+        verticalLayout_8->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_8->setObjectName(QStringLiteral("verticalLayout_8"));
+        gridLayout = new QGridLayout();
+        gridLayout->setSpacing(6);
+        gridLayout->setObjectName(QStringLiteral("gridLayout"));
+        verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        gridLayout->addItem(verticalSpacer_3, 2, 1, 1, 1);
+
+        searchLabel = new QLabel(page_3);
+        searchLabel->setObjectName(QStringLiteral("searchLabel"));
+        QSizePolicy sizePolicy2(QSizePolicy::Expanding, QSizePolicy::Minimum);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(searchLabel->sizePolicy().hasHeightForWidth());
+        searchLabel->setSizePolicy(sizePolicy2);
+        QFont font2;
+        font2.setPointSize(10);
+        searchLabel->setFont(font2);
+        searchLabel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+
+        gridLayout->addWidget(searchLabel, 0, 0, 1, 1);
+
+        plainTextEdit = new QPlainTextEdit(page_3);
+        plainTextEdit->setObjectName(QStringLiteral("plainTextEdit"));
+        QSizePolicy sizePolicy3(QSizePolicy::Expanding, QSizePolicy::Ignored);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(plainTextEdit->sizePolicy().hasHeightForWidth());
+        plainTextEdit->setSizePolicy(sizePolicy3);
+        plainTextEdit->setMinimumSize(QSize(40, 25));
+
+        gridLayout->addWidget(plainTextEdit, 0, 2, 1, 1);
+
+        classesSearchBox = new QComboBox(page_3);
+        classesSearchBox->setObjectName(QStringLiteral("classesSearchBox"));
+        QSizePolicy sizePolicy4(QSizePolicy::Expanding, QSizePolicy::Fixed);
+        sizePolicy4.setHorizontalStretch(0);
+        sizePolicy4.setVerticalStretch(0);
+        sizePolicy4.setHeightForWidth(classesSearchBox->sizePolicy().hasHeightForWidth());
+        classesSearchBox->setSizePolicy(sizePolicy4);
+        classesSearchBox->setFont(font2);
+
+        gridLayout->addWidget(classesSearchBox, 0, 1, 1, 1);
+
+        tableView = new QTableView(page_3);
+        tableView->setObjectName(QStringLiteral("tableView"));
+
+        gridLayout->addWidget(tableView, 3, 0, 1, 3);
+
+        line_3 = new QFrame(page_3);
+        line_3->setObjectName(QStringLiteral("line_3"));
+        line_3->setFrameShape(QFrame::HLine);
+        line_3->setFrameShadow(QFrame::Sunken);
+
+        gridLayout->addWidget(line_3, 1, 1, 1, 1);
+
+
+        verticalLayout_8->addLayout(gridLayout);
+
+        stackedWidget->addWidget(page_3);
 
         verticalLayout_2->addWidget(stackedWidget);
 
@@ -245,7 +323,7 @@ public:
 
         retranslateUi(studentView);
 
-        stackedWidget->setCurrentIndex(1);
+        stackedWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(studentView);
@@ -264,6 +342,7 @@ public:
         pushButton->setText(QApplication::translate("studentView", "Change Password", Q_NULLPTR));
         logoutButton->setText(QApplication::translate("studentView", "Logout", Q_NULLPTR));
         scheduleLabel->setText(QApplication::translate("studentView", "Current Student Semester Schedule", Q_NULLPTR));
+        searchLabel->setText(QApplication::translate("studentView", "Search: ", Q_NULLPTR));
         backButton->setText(QApplication::translate("studentView", "Back", Q_NULLPTR));
     } // retranslateUi
 

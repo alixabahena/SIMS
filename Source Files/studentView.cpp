@@ -22,6 +22,10 @@ studentView::studentView(QString userName)
 	QString id;
 	QString semester;
 	QString gpa;
+	QString homeAddress;
+	QString emaiAddress;
+	QString phoneNumber;
+	QString Major;
 
 	//strings
 	string username = user.toStdString();
@@ -43,11 +47,14 @@ studentView::studentView(QString userName)
 	dob = QString::fromStdString(allStudents[userlocation].DOB);
 	id = QString::fromStdString(allStudents[userlocation].studentID);
 	semester = QString::fromStdString(allStudents[userlocation].semesterEnrolled);
-	
+	homeAddress = QString::fromStdString(allStudents[userlocation].homeAddress);
+	emaiAddress = QString::fromStdString(allStudents[userlocation].emailAddress);
+	phoneNumber = QString::fromStdString(allStudents[userlocation].phoneNumber);
+	Major = QString::fromStdString(allStudents[userlocation].Major);
 
 	ui.setupUi(this);
 
-	ui.studentInfoBrowser->setText("Name: " + fullName + "\n\nUsername: "+ user +"\nStudent ID: "+ id +"\nDate of Birth: "+ dob +"\nSemester Enrolled: "+ semester +"\n\nSemester GPA: ");
+	ui.studentInfoBrowser->setText("Name: " + fullName + "\nUsername: "+ user +"\nStudent ID: "+ id +"\n\nDate of Birth: "+ dob +"\nHome Address: "+homeAddress+"\nPhone Number: "+phoneNumber+"\nEmail: "+emaiAddress+"\n\nMajor: "+Major+"\nSemester Enrolled: "+ semester +"\nSemester GPA: ");
 
 	ui.usernameLabel->setText(fullName);
 	ui.stackedWidget->setCurrentIndex(0);
@@ -74,11 +81,19 @@ void studentView::on_viewScheduleButton_clicked()
 
 }
 
+void studentView::on_viewClassesButton_clicked()
+{
+	ui.stackedWidget->setCurrentIndex(2);
+	//enable back button
+	ui.backButton->show();
+	ui.backButton->setEnabled(true);
+}
+
 
 void studentView::on_backButton_clicked()
 {
 	//change header text
-	ui.welcomeLabel->setText("Welcome Student");
+	ui.welcomeLabel->setText("Student Portal");
 	ui.backButton->hide();
 	ui.stackedWidget->setCurrentIndex(0);
 }

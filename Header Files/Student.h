@@ -38,5 +38,4 @@ public:
 	vector <string> GetClasses();
 	vector <string> GetClassGrades();
 	float GetGPA();
-
 };

@@ -157,3 +157,4 @@ string Student::GetMajor()
 {
 	return Major;
 }
+

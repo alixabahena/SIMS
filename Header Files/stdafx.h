@@ -8,6 +8,7 @@
 #include "Student.h"
 #include "facultyView.h"
 #include "faculty.h"
+#include "records.h"
 
 
 //QT

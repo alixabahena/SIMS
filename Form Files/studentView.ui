@@ -69,7 +69,7 @@
      <item>
       <widget class="QStackedWidget" name="stackedWidget">
        <property name="currentIndex">
-        <number>3</number>
+        <number>0</number>
        </property>
        <widget class="QWidget" name="page">
         <property name="sizePolicy">
@@ -143,7 +143,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="manageClassesButton">
+              <widget class="QPushButton" name="manageScheduleButton">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                  <horstretch>0</horstretch>
@@ -151,7 +151,7 @@
                 </sizepolicy>
                </property>
                <property name="text">
-                <string>Manage Classes</string>
+                <string>Manage Schedule</string>
                </property>
               </widget>
              </item>

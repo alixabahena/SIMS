@@ -50,7 +50,7 @@ public:
     QSpacerItem *horizontalSpacer;
     QVBoxLayout *verticalLayout;
     QPushButton *viewScheduleButton;
-    QPushButton *manageClassesButton;
+    QPushButton *manageScheduleButton;
     QPushButton *viewClassesButton;
     QPushButton *changePasswordButton;
     QPushButton *logoutButton;
@@ -179,12 +179,12 @@ public:
 
         verticalLayout->addWidget(viewScheduleButton);
 
-        manageClassesButton = new QPushButton(page);
-        manageClassesButton->setObjectName(QStringLiteral("manageClassesButton"));
-        sizePolicy1.setHeightForWidth(manageClassesButton->sizePolicy().hasHeightForWidth());
-        manageClassesButton->setSizePolicy(sizePolicy1);
+        manageScheduleButton = new QPushButton(page);
+        manageScheduleButton->setObjectName(QStringLiteral("manageScheduleButton"));
+        sizePolicy1.setHeightForWidth(manageScheduleButton->sizePolicy().hasHeightForWidth());
+        manageScheduleButton->setSizePolicy(sizePolicy1);
 
-        verticalLayout->addWidget(manageClassesButton);
+        verticalLayout->addWidget(manageScheduleButton);
 
         viewClassesButton = new QPushButton(page);
         viewClassesButton->setObjectName(QStringLiteral("viewClassesButton"));
@@ -430,7 +430,7 @@ public:
         label->setText(QApplication::translate("studentView", "Student Information and Options", Q_NULLPTR));
         studentInfoBrowser->setText(QString());
         viewScheduleButton->setText(QApplication::translate("studentView", "View Schedule", Q_NULLPTR));
-        manageClassesButton->setText(QApplication::translate("studentView", "Manage Classes", Q_NULLPTR));
+        manageScheduleButton->setText(QApplication::translate("studentView", "Manage Schedule", Q_NULLPTR));
         viewClassesButton->setText(QApplication::translate("studentView", "View Classes", Q_NULLPTR));
         changePasswordButton->setText(QApplication::translate("studentView", "Change Password", Q_NULLPTR));
         logoutButton->setText(QApplication::translate("studentView", "Logout", Q_NULLPTR));

@@ -63,14 +63,18 @@ studentView::studentView(QString userName)
 
 void studentView::on_viewScheduleButton_clicked()
 {
+
 	ui.stackedWidget->setCurrentIndex(1);
 	QString classes;
+	vector<string> studentClasses = allStudents[userlocation].GetClasses();
 
 	//change header text
 	ui.welcomeLabel->setText("View Schedule");
 	
+	for (int i = 0; i < studentClasses.size(); i++) {
+		classes += QString::fromStdString(studentClasses[i]);
+	}
 
-	classes = QString::fromStdString("Class schedule will show here");
 	ui.semesterScheduleView->setText(classes);
 	//enable back button
 	ui.backButton->show();

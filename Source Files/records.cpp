@@ -3,12 +3,12 @@
 records::records()
 {
 	Username = "bobdole";
-	Crn = "12345";
+	Crn = 12345;
 	Grade = 99;
 	Row = 0;
 }
 
-records::records(const string username, const string crn, const int grade, const int row)
+records::records(const string username, const int crn, const int grade, const int row)
 {
 	Username = username;
 	Crn = crn;

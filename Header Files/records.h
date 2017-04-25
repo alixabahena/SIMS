@@ -8,10 +8,10 @@ class records
 {
 public:
 	string Username;
-	string Crn;
+	int Crn;
 	int Grade;
 	int Row;
 	records();
-	records(const string username, const string crn, const int grade, const int row);
+	records(const string username, const int crn, const int grade, const int row);
 };
 

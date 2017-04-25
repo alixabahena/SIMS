@@ -287,8 +287,13 @@
              <property name="maximumSize">
               <size>
                <width>16777215</width>
-               <height>30</height>
+               <height>35</height>
               </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+              </font>
              </property>
              <property name="inputMethodHints">
               <set>Qt::ImhNone</set>
@@ -338,13 +343,6 @@
              </property>
             </widget>
            </item>
-           <item row="1" column="0" colspan="3">
-            <widget class="Line" name="line_3">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-            </widget>
-           </item>
            <item row="0" column="1">
             <widget class="QComboBox" name="classesSearchBox">
              <property name="sizePolicy">
@@ -362,6 +360,11 @@
            </item>
            <item row="0" column="3">
             <widget class="QPushButton" name="searchButton">
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
              <property name="text">
               <string>Submit</string>
              </property>
@@ -369,6 +372,13 @@
            </item>
            <item row="3" column="0" colspan="4">
             <widget class="QTableView" name="classesView"/>
+           </item>
+           <item row="1" column="0" colspan="4">
+            <widget class="Line" name="line_3">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
            </item>
           </layout>
          </item>

@@ -100,7 +100,7 @@ vector<classes> populateClasses()
 	/* Open database */
 	rc = sqlite3_open(dbName, &db);
 	;
-	rc = sqlite3_prepare_v2(db, "SELECT CRN,Subject,'Course ID',Name,Semester,classDays,classTime,Instructor,Room FROM Classes"
+	rc = sqlite3_prepare_v2(db, "SELECT CRN,Subject,[Course ID],Name,Semester,classDays,classTime,Instructor,Room FROM Classes"
 		,
 		-1, &stmt, NULL);
 	if (rc != SQLITE_OK) {

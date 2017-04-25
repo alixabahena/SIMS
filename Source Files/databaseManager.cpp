@@ -63,7 +63,7 @@ vector<faculty> populateFaculty()
 	/* Open database */
 	rc = sqlite3_open(dbName, &db);
 		;
-		rc = sqlite3_prepare_v2(db, "select First Name, Last Name, username from Faculty"
+		rc = sqlite3_prepare_v2(db, "select [First Name], [Last Name], username from Faculty"
 		,
 		-1, &stmt, NULL);
 	if (rc != SQLITE_OK) {

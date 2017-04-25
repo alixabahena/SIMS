@@ -62,6 +62,12 @@ public:
     QTextEdit *semesterScheduleView;
     QSpacerItem *verticalSpacer;
     QFrame *line;
+    QWidget *manageSchedule;
+    QVBoxLayout *verticalLayout_10;
+    QGridLayout *gridLayout_2;
+    QPushButton *addClassButton;
+    QPushButton *removeClassButton;
+    QTableView *manageClassesView;
     QWidget *viewClasses;
     QVBoxLayout *verticalLayout_8;
     QGridLayout *gridLayout;
@@ -259,6 +265,34 @@ public:
         verticalLayout_7->addLayout(verticalLayout_6);
 
         stackedWidget->addWidget(viewSchedule);
+        manageSchedule = new QWidget();
+        manageSchedule->setObjectName(QStringLiteral("manageSchedule"));
+        verticalLayout_10 = new QVBoxLayout(manageSchedule);
+        verticalLayout_10->setSpacing(6);
+        verticalLayout_10->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_10->setObjectName(QStringLiteral("verticalLayout_10"));
+        gridLayout_2 = new QGridLayout();
+        gridLayout_2->setSpacing(6);
+        gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
+        addClassButton = new QPushButton(manageSchedule);
+        addClassButton->setObjectName(QStringLiteral("addClassButton"));
+
+        gridLayout_2->addWidget(addClassButton, 0, 1, 1, 1);
+
+        removeClassButton = new QPushButton(manageSchedule);
+        removeClassButton->setObjectName(QStringLiteral("removeClassButton"));
+
+        gridLayout_2->addWidget(removeClassButton, 1, 1, 1, 1);
+
+        manageClassesView = new QTableView(manageSchedule);
+        manageClassesView->setObjectName(QStringLiteral("manageClassesView"));
+
+        gridLayout_2->addWidget(manageClassesView, 0, 0, 3, 1);
+
+
+        verticalLayout_10->addLayout(gridLayout_2);
+
+        stackedWidget->addWidget(manageSchedule);
         viewClasses = new QWidget();
         viewClasses->setObjectName(QStringLiteral("viewClasses"));
         verticalLayout_8 = new QVBoxLayout(viewClasses);
@@ -443,6 +477,8 @@ public:
         changePasswordButton->setText(QApplication::translate("studentView", "Change Password", Q_NULLPTR));
         logoutButton->setText(QApplication::translate("studentView", "Logout", Q_NULLPTR));
         scheduleLabel->setText(QApplication::translate("studentView", "Current Student Semester Schedule", Q_NULLPTR));
+        addClassButton->setText(QApplication::translate("studentView", "Add Class", Q_NULLPTR));
+        removeClassButton->setText(QApplication::translate("studentView", "Remove Class", Q_NULLPTR));
         searchLabel->setText(QApplication::translate("studentView", "Search: ", Q_NULLPTR));
         searchButton->setText(QApplication::translate("studentView", "Submit", Q_NULLPTR));
         currentPasswordLabel->setText(QApplication::translate("studentView", "Current Password: ", Q_NULLPTR));

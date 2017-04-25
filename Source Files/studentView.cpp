@@ -85,26 +85,21 @@ void studentView::on_viewScheduleButton_clicked()
 	
 }
 
-void studentView::on_changePasswordButton_clicked()
+void studentView::on_manageScheduleButton_clicked()
 {
+	ui.stackedWidget->setCurrentIndex(2);
 
-	ui.stackedWidget->setCurrentIndex(3);
-	
 	//change header text
-	ui.welcomeLabel->setText("Change Password");
+	ui.welcomeLabel->setText("Manage Schedule");
 
 	//enable back button
 	ui.backButton->show();
 	ui.backButton->setEnabled(true);
-
-	//display schedule
-
 }
-
 
 void studentView::on_viewClassesButton_clicked()
 {
-	ui.stackedWidget->setCurrentIndex(2);
+	ui.stackedWidget->setCurrentIndex(3);
 	//change header text
 	ui.welcomeLabel->setText("View Classes");
 	//combobox implement
@@ -148,6 +143,21 @@ void studentView::on_viewClassesButton_clicked()
 	ui.backButton->setEnabled(true);
 }
 
+void studentView::on_changePasswordButton_clicked()
+{
+
+	ui.stackedWidget->setCurrentIndex(4);
+
+	//change header text
+	ui.welcomeLabel->setText("Change Password");
+
+	//enable back button
+	ui.backButton->show();
+	ui.backButton->setEnabled(true);
+
+	//display schedule
+
+}
 
 void studentView::on_backButton_clicked()
 {

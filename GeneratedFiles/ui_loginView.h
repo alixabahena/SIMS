@@ -15,7 +15,6 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QFormLayout>
 #include <QtWidgets/QFrame>
-#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
@@ -33,28 +32,28 @@ class Ui_loginView
 public:
     QWidget *centralWidget;
     QVBoxLayout *verticalLayout;
-    QGridLayout *gridLayout;
+    QVBoxLayout *verticalLayout_2;
     QLabel *label;
     QFormLayout *formLayout;
+    QFrame *line;
     QSpacerItem *verticalSpacer_3;
-    QLabel *usernameLabel;
     QLineEdit *usernameField;
     QSpacerItem *verticalSpacer_2;
-    QLabel *PasswordLabel;
     QLineEdit *passwordFIeld;
     QSpacerItem *verticalSpacer;
     QHBoxLayout *horizontalLayout;
     QPushButton *cancelButton;
     QSpacerItem *horizontalSpacer;
     QPushButton *okButton;
-    QFrame *line;
     QLabel *loginStatus;
+    QLabel *PasswordLabel;
+    QLabel *usernameLabel;
 
     void setupUi(QMainWindow *loginView)
     {
         if (loginView->objectName().isEmpty())
             loginView->setObjectName(QStringLiteral("loginView"));
-        loginView->resize(472, 259);
+        loginView->resize(485, 363);
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -67,67 +66,65 @@ public:
         verticalLayout->setSpacing(6);
         verticalLayout->setContentsMargins(11, 11, 11, 11);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        gridLayout = new QGridLayout();
-        gridLayout->setSpacing(6);
-        gridLayout->setObjectName(QStringLiteral("gridLayout"));
+        verticalLayout_2 = new QVBoxLayout();
+        verticalLayout_2->setSpacing(6);
+        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
         label = new QLabel(centralWidget);
         label->setObjectName(QStringLiteral("label"));
+        QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
+        label->setSizePolicy(sizePolicy1);
         QFont font;
-        font.setPointSize(12);
+        font.setPointSize(15);
         label->setFont(font);
         label->setAlignment(Qt::AlignCenter);
+        label->setWordWrap(true);
 
-        gridLayout->addWidget(label, 0, 0, 1, 1);
+        verticalLayout_2->addWidget(label);
 
         formLayout = new QFormLayout();
         formLayout->setSpacing(6);
         formLayout->setObjectName(QStringLiteral("formLayout"));
+        line = new QFrame(centralWidget);
+        line->setObjectName(QStringLiteral("line"));
+        line->setFrameShape(QFrame::HLine);
+        line->setFrameShadow(QFrame::Sunken);
+
+        formLayout->setWidget(0, QFormLayout::SpanningRole, line);
+
         verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         formLayout->setItem(1, QFormLayout::FieldRole, verticalSpacer_3);
 
-        usernameLabel = new QLabel(centralWidget);
-        usernameLabel->setObjectName(QStringLiteral("usernameLabel"));
-        QFont font1;
-        font1.setPointSize(10);
-        usernameLabel->setFont(font1);
-
-        formLayout->setWidget(2, QFormLayout::LabelRole, usernameLabel);
-
         usernameField = new QLineEdit(centralWidget);
         usernameField->setObjectName(QStringLiteral("usernameField"));
-        QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Expanding);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
         sizePolicy1.setHeightForWidth(usernameField->sizePolicy().hasHeightForWidth());
         usernameField->setSizePolicy(sizePolicy1);
-        usernameField->setFont(font);
+        QFont font1;
+        font1.setPointSize(12);
+        usernameField->setFont(font1);
 
-        formLayout->setWidget(2, QFormLayout::FieldRole, usernameField);
+        formLayout->setWidget(3, QFormLayout::FieldRole, usernameField);
 
         verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-        formLayout->setItem(3, QFormLayout::FieldRole, verticalSpacer_2);
-
-        PasswordLabel = new QLabel(centralWidget);
-        PasswordLabel->setObjectName(QStringLiteral("PasswordLabel"));
-        PasswordLabel->setFont(font1);
-
-        formLayout->setWidget(4, QFormLayout::LabelRole, PasswordLabel);
+        formLayout->setItem(4, QFormLayout::FieldRole, verticalSpacer_2);
 
         passwordFIeld = new QLineEdit(centralWidget);
         passwordFIeld->setObjectName(QStringLiteral("passwordFIeld"));
         sizePolicy1.setHeightForWidth(passwordFIeld->sizePolicy().hasHeightForWidth());
         passwordFIeld->setSizePolicy(sizePolicy1);
-        passwordFIeld->setFont(font);
+        passwordFIeld->setFont(font1);
         passwordFIeld->setEchoMode(QLineEdit::Password);
         passwordFIeld->setClearButtonEnabled(false);
 
-        formLayout->setWidget(4, QFormLayout::FieldRole, passwordFIeld);
+        formLayout->setWidget(6, QFormLayout::FieldRole, passwordFIeld);
 
         verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-        formLayout->setItem(5, QFormLayout::FieldRole, verticalSpacer);
+        formLayout->setItem(7, QFormLayout::FieldRole, verticalSpacer);
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
@@ -156,26 +153,33 @@ public:
         horizontalLayout->addWidget(okButton);
 
 
-        formLayout->setLayout(6, QFormLayout::FieldRole, horizontalLayout);
-
-        line = new QFrame(centralWidget);
-        line->setObjectName(QStringLiteral("line"));
-        line->setFrameShape(QFrame::HLine);
-        line->setFrameShadow(QFrame::Sunken);
-
-        formLayout->setWidget(0, QFormLayout::SpanningRole, line);
+        formLayout->setLayout(8, QFormLayout::FieldRole, horizontalLayout);
 
         loginStatus = new QLabel(centralWidget);
         loginStatus->setObjectName(QStringLiteral("loginStatus"));
         loginStatus->setAlignment(Qt::AlignCenter);
 
-        formLayout->setWidget(7, QFormLayout::SpanningRole, loginStatus);
+        formLayout->setWidget(9, QFormLayout::SpanningRole, loginStatus);
+
+        PasswordLabel = new QLabel(centralWidget);
+        PasswordLabel->setObjectName(QStringLiteral("PasswordLabel"));
+        QFont font3;
+        font3.setPointSize(10);
+        PasswordLabel->setFont(font3);
+
+        formLayout->setWidget(5, QFormLayout::FieldRole, PasswordLabel);
+
+        usernameLabel = new QLabel(centralWidget);
+        usernameLabel->setObjectName(QStringLiteral("usernameLabel"));
+        usernameLabel->setFont(font3);
+
+        formLayout->setWidget(2, QFormLayout::FieldRole, usernameLabel);
 
 
-        gridLayout->addLayout(formLayout, 1, 0, 1, 1);
+        verticalLayout_2->addLayout(formLayout);
 
 
-        verticalLayout->addLayout(gridLayout);
+        verticalLayout->addLayout(verticalLayout_2);
 
         loginView->setCentralWidget(centralWidget);
         QWidget::setTabOrder(cancelButton, okButton);
@@ -194,11 +198,11 @@ public:
     {
         loginView->setWindowTitle(QApplication::translate("loginView", "Login", Q_NULLPTR));
         label->setText(QApplication::translate("loginView", "Student Information Management System", Q_NULLPTR));
-        usernameLabel->setText(QApplication::translate("loginView", "Username:", Q_NULLPTR));
-        PasswordLabel->setText(QApplication::translate("loginView", "Password:", Q_NULLPTR));
         cancelButton->setText(QApplication::translate("loginView", "Exit", Q_NULLPTR));
         okButton->setText(QApplication::translate("loginView", "Login", Q_NULLPTR));
         loginStatus->setText(QString());
+        PasswordLabel->setText(QApplication::translate("loginView", "Password:", Q_NULLPTR));
+        usernameLabel->setText(QApplication::translate("loginView", "Username:", Q_NULLPTR));
     } // retranslateUi
 
 };

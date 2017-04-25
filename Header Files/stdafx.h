@@ -9,6 +9,8 @@
 #include "facultyView.h"
 #include "faculty.h"
 #include "classes.h"
+#include "records.h"
+
 
 //QT
 #include <qsqldatabase.h>

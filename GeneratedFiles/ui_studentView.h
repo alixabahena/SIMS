@@ -43,18 +43,18 @@ public:
     QFrame *line_2;
     QLabel *label;
     QStackedWidget *stackedWidget;
-    QWidget *mainPage;
+    QWidget *page;
     QVBoxLayout *verticalLayout_3;
     QHBoxLayout *horizontalLayout;
     QLabel *studentInfoBrowser;
     QSpacerItem *horizontalSpacer;
     QVBoxLayout *verticalLayout;
     QPushButton *viewScheduleButton;
-    QPushButton *manageScheduleButton;
+    QPushButton *manageClassesButton;
     QPushButton *viewClassesButton;
     QPushButton *changePasswordButton;
     QPushButton *logoutButton;
-    QWidget *viewSchedule;
+    QWidget *page_2;
     QVBoxLayout *verticalLayout_7;
     QVBoxLayout *verticalLayout_6;
     QSpacerItem *verticalSpacer_2;
@@ -62,7 +62,7 @@ public:
     QTextEdit *semesterScheduleView;
     QSpacerItem *verticalSpacer;
     QFrame *line;
-    QWidget *viewClasses;
+    QWidget *page_3;
     QVBoxLayout *verticalLayout_8;
     QGridLayout *gridLayout;
     QPlainTextEdit *searchClassesInput;
@@ -72,8 +72,8 @@ public:
     QPushButton *searchButton;
     QTableView *classesView;
     QFrame *line_3;
-    QWidget *changePassword;
-    QVBoxLayout *verticalLayout_9;
+    QWidget *page_4;
+    QWidget *formLayoutWidget;
     QFormLayout *formLayout;
     QLabel *currentPasswordLabel;
     QFrame *line_4;
@@ -91,7 +91,7 @@ public:
     {
         if (studentView->objectName().isEmpty())
             studentView->setObjectName(QStringLiteral("studentView"));
-        studentView->resize(747, 614);
+        studentView->resize(721, 614);
         verticalLayout_5 = new QVBoxLayout(studentView);
         verticalLayout_5->setSpacing(6);
         verticalLayout_5->setContentsMargins(11, 11, 11, 11);
@@ -138,21 +138,21 @@ public:
 
         stackedWidget = new QStackedWidget(studentView);
         stackedWidget->setObjectName(QStringLiteral("stackedWidget"));
-        mainPage = new QWidget();
-        mainPage->setObjectName(QStringLiteral("mainPage"));
+        page = new QWidget();
+        page->setObjectName(QStringLiteral("page"));
         QSizePolicy sizePolicy(QSizePolicy::Maximum, QSizePolicy::Maximum);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(mainPage->sizePolicy().hasHeightForWidth());
-        mainPage->setSizePolicy(sizePolicy);
-        verticalLayout_3 = new QVBoxLayout(mainPage);
+        sizePolicy.setHeightForWidth(page->sizePolicy().hasHeightForWidth());
+        page->setSizePolicy(sizePolicy);
+        verticalLayout_3 = new QVBoxLayout(page);
         verticalLayout_3->setSpacing(6);
         verticalLayout_3->setContentsMargins(11, 11, 11, 11);
         verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        studentInfoBrowser = new QLabel(mainPage);
+        studentInfoBrowser = new QLabel(page);
         studentInfoBrowser->setObjectName(QStringLiteral("studentInfoBrowser"));
         studentInfoBrowser->setEnabled(true);
         QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Expanding);
@@ -173,35 +173,35 @@ public:
         verticalLayout = new QVBoxLayout();
         verticalLayout->setSpacing(15);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        viewScheduleButton = new QPushButton(mainPage);
+        viewScheduleButton = new QPushButton(page);
         viewScheduleButton->setObjectName(QStringLiteral("viewScheduleButton"));
         sizePolicy1.setHeightForWidth(viewScheduleButton->sizePolicy().hasHeightForWidth());
         viewScheduleButton->setSizePolicy(sizePolicy1);
 
         verticalLayout->addWidget(viewScheduleButton);
 
-        manageScheduleButton = new QPushButton(mainPage);
-        manageScheduleButton->setObjectName(QStringLiteral("manageScheduleButton"));
-        sizePolicy1.setHeightForWidth(manageScheduleButton->sizePolicy().hasHeightForWidth());
-        manageScheduleButton->setSizePolicy(sizePolicy1);
+        manageClassesButton = new QPushButton(page);
+        manageClassesButton->setObjectName(QStringLiteral("manageClassesButton"));
+        sizePolicy1.setHeightForWidth(manageClassesButton->sizePolicy().hasHeightForWidth());
+        manageClassesButton->setSizePolicy(sizePolicy1);
 
-        verticalLayout->addWidget(manageScheduleButton);
+        verticalLayout->addWidget(manageClassesButton);
 
-        viewClassesButton = new QPushButton(mainPage);
+        viewClassesButton = new QPushButton(page);
         viewClassesButton->setObjectName(QStringLiteral("viewClassesButton"));
         sizePolicy1.setHeightForWidth(viewClassesButton->sizePolicy().hasHeightForWidth());
         viewClassesButton->setSizePolicy(sizePolicy1);
 
         verticalLayout->addWidget(viewClassesButton);
 
-        changePasswordButton = new QPushButton(mainPage);
+        changePasswordButton = new QPushButton(page);
         changePasswordButton->setObjectName(QStringLiteral("changePasswordButton"));
         sizePolicy1.setHeightForWidth(changePasswordButton->sizePolicy().hasHeightForWidth());
         changePasswordButton->setSizePolicy(sizePolicy1);
 
         verticalLayout->addWidget(changePasswordButton);
 
-        logoutButton = new QPushButton(mainPage);
+        logoutButton = new QPushButton(page);
         logoutButton->setObjectName(QStringLiteral("logoutButton"));
         sizePolicy1.setHeightForWidth(logoutButton->sizePolicy().hasHeightForWidth());
         logoutButton->setSizePolicy(sizePolicy1);
@@ -214,12 +214,12 @@ public:
 
         verticalLayout_3->addLayout(horizontalLayout);
 
-        stackedWidget->addWidget(mainPage);
-        viewSchedule = new QWidget();
-        viewSchedule->setObjectName(QStringLiteral("viewSchedule"));
-        sizePolicy.setHeightForWidth(viewSchedule->sizePolicy().hasHeightForWidth());
-        viewSchedule->setSizePolicy(sizePolicy);
-        verticalLayout_7 = new QVBoxLayout(viewSchedule);
+        stackedWidget->addWidget(page);
+        page_2 = new QWidget();
+        page_2->setObjectName(QStringLiteral("page_2"));
+        sizePolicy.setHeightForWidth(page_2->sizePolicy().hasHeightForWidth());
+        page_2->setSizePolicy(sizePolicy);
+        verticalLayout_7 = new QVBoxLayout(page_2);
         verticalLayout_7->setSpacing(6);
         verticalLayout_7->setContentsMargins(11, 11, 11, 11);
         verticalLayout_7->setObjectName(QStringLiteral("verticalLayout_7"));
@@ -230,7 +230,7 @@ public:
 
         verticalLayout_6->addItem(verticalSpacer_2);
 
-        scheduleLabel = new QLabel(viewSchedule);
+        scheduleLabel = new QLabel(page_2);
         scheduleLabel->setObjectName(QStringLiteral("scheduleLabel"));
         scheduleLabel->setFont(font1);
         scheduleLabel->setMidLineWidth(4);
@@ -238,7 +238,7 @@ public:
 
         verticalLayout_6->addWidget(scheduleLabel);
 
-        semesterScheduleView = new QTextEdit(viewSchedule);
+        semesterScheduleView = new QTextEdit(page_2);
         semesterScheduleView->setObjectName(QStringLiteral("semesterScheduleView"));
         semesterScheduleView->setEnabled(false);
 
@@ -248,7 +248,7 @@ public:
 
         verticalLayout_6->addItem(verticalSpacer);
 
-        line = new QFrame(viewSchedule);
+        line = new QFrame(page_2);
         line->setObjectName(QStringLiteral("line"));
         line->setFrameShape(QFrame::HLine);
         line->setFrameShadow(QFrame::Sunken);
@@ -258,10 +258,10 @@ public:
 
         verticalLayout_7->addLayout(verticalLayout_6);
 
-        stackedWidget->addWidget(viewSchedule);
-        viewClasses = new QWidget();
-        viewClasses->setObjectName(QStringLiteral("viewClasses"));
-        verticalLayout_8 = new QVBoxLayout(viewClasses);
+        stackedWidget->addWidget(page_2);
+        page_3 = new QWidget();
+        page_3->setObjectName(QStringLiteral("page_3"));
+        verticalLayout_8 = new QVBoxLayout(page_3);
         verticalLayout_8->setSpacing(6);
         verticalLayout_8->setContentsMargins(11, 11, 11, 11);
         verticalLayout_8->setObjectName(QStringLiteral("verticalLayout_8"));
@@ -271,6 +271,7 @@ public:
         searchClassesInput = new QPlainTextEdit(viewClasses);
         searchClassesInput->setObjectName(QStringLiteral("searchClassesInput"));
         QSizePolicy sizePolicy2(QSizePolicy::Expanding, QSizePolicy::Maximum);
+
         sizePolicy2.setHorizontalStretch(0);
         sizePolicy2.setVerticalStretch(0);
         sizePolicy2.setHeightForWidth(searchClassesInput->sizePolicy().hasHeightForWidth());
@@ -278,12 +279,15 @@ public:
         searchClassesInput->setMaximumSize(QSize(16777215, 35));
         QFont font2;
         font2.setPointSize(10);
+
         searchClassesInput->setFont(font2);
+
         searchClassesInput->setInputMethodHints(Qt::ImhNone);
         searchClassesInput->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         searchClassesInput->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
         gridLayout->addWidget(searchClassesInput, 0, 2, 1, 1);
+
 
         verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Minimum);
 
@@ -302,6 +306,7 @@ public:
         gridLayout->addWidget(searchLabel, 0, 0, 1, 1);
 
         classesSearchBox = new QComboBox(viewClasses);
+
         classesSearchBox->setObjectName(QStringLiteral("classesSearchBox"));
         QSizePolicy sizePolicy4(QSizePolicy::Expanding, QSizePolicy::Preferred);
         sizePolicy4.setHorizontalStretch(0);
@@ -323,7 +328,7 @@ public:
 
         gridLayout->addWidget(classesView, 3, 0, 1, 4);
 
-        line_3 = new QFrame(viewClasses);
+        line_3 = new QFrame(page_3);
         line_3->setObjectName(QStringLiteral("line_3"));
         line_3->setFrameShape(QFrame::HLine);
         line_3->setFrameShadow(QFrame::Sunken);
@@ -333,63 +338,64 @@ public:
 
         verticalLayout_8->addLayout(gridLayout);
 
-        stackedWidget->addWidget(viewClasses);
-        changePassword = new QWidget();
-        changePassword->setObjectName(QStringLiteral("changePassword"));
-        verticalLayout_9 = new QVBoxLayout(changePassword);
-        verticalLayout_9->setSpacing(6);
-        verticalLayout_9->setContentsMargins(11, 11, 11, 11);
-        verticalLayout_9->setObjectName(QStringLiteral("verticalLayout_9"));
-        formLayout = new QFormLayout();
+        stackedWidget->addWidget(page_3);
+        page_4 = new QWidget();
+        page_4->setObjectName(QStringLiteral("page_4"));
+        formLayoutWidget = new QWidget(page_4);
+        formLayoutWidget->setObjectName(QStringLiteral("formLayoutWidget"));
+        formLayoutWidget->setGeometry(QRect(10, 10, 681, 451));
+        formLayout = new QFormLayout(formLayoutWidget);
         formLayout->setSpacing(6);
+        formLayout->setContentsMargins(11, 11, 11, 11);
         formLayout->setObjectName(QStringLiteral("formLayout"));
-        currentPasswordLabel = new QLabel(changePassword);
+        formLayout->setContentsMargins(0, 0, 0, 0);
+        currentPasswordLabel = new QLabel(formLayoutWidget);
         currentPasswordLabel->setObjectName(QStringLiteral("currentPasswordLabel"));
         currentPasswordLabel->setFont(font1);
 
         formLayout->setWidget(1, QFormLayout::LabelRole, currentPasswordLabel);
 
-        line_4 = new QFrame(changePassword);
+        line_4 = new QFrame(formLayoutWidget);
         line_4->setObjectName(QStringLiteral("line_4"));
         line_4->setFrameShape(QFrame::HLine);
         line_4->setFrameShadow(QFrame::Sunken);
 
         formLayout->setWidget(2, QFormLayout::SpanningRole, line_4);
 
-        newPasswordLabel = new QLabel(changePassword);
+        newPasswordLabel = new QLabel(formLayoutWidget);
         newPasswordLabel->setObjectName(QStringLiteral("newPasswordLabel"));
         newPasswordLabel->setFont(font1);
 
         formLayout->setWidget(3, QFormLayout::LabelRole, newPasswordLabel);
 
-        currentPasswordField = new QLineEdit(changePassword);
+        currentPasswordField = new QLineEdit(formLayoutWidget);
         currentPasswordField->setObjectName(QStringLiteral("currentPasswordField"));
         currentPasswordField->setInputMethodHints(Qt::ImhHiddenText|Qt::ImhNoAutoUppercase|Qt::ImhNoPredictiveText|Qt::ImhSensitiveData);
         currentPasswordField->setEchoMode(QLineEdit::Password);
 
         formLayout->setWidget(1, QFormLayout::FieldRole, currentPasswordField);
 
-        newPasswordField = new QLineEdit(changePassword);
+        newPasswordField = new QLineEdit(formLayoutWidget);
         newPasswordField->setObjectName(QStringLiteral("newPasswordField"));
         newPasswordField->setInputMethodHints(Qt::ImhHiddenText|Qt::ImhNoAutoUppercase|Qt::ImhNoPredictiveText|Qt::ImhSensitiveData);
         newPasswordField->setEchoMode(QLineEdit::Password);
 
         formLayout->setWidget(3, QFormLayout::FieldRole, newPasswordField);
 
-        verifyNewPasswordLabel = new QLabel(changePassword);
+        verifyNewPasswordLabel = new QLabel(formLayoutWidget);
         verifyNewPasswordLabel->setObjectName(QStringLiteral("verifyNewPasswordLabel"));
         verifyNewPasswordLabel->setFont(font1);
 
         formLayout->setWidget(4, QFormLayout::LabelRole, verifyNewPasswordLabel);
 
-        verifyNewPasswordField = new QLineEdit(changePassword);
+        verifyNewPasswordField = new QLineEdit(formLayoutWidget);
         verifyNewPasswordField->setObjectName(QStringLiteral("verifyNewPasswordField"));
         verifyNewPasswordField->setInputMethodHints(Qt::ImhHiddenText|Qt::ImhNoAutoUppercase|Qt::ImhNoPredictiveText|Qt::ImhSensitiveData);
         verifyNewPasswordField->setEchoMode(QLineEdit::Password);
 
         formLayout->setWidget(4, QFormLayout::FieldRole, verifyNewPasswordField);
 
-        submitButton = new QPushButton(changePassword);
+        submitButton = new QPushButton(formLayoutWidget);
         submitButton->setObjectName(QStringLiteral("submitButton"));
         submitButton->setFont(font2);
 
@@ -399,16 +405,13 @@ public:
 
         formLayout->setItem(0, QFormLayout::FieldRole, verticalSpacer_4);
 
-        passwordChangeStatusLabel = new QLabel(changePassword);
+        passwordChangeStatusLabel = new QLabel(formLayoutWidget);
         passwordChangeStatusLabel->setObjectName(QStringLiteral("passwordChangeStatusLabel"));
         passwordChangeStatusLabel->setFont(font2);
 
         formLayout->setWidget(6, QFormLayout::SpanningRole, passwordChangeStatusLabel);
 
-
-        verticalLayout_9->addLayout(formLayout);
-
-        stackedWidget->addWidget(changePassword);
+        stackedWidget->addWidget(page_4);
 
         verticalLayout_2->addWidget(stackedWidget);
 
@@ -424,7 +427,7 @@ public:
 
         retranslateUi(studentView);
 
-        stackedWidget->setCurrentIndex(2);
+        stackedWidget->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(studentView);
@@ -438,7 +441,7 @@ public:
         label->setText(QApplication::translate("studentView", "Student Information and Options", Q_NULLPTR));
         studentInfoBrowser->setText(QString());
         viewScheduleButton->setText(QApplication::translate("studentView", "View Schedule", Q_NULLPTR));
-        manageScheduleButton->setText(QApplication::translate("studentView", "Manage Schedule", Q_NULLPTR));
+        manageClassesButton->setText(QApplication::translate("studentView", "Manage Classes", Q_NULLPTR));
         viewClassesButton->setText(QApplication::translate("studentView", "View Classes", Q_NULLPTR));
         changePasswordButton->setText(QApplication::translate("studentView", "Change Password", Q_NULLPTR));
         logoutButton->setText(QApplication::translate("studentView", "Logout", Q_NULLPTR));

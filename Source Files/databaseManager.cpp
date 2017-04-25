@@ -63,7 +63,7 @@ vector<faculty> populateFaculty()
 	/* Open database */
 	rc = sqlite3_open(dbName, &db);
 		;
-		rc = sqlite3_prepare_v2(db, "select First Name, Last Name, username from Faculty"
+		rc = sqlite3_prepare_v2(db, "select [First Name], [Last Name], username from Faculty"
 		,
 		-1, &stmt, NULL);
 	if (rc != SQLITE_OK) {
@@ -108,10 +108,10 @@ vector<classes> populateClasses()
 
 	}
 	while ((rc = sqlite3_step(stmt)) == SQLITE_ROW) {
-		const int* crn = reinterpret_cast<const int*>(sqlite3_column_text(stmt, 0));
+		const int* crn = reinterpret_cast<const int*>(sqlite3_column_int(stmt, 0));
 		int CRN = (int)crn;
 		const char* subject = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 1));
-		const int* courseid = reinterpret_cast<const int*>(sqlite3_column_text(stmt, 2));
+		const int* courseid = reinterpret_cast<const int*>(sqlite3_column_int(stmt, 2));
 		int courseID = (int)courseid;
 		const char* name = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 3));
 		const char* semester = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 4));
@@ -166,5 +166,45 @@ vector<users> populateUsers()
 	sqlite3_finalize(stmt);
 
 	return allusers;
+}
+
+vector<records> populateRecords()
+{
+	sqlite3 *db;
+	char *zErrMsg = 0;
+	int rc;
+	char *sql;
+	const char* data = "";
+	const char* dbName = "Students.db";
+	vector<records> allrecords;
+	sqlite3_stmt *stmt;
+	/* Open database */
+	rc = sqlite3_open(dbName, &db);
+	rc = sqlite3_prepare_v2(db, "Select username, CRN, Grade, and row from Records"
+		,
+		-1, &stmt, NULL);
+	if (rc != SQLITE_OK) {
+		cerr << "SELECT failed: " << sqlite3_errmsg(db) << endl;
+
+	}
+	while ((rc = sqlite3_step(stmt)) == SQLITE_ROW) {
+		const char* username = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0));
+		const char* crn = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 1));
+		int CRN = (int)crn;
+		const char* grade = reinterpret_cast<const char*>(sqlite3_column_int(stmt, 2));
+		int Grade = (int)grade;
+		const char* row = reinterpret_cast<const char*>(sqlite3_column_int(stmt, 3));
+		int Row = (int)row;
+		// let's assume some fields can be NULL:
+		allrecords.push_back(records(username, CRN, Grade, Row));
+
+	}
+	if (rc != SQLITE_DONE) {
+		cerr << "SELECT failed: " << sqlite3_errmsg(db) << endl;
+		// if you return/throw here, don't forget the finalize
+	}
+	sqlite3_finalize(stmt);
+
+	return allrecords;
 }
 

@@ -100,7 +100,7 @@ vector<classes> populateClasses()
 	/* Open database */
 	rc = sqlite3_open(dbName, &db);
 	;
-	rc = sqlite3_prepare_v2(db, "SELECT CRN,Subject,'Course ID',Name,Semester,classDays,classTime,Instructor,Room FROM Classes"
+	rc = sqlite3_prepare_v2(db, "SELECT CRN,Subject,[Course ID],Name,Semester,classDays,classTime,Instructor,Room FROM Classes"
 		,
 		-1, &stmt, NULL);
 	if (rc != SQLITE_OK) {
@@ -108,10 +108,10 @@ vector<classes> populateClasses()
 
 	}
 	while ((rc = sqlite3_step(stmt)) == SQLITE_ROW) {
-		const int* crn = reinterpret_cast<const int*>(sqlite3_column_text(stmt, 0));
+		const int* crn = reinterpret_cast<const int*>(sqlite3_column_int(stmt, 0));
 		int CRN = (int)crn;
 		const char* subject = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 1));
-		const int* courseid = reinterpret_cast<const int*>(sqlite3_column_text(stmt, 2));
+		const int* courseid = reinterpret_cast<const int*>(sqlite3_column_int(stmt, 2));
 		int courseID = (int)courseid;
 		const char* name = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 3));
 		const char* semester = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 4));

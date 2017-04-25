@@ -65,12 +65,12 @@ public:
     QWidget *viewClasses;
     QVBoxLayout *verticalLayout_8;
     QGridLayout *gridLayout;
+    QPlainTextEdit *searchClassesInput;
     QSpacerItem *verticalSpacer_3;
     QLabel *searchLabel;
-    QPlainTextEdit *searchClassesInput;
+    QFrame *line_3;
     QComboBox *classesSearchBox;
     QTableView *classesView;
-    QFrame *line_3;
     QWidget *changePassword;
     QVBoxLayout *verticalLayout_9;
     QFormLayout *formLayout;
@@ -267,42 +267,49 @@ public:
         gridLayout = new QGridLayout();
         gridLayout->setSpacing(6);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
-        verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Minimum);
-
-        gridLayout->addItem(verticalSpacer_3, 2, 1, 1, 1);
-
-        searchLabel = new QLabel(viewClasses);
-        searchLabel->setObjectName(QStringLiteral("searchLabel"));
-        QSizePolicy sizePolicy2(QSizePolicy::Expanding, QSizePolicy::Minimum);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(searchLabel->sizePolicy().hasHeightForWidth());
-        searchLabel->setSizePolicy(sizePolicy2);
-        QFont font2;
-        font2.setPointSize(10);
-        searchLabel->setFont(font2);
-        searchLabel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-
-        gridLayout->addWidget(searchLabel, 0, 0, 1, 1);
-
         searchClassesInput = new QPlainTextEdit(viewClasses);
         searchClassesInput->setObjectName(QStringLiteral("searchClassesInput"));
-        QSizePolicy sizePolicy3(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
-        sizePolicy3.setHorizontalStretch(0);
-        sizePolicy3.setVerticalStretch(0);
-        sizePolicy3.setHeightForWidth(searchClassesInput->sizePolicy().hasHeightForWidth());
-        searchClassesInput->setSizePolicy(sizePolicy3);
-        searchClassesInput->setMinimumSize(QSize(450, 25));
-        searchClassesInput->setMaximumSize(QSize(16777215, 25));
+        QSizePolicy sizePolicy2(QSizePolicy::Expanding, QSizePolicy::Maximum);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(searchClassesInput->sizePolicy().hasHeightForWidth());
+        searchClassesInput->setSizePolicy(sizePolicy2);
+        searchClassesInput->setMinimumSize(QSize(450, 0));
+        searchClassesInput->setMaximumSize(QSize(16777215, 30));
         searchClassesInput->setInputMethodHints(Qt::ImhNone);
         searchClassesInput->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         searchClassesInput->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
         gridLayout->addWidget(searchClassesInput, 0, 2, 1, 1);
 
+        verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        gridLayout->addItem(verticalSpacer_3, 2, 1, 1, 1);
+
+        searchLabel = new QLabel(viewClasses);
+        searchLabel->setObjectName(QStringLiteral("searchLabel"));
+        QSizePolicy sizePolicy3(QSizePolicy::Expanding, QSizePolicy::Minimum);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(searchLabel->sizePolicy().hasHeightForWidth());
+        searchLabel->setSizePolicy(sizePolicy3);
+        QFont font2;
+        font2.setPointSize(10);
+        searchLabel->setFont(font2);
+        searchLabel->setAlignment(Qt::AlignCenter);
+
+        gridLayout->addWidget(searchLabel, 0, 0, 1, 1);
+
+        line_3 = new QFrame(viewClasses);
+        line_3->setObjectName(QStringLiteral("line_3"));
+        line_3->setFrameShape(QFrame::HLine);
+        line_3->setFrameShadow(QFrame::Sunken);
+
+        gridLayout->addWidget(line_3, 1, 0, 1, 3);
+
         classesSearchBox = new QComboBox(viewClasses);
         classesSearchBox->setObjectName(QStringLiteral("classesSearchBox"));
-        QSizePolicy sizePolicy4(QSizePolicy::Minimum, QSizePolicy::Fixed);
+        QSizePolicy sizePolicy4(QSizePolicy::Expanding, QSizePolicy::Fixed);
         sizePolicy4.setHorizontalStretch(0);
         sizePolicy4.setVerticalStretch(0);
         sizePolicy4.setHeightForWidth(classesSearchBox->sizePolicy().hasHeightForWidth());
@@ -316,13 +323,6 @@ public:
         classesView->setObjectName(QStringLiteral("classesView"));
 
         gridLayout->addWidget(classesView, 3, 0, 1, 3);
-
-        line_3 = new QFrame(viewClasses);
-        line_3->setObjectName(QStringLiteral("line_3"));
-        line_3->setFrameShape(QFrame::HLine);
-        line_3->setFrameShadow(QFrame::Sunken);
-
-        gridLayout->addWidget(line_3, 1, 0, 1, 3);
 
 
         verticalLayout_8->addLayout(gridLayout);

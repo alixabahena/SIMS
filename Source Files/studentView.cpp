@@ -116,17 +116,32 @@ void studentView::on_viewClassesButton_clicked()
 	ui.classesSearchBox->addItem("Days");
 	ui.classesSearchBox->addItem("Instructor");
 	ui.classesSearchBox->addItem("Room");
-	//view classes
+	//create QT items
 	QStandardItemModel *model = new QStandardItemModel(this);
 	QList<QStandardItem *> items;
+	//set headers name and size
+	QStringList headers;
+	headers << "CRN" << "Subject"<<"Course ID"<<"Name"<<"Semester"<<"Day"<<"Time"<<"Instructor"<<"Room";
+	model->setColumnCount(allClasses.size()-1);
+	model->setHorizontalHeaderLabels(headers);
+	//popuate table
 	for (int i = 0; i < allClasses.size()-1; i++)
 	{
-		QString name = QString::fromStdString(allClasses[i].Name);
-		items.append(new QStandardItem(name));
+		model->setRowCount(i);
+		items.append(new QStandardItem(QString::fromStdString(to_string(allClasses[i].CRN))));
+		items.append(new QStandardItem(QString::fromStdString(allClasses[i].Subject)));
+		items.append(new QStandardItem(QString::fromStdString(to_string(allClasses[i].courseID))));
+		items.append(new QStandardItem(QString::fromStdString(allClasses[i].Name)));
+		items.append(new QStandardItem(QString::fromStdString(allClasses[i].Semester)));
+		items.append(new QStandardItem(QString::fromStdString(allClasses[i].classDays)));
+		items.append(new QStandardItem(QString::fromStdString(allClasses[i].classTime)));
+		items.append(new QStandardItem(QString::fromStdString(allClasses[i].Instructor)));
+		items.append(new QStandardItem(QString::fromStdString(allClasses[i].Room)));
+		model->appendRow(items);
+		items.clear();
 
 	}
-	model->setColumnCount(allClasses.size());
-	model->appendRow(items);
+	ui.classesView->setEditTriggers(QAbstractItemView::NoEditTriggers);
 	ui.classesView->setModel(model);
 	//enable back button
 	ui.backButton->show();

@@ -8,7 +8,7 @@
 #include "Student.h"
 #include "facultyView.h"
 #include "faculty.h"
-
+#include "classes.h"
 
 //QT
 #include <qsqldatabase.h>
@@ -25,6 +25,7 @@
 #include <qboxlayout.h>
 #include <qkeyeventtransition.h>
 #include <qevent.h>
+#include <qstandarditemmodel.h>
 
 //normal libraries
 #include <string>

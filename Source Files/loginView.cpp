@@ -1,7 +1,7 @@
 #include "Header Files\stdafx.h"
 
 vector<users>allusers = populateUsers();
-
+vector<classes>allclasses = populateClasses();
 
 loginView::loginView(QWidget *parent)
 	: QMainWindow(parent)

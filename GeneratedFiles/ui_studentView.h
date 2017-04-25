@@ -69,7 +69,7 @@ public:
     QLabel *searchLabel;
     QPlainTextEdit *searchClassesInput;
     QComboBox *classesSearchBox;
-    QTableView *tableView;
+    QTableView *classesView;
     QFrame *line_3;
     QWidget *changePassword;
     QVBoxLayout *verticalLayout_9;
@@ -90,7 +90,7 @@ public:
     {
         if (studentView->objectName().isEmpty())
             studentView->setObjectName(QStringLiteral("studentView"));
-        studentView->resize(721, 614);
+        studentView->resize(747, 614);
         verticalLayout_5 = new QVBoxLayout(studentView);
         verticalLayout_5->setSpacing(6);
         verticalLayout_5->setContentsMargins(11, 11, 11, 11);
@@ -312,10 +312,10 @@ public:
 
         gridLayout->addWidget(classesSearchBox, 0, 1, 1, 1);
 
-        tableView = new QTableView(viewClasses);
-        tableView->setObjectName(QStringLiteral("tableView"));
+        classesView = new QTableView(viewClasses);
+        classesView->setObjectName(QStringLiteral("classesView"));
 
-        gridLayout->addWidget(tableView, 3, 0, 1, 3);
+        gridLayout->addWidget(classesView, 3, 0, 1, 3);
 
         line_3 = new QFrame(viewClasses);
         line_3->setObjectName(QStringLiteral("line_3"));
@@ -418,7 +418,7 @@ public:
 
         retranslateUi(studentView);
 
-        stackedWidget->setCurrentIndex(3);
+        stackedWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(studentView);

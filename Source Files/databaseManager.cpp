@@ -87,6 +87,51 @@ vector<faculty> populateFaculty()
 	return Faculty;
 }
 
+vector<classes> populateClasses()
+{
+	sqlite3 *db;
+	char *zErrMsg = 0;
+	int rc;
+	char *sql;
+	const char* data = "";
+	const char* dbName = "Students.db";
+	vector<classes> Classes;
+	sqlite3_stmt *stmt;
+	/* Open database */
+	rc = sqlite3_open(dbName, &db);
+	;
+	rc = sqlite3_prepare_v2(db, "SELECT CRN,Subject,'Course ID',Name,Semester,classDays,classTime,Instructor,Room FROM Classes"
+		,
+		-1, &stmt, NULL);
+	if (rc != SQLITE_OK) {
+		cerr << "SELECT failed: " << sqlite3_errmsg(db) << endl;
+
+	}
+	while ((rc = sqlite3_step(stmt)) == SQLITE_ROW) {
+		const int* crn = reinterpret_cast<const int*>(sqlite3_column_text(stmt, 0));
+		int CRN = (int)crn;
+		const char* subject = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 1));
+		const int* courseid = reinterpret_cast<const int*>(sqlite3_column_text(stmt, 2));
+		int courseID = (int)courseid;
+		const char* name = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 3));
+		const char* semester = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 4));
+		const char* classdays = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 5));
+		const char* classtime = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 6));
+		const char* instructor = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 7));
+		const char* room = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 8));
+		// let's assume some fields can be NULL:
+		Classes.push_back(classes(CRN,subject,courseID,name,semester,classdays,classtime,instructor,room));
+
+	}
+	if (rc != SQLITE_DONE) {
+		cerr << "SELECT failed: " << sqlite3_errmsg(db) << endl;
+		// if you return/throw here, don't forget the finalize
+	}
+	sqlite3_finalize(stmt);
+
+	return Classes;
+}
+
 vector<users> populateUsers()
 {
 	sqlite3 *db;

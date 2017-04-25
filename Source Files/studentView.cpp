@@ -1,6 +1,7 @@
 #include "Header Files\stdafx.h"
 
 vector<Student>allStudents = populateStudents();
+vector<classes>allClasses = populateClasses();
 int userlocation = 0;
 
 studentView::studentView(QWidget *parent)
@@ -115,6 +116,18 @@ void studentView::on_viewClassesButton_clicked()
 	ui.classesSearchBox->addItem("Days");
 	ui.classesSearchBox->addItem("Instructor");
 	ui.classesSearchBox->addItem("Room");
+	//view classes
+	QStandardItemModel *model = new QStandardItemModel(this);
+	QList<QStandardItem *> items;
+	for (int i = 0; i < allClasses.size()-1; i++)
+	{
+		QString name = QString::fromStdString(allClasses[i].Name);
+		items.append(new QStandardItem(name));
+
+	}
+	model->setColumnCount(allClasses.size());
+	model->appendRow(items);
+	ui.classesView->setModel(model);
 	//enable back button
 	ui.backButton->show();
 	ui.backButton->setEnabled(true);

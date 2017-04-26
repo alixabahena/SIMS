@@ -99,7 +99,6 @@ vector<classes> populateClasses()
 	sqlite3_stmt *stmt;
 	/* Open database */
 	rc = sqlite3_open(dbName, &db);
-	;
 	rc = sqlite3_prepare_v2(db, "SELECT CRN,Subject,[Course ID],Name,Semester,classDays,classTime,Instructor,Room FROM Classes"
 		,
 		-1, &stmt, NULL);
@@ -217,20 +216,18 @@ void changePassword(string username, string password)
 	const char* data = "";
 	const char* dbName = "Students.db";
 	sqlite3_stmt *stmt;
+	char *q;
+	const char *userName = username.c_str();
+	const char *passWord = password.c_str();
+	rc = sqlite3_open(dbName, &db);
+	q = "UPDATE Users SET [password]=?1 WHERE [username]=?2";
+	if ( rc = sqlite3_prepare_v2(db, q, strlen(q), &stmt, 0) == SQLITE_OK) {
+		sqlite3_reset(stmt);
+		sqlite3_bind_text(stmt, 1, passWord,strlen(passWord), 0);
+		sqlite3_bind_text(stmt, 2, userName, strlen(userName), 0); // file path
+		sqlite3_step(stmt);   // prepare statemnt Ready
+		sqlite3_finalize(stmt);
+	}
 	
-
-	string sqlstatement = "UPDATE Users SET Password = " + password + ",WHERE username =" + password + ";";
-
-	if (sqlite3_open(dbName, &db) == SQLITE_OK)
-	{
-		sqlite3_prepare(db, sqlstatement.c_str(), -1, &stmt, NULL);//preparing the statement
-		sqlite3_step(stmt);//executing the statement
-	}
-	else
-	{
-		cout << "Failed to open db\n";
-	}
-
-	sqlite3_finalize(stmt);
-	sqlite3_close(db);
+	int ecode = sqlite3_errcode(db);
 }

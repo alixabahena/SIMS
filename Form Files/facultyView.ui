@@ -67,7 +67,7 @@
        </font>
       </property>
       <property name="text">
-       <string>Student Information and Options</string>
+       <string>Faculty Information and Options</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -77,7 +77,7 @@
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="mainPage">
        <property name="sizePolicy">
@@ -159,7 +159,7 @@
                </sizepolicy>
               </property>
               <property name="text">
-               <string>Register / Drop Classes</string>
+               <string>View Basic Student Info</string>
               </property>
              </widget>
             </item>
@@ -172,7 +172,20 @@
                </sizepolicy>
               </property>
               <property name="text">
-               <string>View Available Classes</string>
+               <string>View Students in a Class</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="changePasswordButton_2">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>Enter Grades</string>
               </property>
              </widget>
             </item>
@@ -248,7 +261,7 @@
              <number>4</number>
             </property>
             <property name="text">
-             <string>Current Student Semester Schedule</string>
+             <string>Current Semester Schedule</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>

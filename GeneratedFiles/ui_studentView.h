@@ -253,6 +253,7 @@ public:
         semesterScheduleView = new QTextEdit(viewSchedule);
         semesterScheduleView->setObjectName(QStringLiteral("semesterScheduleView"));
         semesterScheduleView->setEnabled(false);
+        semesterScheduleView->setFont(font2);
 
         verticalLayout_6->addWidget(semesterScheduleView);
 

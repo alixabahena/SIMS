@@ -188,7 +188,7 @@ vector<records> populateRecords()
 	}
 	while ((rc = sqlite3_step(stmt)) == SQLITE_ROW) {
 		const char* username = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0));
-		const char* crn = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 1));
+		const char* crn = reinterpret_cast<const char*>(sqlite3_column_int(stmt, 1));
 		int CRN = (int)crn;
 		const char* grade = reinterpret_cast<const char*>(sqlite3_column_int(stmt, 2));
 		int Grade = (int)grade;

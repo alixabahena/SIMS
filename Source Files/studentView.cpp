@@ -184,23 +184,13 @@ void studentView::on_addClassButton_clicked()
 	vector<faculty>allFaculty = populateFaculty();
 	//variables
 	string username = allStudents[userlocation].userName;
-	QString crnEntered = ui.crnAddRemoveLine->text();
+	int crnEntered = ui.crnAddRemoveLine->text().toInt();;
 	//get entered CRN
 
-	//empty crn - error
-	if (crnEntered == "")
-	{
-		ui.addRemoveClassLabel->setText("Invalid Class entered!");
-	}
 
 	for (int i = 0; i < allClasses.size(); i++)
 	{
-		//crn does not exist - error
-		if (crnEntered != allClasses[i].CRN)
-		{
-			ui.addRemoveClassLabel->setText("No such Class exist!");
-		}
-		else if (crnEntered == allClasses[i].CRN)
+		if (crnEntered == allClasses[i].CRN)
 		{
 			//class already in student schedule -error
 			for (int j = 0; j < allRecords.size(); j++)
@@ -210,6 +200,11 @@ void studentView::on_addClassButton_clicked()
 					ui.addRemoveClassLabel->setText("Class already in schedule!");
 				}
 			}
+		}
+		//crn does not exist - error
+		else if (crnEntered != allClasses[i].CRN)
+		{
+			ui.addRemoveClassLabel->setText("No such Class exist!");
 		}
 	}
 	

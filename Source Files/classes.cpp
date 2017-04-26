@@ -14,3 +14,8 @@ classes::classes(int crn, string subject, int courseid, string name, string seme
 	Instructor = instructor;
 	Room = room;
 }
+
+string classes::getSubject()
+{
+	return Subject;
+}

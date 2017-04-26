@@ -69,7 +69,7 @@
      <item>
       <widget class="QStackedWidget" name="stackedWidget">
        <property name="currentIndex">
-        <number>2</number>
+        <number>3</number>
        </property>
        <widget class="QWidget" name="mainPage">
         <property name="sizePolicy">
@@ -301,33 +301,30 @@
         <layout class="QVBoxLayout" name="verticalLayout_8">
          <item>
           <layout class="QGridLayout" name="gridLayout">
-           <item row="0" column="2">
-            <widget class="QPlainTextEdit" name="searchClassesInput">
+           <item row="0" column="1">
+            <widget class="QComboBox" name="classesSearchBox">
              <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
+              <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>35</height>
-              </size>
              </property>
              <property name="font">
               <font>
                <pointsize>10</pointsize>
               </font>
              </property>
-             <property name="inputMethodHints">
-              <set>Qt::ImhNone</set>
+            </widget>
+           </item>
+           <item row="0" column="3">
+            <widget class="QPushButton" name="searchButton">
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+              </font>
              </property>
-             <property name="verticalScrollBarPolicy">
-              <enum>Qt::ScrollBarAlwaysOff</enum>
-             </property>
-             <property name="horizontalScrollBarPolicy">
-              <enum>Qt::ScrollBarAlwaysOff</enum>
+             <property name="text">
+              <string>Submit</string>
              </property>
             </widget>
            </item>
@@ -368,10 +365,20 @@
              </property>
             </widget>
            </item>
-           <item row="0" column="1">
-            <widget class="QComboBox" name="classesSearchBox">
+           <item row="3" column="0" colspan="4">
+            <widget class="QTableView" name="classesView"/>
+           </item>
+           <item row="1" column="0" colspan="4">
+            <widget class="Line" name="line_3">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QLineEdit" name="searchClassesInput">
              <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+              <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
@@ -380,28 +387,6 @@
               <font>
                <pointsize>10</pointsize>
               </font>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="3">
-            <widget class="QPushButton" name="searchButton">
-             <property name="font">
-              <font>
-               <pointsize>10</pointsize>
-              </font>
-             </property>
-             <property name="text">
-              <string>Submit</string>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="0" colspan="4">
-            <widget class="QTableView" name="classesView"/>
-           </item>
-           <item row="1" column="0" colspan="4">
-            <widget class="Line" name="line_3">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
              </property>
             </widget>
            </item>
@@ -545,5 +530,22 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>searchClassesInput</sender>
+   <signal>returnPressed()</signal>
+   <receiver>searchButton</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>492</x>
+     <y>191</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>662</x>
+     <y>191</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

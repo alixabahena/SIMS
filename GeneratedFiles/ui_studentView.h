@@ -21,7 +21,6 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
-#include <QtWidgets/QPlainTextEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStackedWidget>
@@ -71,13 +70,13 @@ public:
     QWidget *viewClasses;
     QVBoxLayout *verticalLayout_8;
     QGridLayout *gridLayout;
-    QPlainTextEdit *searchClassesInput;
-    QSpacerItem *verticalSpacer_3;
-    QLabel *searchLabel;
     QComboBox *classesSearchBox;
     QPushButton *searchButton;
+    QSpacerItem *verticalSpacer_3;
+    QLabel *searchLabel;
     QTableView *classesView;
     QFrame *line_3;
+    QLineEdit *searchClassesInput;
     QWidget *changePassword;
     QVBoxLayout *verticalLayout_9;
     QFormLayout *formLayout;
@@ -302,22 +301,24 @@ public:
         gridLayout = new QGridLayout();
         gridLayout->setSpacing(6);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
-        searchClassesInput = new QPlainTextEdit(viewClasses);
-        searchClassesInput->setObjectName(QStringLiteral("searchClassesInput"));
-        QSizePolicy sizePolicy2(QSizePolicy::Expanding, QSizePolicy::Maximum);
+        classesSearchBox = new QComboBox(viewClasses);
+        classesSearchBox->setObjectName(QStringLiteral("classesSearchBox"));
+        QSizePolicy sizePolicy2(QSizePolicy::Expanding, QSizePolicy::Preferred);
         sizePolicy2.setHorizontalStretch(0);
         sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(searchClassesInput->sizePolicy().hasHeightForWidth());
-        searchClassesInput->setSizePolicy(sizePolicy2);
-        searchClassesInput->setMaximumSize(QSize(16777215, 35));
+        sizePolicy2.setHeightForWidth(classesSearchBox->sizePolicy().hasHeightForWidth());
+        classesSearchBox->setSizePolicy(sizePolicy2);
         QFont font2;
         font2.setPointSize(10);
-        searchClassesInput->setFont(font2);
-        searchClassesInput->setInputMethodHints(Qt::ImhNone);
-        searchClassesInput->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-        searchClassesInput->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        classesSearchBox->setFont(font2);
 
-        gridLayout->addWidget(searchClassesInput, 0, 2, 1, 1);
+        gridLayout->addWidget(classesSearchBox, 0, 1, 1, 1);
+
+        searchButton = new QPushButton(viewClasses);
+        searchButton->setObjectName(QStringLiteral("searchButton"));
+        searchButton->setFont(font2);
+
+        gridLayout->addWidget(searchButton, 0, 3, 1, 1);
 
         verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Minimum);
 
@@ -335,23 +336,6 @@ public:
 
         gridLayout->addWidget(searchLabel, 0, 0, 1, 1);
 
-        classesSearchBox = new QComboBox(viewClasses);
-        classesSearchBox->setObjectName(QStringLiteral("classesSearchBox"));
-        QSizePolicy sizePolicy4(QSizePolicy::Expanding, QSizePolicy::Preferred);
-        sizePolicy4.setHorizontalStretch(0);
-        sizePolicy4.setVerticalStretch(0);
-        sizePolicy4.setHeightForWidth(classesSearchBox->sizePolicy().hasHeightForWidth());
-        classesSearchBox->setSizePolicy(sizePolicy4);
-        classesSearchBox->setFont(font2);
-
-        gridLayout->addWidget(classesSearchBox, 0, 1, 1, 1);
-
-        searchButton = new QPushButton(viewClasses);
-        searchButton->setObjectName(QStringLiteral("searchButton"));
-        searchButton->setFont(font2);
-
-        gridLayout->addWidget(searchButton, 0, 3, 1, 1);
-
         classesView = new QTableView(viewClasses);
         classesView->setObjectName(QStringLiteral("classesView"));
 
@@ -363,6 +347,14 @@ public:
         line_3->setFrameShadow(QFrame::Sunken);
 
         gridLayout->addWidget(line_3, 1, 0, 1, 4);
+
+        searchClassesInput = new QLineEdit(viewClasses);
+        searchClassesInput->setObjectName(QStringLiteral("searchClassesInput"));
+        sizePolicy3.setHeightForWidth(searchClassesInput->sizePolicy().hasHeightForWidth());
+        searchClassesInput->setSizePolicy(sizePolicy3);
+        searchClassesInput->setFont(font2);
+
+        gridLayout->addWidget(searchClassesInput, 0, 2, 1, 1);
 
 
         verticalLayout_8->addLayout(gridLayout);
@@ -457,8 +449,9 @@ public:
 
 
         retranslateUi(studentView);
+        QObject::connect(searchClassesInput, SIGNAL(returnPressed()), searchButton, SLOT(click()));
 
-        stackedWidget->setCurrentIndex(2);
+        stackedWidget->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(studentView);
@@ -479,8 +472,8 @@ public:
         scheduleLabel->setText(QApplication::translate("studentView", "Current Student Semester Schedule", Q_NULLPTR));
         addClassButton->setText(QApplication::translate("studentView", "Add Class", Q_NULLPTR));
         removeClassButton->setText(QApplication::translate("studentView", "Remove Class", Q_NULLPTR));
-        searchLabel->setText(QApplication::translate("studentView", "Search: ", Q_NULLPTR));
         searchButton->setText(QApplication::translate("studentView", "Submit", Q_NULLPTR));
+        searchLabel->setText(QApplication::translate("studentView", "Search: ", Q_NULLPTR));
         currentPasswordLabel->setText(QApplication::translate("studentView", "Current Password: ", Q_NULLPTR));
         newPasswordLabel->setText(QApplication::translate("studentView", "New Password: ", Q_NULLPTR));
         verifyNewPasswordLabel->setText(QApplication::translate("studentView", "Verify New Password: ", Q_NULLPTR));

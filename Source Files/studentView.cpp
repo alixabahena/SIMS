@@ -1,10 +1,6 @@
 #include "Header Files\stdafx.h"
 
-vector<users>allUsers = populateUsers();
-vector<Student>allStudents = populateStudents();
-vector<classes>allClasses = populateClasses();
-vector<records>allRecords = populateRecords();
-vector<faculty>allFaculty = populateFaculty();
+
 int userlocation = 0;
 
 studentView::studentView(QWidget *parent)
@@ -19,6 +15,11 @@ studentView::studentView(QWidget *parent)
 
 studentView::studentView(QString userName)
 {
+	vector<users>allUsers = populateUsers();
+	vector<Student>allStudents = populateStudents();
+	vector<classes>allClasses = populateClasses();
+	vector<records>allRecords = populateRecords();
+	vector<faculty>allFaculty = populateFaculty();
 	//QStrings
 	QString user = userName;
 	QString fullName;
@@ -76,7 +77,11 @@ studentView::studentView(QString userName)
 
 void studentView::on_viewScheduleButton_clicked()
 {
-
+	vector<users>allUsers = populateUsers();
+	vector<Student>allStudents = populateStudents();
+	vector<classes>allClasses = populateClasses();
+	vector<records>allRecords = populateRecords();
+	vector<faculty>allFaculty = populateFaculty();
 	ui.stackedWidget->setCurrentIndex(1);
 	QString classes;
 	
@@ -117,6 +122,12 @@ void studentView::on_viewScheduleButton_clicked()
 
 void studentView::on_manageScheduleButton_clicked()
 {
+	vector<users>allUsers = populateUsers();
+	vector<Student>allStudents = populateStudents();
+	vector<classes>allClasses = populateClasses();
+	vector<records>allRecords = populateRecords();
+	vector<faculty>allFaculty = populateFaculty();
+
 	ui.stackedWidget->setCurrentIndex(2);
 
 	//change header text
@@ -165,6 +176,12 @@ void studentView::on_manageScheduleButton_clicked()
 
 void studentView::on_viewClassesButton_clicked()
 {
+	vector<users>allUsers = populateUsers();
+	vector<Student>allStudents = populateStudents();
+	vector<classes>allClasses = populateClasses();
+	vector<records>allRecords = populateRecords();
+	vector<faculty>allFaculty = populateFaculty();
+
 	ui.stackedWidget->setCurrentIndex(3);
 	//change header text
 	ui.welcomeLabel->setText("View Classes");
@@ -203,6 +220,12 @@ void studentView::on_viewClassesButton_clicked()
 
 void studentView::on_searchButton_clicked()
 {
+	vector<users>allUsers = populateUsers();
+	vector<Student>allStudents = populateStudents();
+	vector<classes>allClasses = populateClasses();
+	vector<records>allRecords = populateRecords();
+	vector<faculty>allFaculty = populateFaculty();
+
 	//create QT items
 	QStandardItemModel *model = new QStandardItemModel(this);
 	QList<QStandardItem *> items;
@@ -442,6 +465,12 @@ void studentView::on_changePasswordButton_clicked()
 
 void studentView::on_submitButton_clicked()
 {
+	vector<users>allUsers = populateUsers();
+	vector<Student>allStudents = populateStudents();
+	vector<classes>allClasses = populateClasses();
+	vector<records>allRecords = populateRecords();
+	vector<faculty>allFaculty = populateFaculty();
+
 	QString newPassword;
 	QString currentPasswordTyped = ui.currentPasswordField->text();
 	QString currentPassword;

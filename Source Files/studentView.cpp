@@ -174,6 +174,59 @@ void studentView::on_manageScheduleButton_clicked()
 	ui.backButton->setEnabled(true);
 }
 
+void studentView::on_addClassButton_clicked()
+{
+	//populate all vectors
+	vector<users>allUsers = populateUsers();
+	vector<Student>allStudents = populateStudents();
+	vector<classes>allClasses = populateClasses();
+	vector<records>allRecords = populateRecords();
+	vector<faculty>allFaculty = populateFaculty();
+	//variables
+	string username = allStudents[userlocation].userName;
+	QString crnEntered = ui.crnAddRemoveLine->text();
+	//get entered CRN
+
+	//empty crn - error
+	if (crnEntered == "")
+	{
+		ui.addRemoveClassLabel->setText("Invalid Class entered!");
+	}
+
+	for (int i = 0; i < allClasses.size(); i++)
+	{
+		//crn does not exist - error
+		if (crnEntered != allClasses[i].CRN)
+		{
+			ui.addRemoveClassLabel->setText("No such Class exist!");
+		}
+		else if (crnEntered == allClasses[i].CRN)
+		{
+			//class already in student schedule -error
+			for (int j = 0; j < allRecords.size(); j++)
+			{
+				if (crnEntered == allRecords[j].Crn && username == allRecords[j].Username)
+				{
+					ui.addRemoveClassLabel->setText("Class already in schedule!");
+				}
+			}
+		}
+	}
+	
+}
+
+void studentView::on_removeClassButton_clicked()
+{
+	//populate all vectors
+	vector<users>allUsers = populateUsers();
+	vector<Student>allStudents = populateStudents();
+	vector<classes>allClasses = populateClasses();
+	vector<records>allRecords = populateRecords();
+	vector<faculty>allFaculty = populateFaculty();
+
+
+}
+
 void studentView::on_viewClassesButton_clicked()
 {
 	vector<users>allUsers = populateUsers();

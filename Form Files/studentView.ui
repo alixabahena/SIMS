@@ -56,6 +56,7 @@
        <property name="font">
         <font>
          <pointsize>12</pointsize>
+         <italic>true</italic>
         </font>
        </property>
        <property name="text">
@@ -69,7 +70,7 @@
      <item>
       <widget class="QStackedWidget" name="stackedWidget">
        <property name="currentIndex">
-        <number>3</number>
+        <number>0</number>
        </property>
        <widget class="QWidget" name="mainPage">
         <property name="sizePolicy">
@@ -138,7 +139,7 @@
                 </sizepolicy>
                </property>
                <property name="text">
-                <string>View Schedule</string>
+                <string>View Current Schedule</string>
                </property>
               </widget>
              </item>
@@ -151,7 +152,7 @@
                 </sizepolicy>
                </property>
                <property name="text">
-                <string>Manage Schedule</string>
+                <string>Register / Drop Classes</string>
                </property>
               </widget>
              </item>
@@ -164,7 +165,7 @@
                 </sizepolicy>
                </property>
                <property name="text">
-                <string>View Classes</string>
+                <string>View Available Classes</string>
                </property>
               </widget>
              </item>
@@ -188,6 +189,12 @@
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
                </property>
                <property name="text">
                 <string>Logout</string>

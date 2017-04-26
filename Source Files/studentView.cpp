@@ -182,13 +182,18 @@ void studentView::on_searchButton_clicked()
 	}
 	else if (ui.classesSearchBox->currentIndex() == 1)
 	{
-		QString searchClass = ui.searchClassesInput->text();
+		QString searchClass = ui.searchClassesInput->text().toLower();
 		string subject = searchClass.toStdString();
 
 		//populate table
 		for (int i = 0; i < allClasses.size() - 1; i++)
 		{
-			if (subject == allClasses[i].Subject) {
+			string searchSubject = "";
+			for (int j = 0; j < allClasses[i].Subject.length(); j++)
+			{
+				searchSubject += tolower(allClasses[i].Subject[j]);
+			}
+			if (subject == searchSubject) {
 				items.append(new QStandardItem(QString::fromStdString(to_string(allClasses[i].CRN))));
 				items.append(new QStandardItem(QString::fromStdString(allClasses[i].Subject)));
 				items.append(new QStandardItem(QString::fromStdString(to_string(allClasses[i].courseID))));

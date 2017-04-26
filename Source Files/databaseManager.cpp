@@ -180,7 +180,7 @@ vector<records> populateRecords()
 	sqlite3_stmt *stmt;
 	/* Open database */
 	rc = sqlite3_open(dbName, &db);
-	rc = sqlite3_prepare_v2(db, "Select username, CRN, Grade, and row from Records"
+	rc = sqlite3_prepare_v2(db, "Select username, CRN, Grade,row from Records"
 		,
 		-1, &stmt, NULL);
 	if (rc != SQLITE_OK) {

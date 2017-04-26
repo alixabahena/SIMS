@@ -58,7 +58,6 @@ public:
     QVBoxLayout *verticalLayout_6;
     QSpacerItem *verticalSpacer_2;
     QLabel *scheduleLabel;
-    QFrame *line_5;
     QTextEdit *semesterScheduleView;
     QSpacerItem *verticalSpacer;
     QFrame *line;
@@ -232,7 +231,7 @@ public:
         verticalLayout_6 = new QVBoxLayout();
         verticalLayout_6->setSpacing(6);
         verticalLayout_6->setObjectName(QStringLiteral("verticalLayout_6"));
-        verticalSpacer_2 = new QSpacerItem(20, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         verticalLayout_6->addItem(verticalSpacer_2);
 
@@ -244,23 +243,13 @@ public:
 
         verticalLayout_6->addWidget(scheduleLabel);
 
-        line_5 = new QFrame(viewSchedule);
-        line_5->setObjectName(QStringLiteral("line_5"));
-        line_5->setFrameShape(QFrame::HLine);
-        line_5->setFrameShadow(QFrame::Sunken);
-
-        verticalLayout_6->addWidget(line_5);
-
         semesterScheduleView = new QTextEdit(viewSchedule);
         semesterScheduleView->setObjectName(QStringLiteral("semesterScheduleView"));
-        semesterScheduleView->setEnabled(true);
-        semesterScheduleView->setFont(font1);
-        semesterScheduleView->setFrameShadow(QFrame::Plain);
-        semesterScheduleView->setTextInteractionFlags(Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse);
+        semesterScheduleView->setEnabled(false);
 
         verticalLayout_6->addWidget(semesterScheduleView);
 
-        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Minimum);
+        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         verticalLayout_6->addItem(verticalSpacer);
 
@@ -439,6 +428,7 @@ public:
         passwordChangeStatusLabel = new QLabel(changePassword);
         passwordChangeStatusLabel->setObjectName(QStringLiteral("passwordChangeStatusLabel"));
         passwordChangeStatusLabel->setFont(font2);
+        passwordChangeStatusLabel->setAlignment(Qt::AlignCenter);
 
         formLayout->setWidget(6, QFormLayout::SpanningRole, passwordChangeStatusLabel);
 
@@ -462,7 +452,7 @@ public:
         retranslateUi(studentView);
         QObject::connect(searchClassesInput, SIGNAL(returnPressed()), searchButton, SLOT(click()));
 
-        stackedWidget->setCurrentIndex(1);
+        stackedWidget->setCurrentIndex(4);
 
 
         QMetaObject::connectSlotsByName(studentView);

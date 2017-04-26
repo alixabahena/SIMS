@@ -217,12 +217,20 @@ void changePassword(string username, string password)
 	const char* data = "";
 	const char* dbName = "Students.db";
 	sqlite3_stmt *stmt;
+	
 
-	rc = sqlite3_prepare_v2(db, "UPDATE Users SET Password = :password WHERE username=':username'",
-		-1, &stmt, NULL);
-	if (rc != SQLITE_OK) {
-		cerr << "SELECT failed: " << sqlite3_errmsg(db) << endl;
+	string sqlstatement = "UPDATE Users SET Password = " + password + ",WHERE username =" + password + ";";
 
+	if (sqlite3_open(dbName, &db) == SQLITE_OK)
+	{
+		sqlite3_prepare(db, sqlstatement.c_str(), -1, &stmt, NULL);//preparing the statement
+		sqlite3_step(stmt);//executing the statement
+	}
+	else
+	{
+		cout << "Failed to open db\n";
+	}
 
+	sqlite3_finalize(stmt);
+	sqlite3_close(db);
 }
-

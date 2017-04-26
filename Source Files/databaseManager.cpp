@@ -208,3 +208,21 @@ vector<records> populateRecords()
 	return allrecords;
 }
 
+void changePassword(string username, string password)
+{
+	sqlite3 *db;
+	char *zErrMsg = 0;
+	int rc;
+	char *sql;
+	const char* data = "";
+	const char* dbName = "Students.db";
+	sqlite3_stmt *stmt;
+
+	rc = sqlite3_prepare_v2(db, "UPDATE Users SET Password = :password WHERE username=':username'",
+		-1, &stmt, NULL);
+	if (rc != SQLITE_OK) {
+		cerr << "SELECT failed: " << sqlite3_errmsg(db) << endl;
+
+
+}
+

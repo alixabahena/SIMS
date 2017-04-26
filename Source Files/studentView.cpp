@@ -78,21 +78,28 @@ void studentView::on_viewScheduleButton_clicked()
 
 	ui.stackedWidget->setCurrentIndex(1);
 	QString classes;
-
+	
 	//display schedule
 	for (int i = 0; i < allRecords.size(); i++)
 	{
 		if (allStudents[userlocation].userName == allRecords[i].Username)
 		{
-			classes += QString::fromStdString(to_string(allClasses[i].CRN)) + " " 
+			classes += QString::fromStdString(to_string(allClasses[i].CRN)) + " "
 				+ QString::fromStdString(allClasses[i].Subject) + " "
 				+ QString::fromStdString(to_string(allClasses[i].courseID)) + " "
 				+ QString::fromStdString(allClasses[i].Name) + " "
 				+ QString::fromStdString(allClasses[i].Semester) + " "
 				+ QString::fromStdString(allClasses[i].classDays) + " "
-				+ QString::fromStdString(allClasses[i].classTime) + " "
-				+ QString::fromStdString(allClasses[i].Instructor) + " "
-				+ QString::fromStdString(allClasses[i].Room) + "\n";
+				+ QString::fromStdString(allClasses[i].classTime) + " ";
+			for (int j = 0; j < allFaculty.size();j++)
+			{
+				if (allClasses[i].Instructor == allFaculty[j].userName )
+				{
+					classes += QString::fromStdString(allFaculty[j].firstName) + " " + QString::fromStdString(allFaculty[j].lastName) + " ";
+				}
+			}
+				
+			classes += QString::fromStdString(allClasses[i].Room) + "\n";
 		}
 	}
 	ui.semesterScheduleView->setText(classes);
@@ -113,6 +120,42 @@ void studentView::on_manageScheduleButton_clicked()
 
 	//change header text
 	ui.welcomeLabel->setText("Manage Schedule");
+	
+	//create QT items
+	QStandardItemModel *model = new QStandardItemModel(this);
+	QList<QStandardItem *> items;
+	//set headers name and size
+	QStringList headers;
+	headers << "CRN" << "Subject" << "Course ID" << "Name" << "Semester" << "Day" << "Time" << "Instructor" << "Room";
+	model->setColumnCount(allClasses.size() - 1);
+	model->setHorizontalHeaderLabels(headers);
+	//populate schedule
+	for (int i = 0; i < allRecords.size(); i++)
+	{
+		if (allStudents[userlocation].userName == allRecords[i].Username)
+		{
+			items.append(new QStandardItem(QString::fromStdString(to_string(allClasses[i].CRN))));
+			items.append(new QStandardItem(QString::fromStdString(allClasses[i].Subject)));
+			items.append(new QStandardItem(QString::fromStdString(to_string(allClasses[i].courseID))));
+			items.append(new QStandardItem(QString::fromStdString(allClasses[i].Name)));
+			items.append(new QStandardItem(QString::fromStdString(allClasses[i].Semester)));
+			items.append(new QStandardItem(QString::fromStdString(allClasses[i].classDays)));
+			items.append(new QStandardItem(QString::fromStdString(allClasses[i].classTime)));
+			for (int j = 0; j < allFaculty.size(); j++)
+			{
+				if (allClasses[i].Instructor == allFaculty[j].userName)
+				{
+					items.append(new QStandardItem(QString::fromStdString(allFaculty[j].firstName) + " " + QString::fromStdString(allFaculty[j].lastName)));
+				}
+			}
+	
+			items.append(new QStandardItem(QString::fromStdString(allClasses[i].Room)));
+			model->appendRow(items);
+			items.clear();
+		}
+	}
+	ui.manageClassesView->setEditTriggers(QAbstractItemView::NoEditTriggers);
+	ui.manageClassesView->setModel(model);
 
 	//enable back button
 	ui.backButton->show();
@@ -133,7 +176,7 @@ void studentView::on_viewClassesButton_clicked()
 	headers << "CRN" << "Subject"<<"Course ID"<<"Name"<<"Semester"<<"Day"<<"Time"<<"Instructor"<<"Room";
 	model->setColumnCount(allClasses.size()-1);
 	model->setHorizontalHeaderLabels(headers);
-	//popuate table
+	//populate table
 	for (int i = 0; i < allClasses.size()-1; i++)
 	{
 		model->setRowCount(i);

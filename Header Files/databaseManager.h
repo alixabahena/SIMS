@@ -10,3 +10,4 @@ vector<Student> populateStudents();
 vector<faculty> populateFaculty();
 vector<classes> populateClasses();
 vector<records> populateRecords();
+void changePassword(string username,string password);

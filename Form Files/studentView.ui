@@ -56,7 +56,6 @@
        <property name="font">
         <font>
          <pointsize>12</pointsize>
-         <italic>true</italic>
         </font>
        </property>
        <property name="text">
@@ -71,7 +70,6 @@
       <widget class="QStackedWidget" name="stackedWidget">
        <property name="currentIndex">
         <number>1</number>
-        <number>0</number>
        </property>
        <widget class="QWidget" name="mainPage">
         <property name="sizePolicy">
@@ -140,7 +138,7 @@
                 </sizepolicy>
                </property>
                <property name="text">
-                <string>View Current Schedule</string>
+                <string>View Schedule</string>
                </property>
               </widget>
              </item>
@@ -153,7 +151,7 @@
                 </sizepolicy>
                </property>
                <property name="text">
-                <string>Register / Drop Classes</string>
+                <string>Manage Schedule</string>
                </property>
               </widget>
              </item>
@@ -166,7 +164,7 @@
                 </sizepolicy>
                </property>
                <property name="text">
-                <string>View Available Classes</string>
+                <string>View Classes</string>
                </property>
               </widget>
              </item>
@@ -190,12 +188,6 @@
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
-               </property>
-               <property name="font">
-                <font>
-                 <weight>75</weight>
-                 <bold>true</bold>
-                </font>
                </property>
                <property name="text">
                 <string>Logout</string>
@@ -223,10 +215,13 @@
              <property name="orientation">
               <enum>Qt::Vertical</enum>
              </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Minimum</enum>
+             </property>
              <property name="sizeHint" stdset="0">
               <size>
                <width>20</width>
-               <height>40</height>
+               <height>20</height>
               </size>
              </property>
             </spacer>
@@ -250,14 +245,27 @@
             </widget>
            </item>
            <item>
+            <widget class="Line" name="line_5">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+           <item>
             <widget class="QTextEdit" name="semesterScheduleView">
              <property name="enabled">
-              <bool>false</bool>
+              <bool>true</bool>
              </property>
              <property name="font">
               <font>
                <pointsize>12</pointsize>
               </font>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Plain</enum>
+             </property>
+             <property name="textInteractionFlags">
+              <set>Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
              </property>
             </widget>
            </item>
@@ -265,6 +273,9 @@
             <spacer name="verticalSpacer">
              <property name="orientation">
               <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Minimum</enum>
              </property>
              <property name="sizeHint" stdset="0">
               <size>

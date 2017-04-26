@@ -58,6 +58,7 @@ public:
     QVBoxLayout *verticalLayout_6;
     QSpacerItem *verticalSpacer_2;
     QLabel *scheduleLabel;
+    QFrame *line_5;
     QTextEdit *semesterScheduleView;
     QSpacerItem *verticalSpacer;
     QFrame *line;
@@ -136,7 +137,6 @@ public:
         label->setObjectName(QStringLiteral("label"));
         QFont font1;
         font1.setPointSize(12);
-        font1.setItalic(true);
         label->setFont(font1);
         label->setAlignment(Qt::AlignCenter);
 
@@ -166,9 +166,7 @@ public:
         sizePolicy1.setVerticalStretch(0);
         sizePolicy1.setHeightForWidth(studentInfoBrowser->sizePolicy().hasHeightForWidth());
         studentInfoBrowser->setSizePolicy(sizePolicy1);
-        QFont font2;
-        font2.setPointSize(12);
-        studentInfoBrowser->setFont(font2);
+        studentInfoBrowser->setFont(font1);
         studentInfoBrowser->setFrameShape(QFrame::StyledPanel);
         studentInfoBrowser->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
 
@@ -213,10 +211,6 @@ public:
         logoutButton->setObjectName(QStringLiteral("logoutButton"));
         sizePolicy1.setHeightForWidth(logoutButton->sizePolicy().hasHeightForWidth());
         logoutButton->setSizePolicy(sizePolicy1);
-        QFont font3;
-        font3.setBold(true);
-        font3.setWeight(75);
-        logoutButton->setFont(font3);
 
         verticalLayout->addWidget(logoutButton);
 
@@ -238,25 +232,35 @@ public:
         verticalLayout_6 = new QVBoxLayout();
         verticalLayout_6->setSpacing(6);
         verticalLayout_6->setObjectName(QStringLiteral("verticalLayout_6"));
-        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        verticalSpacer_2 = new QSpacerItem(20, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
 
         verticalLayout_6->addItem(verticalSpacer_2);
 
         scheduleLabel = new QLabel(viewSchedule);
         scheduleLabel->setObjectName(QStringLiteral("scheduleLabel"));
-        scheduleLabel->setFont(font2);
+        scheduleLabel->setFont(font1);
         scheduleLabel->setMidLineWidth(4);
         scheduleLabel->setAlignment(Qt::AlignCenter);
 
         verticalLayout_6->addWidget(scheduleLabel);
 
+        line_5 = new QFrame(viewSchedule);
+        line_5->setObjectName(QStringLiteral("line_5"));
+        line_5->setFrameShape(QFrame::HLine);
+        line_5->setFrameShadow(QFrame::Sunken);
+
+        verticalLayout_6->addWidget(line_5);
+
         semesterScheduleView = new QTextEdit(viewSchedule);
         semesterScheduleView->setObjectName(QStringLiteral("semesterScheduleView"));
-        semesterScheduleView->setEnabled(false);
+        semesterScheduleView->setEnabled(true);
+        semesterScheduleView->setFont(font1);
+        semesterScheduleView->setFrameShadow(QFrame::Plain);
+        semesterScheduleView->setTextInteractionFlags(Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse);
 
         verticalLayout_6->addWidget(semesterScheduleView);
 
-        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Minimum);
 
         verticalLayout_6->addItem(verticalSpacer);
 
@@ -315,15 +319,15 @@ public:
         sizePolicy2.setVerticalStretch(0);
         sizePolicy2.setHeightForWidth(classesSearchBox->sizePolicy().hasHeightForWidth());
         classesSearchBox->setSizePolicy(sizePolicy2);
-        QFont font4;
-        font4.setPointSize(10);
-        classesSearchBox->setFont(font4);
+        QFont font2;
+        font2.setPointSize(10);
+        classesSearchBox->setFont(font2);
 
         gridLayout->addWidget(classesSearchBox, 0, 1, 1, 1);
 
         searchButton = new QPushButton(viewClasses);
         searchButton->setObjectName(QStringLiteral("searchButton"));
-        searchButton->setFont(font4);
+        searchButton->setFont(font2);
 
         gridLayout->addWidget(searchButton, 0, 3, 1, 1);
 
@@ -338,7 +342,7 @@ public:
         sizePolicy3.setVerticalStretch(0);
         sizePolicy3.setHeightForWidth(searchLabel->sizePolicy().hasHeightForWidth());
         searchLabel->setSizePolicy(sizePolicy3);
-        searchLabel->setFont(font4);
+        searchLabel->setFont(font2);
         searchLabel->setAlignment(Qt::AlignCenter);
 
         gridLayout->addWidget(searchLabel, 0, 0, 1, 1);
@@ -359,7 +363,7 @@ public:
         searchClassesInput->setObjectName(QStringLiteral("searchClassesInput"));
         sizePolicy3.setHeightForWidth(searchClassesInput->sizePolicy().hasHeightForWidth());
         searchClassesInput->setSizePolicy(sizePolicy3);
-        searchClassesInput->setFont(font4);
+        searchClassesInput->setFont(font2);
 
         gridLayout->addWidget(searchClassesInput, 0, 2, 1, 1);
 
@@ -378,7 +382,7 @@ public:
         formLayout->setObjectName(QStringLiteral("formLayout"));
         currentPasswordLabel = new QLabel(changePassword);
         currentPasswordLabel->setObjectName(QStringLiteral("currentPasswordLabel"));
-        currentPasswordLabel->setFont(font2);
+        currentPasswordLabel->setFont(font1);
 
         formLayout->setWidget(1, QFormLayout::LabelRole, currentPasswordLabel);
 
@@ -391,7 +395,7 @@ public:
 
         newPasswordLabel = new QLabel(changePassword);
         newPasswordLabel->setObjectName(QStringLiteral("newPasswordLabel"));
-        newPasswordLabel->setFont(font2);
+        newPasswordLabel->setFont(font1);
 
         formLayout->setWidget(3, QFormLayout::LabelRole, newPasswordLabel);
 
@@ -411,7 +415,7 @@ public:
 
         verifyNewPasswordLabel = new QLabel(changePassword);
         verifyNewPasswordLabel->setObjectName(QStringLiteral("verifyNewPasswordLabel"));
-        verifyNewPasswordLabel->setFont(font2);
+        verifyNewPasswordLabel->setFont(font1);
 
         formLayout->setWidget(4, QFormLayout::LabelRole, verifyNewPasswordLabel);
 
@@ -424,7 +428,7 @@ public:
 
         submitButton = new QPushButton(changePassword);
         submitButton->setObjectName(QStringLiteral("submitButton"));
-        submitButton->setFont(font4);
+        submitButton->setFont(font2);
 
         formLayout->setWidget(5, QFormLayout::FieldRole, submitButton);
 
@@ -434,7 +438,7 @@ public:
 
         passwordChangeStatusLabel = new QLabel(changePassword);
         passwordChangeStatusLabel->setObjectName(QStringLiteral("passwordChangeStatusLabel"));
-        passwordChangeStatusLabel->setFont(font4);
+        passwordChangeStatusLabel->setFont(font2);
 
         formLayout->setWidget(6, QFormLayout::SpanningRole, passwordChangeStatusLabel);
 
@@ -458,7 +462,7 @@ public:
         retranslateUi(studentView);
         QObject::connect(searchClassesInput, SIGNAL(returnPressed()), searchButton, SLOT(click()));
 
-        stackedWidget->setCurrentIndex(0);
+        stackedWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(studentView);
@@ -471,9 +475,9 @@ public:
         usernameLabel->setText(QString());
         label->setText(QApplication::translate("studentView", "Student Information and Options", Q_NULLPTR));
         studentInfoBrowser->setText(QString());
-        viewScheduleButton->setText(QApplication::translate("studentView", "View Current Schedule", Q_NULLPTR));
-        manageScheduleButton->setText(QApplication::translate("studentView", "Register / Drop Classes", Q_NULLPTR));
-        viewClassesButton->setText(QApplication::translate("studentView", "View Available Classes", Q_NULLPTR));
+        viewScheduleButton->setText(QApplication::translate("studentView", "View Schedule", Q_NULLPTR));
+        manageScheduleButton->setText(QApplication::translate("studentView", "Manage Schedule", Q_NULLPTR));
+        viewClassesButton->setText(QApplication::translate("studentView", "View Classes", Q_NULLPTR));
         changePasswordButton->setText(QApplication::translate("studentView", "Change Password", Q_NULLPTR));
         logoutButton->setText(QApplication::translate("studentView", "Logout", Q_NULLPTR));
         scheduleLabel->setText(QApplication::translate("studentView", "Current Student Semester Schedule", Q_NULLPTR));

@@ -70,6 +70,7 @@
      <item>
       <widget class="QStackedWidget" name="stackedWidget">
        <property name="currentIndex">
+        <number>1</number>
         <number>0</number>
        </property>
        <widget class="QWidget" name="mainPage">
@@ -252,6 +253,11 @@
             <widget class="QTextEdit" name="semesterScheduleView">
              <property name="enabled">
               <bool>false</bool>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
              </property>
             </widget>
            </item>

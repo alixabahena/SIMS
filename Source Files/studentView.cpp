@@ -2,6 +2,8 @@
 
 vector<Student>allStudents = populateStudents();
 vector<classes>allClasses = populateClasses();
+vector<records>allRecords = populateRecords();
+vector<faculty>allFaculty = populateFaculty();
 int userlocation = 0;
 
 studentView::studentView(QWidget *parent)
@@ -76,21 +78,32 @@ void studentView::on_viewScheduleButton_clicked()
 
 	ui.stackedWidget->setCurrentIndex(1);
 	QString classes;
-	vector<string> studentClasses = allStudents[userlocation].GetClasses();
+
+	//display schedule
+	for (int i = 0; i < allRecords.size(); i++)
+	{
+		if (allStudents[userlocation].userName == allRecords[i].Username)
+		{
+			classes += QString::fromStdString(to_string(allClasses[i].CRN)) + " " 
+				+ QString::fromStdString(allClasses[i].Subject) + " "
+				+ QString::fromStdString(to_string(allClasses[i].courseID)) + " "
+				+ QString::fromStdString(allClasses[i].Name) + " "
+				+ QString::fromStdString(allClasses[i].Semester) + " "
+				+ QString::fromStdString(allClasses[i].classDays) + " "
+				+ QString::fromStdString(allClasses[i].classTime) + " "
+				+ QString::fromStdString(allClasses[i].Instructor) + " "
+				+ QString::fromStdString(allClasses[i].Room) + "\n";
+		}
+	}
+	ui.semesterScheduleView->setText(classes);
 
 	//change header text
 	ui.welcomeLabel->setText("View Schedule");
-	
-	for (int i = 0; i < studentClasses.size(); i++) {
-		classes += QString::fromStdString(studentClasses[i]);
-	}
 
-	ui.semesterScheduleView->setText(classes);
 	//enable back button
 	ui.backButton->show();
 	ui.backButton->setEnabled(true);
 
-	//display schedule
 	
 }
 

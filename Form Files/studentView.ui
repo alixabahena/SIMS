@@ -75,7 +75,7 @@
         </sizepolicy>
        </property>
        <property name="currentIndex">
-        <number>2</number>
+        <number>0</number>
        </property>
        <widget class="QWidget" name="mainPage">
         <property name="sizePolicy">
@@ -648,6 +648,22 @@
     <hint type="destinationlabel">
      <x>662</x>
      <y>191</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>verifyNewPasswordField</sender>
+   <signal>returnPressed()</signal>
+   <receiver>submitButton</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>498</x>
+     <y>433</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>498</x>
+     <y>476</y>
     </hint>
    </hints>
   </connection>

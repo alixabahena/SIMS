@@ -10,3 +10,24 @@ facultyView::facultyView(QWidget *parent)
 	ui.stackedWidget->setCurrentIndex(0);
 
 }
+
+void facultyView::on_viewScheduleButton_clicked()
+{
+
+}
+void facultyView::on_manageScheduleButton_clicked()
+{
+
+}
+void facultyView::on_viewClassesButton_clicked()
+{
+
+}
+void facultyView::on_changePasswordButton_clicked()
+{
+
+}
+void facultyView::on_logoutButton_clicked()
+{
+
+}

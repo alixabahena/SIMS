@@ -64,12 +64,12 @@ public:
     QWidget *manageSchedule;
     QVBoxLayout *verticalLayout_10;
     QGridLayout *gridLayout_2;
+    QLabel *crnLabel;
     QPushButton *removeClassButton;
     QPushButton *addClassButton;
-    QLabel *crnLabel;
     QLineEdit *crnAddRemoveLine;
-    QTableView *manageClassesView;
     QFrame *line_5;
+    QTableView *manageClassesView;
     QLabel *addRemoveClassLabel;
     QWidget *viewClasses;
     QVBoxLayout *verticalLayout_8;
@@ -284,70 +284,74 @@ public:
         gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
         gridLayout_2->setHorizontalSpacing(25);
         gridLayout_2->setVerticalSpacing(15);
-        removeClassButton = new QPushButton(manageSchedule);
-        removeClassButton->setObjectName(QStringLiteral("removeClassButton"));
-        QSizePolicy sizePolicy3(QSizePolicy::Minimum, QSizePolicy::Fixed);
-        sizePolicy3.setHorizontalStretch(0);
-        sizePolicy3.setVerticalStretch(0);
-        sizePolicy3.setHeightForWidth(removeClassButton->sizePolicy().hasHeightForWidth());
-        removeClassButton->setSizePolicy(sizePolicy3);
-        removeClassButton->setMinimumSize(QSize(200, 0));
-
-        gridLayout_2->addWidget(removeClassButton, 4, 1, 1, 1);
-
-        addClassButton = new QPushButton(manageSchedule);
-        addClassButton->setObjectName(QStringLiteral("addClassButton"));
-        sizePolicy3.setHeightForWidth(addClassButton->sizePolicy().hasHeightForWidth());
-        addClassButton->setSizePolicy(sizePolicy3);
-        addClassButton->setMinimumSize(QSize(200, 0));
-
-        gridLayout_2->addWidget(addClassButton, 3, 1, 1, 1);
-
         crnLabel = new QLabel(manageSchedule);
         crnLabel->setObjectName(QStringLiteral("crnLabel"));
+        QSizePolicy sizePolicy3(QSizePolicy::Maximum, QSizePolicy::Fixed);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
         sizePolicy3.setHeightForWidth(crnLabel->sizePolicy().hasHeightForWidth());
         crnLabel->setSizePolicy(sizePolicy3);
         QFont font2;
         font2.setPointSize(10);
         crnLabel->setFont(font2);
 
-        gridLayout_2->addWidget(crnLabel, 0, 1, 1, 1);
+        gridLayout_2->addWidget(crnLabel, 0, 0, 1, 1);
+
+        removeClassButton = new QPushButton(manageSchedule);
+        removeClassButton->setObjectName(QStringLiteral("removeClassButton"));
+        QSizePolicy sizePolicy4(QSizePolicy::Minimum, QSizePolicy::Fixed);
+        sizePolicy4.setHorizontalStretch(0);
+        sizePolicy4.setVerticalStretch(0);
+        sizePolicy4.setHeightForWidth(removeClassButton->sizePolicy().hasHeightForWidth());
+        removeClassButton->setSizePolicy(sizePolicy4);
+        removeClassButton->setMinimumSize(QSize(200, 0));
+
+        gridLayout_2->addWidget(removeClassButton, 0, 3, 1, 1);
+
+        addClassButton = new QPushButton(manageSchedule);
+        addClassButton->setObjectName(QStringLiteral("addClassButton"));
+        sizePolicy4.setHeightForWidth(addClassButton->sizePolicy().hasHeightForWidth());
+        addClassButton->setSizePolicy(sizePolicy4);
+        addClassButton->setMinimumSize(QSize(200, 0));
+
+        gridLayout_2->addWidget(addClassButton, 0, 2, 1, 1);
 
         crnAddRemoveLine = new QLineEdit(manageSchedule);
         crnAddRemoveLine->setObjectName(QStringLiteral("crnAddRemoveLine"));
-        sizePolicy3.setHeightForWidth(crnAddRemoveLine->sizePolicy().hasHeightForWidth());
-        crnAddRemoveLine->setSizePolicy(sizePolicy3);
+        sizePolicy4.setHeightForWidth(crnAddRemoveLine->sizePolicy().hasHeightForWidth());
+        crnAddRemoveLine->setSizePolicy(sizePolicy4);
         crnAddRemoveLine->setFont(font2);
 
-        gridLayout_2->addWidget(crnAddRemoveLine, 1, 1, 1, 1);
-
-        manageClassesView = new QTableView(manageSchedule);
-        manageClassesView->setObjectName(QStringLiteral("manageClassesView"));
-        QSizePolicy sizePolicy4(QSizePolicy::MinimumExpanding, QSizePolicy::Expanding);
-        sizePolicy4.setHorizontalStretch(0);
-        sizePolicy4.setVerticalStretch(0);
-        sizePolicy4.setHeightForWidth(manageClassesView->sizePolicy().hasHeightForWidth());
-        manageClassesView->setSizePolicy(sizePolicy4);
-
-        gridLayout_2->addWidget(manageClassesView, 0, 0, 6, 1);
+        gridLayout_2->addWidget(crnAddRemoveLine, 0, 1, 1, 1);
 
         line_5 = new QFrame(manageSchedule);
         line_5->setObjectName(QStringLiteral("line_5"));
         line_5->setFrameShape(QFrame::HLine);
         line_5->setFrameShadow(QFrame::Sunken);
 
-        gridLayout_2->addWidget(line_5, 2, 1, 1, 1);
+        gridLayout_2->addWidget(line_5, 2, 0, 1, 4);
+
+        manageClassesView = new QTableView(manageSchedule);
+        manageClassesView->setObjectName(QStringLiteral("manageClassesView"));
+        QSizePolicy sizePolicy5(QSizePolicy::MinimumExpanding, QSizePolicy::Expanding);
+        sizePolicy5.setHorizontalStretch(0);
+        sizePolicy5.setVerticalStretch(0);
+        sizePolicy5.setHeightForWidth(manageClassesView->sizePolicy().hasHeightForWidth());
+        manageClassesView->setSizePolicy(sizePolicy5);
+
+        gridLayout_2->addWidget(manageClassesView, 3, 0, 6, 4);
 
         addRemoveClassLabel = new QLabel(manageSchedule);
         addRemoveClassLabel->setObjectName(QStringLiteral("addRemoveClassLabel"));
-        QSizePolicy sizePolicy5(QSizePolicy::Preferred, QSizePolicy::Fixed);
-        sizePolicy5.setHorizontalStretch(0);
-        sizePolicy5.setVerticalStretch(0);
-        sizePolicy5.setHeightForWidth(addRemoveClassLabel->sizePolicy().hasHeightForWidth());
-        addRemoveClassLabel->setSizePolicy(sizePolicy5);
+        QSizePolicy sizePolicy6(QSizePolicy::Preferred, QSizePolicy::Fixed);
+        sizePolicy6.setHorizontalStretch(0);
+        sizePolicy6.setVerticalStretch(0);
+        sizePolicy6.setHeightForWidth(addRemoveClassLabel->sizePolicy().hasHeightForWidth());
+        addRemoveClassLabel->setSizePolicy(sizePolicy6);
         addRemoveClassLabel->setFont(font2);
+        addRemoveClassLabel->setAlignment(Qt::AlignCenter);
 
-        gridLayout_2->addWidget(addRemoveClassLabel, 5, 1, 1, 1);
+        gridLayout_2->addWidget(addRemoveClassLabel, 1, 0, 1, 4);
 
 
         verticalLayout_10->addLayout(gridLayout_2);
@@ -364,11 +368,11 @@ public:
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
         classesSearchBox = new QComboBox(viewClasses);
         classesSearchBox->setObjectName(QStringLiteral("classesSearchBox"));
-        QSizePolicy sizePolicy6(QSizePolicy::Expanding, QSizePolicy::Preferred);
-        sizePolicy6.setHorizontalStretch(0);
-        sizePolicy6.setVerticalStretch(0);
-        sizePolicy6.setHeightForWidth(classesSearchBox->sizePolicy().hasHeightForWidth());
-        classesSearchBox->setSizePolicy(sizePolicy6);
+        QSizePolicy sizePolicy7(QSizePolicy::Expanding, QSizePolicy::Preferred);
+        sizePolicy7.setHorizontalStretch(0);
+        sizePolicy7.setVerticalStretch(0);
+        sizePolicy7.setHeightForWidth(classesSearchBox->sizePolicy().hasHeightForWidth());
+        classesSearchBox->setSizePolicy(sizePolicy7);
         classesSearchBox->setFont(font2);
 
         gridLayout->addWidget(classesSearchBox, 0, 1, 1, 1);
@@ -385,11 +389,11 @@ public:
 
         searchLabel = new QLabel(viewClasses);
         searchLabel->setObjectName(QStringLiteral("searchLabel"));
-        QSizePolicy sizePolicy7(QSizePolicy::Expanding, QSizePolicy::Minimum);
-        sizePolicy7.setHorizontalStretch(0);
-        sizePolicy7.setVerticalStretch(0);
-        sizePolicy7.setHeightForWidth(searchLabel->sizePolicy().hasHeightForWidth());
-        searchLabel->setSizePolicy(sizePolicy7);
+        QSizePolicy sizePolicy8(QSizePolicy::Expanding, QSizePolicy::Minimum);
+        sizePolicy8.setHorizontalStretch(0);
+        sizePolicy8.setVerticalStretch(0);
+        sizePolicy8.setHeightForWidth(searchLabel->sizePolicy().hasHeightForWidth());
+        searchLabel->setSizePolicy(sizePolicy8);
         searchLabel->setFont(font2);
         searchLabel->setAlignment(Qt::AlignCenter);
 
@@ -409,8 +413,8 @@ public:
 
         searchClassesInput = new QLineEdit(viewClasses);
         searchClassesInput->setObjectName(QStringLiteral("searchClassesInput"));
-        sizePolicy7.setHeightForWidth(searchClassesInput->sizePolicy().hasHeightForWidth());
-        searchClassesInput->setSizePolicy(sizePolicy7);
+        sizePolicy8.setHeightForWidth(searchClassesInput->sizePolicy().hasHeightForWidth());
+        searchClassesInput->setSizePolicy(sizePolicy8);
         searchClassesInput->setFont(font2);
 
         gridLayout->addWidget(searchClassesInput, 0, 2, 1, 1);
@@ -510,6 +514,7 @@ public:
 
         retranslateUi(studentView);
         QObject::connect(searchClassesInput, SIGNAL(returnPressed()), searchButton, SLOT(click()));
+        QObject::connect(verifyNewPasswordField, SIGNAL(returnPressed()), submitButton, SLOT(click()));
 
         stackedWidget->setCurrentIndex(2);
 
@@ -530,9 +535,9 @@ public:
         changePasswordButton->setText(QApplication::translate("studentView", "Change Password", Q_NULLPTR));
         logoutButton->setText(QApplication::translate("studentView", "Logout", Q_NULLPTR));
         scheduleLabel->setText(QApplication::translate("studentView", "Current Student Semester Schedule", Q_NULLPTR));
+        crnLabel->setText(QApplication::translate("studentView", "CRN:", Q_NULLPTR));
         removeClassButton->setText(QApplication::translate("studentView", "Remove Class", Q_NULLPTR));
         addClassButton->setText(QApplication::translate("studentView", "Add Class", Q_NULLPTR));
-        crnLabel->setText(QApplication::translate("studentView", "CRN:", Q_NULLPTR));
         addRemoveClassLabel->setText(QString());
         searchButton->setText(QApplication::translate("studentView", "Submit", Q_NULLPTR));
         searchLabel->setText(QApplication::translate("studentView", "Search: ", Q_NULLPTR));

@@ -185,27 +185,39 @@ void studentView::on_addClassButton_clicked()
 	//variables
 	string username = allStudents[userlocation].userName;
 	int crnEntered = ui.crnAddRemoveLine->text().toInt();;
+	bool realClass = true;
 	//get entered CRN
 
 
 	for (int i = 0; i < allClasses.size(); i++)
 	{
+		//crn does not exist - error
+		
 		if (crnEntered == allClasses[i].CRN)
 		{
+			realClass = true;
 			//class already in student schedule -error
 			for (int j = 0; j < allRecords.size(); j++)
 			{
 				if (crnEntered == allRecords[j].Crn && username == allRecords[j].Username)
 				{
+					ui.addRemoveClassLabel->setStyleSheet("QLabel { background-color : red; color : white; }");
 					ui.addRemoveClassLabel->setText("Class already in schedule!");
+					break;
 				}
+				
 			}
 		}
-		//crn does not exist - error
 		else if (crnEntered != allClasses[i].CRN)
 		{
-			ui.addRemoveClassLabel->setText("No such Class exist!");
+			realClass = false;
 		}
+		
+	}
+	if (!realClass)
+	{
+		ui.addRemoveClassLabel->setStyleSheet("QLabel { background-color : red; color : white; }");
+		ui.addRemoveClassLabel->setText("No such Class exist!");
 	}
 	
 }

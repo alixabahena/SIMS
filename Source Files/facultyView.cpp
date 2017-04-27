@@ -118,7 +118,7 @@ void facultyView::on_manageScheduleButton_clicked()
 
 	ui.stackedWidget->setCurrentIndex(2);
 	ui.welcomeLabel->setText("Enter Class Grades");
-
+	ui.viewCurrentClassesButton->setEnabled(false);
 	//create QT items
 	QStandardItemModel *model = new QStandardItemModel(this);
 	QList<QStandardItem *> items;
@@ -170,6 +170,9 @@ void facultyView::on_viewCurrentClassesButton_clicked()
 	vector<records>allRecords = populateRecords();
 	vector<faculty>allFaculty = populateFaculty();
 
+	//disable view students button
+	ui.viewCurrentClassesButton->setEnabled(false);
+	ui.viewStudentsButton->setEnabled(true);
 	//create QT items
 	QStandardItemModel *model = new QStandardItemModel(this);
 	QList<QStandardItem *> items;
@@ -218,6 +221,9 @@ void facultyView::on_viewStudentsButton_clicked()
 	vector<records>allRecords = populateRecords();
 	vector<faculty>allFaculty = populateFaculty();
 
+	//disable view students button
+	ui.viewStudentsButton->setEnabled(false);
+	ui.viewCurrentClassesButton->setEnabled(true);
 	//create QT items
 	QStandardItemModel *model = new QStandardItemModel(this);
 	QList<QStandardItem *> items;

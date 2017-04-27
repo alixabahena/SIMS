@@ -111,7 +111,7 @@ void studentView::on_viewScheduleButton_clicked()
 	ui.semesterScheduleView->setText(classes);
 
 	//change header text
-	ui.welcomeLabel->setText("View Schedule");
+	ui.welcomeLabel->setText("View Current Schedule");
 
 	//enable back button
 	ui.backButton->show();
@@ -131,7 +131,7 @@ void studentView::on_manageScheduleButton_clicked()
 	ui.stackedWidget->setCurrentIndex(2);
 
 	//change header text
-	ui.welcomeLabel->setText("Manage Schedule");
+	ui.welcomeLabel->setText("Add / Remove Classes");
 	
 	//create QT items
 	QStandardItemModel *model = new QStandardItemModel(this);

@@ -66,6 +66,43 @@ facultyView::facultyView(QString userName)
 void facultyView::on_viewScheduleButton_clicked()
 {
 	ui.stackedWidget->setCurrentIndex(1);
+
+	vector<users>allUsers = populateUsers();
+	vector<Student>allStudents = populateStudents();
+	vector<classes>allClasses = populateClasses();
+	vector<records>allRecords = populateRecords();
+	vector<faculty>allFaculty = populateFaculty();
+	ui.stackedWidget->setCurrentIndex(1);
+	QString classes;
+
+	//display schedule
+	for (int i = 0; i < allClasses.size(); i++)
+	{
+		if (allFaculty[userloc].userName == allClasses[i].Instructor)
+		{
+			classes += QString::fromStdString(to_string(allClasses[i].CRN)) + " "
+				+ QString::fromStdString(allClasses[i].Subject) + " "
+				+ QString::fromStdString(to_string(allClasses[i].courseID)) + " "
+				+ QString::fromStdString(allClasses[i].Name) + " "
+				+ QString::fromStdString(allClasses[i].Semester) + " "
+				+ QString::fromStdString(allClasses[i].classDays) + " "
+				+ QString::fromStdString(allClasses[i].classTime) + " ";
+			for (int j = 0; j < allFaculty.size(); j++)
+			{
+				if (allClasses[i].Instructor == allFaculty[j].userName)
+				{
+					classes += QString::fromStdString(allFaculty[j].firstName) + " " + QString::fromStdString(allFaculty[j].lastName) + " ";
+				}
+			}
+
+			classes += QString::fromStdString(allClasses[i].Room) + "\n";
+		}
+	}
+	ui.semesterScheduleView->setText(classes);
+
+	//change header text
+	ui.welcomeLabel->setText("View Current Schedule");
+
 	//enable back button
 	ui.backButton->show();
 	ui.backButton->setEnabled(true);

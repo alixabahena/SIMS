@@ -78,7 +78,7 @@
      <item>
       <widget class="QStackedWidget" name="stackedWidget">
        <property name="currentIndex">
-        <number>0</number>
+        <number>2</number>
        </property>
        <widget class="QWidget" name="mainPage">
         <property name="sizePolicy">
@@ -96,7 +96,7 @@
               <number>15</number>
              </property>
              <item>
-              <widget class="QPushButton" name="viewScheduleButton">
+              <widget class="QPushButton" name="editUsersButton">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                  <horstretch>0</horstretch>
@@ -109,7 +109,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="manageScheduleButton">
+              <widget class="QPushButton" name="editFacultyButton">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                  <horstretch>0</horstretch>
@@ -122,7 +122,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="viewClassesButton">
+              <widget class="QPushButton" name="editStudentsButton">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                  <horstretch>0</horstretch>
@@ -135,7 +135,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="changePasswordButton">
+              <widget class="QPushButton" name="editRecordsButton">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                  <horstretch>0</horstretch>
@@ -148,7 +148,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="changePasswordButton_3">
+              <widget class="QPushButton" name="editClassesButton">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                  <horstretch>0</horstretch>
@@ -161,7 +161,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="changePasswordButton_2">
+              <widget class="QPushButton" name="changePasswordButton">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                  <horstretch>0</horstretch>

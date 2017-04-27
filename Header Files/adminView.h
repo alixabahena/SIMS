@@ -13,7 +13,7 @@ public:
 	adminView(QWidget *parent = Q_NULLPTR);
 
 	public slots:
-
+	void on_changePasswordButton_clicked();
 
 	private slots:
 

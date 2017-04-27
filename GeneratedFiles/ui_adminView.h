@@ -51,12 +51,12 @@ public:
     QVBoxLayout *verticalLayout_3;
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *verticalLayout;
-    QPushButton *viewScheduleButton;
-    QPushButton *manageScheduleButton;
-    QPushButton *viewClassesButton;
+    QPushButton *editUsersButton;
+    QPushButton *editFacultyButton;
+    QPushButton *editStudentsButton;
+    QPushButton *editRecordsButton;
+    QPushButton *editClassesButton;
     QPushButton *changePasswordButton;
-    QPushButton *changePasswordButton_3;
-    QPushButton *changePasswordButton_2;
     QPushButton *logoutButton;
     QWidget *viewSchedule;
     QVBoxLayout *verticalLayout_7;
@@ -169,29 +169,43 @@ public:
         verticalLayout = new QVBoxLayout();
         verticalLayout->setSpacing(15);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        viewScheduleButton = new QPushButton(mainPage);
-        viewScheduleButton->setObjectName(QStringLiteral("viewScheduleButton"));
+        editUsersButton = new QPushButton(mainPage);
+        editUsersButton->setObjectName(QStringLiteral("editUsersButton"));
         QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Expanding);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(viewScheduleButton->sizePolicy().hasHeightForWidth());
-        viewScheduleButton->setSizePolicy(sizePolicy1);
+        sizePolicy1.setHeightForWidth(editUsersButton->sizePolicy().hasHeightForWidth());
+        editUsersButton->setSizePolicy(sizePolicy1);
 
-        verticalLayout->addWidget(viewScheduleButton);
+        verticalLayout->addWidget(editUsersButton);
 
-        manageScheduleButton = new QPushButton(mainPage);
-        manageScheduleButton->setObjectName(QStringLiteral("manageScheduleButton"));
-        sizePolicy1.setHeightForWidth(manageScheduleButton->sizePolicy().hasHeightForWidth());
-        manageScheduleButton->setSizePolicy(sizePolicy1);
+        editFacultyButton = new QPushButton(mainPage);
+        editFacultyButton->setObjectName(QStringLiteral("editFacultyButton"));
+        sizePolicy1.setHeightForWidth(editFacultyButton->sizePolicy().hasHeightForWidth());
+        editFacultyButton->setSizePolicy(sizePolicy1);
 
-        verticalLayout->addWidget(manageScheduleButton);
+        verticalLayout->addWidget(editFacultyButton);
 
-        viewClassesButton = new QPushButton(mainPage);
-        viewClassesButton->setObjectName(QStringLiteral("viewClassesButton"));
-        sizePolicy1.setHeightForWidth(viewClassesButton->sizePolicy().hasHeightForWidth());
-        viewClassesButton->setSizePolicy(sizePolicy1);
+        editStudentsButton = new QPushButton(mainPage);
+        editStudentsButton->setObjectName(QStringLiteral("editStudentsButton"));
+        sizePolicy1.setHeightForWidth(editStudentsButton->sizePolicy().hasHeightForWidth());
+        editStudentsButton->setSizePolicy(sizePolicy1);
 
-        verticalLayout->addWidget(viewClassesButton);
+        verticalLayout->addWidget(editStudentsButton);
+
+        editRecordsButton = new QPushButton(mainPage);
+        editRecordsButton->setObjectName(QStringLiteral("editRecordsButton"));
+        sizePolicy1.setHeightForWidth(editRecordsButton->sizePolicy().hasHeightForWidth());
+        editRecordsButton->setSizePolicy(sizePolicy1);
+
+        verticalLayout->addWidget(editRecordsButton);
+
+        editClassesButton = new QPushButton(mainPage);
+        editClassesButton->setObjectName(QStringLiteral("editClassesButton"));
+        sizePolicy1.setHeightForWidth(editClassesButton->sizePolicy().hasHeightForWidth());
+        editClassesButton->setSizePolicy(sizePolicy1);
+
+        verticalLayout->addWidget(editClassesButton);
 
         changePasswordButton = new QPushButton(mainPage);
         changePasswordButton->setObjectName(QStringLiteral("changePasswordButton"));
@@ -199,20 +213,6 @@ public:
         changePasswordButton->setSizePolicy(sizePolicy1);
 
         verticalLayout->addWidget(changePasswordButton);
-
-        changePasswordButton_3 = new QPushButton(mainPage);
-        changePasswordButton_3->setObjectName(QStringLiteral("changePasswordButton_3"));
-        sizePolicy1.setHeightForWidth(changePasswordButton_3->sizePolicy().hasHeightForWidth());
-        changePasswordButton_3->setSizePolicy(sizePolicy1);
-
-        verticalLayout->addWidget(changePasswordButton_3);
-
-        changePasswordButton_2 = new QPushButton(mainPage);
-        changePasswordButton_2->setObjectName(QStringLiteral("changePasswordButton_2"));
-        sizePolicy1.setHeightForWidth(changePasswordButton_2->sizePolicy().hasHeightForWidth());
-        changePasswordButton_2->setSizePolicy(sizePolicy1);
-
-        verticalLayout->addWidget(changePasswordButton_2);
 
         logoutButton = new QPushButton(mainPage);
         logoutButton->setObjectName(QStringLiteral("logoutButton"));
@@ -451,7 +451,7 @@ public:
 
         retranslateUi(adminView);
 
-        stackedWidget->setCurrentIndex(0);
+        stackedWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(adminView);
@@ -466,12 +466,12 @@ public:
         welcomeLabel->setText(QApplication::translate("adminView", "Admin Portal", Q_NULLPTR));
         usernameLabel->setText(QString());
         label->setText(QApplication::translate("adminView", "Administrative Options", Q_NULLPTR));
-        viewScheduleButton->setText(QApplication::translate("adminView", "Edit Users Table", Q_NULLPTR));
-        manageScheduleButton->setText(QApplication::translate("adminView", "Edit Faculty Table", Q_NULLPTR));
-        viewClassesButton->setText(QApplication::translate("adminView", "Edit Students Table", Q_NULLPTR));
-        changePasswordButton->setText(QApplication::translate("adminView", "Edit Records Table", Q_NULLPTR));
-        changePasswordButton_3->setText(QApplication::translate("adminView", "Edit Classes Table", Q_NULLPTR));
-        changePasswordButton_2->setText(QApplication::translate("adminView", "Change Password", Q_NULLPTR));
+        editUsersButton->setText(QApplication::translate("adminView", "Edit Users Table", Q_NULLPTR));
+        editFacultyButton->setText(QApplication::translate("adminView", "Edit Faculty Table", Q_NULLPTR));
+        editStudentsButton->setText(QApplication::translate("adminView", "Edit Students Table", Q_NULLPTR));
+        editRecordsButton->setText(QApplication::translate("adminView", "Edit Records Table", Q_NULLPTR));
+        editClassesButton->setText(QApplication::translate("adminView", "Edit Classes Table", Q_NULLPTR));
+        changePasswordButton->setText(QApplication::translate("adminView", "Change Password", Q_NULLPTR));
         logoutButton->setText(QApplication::translate("adminView", "Logout", Q_NULLPTR));
         scheduleLabel->setText(QApplication::translate("adminView", "Current Student Semester Schedule", Q_NULLPTR));
         addClassButton->setText(QApplication::translate("adminView", "Add Class", Q_NULLPTR));

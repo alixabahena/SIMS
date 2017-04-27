@@ -279,17 +279,23 @@ void facultyView::on_editGradeButton_clicked()
 {
 	QModelIndexList selection = ui.manageClassesView->selectionModel()->selectedRows();
 	int row;
+	QString gradeEntered;
+	int grade = 0;
 
 	QDialog *gradeDialog = new QDialog();
 	QLabel *gradeLabel = new QLabel();
 	QLineEdit *gradeInput = new QLineEdit();
 	QPushButton *saveButton = new QPushButton();
-
+	
+	gradeEntered = gradeInput->text();
+	grade = gradeEntered.toInt();
 	saveButton->setText("Save");
 	gradeLabel->setText("Enter Grade: ");
 	gradeDialog->setGeometry(geometry().x(), geometry().y(), 100, 100);
 	gradeDialog->setWindowTitle("Grade Center");
 	QVBoxLayout *verticalLayout = new QVBoxLayout();
+
+	connect(saveButton, SIGNAL(clicked()), this, SLOT(on_saveButton_clicked(int grade)));
 
 	verticalLayout->addWidget(gradeLabel);
 	verticalLayout->addWidget(gradeInput);
@@ -302,6 +308,12 @@ void facultyView::on_editGradeButton_clicked()
 		qApp->desktop()->availableGeometry()
 	));
 	gradeDialog->show();
+
+}
+
+void facultyView::on_saveButton_clicked(int grade)
+{
+
 
 
 }

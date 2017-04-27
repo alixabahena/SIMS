@@ -23,7 +23,7 @@ void on_searchButton_clicked();
 void on_viewStudentsButton_clicked();
 void on_editGradeButton_clicked();
 void on_viewCurrentClassesButton_clicked();
-
+void on_saveButton_clicked(int grade);
 private:
 	Ui::facultyView ui;
 };

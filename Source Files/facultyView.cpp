@@ -152,6 +152,7 @@ void facultyView::on_manageScheduleButton_clicked()
 			items.clear();
 		}
 	}
+	ui.manageClassesView->setSelectionMode(QAbstractItemView::SingleSelection);
 	ui.manageClassesView->setSelectionBehavior(QAbstractItemView::SelectRows);
 	ui.manageClassesView->setEditTriggers(QAbstractItemView::NoEditTriggers);
 	ui.manageClassesView->setModel(model);
@@ -162,13 +163,74 @@ void facultyView::on_manageScheduleButton_clicked()
 }
 void facultyView::on_viewCurrentClassesButton_clicked()
 {
-
+	
 }
 
 void facultyView::on_viewStudentsButton_clicked()
 {
+	vector<users>allUsers = populateUsers();
+	vector<Student>allStudents = populateStudents();
+	vector<classes>allClasses = populateClasses();
+	vector<records>allRecords = populateRecords();
+	vector<faculty>allFaculty = populateFaculty();
 
-}
+	//create QT items
+	QStandardItemModel *model = new QStandardItemModel(this);
+	QList<QStandardItem *> items;
+	//set headers name and size
+	QStringList headers;
+	headers << "Student Name" << "Class Name"<<"Semester" << "Grade";
+	model->setHorizontalHeaderLabels(headers);
+	QModelIndexList selection = ui.manageClassesView->selectionModel()->selectedRows();
+	int row;
+	QString CRN;
+	// Multiple rows can be selected
+	for (int i = 0; i< selection.count(); i++)
+	{
+		QModelIndex index = selection.at(i);
+		row = index.row();
+		CRN = index.sibling(row, 0).data().toString();
+	}
+
+	for (int i = 0; i < allRecords.size(); i++)
+	{
+		if (allRecords[i].Crn == CRN.toInt())
+		{
+					for (int j = 0; j < allStudents.size(); j++)
+					{
+						if (allRecords[i].Username == allStudents[j].userName)
+						{
+							items.append(new QStandardItem(QString::fromStdString(allStudents[j].firstName) + " " + QString::fromStdString(allStudents[j].lastName)));
+						}
+					}
+
+					for (int k = 0; k < allClasses.size(); k++)
+					{
+						if (allRecords[i].Crn == allClasses[k].CRN)
+						{
+							items.append(new QStandardItem(QString::fromStdString(allClasses[k].Name)));
+							items.append(new QStandardItem(QString::fromStdString(allClasses[k].Semester)));
+						}
+					}
+
+					items.append(new QStandardItem(QString::number(allRecords[i].Grade)));
+
+					model->appendRow(items);
+					items.clear();
+				}
+		else
+		{
+
+		}
+		
+		}
+		
+		ui.manageClassesView->setSelectionMode(QAbstractItemView::SingleSelection);
+		ui.manageClassesView->setSelectionBehavior(QAbstractItemView::SelectRows);
+		ui.manageClassesView->setEditTriggers(QAbstractItemView::NoEditTriggers);
+		ui.manageClassesView->setModel(model);
+	}
+
 void facultyView::on_editGradeButton_clicked()
 {
 

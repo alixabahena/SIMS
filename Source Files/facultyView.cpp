@@ -110,10 +110,71 @@ void facultyView::on_viewScheduleButton_clicked()
 
 void facultyView::on_manageScheduleButton_clicked()
 {
+	vector<users>allUsers = populateUsers();
+	vector<Student>allStudents = populateStudents();
+	vector<classes>allClasses = populateClasses();
+	vector<records>allRecords = populateRecords();
+	vector<faculty>allFaculty = populateFaculty();
+
 	ui.stackedWidget->setCurrentIndex(2);
+	ui.welcomeLabel->setText("Enter Class Grades");
+
+	//create QT items
+	QStandardItemModel *model = new QStandardItemModel(this);
+	QList<QStandardItem *> items;
+	//set headers name and size
+	QStringList headers;
+	headers << "CRN" << "Subject" << "Course ID" << "Name" << "Semester" << "Day" << "Time" << "Instructor" << "Room";
+	model->setColumnCount(allClasses.size() - 1);
+	model->setHorizontalHeaderLabels(headers);
+	//populate schedule
+	for (int i = 0; i < allClasses.size(); i++)
+	{
+		if (allFaculty[userloc].userName == allClasses[i].Instructor)
+		{
+			items.append(new QStandardItem(QString::fromStdString(to_string(allClasses[i].CRN))));
+			items.append(new QStandardItem(QString::fromStdString(allClasses[i].Subject)));
+			items.append(new QStandardItem(QString::fromStdString(to_string(allClasses[i].courseID))));
+			items.append(new QStandardItem(QString::fromStdString(allClasses[i].Name)));
+			items.append(new QStandardItem(QString::fromStdString(allClasses[i].Semester)));
+			items.append(new QStandardItem(QString::fromStdString(allClasses[i].classDays)));
+			items.append(new QStandardItem(QString::fromStdString(allClasses[i].classTime)));
+			for (int j = 0; j < allFaculty.size(); j++)
+			{
+				if (allClasses[i].Instructor == allFaculty[j].userName)
+				{
+					items.append(new QStandardItem(QString::fromStdString(allFaculty[j].firstName) + " " + QString::fromStdString(allFaculty[j].lastName)));
+				}
+			}
+
+			items.append(new QStandardItem(QString::fromStdString(allClasses[i].Room)));
+			model->appendRow(items);
+			items.clear();
+		}
+	}
+	ui.manageClassesView->setEditTriggers(QAbstractItemView::NoEditTriggers);
+	ui.manageClassesView->setModel(model);
+
 	//enable back button
 	ui.backButton->show();
 	ui.backButton->setEnabled(true);
+}
+void facultyView::on_viewCurrentClassesButton_clicked()
+{
+
+}
+
+void facultyView::on_viewStudentsButton_clicked()
+{
+
+}
+void facultyView::on_editGradeButton_clicked()
+{
+
+}
+void facultyView::on_saveChangesButton_clicked()
+{
+
 }
 
 void facultyView::on_viewClassesButton_clicked()
@@ -128,7 +189,7 @@ void facultyView::on_viewClassesButton_clicked()
 
 	ui.stackedWidget->setCurrentIndex(3);
 	//change header text
-	ui.welcomeLabel->setText("View Classes");
+	ui.welcomeLabel->setText("View Available Classes");
 
 	//create QT items
 	QStandardItemModel *model = new QStandardItemModel(this);
@@ -396,6 +457,7 @@ void facultyView::on_searchButton_clicked()
 void facultyView::on_changePasswordButton_clicked()
 {
 	ui.stackedWidget->setCurrentIndex(4);
+	ui.welcomeLabel->setText("Change Current Password");
 	//enable back button
 	ui.backButton->show();
 	ui.backButton->setEnabled(true);

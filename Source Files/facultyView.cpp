@@ -277,6 +277,20 @@ void facultyView::on_viewStudentsButton_clicked()
 
 void facultyView::on_editGradeButton_clicked()
 {
+	QModelIndexList selection = ui.manageClassesView->selectionModel()->selectedRows();
+	int row;
+
+	QDialog *gradeDialog = new QDialog();
+	QLabel *gradeLabel = new QLabel();
+	QLineEdit *gradeInput = new QLineEdit();
+	
+
+	gradeLabel->setText("Enter Grade: ");
+	gradeDialog->setGeometry(geometry().x(), geometry().y(), 200, 100);
+	gradeDialog->setWindowTitle("Grade Center");
+
+	gradeDialog->show();
+
 
 }
 void facultyView::on_saveChangesButton_clicked()

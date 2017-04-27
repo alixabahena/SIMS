@@ -66,6 +66,43 @@ facultyView::facultyView(QString userName)
 void facultyView::on_viewScheduleButton_clicked()
 {
 	ui.stackedWidget->setCurrentIndex(1);
+
+	vector<users>allUsers = populateUsers();
+	vector<Student>allStudents = populateStudents();
+	vector<classes>allClasses = populateClasses();
+	vector<records>allRecords = populateRecords();
+	vector<faculty>allFaculty = populateFaculty();
+	ui.stackedWidget->setCurrentIndex(1);
+	QString classes;
+
+	//display schedule
+	for (int i = 0; i < allClasses.size(); i++)
+	{
+		if (allFaculty[userloc].userName == allClasses[i].Instructor)
+		{
+			classes += QString::fromStdString(to_string(allClasses[i].CRN)) + " "
+				+ QString::fromStdString(allClasses[i].Subject) + " "
+				+ QString::fromStdString(to_string(allClasses[i].courseID)) + " "
+				+ QString::fromStdString(allClasses[i].Name) + " "
+				+ QString::fromStdString(allClasses[i].Semester) + " "
+				+ QString::fromStdString(allClasses[i].classDays) + " "
+				+ QString::fromStdString(allClasses[i].classTime) + " ";
+			for (int j = 0; j < allFaculty.size(); j++)
+			{
+				if (allClasses[i].Instructor == allFaculty[j].userName)
+				{
+					classes += QString::fromStdString(allFaculty[j].firstName) + " " + QString::fromStdString(allFaculty[j].lastName) + " ";
+				}
+			}
+
+			classes += QString::fromStdString(allClasses[i].Room) + "\n";
+		}
+	}
+	ui.semesterScheduleView->setText(classes);
+
+	//change header text
+	ui.welcomeLabel->setText("View Current Schedule");
+
 	//enable back button
 	ui.backButton->show();
 	ui.backButton->setEnabled(true);
@@ -73,10 +110,220 @@ void facultyView::on_viewScheduleButton_clicked()
 
 void facultyView::on_manageScheduleButton_clicked()
 {
+	vector<users>allUsers = populateUsers();
+	vector<Student>allStudents = populateStudents();
+	vector<classes>allClasses = populateClasses();
+	vector<records>allRecords = populateRecords();
+	vector<faculty>allFaculty = populateFaculty();
+
 	ui.stackedWidget->setCurrentIndex(2);
+	ui.welcomeLabel->setText("Enter Class Grades");
+	ui.viewCurrentClassesButton->setEnabled(false);
+	ui.editGradeButton->setEnabled(false);
+	//create QT items
+	QStandardItemModel *model = new QStandardItemModel(this);
+	QList<QStandardItem *> items;
+	//set headers name and size
+	QStringList headers;
+	headers << "CRN" << "Subject" << "Course ID" << "Name" << "Semester" << "Day" << "Time" << "Instructor" << "Room";
+	model->setColumnCount(allClasses.size() - 1);
+	model->setHorizontalHeaderLabels(headers);
+	//populate schedule
+	for (int i = 0; i < allClasses.size(); i++)
+	{
+		if (allFaculty[userloc].userName == allClasses[i].Instructor)
+		{
+			items.append(new QStandardItem(QString::fromStdString(to_string(allClasses[i].CRN))));
+			items.append(new QStandardItem(QString::fromStdString(allClasses[i].Subject)));
+			items.append(new QStandardItem(QString::fromStdString(to_string(allClasses[i].courseID))));
+			items.append(new QStandardItem(QString::fromStdString(allClasses[i].Name)));
+			items.append(new QStandardItem(QString::fromStdString(allClasses[i].Semester)));
+			items.append(new QStandardItem(QString::fromStdString(allClasses[i].classDays)));
+			items.append(new QStandardItem(QString::fromStdString(allClasses[i].classTime)));
+			for (int j = 0; j < allFaculty.size(); j++)
+			{
+				if (allClasses[i].Instructor == allFaculty[j].userName)
+				{
+					items.append(new QStandardItem(QString::fromStdString(allFaculty[j].firstName) + " " + QString::fromStdString(allFaculty[j].lastName)));
+				}
+			}
+
+			items.append(new QStandardItem(QString::fromStdString(allClasses[i].Room)));
+			model->appendRow(items);
+			items.clear();
+		}
+	}
+	ui.manageClassesView->setSelectionMode(QAbstractItemView::SingleSelection);
+	ui.manageClassesView->setSelectionBehavior(QAbstractItemView::SelectRows);
+	ui.manageClassesView->setEditTriggers(QAbstractItemView::NoEditTriggers);
+	ui.manageClassesView->setModel(model);
+
 	//enable back button
 	ui.backButton->show();
 	ui.backButton->setEnabled(true);
+}
+void facultyView::on_viewCurrentClassesButton_clicked()
+{
+	
+	vector<users>allUsers = populateUsers();
+	vector<Student>allStudents = populateStudents();
+	vector<classes>allClasses = populateClasses();
+	vector<records>allRecords = populateRecords();
+	vector<faculty>allFaculty = populateFaculty();
+
+	//disable view students button
+	ui.viewCurrentClassesButton->setEnabled(false);
+	ui.viewStudentsButton->setEnabled(true);
+	//create QT items
+	QStandardItemModel *model = new QStandardItemModel(this);
+	QList<QStandardItem *> items;
+	//set headers name and size
+	QStringList headers;
+	headers << "CRN" << "Subject" << "Course ID" << "Name" << "Semester" << "Day" << "Time" << "Instructor" << "Room";
+	model->setColumnCount(allClasses.size() - 1);
+	model->setHorizontalHeaderLabels(headers);
+	//populate schedule
+	for (int i = 0; i < allClasses.size(); i++)
+	{
+		if (allFaculty[userloc].userName == allClasses[i].Instructor)
+		{
+			items.append(new QStandardItem(QString::fromStdString(to_string(allClasses[i].CRN))));
+			items.append(new QStandardItem(QString::fromStdString(allClasses[i].Subject)));
+			items.append(new QStandardItem(QString::fromStdString(to_string(allClasses[i].courseID))));
+			items.append(new QStandardItem(QString::fromStdString(allClasses[i].Name)));
+			items.append(new QStandardItem(QString::fromStdString(allClasses[i].Semester)));
+			items.append(new QStandardItem(QString::fromStdString(allClasses[i].classDays)));
+			items.append(new QStandardItem(QString::fromStdString(allClasses[i].classTime)));
+			for (int j = 0; j < allFaculty.size(); j++)
+			{
+				if (allClasses[i].Instructor == allFaculty[j].userName)
+				{
+					items.append(new QStandardItem(QString::fromStdString(allFaculty[j].firstName) + " " + QString::fromStdString(allFaculty[j].lastName)));
+				}
+			}
+
+			items.append(new QStandardItem(QString::fromStdString(allClasses[i].Room)));
+			model->appendRow(items);
+			items.clear();
+		}
+	}
+	ui.manageClassesView->setSelectionMode(QAbstractItemView::SingleSelection);
+	ui.manageClassesView->setSelectionBehavior(QAbstractItemView::SelectRows);
+	ui.manageClassesView->setEditTriggers(QAbstractItemView::NoEditTriggers);
+	ui.manageClassesView->setModel(model);
+
+}
+
+void facultyView::on_viewStudentsButton_clicked()
+{
+	vector<users>allUsers = populateUsers();
+	vector<Student>allStudents = populateStudents();
+	vector<classes>allClasses = populateClasses();
+	vector<records>allRecords = populateRecords();
+	vector<faculty>allFaculty = populateFaculty();
+
+	//disable view students button
+	ui.viewStudentsButton->setEnabled(false);
+	ui.viewCurrentClassesButton->setEnabled(true);
+	ui.editGradeButton->setEnabled(true);
+	//create QT items
+	QStandardItemModel *model = new QStandardItemModel(this);
+	QList<QStandardItem *> items;
+	//set headers name and size
+	QStringList headers;
+	headers << "Student Name" << "Class Name"<<"Semester" << "Grade";
+	model->setHorizontalHeaderLabels(headers);
+	QModelIndexList selection = ui.manageClassesView->selectionModel()->selectedRows();
+	int row;
+	QString CRN;
+	// Multiple rows can be selected
+	for (int i = 0; i< selection.count(); i++)
+	{
+		QModelIndex index = selection.at(i);
+		row = index.row();
+		CRN = index.sibling(row, 0).data().toString();
+	}
+
+	for (int i = 0; i < allRecords.size(); i++)
+	{
+		if (allRecords[i].Crn == CRN.toInt())
+		{
+					for (int j = 0; j < allStudents.size(); j++)
+					{
+						if (allRecords[i].Username == allStudents[j].userName)
+						{
+							items.append(new QStandardItem(QString::fromStdString(allStudents[j].firstName) + " " + QString::fromStdString(allStudents[j].lastName)));
+						}
+					}
+
+					for (int k = 0; k < allClasses.size(); k++)
+					{
+						if (allRecords[i].Crn == allClasses[k].CRN)
+						{
+							items.append(new QStandardItem(QString::fromStdString(allClasses[k].Name)));
+							items.append(new QStandardItem(QString::fromStdString(allClasses[k].Semester)));
+						}
+					}
+
+					items.append(new QStandardItem(QString::number(allRecords[i].Grade)));
+
+					model->appendRow(items);
+					items.clear();
+				}
+		else
+		{
+
+		}
+		
+		}
+		
+		ui.manageClassesView->setSelectionMode(QAbstractItemView::SingleSelection);
+		ui.manageClassesView->setSelectionBehavior(QAbstractItemView::SelectRows);
+		ui.manageClassesView->setEditTriggers(QAbstractItemView::NoEditTriggers);
+		ui.manageClassesView->setModel(model);
+	}
+
+void facultyView::on_editGradeButton_clicked()
+{
+	QModelIndexList selection = ui.manageClassesView->selectionModel()->selectedRows();
+	int row;
+	QString gradeEntered;
+	int grade = 0;
+
+	QDialog *gradeDialog = new QDialog();
+	QLabel *gradeLabel = new QLabel();
+	QLineEdit *gradeInput = new QLineEdit();
+	QPushButton *saveButton = new QPushButton();
+	
+	gradeEntered = gradeInput->text();
+	grade = gradeEntered.toInt();
+	saveButton->setText("Save");
+	gradeLabel->setText("Enter Grade: ");
+	gradeDialog->setGeometry(geometry().x(), geometry().y(), 100, 100);
+	gradeDialog->setWindowTitle("Grade Center");
+	QVBoxLayout *verticalLayout = new QVBoxLayout();
+
+	connect(saveButton, SIGNAL(clicked()), this, SLOT(on_saveButton_clicked(int grade)));
+
+	verticalLayout->addWidget(gradeLabel);
+	verticalLayout->addWidget(gradeInput);
+	verticalLayout->addWidget(saveButton);
+	gradeDialog->setLayout(verticalLayout);
+	gradeDialog->setGeometry(QStyle::alignedRect(
+		Qt::LeftToRight,
+		Qt::AlignCenter,
+		gradeDialog->size(),
+		qApp->desktop()->availableGeometry()
+	));
+	gradeDialog->show();
+
+}
+
+void facultyView::on_saveButton_clicked(int grade)
+{
+
+
+
 }
 
 void facultyView::on_viewClassesButton_clicked()
@@ -91,7 +338,7 @@ void facultyView::on_viewClassesButton_clicked()
 
 	ui.stackedWidget->setCurrentIndex(3);
 	//change header text
-	ui.welcomeLabel->setText("View Classes");
+	ui.welcomeLabel->setText("View Available Classes");
 
 	//create QT items
 	QStandardItemModel *model = new QStandardItemModel(this);
@@ -359,6 +606,7 @@ void facultyView::on_searchButton_clicked()
 void facultyView::on_changePasswordButton_clicked()
 {
 	ui.stackedWidget->setCurrentIndex(4);
+	ui.welcomeLabel->setText("Change Current Password");
 	//enable back button
 	ui.backButton->show();
 	ui.backButton->setEnabled(true);

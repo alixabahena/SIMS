@@ -28,6 +28,10 @@
 #include <qkeyeventtransition.h>
 #include <qevent.h>
 #include <qstandarditemmodel.h>
+#include <qlayout.h>
+#include "qapplication.h"
+#include <QStyle>
+#include <QDesktopWidget>
 
 //normal libraries
 #include <string>

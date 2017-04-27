@@ -63,7 +63,7 @@ vector<faculty> populateFaculty()
 	/* Open database */
 	rc = sqlite3_open(dbName, &db);
 		;
-		rc = sqlite3_prepare_v2(db, "select [First Name], [Last Name], username from Faculty"
+		rc = sqlite3_prepare_v2(db, "select [First Name], [Last Name], username, Department from Faculty"
 		,
 		-1, &stmt, NULL);
 	if (rc != SQLITE_OK) {
@@ -74,8 +74,9 @@ vector<faculty> populateFaculty()
 		const char* firstName = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0));
 		const char* lastName = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 1));
 		const char* username = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 2));
+		const char* department = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 3));
 		// let's assume some fields can be NULL:
-		Faculty.push_back(faculty(firstName, lastName, username));
+		Faculty.push_back(faculty(firstName, lastName, username,department));
 
 	}
 	if (rc != SQLITE_DONE) {

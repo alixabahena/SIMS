@@ -53,7 +53,7 @@ void loginView::on_okButton_clicked()
 			else if (allusers[userlocation].access_type == "faculty")
 			{
 				this->hide();
-				facultyView *facultyview = new facultyView();
+				facultyView *facultyview = new facultyView(user);
 				facultyview->show();
 			}
 			else if (allusers[userlocation].access_type == "student")

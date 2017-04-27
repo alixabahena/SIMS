@@ -10,9 +10,10 @@ faculty::faculty()
 	userName = "faculty";
 }
 
-faculty::faculty(string firstname, string lastname, string username)
+faculty::faculty(string firstname, string lastname, string username, string department)
 {
 	firstName = firstname;
 	lastName = lastname;
 	userName = username;
+	Department = department;
 }

@@ -14,6 +14,7 @@ public:
 
 	public slots:
 	void on_changePasswordButton_clicked();
+	void on_submitButton_clicked();
 
 	private slots:
 

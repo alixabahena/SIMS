@@ -1,7 +1,6 @@
 #include "Header Files\stdafx.h"
 
-vector<users>allusers = populateUsers();
-vector<classes>allclasses = populateClasses();
+
 
 loginView::loginView(QWidget *parent)
 	: QMainWindow(parent)
@@ -13,7 +12,8 @@ loginView::loginView(QWidget *parent)
 
 void loginView::on_okButton_clicked()
 {
-	
+	vector<users>allusers = populateUsers();
+	vector<classes>allclasses = populateClasses();
 	
 	string username = ui.usernameField->text().toStdString();
 	string password = ui.passwordFIeld->text().toStdString();
@@ -53,7 +53,7 @@ void loginView::on_okButton_clicked()
 			else if (allusers[userlocation].access_type == "faculty")
 			{
 				this->hide();
-				facultyView *facultyview = new facultyView();
+				facultyView *facultyview = new facultyView(user);
 				facultyview->show();
 			}
 			else if (allusers[userlocation].access_type == "student")

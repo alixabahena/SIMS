@@ -63,7 +63,7 @@ vector<faculty> populateFaculty()
 	/* Open database */
 	rc = sqlite3_open(dbName, &db);
 		;
-		rc = sqlite3_prepare_v2(db, "select [First Name], [Last Name], username from Faculty"
+		rc = sqlite3_prepare_v2(db, "select [First Name], [Last Name], username, Department from Faculty"
 		,
 		-1, &stmt, NULL);
 	if (rc != SQLITE_OK) {
@@ -74,8 +74,9 @@ vector<faculty> populateFaculty()
 		const char* firstName = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0));
 		const char* lastName = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 1));
 		const char* username = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 2));
+		const char* department = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 3));
 		// let's assume some fields can be NULL:
-		Faculty.push_back(faculty(firstName, lastName, username));
+		Faculty.push_back(faculty(firstName, lastName, username,department));
 
 	}
 	if (rc != SQLITE_DONE) {
@@ -99,7 +100,6 @@ vector<classes> populateClasses()
 	sqlite3_stmt *stmt;
 	/* Open database */
 	rc = sqlite3_open(dbName, &db);
-	;
 	rc = sqlite3_prepare_v2(db, "SELECT CRN,Subject,[Course ID],Name,Semester,classDays,classTime,Instructor,Room FROM Classes"
 		,
 		-1, &stmt, NULL);
@@ -189,7 +189,7 @@ vector<records> populateRecords()
 	}
 	while ((rc = sqlite3_step(stmt)) == SQLITE_ROW) {
 		const char* username = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0));
-		const char* crn = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 1));
+		const char* crn = reinterpret_cast<const char*>(sqlite3_column_int(stmt, 1));
 		int CRN = (int)crn;
 		const char* grade = reinterpret_cast<const char*>(sqlite3_column_int(stmt, 2));
 		int Grade = (int)grade;
@@ -208,3 +208,27 @@ vector<records> populateRecords()
 	return allrecords;
 }
 
+void changePassword(string username, string password)
+{
+	sqlite3 *db;
+	char *zErrMsg = 0;
+	int rc;
+	char *sql;
+	const char* data = "";
+	const char* dbName = "Students.db";
+	sqlite3_stmt *stmt;
+	char *q;
+	const char *userName = username.c_str();
+	const char *passWord = password.c_str();
+	rc = sqlite3_open(dbName, &db);
+	q = "UPDATE Users SET [password]=?1 WHERE [username]=?2";
+	if ( rc = sqlite3_prepare_v2(db, q, strlen(q), &stmt, 0) == SQLITE_OK) {
+		sqlite3_reset(stmt);
+		sqlite3_bind_text(stmt, 1, passWord,strlen(passWord), 0);
+		sqlite3_bind_text(stmt, 2, userName, strlen(userName), 0); // file path
+		sqlite3_step(stmt);   // prepare statemnt Ready
+		sqlite3_finalize(stmt);
+	}
+	
+	int ecode = sqlite3_errcode(db);
+}

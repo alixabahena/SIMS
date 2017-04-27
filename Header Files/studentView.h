@@ -19,6 +19,9 @@ public slots:
 	void on_changePasswordButton_clicked();
 	void on_manageScheduleButton_clicked();
 	void on_searchButton_clicked();
+	void on_submitButton_clicked();
+	void on_addClassButton_clicked();
+	void on_removeClassButton_clicked();
 	
 private:
 	Ui::studentView ui;

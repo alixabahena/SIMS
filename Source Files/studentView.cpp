@@ -1,9 +1,6 @@
 #include "Header Files\stdafx.h"
 
-vector<Student>allStudents = populateStudents();
-vector<classes>allClasses = populateClasses();
-vector<records>allRecords = populateRecords();
-vector<faculty>allFaculty = populateFaculty();
+
 int userlocation = 0;
 
 studentView::studentView(QWidget *parent)
@@ -18,6 +15,11 @@ studentView::studentView(QWidget *parent)
 
 studentView::studentView(QString userName)
 {
+	vector<users>allUsers = populateUsers();
+	vector<Student>allStudents = populateStudents();
+	vector<classes>allClasses = populateClasses();
+	vector<records>allRecords = populateRecords();
+	vector<faculty>allFaculty = populateFaculty();
 	//QStrings
 	QString user = userName;
 	QString fullName;
@@ -75,24 +77,35 @@ studentView::studentView(QString userName)
 
 void studentView::on_viewScheduleButton_clicked()
 {
-
+	vector<users>allUsers = populateUsers();
+	vector<Student>allStudents = populateStudents();
+	vector<classes>allClasses = populateClasses();
+	vector<records>allRecords = populateRecords();
+	vector<faculty>allFaculty = populateFaculty();
 	ui.stackedWidget->setCurrentIndex(1);
 	QString classes;
-
+	
 	//display schedule
 	for (int i = 0; i < allRecords.size(); i++)
 	{
 		if (allStudents[userlocation].userName == allRecords[i].Username)
 		{
-			classes += QString::fromStdString(to_string(allClasses[i].CRN)) + " " 
+			classes += QString::fromStdString(to_string(allClasses[i].CRN)) + " "
 				+ QString::fromStdString(allClasses[i].Subject) + " "
 				+ QString::fromStdString(to_string(allClasses[i].courseID)) + " "
 				+ QString::fromStdString(allClasses[i].Name) + " "
 				+ QString::fromStdString(allClasses[i].Semester) + " "
 				+ QString::fromStdString(allClasses[i].classDays) + " "
-				+ QString::fromStdString(allClasses[i].classTime) + " "
-				+ QString::fromStdString(allClasses[i].Instructor) + " "
-				+ QString::fromStdString(allClasses[i].Room) + "\n";
+				+ QString::fromStdString(allClasses[i].classTime) + " ";
+			for (int j = 0; j < allFaculty.size();j++)
+			{
+				if (allClasses[i].Instructor == allFaculty[j].userName )
+				{
+					classes += QString::fromStdString(allFaculty[j].firstName) + " " + QString::fromStdString(allFaculty[j].lastName) + " ";
+				}
+			}
+				
+			classes += QString::fromStdString(allClasses[i].Room) + "\n";
 		}
 	}
 	ui.semesterScheduleView->setText(classes);
@@ -109,18 +122,126 @@ void studentView::on_viewScheduleButton_clicked()
 
 void studentView::on_manageScheduleButton_clicked()
 {
+	vector<users>allUsers = populateUsers();
+	vector<Student>allStudents = populateStudents();
+	vector<classes>allClasses = populateClasses();
+	vector<records>allRecords = populateRecords();
+	vector<faculty>allFaculty = populateFaculty();
+
 	ui.stackedWidget->setCurrentIndex(2);
 
 	//change header text
 	ui.welcomeLabel->setText("Manage Schedule");
+	
+	//create QT items
+	QStandardItemModel *model = new QStandardItemModel(this);
+	QList<QStandardItem *> items;
+	//set headers name and size
+	QStringList headers;
+	headers << "CRN" << "Subject" << "Course ID" << "Name" << "Semester" << "Day" << "Time" << "Instructor" << "Room";
+	model->setColumnCount(allClasses.size() - 1);
+	model->setHorizontalHeaderLabels(headers);
+	//populate schedule
+	for (int i = 0; i < allRecords.size(); i++)
+	{
+		if (allStudents[userlocation].userName == allRecords[i].Username)
+		{
+			items.append(new QStandardItem(QString::fromStdString(to_string(allClasses[i].CRN))));
+			items.append(new QStandardItem(QString::fromStdString(allClasses[i].Subject)));
+			items.append(new QStandardItem(QString::fromStdString(to_string(allClasses[i].courseID))));
+			items.append(new QStandardItem(QString::fromStdString(allClasses[i].Name)));
+			items.append(new QStandardItem(QString::fromStdString(allClasses[i].Semester)));
+			items.append(new QStandardItem(QString::fromStdString(allClasses[i].classDays)));
+			items.append(new QStandardItem(QString::fromStdString(allClasses[i].classTime)));
+			for (int j = 0; j < allFaculty.size(); j++)
+			{
+				if (allClasses[i].Instructor == allFaculty[j].userName)
+				{
+					items.append(new QStandardItem(QString::fromStdString(allFaculty[j].firstName) + " " + QString::fromStdString(allFaculty[j].lastName)));
+				}
+			}
+	
+			items.append(new QStandardItem(QString::fromStdString(allClasses[i].Room)));
+			model->appendRow(items);
+			items.clear();
+		}
+	}
+	ui.manageClassesView->setEditTriggers(QAbstractItemView::NoEditTriggers);
+	ui.manageClassesView->setModel(model);
 
 	//enable back button
 	ui.backButton->show();
 	ui.backButton->setEnabled(true);
 }
 
+void studentView::on_addClassButton_clicked()
+{
+	//populate all vectors
+	vector<users>allUsers = populateUsers();
+	vector<Student>allStudents = populateStudents();
+	vector<classes>allClasses = populateClasses();
+	vector<records>allRecords = populateRecords();
+	vector<faculty>allFaculty = populateFaculty();
+	//variables
+	string username = allStudents[userlocation].userName;
+	int crnEntered = ui.crnAddRemoveLine->text().toInt();;
+	bool realClass = true;
+	//get entered CRN
+
+
+	for (int i = 0; i < allClasses.size(); i++)
+	{
+		//crn does not exist - error
+		
+		if (crnEntered == allClasses[i].CRN)
+		{
+			realClass = true;
+			//class already in student schedule -error
+			for (int j = 0; j < allRecords.size(); j++)
+			{
+				if (crnEntered == allRecords[j].Crn && username == allRecords[j].Username)
+				{
+					ui.addRemoveClassLabel->setStyleSheet("QLabel { background-color : red; color : white; }");
+					ui.addRemoveClassLabel->setText("Class already in schedule!");
+					break;
+				}
+				
+			}
+		}
+		else if (crnEntered != allClasses[i].CRN)
+		{
+			realClass = false;
+		}
+		
+	}
+	if (!realClass)
+	{
+		ui.addRemoveClassLabel->setStyleSheet("QLabel { background-color : red; color : white; }");
+		ui.addRemoveClassLabel->setText("No such Class exist!");
+	}
+	
+}
+
+void studentView::on_removeClassButton_clicked()
+{
+	//populate all vectors
+	vector<users>allUsers = populateUsers();
+	vector<Student>allStudents = populateStudents();
+	vector<classes>allClasses = populateClasses();
+	vector<records>allRecords = populateRecords();
+	vector<faculty>allFaculty = populateFaculty();
+
+
+}
+
 void studentView::on_viewClassesButton_clicked()
 {
+	vector<users>allUsers = populateUsers();
+	vector<Student>allStudents = populateStudents();
+	vector<classes>allClasses = populateClasses();
+	vector<records>allRecords = populateRecords();
+	vector<faculty>allFaculty = populateFaculty();
+
 	ui.stackedWidget->setCurrentIndex(3);
 	//change header text
 	ui.welcomeLabel->setText("View Classes");
@@ -133,7 +254,7 @@ void studentView::on_viewClassesButton_clicked()
 	headers << "CRN" << "Subject"<<"Course ID"<<"Name"<<"Semester"<<"Day"<<"Time"<<"Instructor"<<"Room";
 	model->setColumnCount(allClasses.size()-1);
 	model->setHorizontalHeaderLabels(headers);
-	//popuate table
+	//populate table
 	for (int i = 0; i < allClasses.size()-1; i++)
 	{
 		model->setRowCount(i);
@@ -159,6 +280,12 @@ void studentView::on_viewClassesButton_clicked()
 
 void studentView::on_searchButton_clicked()
 {
+	vector<users>allUsers = populateUsers();
+	vector<Student>allStudents = populateStudents();
+	vector<classes>allClasses = populateClasses();
+	vector<records>allRecords = populateRecords();
+	vector<faculty>allFaculty = populateFaculty();
+
 	//create QT items
 	QStandardItemModel *model = new QStandardItemModel(this);
 	QList<QStandardItem *> items;
@@ -389,13 +516,75 @@ void studentView::on_changePasswordButton_clicked()
 
 	//change header text
 	ui.welcomeLabel->setText("Change Password");
+	
 
 	//enable back button
 	ui.backButton->show();
 	ui.backButton->setEnabled(true);
+}
 
-	//display schedule
+void studentView::on_submitButton_clicked()
+{
+	vector<users>allUsers = populateUsers();
+	vector<Student>allStudents = populateStudents();
+	vector<classes>allClasses = populateClasses();
+	vector<records>allRecords = populateRecords();
+	vector<faculty>allFaculty = populateFaculty();
 
+	QString newPassword;
+	QString currentPasswordTyped = ui.currentPasswordField->text();
+	QString currentPassword;
+	string username = allStudents[userlocation].userName;
+	string newVerifyPassword;
+	//getting user password
+	for (int i = 0; i < allUsers.size(); i++)
+	{
+		if (allStudents[userlocation].userName == allUsers[i].username)
+		{
+			currentPassword = QString::fromStdString(allUsers[i].password);
+			break;
+		}
+	}
+
+	//getcurrentPassword
+	if ( currentPasswordTyped == "")
+	{
+		ui.passwordChangeStatusLabel->setStyleSheet("QLabel { background-color : red; color : white; }");
+		ui.passwordChangeStatusLabel->setText("Current password can not be blank!");
+	}
+	else if (currentPasswordTyped !=currentPassword )
+	{
+		ui.passwordChangeStatusLabel->setStyleSheet("QLabel { background-color : red; color : white; }");
+		ui.passwordChangeStatusLabel->setText("Incorrect current password!");
+	}
+	else
+	{
+		newPassword = ui.newPasswordField->text();
+		if (newPassword != ui.verifyNewPasswordField->text())
+		{
+			ui.passwordChangeStatusLabel->setStyleSheet("QLabel { background-color : red; color : white; }");
+			ui.passwordChangeStatusLabel->setText("The new password does not match!");
+		}
+		else if (newPassword == "")
+		{
+			ui.passwordChangeStatusLabel->setStyleSheet("QLabel { background-color : red; color : white; }");
+			ui.passwordChangeStatusLabel->setText("The new password can not be blank!");
+		}
+		else
+		{
+			ui.currentPasswordField->setText("");
+			ui.newPasswordField->setText("");
+			ui.verifyNewPasswordField->setText("");
+
+			newVerifyPassword = newPassword.toStdString();
+			changePassword(username, newVerifyPassword);
+
+			ui.passwordChangeStatusLabel->setStyleSheet("QLabel { background-color : green; color : white; }");
+			ui.passwordChangeStatusLabel->setText("Password has been changed!");
+		}
+
+
+	}
 }
 
 void studentView::on_backButton_clicked()

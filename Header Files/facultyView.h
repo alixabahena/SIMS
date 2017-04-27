@@ -10,6 +10,16 @@ class facultyView : public QWidget
 
 public:
 	facultyView(QWidget *parent = Q_NULLPTR);
+	facultyView(QString userName);
+public slots:
+void on_viewScheduleButton_clicked();
+void on_manageScheduleButton_clicked();
+void on_viewClassesButton_clicked();
+void on_changePasswordButton_clicked();
+void on_logoutButton_clicked();
+void on_backButton_clicked();
+void on_submitButton_clicked();
+void on_searchButton_clicked();
 
 private:
 	Ui::facultyView ui;

@@ -5,15 +5,15 @@ using namespace std;
 
 faculty::faculty()
 {
-	username = "faculty";
 	firstName = "Bob";
 	lastName = "Dole";
+	userName = "faculty";
 }
 
-faculty::faculty(const string & Username, const string & FirstName, const string & LastName)
+faculty::faculty(string firstname, string lastname, string username, string department)
 {
-	username = Username;
-	firstName = FirstName;
-	lastName = LastName;
-
+	firstName = firstname;
+	lastName = lastname;
+	userName = username;
+	Department = department;
 }

@@ -7,10 +7,11 @@ using namespace std;
 class faculty
 {
 public:
-	string username;
+	string userName;
 	string firstName;
 	string lastName;
+	string Department;
 	faculty();
-	faculty(const string & username, const string & firstName, const string & lastName);
+	faculty(string firstname, string lastname, string username,string department);
 };
 

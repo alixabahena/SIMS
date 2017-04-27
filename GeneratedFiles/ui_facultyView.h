@@ -65,11 +65,10 @@ public:
     QVBoxLayout *verticalLayout_10;
     QGridLayout *gridLayout_2;
     QPushButton *editGradeButton;
-    QPushButton *saveChangesButton;
-    QFrame *line_5;
-    QPushButton *viewStudentsButton;
-    QPushButton *viewCurrentClassesButton;
     QTableView *manageClassesView;
+    QPushButton *viewCurrentClassesButton;
+    QPushButton *viewStudentsButton;
+    QFrame *line_5;
     QWidget *viewClasses;
     QVBoxLayout *verticalLayout_8;
     QGridLayout *gridLayout;
@@ -274,19 +273,17 @@ public:
         editGradeButton = new QPushButton(manageSchedule);
         editGradeButton->setObjectName(QStringLiteral("editGradeButton"));
 
-        gridLayout_2->addWidget(editGradeButton, 2, 1, 1, 1);
+        gridLayout_2->addWidget(editGradeButton, 3, 1, 1, 1);
 
-        saveChangesButton = new QPushButton(manageSchedule);
-        saveChangesButton->setObjectName(QStringLiteral("saveChangesButton"));
+        manageClassesView = new QTableView(manageSchedule);
+        manageClassesView->setObjectName(QStringLiteral("manageClassesView"));
 
-        gridLayout_2->addWidget(saveChangesButton, 4, 1, 1, 1);
+        gridLayout_2->addWidget(manageClassesView, 0, 0, 5, 1);
 
-        line_5 = new QFrame(manageSchedule);
-        line_5->setObjectName(QStringLiteral("line_5"));
-        line_5->setFrameShape(QFrame::HLine);
-        line_5->setFrameShadow(QFrame::Sunken);
+        viewCurrentClassesButton = new QPushButton(manageSchedule);
+        viewCurrentClassesButton->setObjectName(QStringLiteral("viewCurrentClassesButton"));
 
-        gridLayout_2->addWidget(line_5, 3, 1, 1, 1);
+        gridLayout_2->addWidget(viewCurrentClassesButton, 0, 1, 1, 1);
 
         viewStudentsButton = new QPushButton(manageSchedule);
         viewStudentsButton->setObjectName(QStringLiteral("viewStudentsButton"));
@@ -298,15 +295,12 @@ public:
 
         gridLayout_2->addWidget(viewStudentsButton, 1, 1, 1, 1);
 
-        viewCurrentClassesButton = new QPushButton(manageSchedule);
-        viewCurrentClassesButton->setObjectName(QStringLiteral("viewCurrentClassesButton"));
+        line_5 = new QFrame(manageSchedule);
+        line_5->setObjectName(QStringLiteral("line_5"));
+        line_5->setFrameShape(QFrame::HLine);
+        line_5->setFrameShadow(QFrame::Sunken);
 
-        gridLayout_2->addWidget(viewCurrentClassesButton, 0, 1, 1, 1);
-
-        manageClassesView = new QTableView(manageSchedule);
-        manageClassesView->setObjectName(QStringLiteral("manageClassesView"));
-
-        gridLayout_2->addWidget(manageClassesView, 0, 0, 6, 1);
+        gridLayout_2->addWidget(line_5, 2, 1, 1, 1);
 
 
         verticalLayout_10->addLayout(gridLayout_2);
@@ -489,9 +483,8 @@ public:
         logoutButton->setText(QApplication::translate("facultyView", "Logout", Q_NULLPTR));
         scheduleLabel->setText(QApplication::translate("facultyView", "Current Student Semester Schedule", Q_NULLPTR));
         editGradeButton->setText(QApplication::translate("facultyView", "Edit Grade", Q_NULLPTR));
-        saveChangesButton->setText(QApplication::translate("facultyView", "Save Changes", Q_NULLPTR));
-        viewStudentsButton->setText(QApplication::translate("facultyView", "View Students", Q_NULLPTR));
         viewCurrentClassesButton->setText(QApplication::translate("facultyView", "View Classes", Q_NULLPTR));
+        viewStudentsButton->setText(QApplication::translate("facultyView", "View Students", Q_NULLPTR));
         searchButton->setText(QApplication::translate("facultyView", "Submit", Q_NULLPTR));
         searchLabel->setText(QApplication::translate("facultyView", "Search: ", Q_NULLPTR));
         currentPasswordLabel->setText(QApplication::translate("facultyView", "Current Password: ", Q_NULLPTR));

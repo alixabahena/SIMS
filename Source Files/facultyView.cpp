@@ -283,8 +283,9 @@ void facultyView::on_editGradeButton_clicked()
 	QDialog *gradeDialog = new QDialog();
 	QLabel *gradeLabel = new QLabel();
 	QLineEdit *gradeInput = new QLineEdit();
+	QPushButton *saveButton = new QPushButton();
 
-
+	saveButton->setText("Save");
 	gradeLabel->setText("Enter Grade: ");
 	gradeDialog->setGeometry(geometry().x(), geometry().y(), 100, 100);
 	gradeDialog->setWindowTitle("Grade Center");
@@ -292,7 +293,14 @@ void facultyView::on_editGradeButton_clicked()
 
 	verticalLayout->addWidget(gradeLabel);
 	verticalLayout->addWidget(gradeInput);
+	verticalLayout->addWidget(saveButton);
 	gradeDialog->setLayout(verticalLayout);
+	gradeDialog->setGeometry(QStyle::alignedRect(
+		Qt::LeftToRight,
+		Qt::AlignCenter,
+		gradeDialog->size(),
+		qApp->desktop()->availableGeometry()
+	));
 	gradeDialog->show();
 
 

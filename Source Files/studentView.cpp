@@ -271,6 +271,7 @@ void studentView::on_viewClassesButton_clicked()
 		items.clear();
 
 	}
+	ui.classesView->setSelectionBehavior(QAbstractItemView::SelectRows);
 	ui.classesView->setEditTriggers(QAbstractItemView::NoEditTriggers);
 	ui.classesView->setModel(model);
 	//enable back button

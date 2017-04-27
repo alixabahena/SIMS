@@ -152,6 +152,7 @@ void facultyView::on_manageScheduleButton_clicked()
 			items.clear();
 		}
 	}
+	ui.manageClassesView->setSelectionBehavior(QAbstractItemView::SelectRows);
 	ui.manageClassesView->setEditTriggers(QAbstractItemView::NoEditTriggers);
 	ui.manageClassesView->setModel(model);
 

@@ -259,7 +259,6 @@ public:
         semesterScheduleView = new QTextEdit(viewSchedule);
         semesterScheduleView->setObjectName(QStringLiteral("semesterScheduleView"));
         semesterScheduleView->setEnabled(false);
-        semesterScheduleView->setFont(font2);
 
         verticalLayout_6->addWidget(semesterScheduleView);
 
@@ -524,7 +523,7 @@ public:
         QObject::connect(searchClassesInput, SIGNAL(returnPressed()), searchButton, SLOT(click()));
         QObject::connect(verifyNewPasswordField, SIGNAL(returnPressed()), submitButton, SLOT(click()));
 
-        stackedWidget->setCurrentIndex(4);
+        stackedWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(studentView);

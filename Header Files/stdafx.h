@@ -28,6 +28,7 @@
 #include <qkeyeventtransition.h>
 #include <qevent.h>
 #include <qstandarditemmodel.h>
+#include <qlayout.h>
 
 //normal libraries
 #include <string>

@@ -283,18 +283,18 @@ void facultyView::on_editGradeButton_clicked()
 	QDialog *gradeDialog = new QDialog();
 	QLabel *gradeLabel = new QLabel();
 	QLineEdit *gradeInput = new QLineEdit();
-	
+
 
 	gradeLabel->setText("Enter Grade: ");
-	gradeDialog->setGeometry(geometry().x(), geometry().y(), 200, 100);
+	gradeDialog->setGeometry(geometry().x(), geometry().y(), 100, 100);
 	gradeDialog->setWindowTitle("Grade Center");
+	QVBoxLayout *verticalLayout = new QVBoxLayout();
 
+	verticalLayout->addWidget(gradeLabel);
+	verticalLayout->addWidget(gradeInput);
+	gradeDialog->setLayout(verticalLayout);
 	gradeDialog->show();
 
-
-}
-void facultyView::on_saveChangesButton_clicked()
-{
 
 }
 

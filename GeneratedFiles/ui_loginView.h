@@ -94,7 +94,7 @@ public:
 
         formLayout->setWidget(0, QFormLayout::SpanningRole, line);
 
-        verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        verticalSpacer_3 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         formLayout->setItem(1, QFormLayout::FieldRole, verticalSpacer_3);
 
@@ -108,7 +108,7 @@ public:
 
         formLayout->setWidget(3, QFormLayout::FieldRole, usernameField);
 
-        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        verticalSpacer_2 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         formLayout->setItem(4, QFormLayout::FieldRole, verticalSpacer_2);
 

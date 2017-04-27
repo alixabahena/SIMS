@@ -451,7 +451,7 @@ public:
 
         retranslateUi(adminView);
 
-        stackedWidget->setCurrentIndex(2);
+        stackedWidget->setCurrentIndex(4);
 
 
         QMetaObject::connectSlotsByName(adminView);

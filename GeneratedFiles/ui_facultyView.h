@@ -51,7 +51,6 @@ public:
     QPushButton *viewScheduleButton;
     QPushButton *manageScheduleButton;
     QPushButton *viewClassesButton;
-    QPushButton *changePasswordButton_2;
     QPushButton *changePasswordButton;
     QPushButton *logoutButton;
     QWidget *viewSchedule;
@@ -197,13 +196,6 @@ public:
         viewClassesButton->setSizePolicy(sizePolicy1);
 
         verticalLayout->addWidget(viewClassesButton);
-
-        changePasswordButton_2 = new QPushButton(mainPage);
-        changePasswordButton_2->setObjectName(QStringLiteral("changePasswordButton_2"));
-        sizePolicy1.setHeightForWidth(changePasswordButton_2->sizePolicy().hasHeightForWidth());
-        changePasswordButton_2->setSizePolicy(sizePolicy1);
-
-        verticalLayout->addWidget(changePasswordButton_2);
 
         changePasswordButton = new QPushButton(mainPage);
         changePasswordButton->setObjectName(QStringLiteral("changePasswordButton"));
@@ -471,7 +463,7 @@ public:
         retranslateUi(facultyView);
         QObject::connect(searchClassesInput, SIGNAL(returnPressed()), searchButton, SLOT(click()));
 
-        stackedWidget->setCurrentIndex(2);
+        stackedWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(facultyView);

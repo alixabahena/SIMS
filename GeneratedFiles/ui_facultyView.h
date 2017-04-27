@@ -439,8 +439,9 @@ public:
 
 
         retranslateUi(facultyView);
+        QObject::connect(searchClassesInput, SIGNAL(returnPressed()), searchButton, SLOT(click()));
 
-        stackedWidget->setCurrentIndex(3);
+        stackedWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(facultyView);

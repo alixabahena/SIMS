@@ -219,6 +219,10 @@ public:
         logoutButton->setObjectName(QStringLiteral("logoutButton"));
         sizePolicy2.setHeightForWidth(logoutButton->sizePolicy().hasHeightForWidth());
         logoutButton->setSizePolicy(sizePolicy2);
+        QFont font2;
+        font2.setBold(true);
+        font2.setWeight(75);
+        logoutButton->setFont(font2);
 
         verticalLayout->addWidget(logoutButton);
 
@@ -291,9 +295,9 @@ public:
         sizePolicy3.setVerticalStretch(0);
         sizePolicy3.setHeightForWidth(crnLabel->sizePolicy().hasHeightForWidth());
         crnLabel->setSizePolicy(sizePolicy3);
-        QFont font2;
-        font2.setPointSize(10);
-        crnLabel->setFont(font2);
+        QFont font3;
+        font3.setPointSize(10);
+        crnLabel->setFont(font3);
 
         gridLayout_2->addWidget(crnLabel, 0, 0, 1, 1);
 
@@ -320,7 +324,7 @@ public:
         crnAddRemoveLine->setObjectName(QStringLiteral("crnAddRemoveLine"));
         sizePolicy4.setHeightForWidth(crnAddRemoveLine->sizePolicy().hasHeightForWidth());
         crnAddRemoveLine->setSizePolicy(sizePolicy4);
-        crnAddRemoveLine->setFont(font2);
+        crnAddRemoveLine->setFont(font3);
 
         gridLayout_2->addWidget(crnAddRemoveLine, 0, 1, 1, 1);
 
@@ -348,7 +352,7 @@ public:
         sizePolicy6.setVerticalStretch(0);
         sizePolicy6.setHeightForWidth(addRemoveClassLabel->sizePolicy().hasHeightForWidth());
         addRemoveClassLabel->setSizePolicy(sizePolicy6);
-        addRemoveClassLabel->setFont(font2);
+        addRemoveClassLabel->setFont(font3);
         addRemoveClassLabel->setAlignment(Qt::AlignCenter);
 
         gridLayout_2->addWidget(addRemoveClassLabel, 1, 0, 1, 4);
@@ -373,13 +377,13 @@ public:
         sizePolicy7.setVerticalStretch(0);
         sizePolicy7.setHeightForWidth(classesSearchBox->sizePolicy().hasHeightForWidth());
         classesSearchBox->setSizePolicy(sizePolicy7);
-        classesSearchBox->setFont(font2);
+        classesSearchBox->setFont(font3);
 
         gridLayout->addWidget(classesSearchBox, 0, 1, 1, 1);
 
         searchButton = new QPushButton(viewClasses);
         searchButton->setObjectName(QStringLiteral("searchButton"));
-        searchButton->setFont(font2);
+        searchButton->setFont(font3);
 
         gridLayout->addWidget(searchButton, 0, 3, 1, 1);
 
@@ -394,7 +398,7 @@ public:
         sizePolicy8.setVerticalStretch(0);
         sizePolicy8.setHeightForWidth(searchLabel->sizePolicy().hasHeightForWidth());
         searchLabel->setSizePolicy(sizePolicy8);
-        searchLabel->setFont(font2);
+        searchLabel->setFont(font3);
         searchLabel->setAlignment(Qt::AlignCenter);
 
         gridLayout->addWidget(searchLabel, 0, 0, 1, 1);
@@ -418,7 +422,7 @@ public:
         sizePolicy9.setVerticalStretch(0);
         sizePolicy9.setHeightForWidth(searchClassesInput->sizePolicy().hasHeightForWidth());
         searchClassesInput->setSizePolicy(sizePolicy9);
-        searchClassesInput->setFont(font2);
+        searchClassesInput->setFont(font3);
 
         gridLayout->addWidget(searchClassesInput, 0, 2, 1, 1);
 
@@ -483,7 +487,7 @@ public:
 
         submitButton = new QPushButton(changePassword);
         submitButton->setObjectName(QStringLiteral("submitButton"));
-        submitButton->setFont(font2);
+        submitButton->setFont(font3);
 
         formLayout->setWidget(5, QFormLayout::FieldRole, submitButton);
 
@@ -493,7 +497,7 @@ public:
 
         passwordChangeStatusLabel = new QLabel(changePassword);
         passwordChangeStatusLabel->setObjectName(QStringLiteral("passwordChangeStatusLabel"));
-        passwordChangeStatusLabel->setFont(font2);
+        passwordChangeStatusLabel->setFont(font3);
         passwordChangeStatusLabel->setAlignment(Qt::AlignCenter);
 
         formLayout->setWidget(6, QFormLayout::SpanningRole, passwordChangeStatusLabel);
@@ -519,7 +523,7 @@ public:
         QObject::connect(searchClassesInput, SIGNAL(returnPressed()), searchButton, SLOT(click()));
         QObject::connect(verifyNewPasswordField, SIGNAL(returnPressed()), submitButton, SLOT(click()));
 
-        stackedWidget->setCurrentIndex(3);
+        stackedWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(studentView);
@@ -532,9 +536,9 @@ public:
         usernameLabel->setText(QString());
         label->setText(QApplication::translate("studentView", "Student Information and Options", Q_NULLPTR));
         studentInfoBrowser->setText(QString());
-        viewScheduleButton->setText(QApplication::translate("studentView", "View Schedule", Q_NULLPTR));
-        manageScheduleButton->setText(QApplication::translate("studentView", "Manage Schedule", Q_NULLPTR));
-        viewClassesButton->setText(QApplication::translate("studentView", "View Classes", Q_NULLPTR));
+        viewScheduleButton->setText(QApplication::translate("studentView", "View Current Schedule", Q_NULLPTR));
+        manageScheduleButton->setText(QApplication::translate("studentView", "Add / Remove Classes", Q_NULLPTR));
+        viewClassesButton->setText(QApplication::translate("studentView", "View Available Classes", Q_NULLPTR));
         changePasswordButton->setText(QApplication::translate("studentView", "Change Password", Q_NULLPTR));
         logoutButton->setText(QApplication::translate("studentView", "Logout", Q_NULLPTR));
         scheduleLabel->setText(QApplication::translate("studentView", "Current Student Semester Schedule", Q_NULLPTR));

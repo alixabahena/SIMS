@@ -13,6 +13,7 @@
 #include "gradeDialog.h"
 
 
+
 //QT
 #include <qsqldatabase.h>
 #include <qdir.h>
@@ -34,11 +35,13 @@
 #include <QStyle>
 #include <QDesktopWidget>
 #include <qdialog.h>
+#include <string.h>
 
 //normal libraries
 #include <string>
 #include <vector>
 #include <iostream>
+
 
 //Sqlite
 #include "Header Files\sqlite3.h"

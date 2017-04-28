@@ -13,6 +13,7 @@ gradeDialog::gradeDialog(int row)
 {
 	int studentRow = row;
 		ui.setupUi(this);
+		this->setSizeGripEnabled(false);
 }
 
 void gradeDialog::on_okButton_clicked()

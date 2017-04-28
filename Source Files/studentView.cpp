@@ -62,6 +62,7 @@ studentView::studentView(QString userName)
 	ui.studentInfoBrowser->setText("Name: " + fullName + "\nUsername: "+ user +"\nStudent ID: "+ id +"\n\nDate of Birth: "+ dob +"\nHome Address: "+homeAddress+"\nPhone Number: "+phoneNumber+"\nEmail: "+emaiAddress+"\n\nMajor: "+Major+"\nSemester Enrolled: "+ semester +"\nSemester GPA: ");
 
 	ui.usernameLabel->setText(fullName);
+	ui.searchButton->hide();
 	ui.stackedWidget->setCurrentIndex(0);
 	//combobox implement
 	ui.classesSearchBox->addItem("CRN");
@@ -298,12 +299,13 @@ void studentView::on_searchButton_clicked()
 	if (ui.classesSearchBox->currentIndex() == 0)
 	{
 		QString searchClass = ui.searchClassesInput->text();
-		int crn = searchClass.toInt();
+		string crn = searchClass.toStdString();
 		
 		//populate table
 		for (int i = 0; i < allClasses.size() - 1; i++)
 		{
-			if (crn == allClasses[i].CRN) {
+			string vectorCRN = to_string(allClasses[i].CRN);
+			if (vectorCRN.find(crn) != string::npos) {
 				items.append(new QStandardItem(QString::fromStdString(to_string(allClasses[i].CRN))));
 				items.append(new QStandardItem(QString::fromStdString(allClasses[i].Subject)));
 				items.append(new QStandardItem(QString::fromStdString(to_string(allClasses[i].courseID))));
@@ -334,7 +336,7 @@ void studentView::on_searchButton_clicked()
 			{
 				searchSubject += tolower(allClasses[i].Subject[j]);
 			}
-			if (subject == searchSubject) {
+			if (searchSubject.find(subject) != string::npos) {
 				items.append(new QStandardItem(QString::fromStdString(to_string(allClasses[i].CRN))));
 				items.append(new QStandardItem(QString::fromStdString(allClasses[i].Subject)));
 				items.append(new QStandardItem(QString::fromStdString(to_string(allClasses[i].courseID))));

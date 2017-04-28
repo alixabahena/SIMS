@@ -91,7 +91,7 @@
         </sizepolicy>
        </property>
        <property name="currentIndex">
-        <number>0</number>
+        <number>3</number>
        </property>
        <widget class="QWidget" name="mainPage">
         <property name="sizePolicy">
@@ -450,6 +450,9 @@
            </item>
            <item row="0" column="3">
             <widget class="QPushButton" name="searchButton">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
              <property name="font">
               <font>
                <pointsize>10</pointsize>
@@ -685,6 +688,22 @@
     <hint type="destinationlabel">
      <x>498</x>
      <y>476</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>searchClassesInput</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>searchButton</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>504</x>
+     <y>160</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>689</x>
+     <y>160</y>
     </hint>
    </hints>
   </connection>

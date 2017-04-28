@@ -45,6 +45,22 @@
       </widget>
      </item>
      <item>
+      <widget class="QPushButton" name="backButton">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>Back</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="Line" name="line_2">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
@@ -70,7 +86,7 @@
      <item>
       <widget class="QStackedWidget" name="stackedWidget">
        <property name="currentIndex">
-        <number>0</number>
+        <number>2</number>
        </property>
        <widget class="QWidget" name="mainPage">
         <property name="sizePolicy">
@@ -549,16 +565,6 @@
        </widget>
       </widget>
      </item>
-     <item>
-      <widget class="QPushButton" name="backButton">
-       <property name="enabled">
-        <bool>false</bool>
-       </property>
-       <property name="text">
-        <string>Back</string>
-       </property>
-      </widget>
-     </item>
     </layout>
    </item>
   </layout>
@@ -578,6 +584,22 @@
     <hint type="destinationlabel">
      <x>692</x>
      <y>132</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>manageClassesView</sender>
+   <signal>doubleClicked(QModelIndex)</signal>
+   <receiver>viewStudentsButton</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>332</x>
+     <y>341</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>688</x>
+     <y>160</y>
     </hint>
    </hints>
   </connection>

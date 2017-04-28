@@ -39,6 +39,7 @@ public:
     QVBoxLayout *verticalLayout_4;
     QLabel *welcomeLabel;
     QLabel *usernameLabel;
+    QPushButton *backButton;
     QFrame *line_2;
     QLabel *label;
     QStackedWidget *stackedWidget;
@@ -92,7 +93,6 @@ public:
     QPushButton *submitButton;
     QSpacerItem *verticalSpacer_4;
     QLabel *passwordChangeStatusLabel;
-    QPushButton *backButton;
 
     void setupUi(QWidget *facultyView)
     {
@@ -123,6 +123,17 @@ public:
 
         MainLayout->addWidget(usernameLabel);
 
+        backButton = new QPushButton(facultyView);
+        backButton->setObjectName(QStringLiteral("backButton"));
+        backButton->setEnabled(false);
+        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(backButton->sizePolicy().hasHeightForWidth());
+        backButton->setSizePolicy(sizePolicy);
+
+        MainLayout->addWidget(backButton);
+
         line_2 = new QFrame(facultyView);
         line_2->setObjectName(QStringLiteral("line_2"));
         line_2->setFrameShape(QFrame::HLine);
@@ -144,11 +155,11 @@ public:
         stackedWidget->setObjectName(QStringLiteral("stackedWidget"));
         mainPage = new QWidget();
         mainPage->setObjectName(QStringLiteral("mainPage"));
-        QSizePolicy sizePolicy(QSizePolicy::Maximum, QSizePolicy::Maximum);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(mainPage->sizePolicy().hasHeightForWidth());
-        mainPage->setSizePolicy(sizePolicy);
+        QSizePolicy sizePolicy1(QSizePolicy::Maximum, QSizePolicy::Maximum);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(mainPage->sizePolicy().hasHeightForWidth());
+        mainPage->setSizePolicy(sizePolicy1);
         verticalLayout_3 = new QVBoxLayout(mainPage);
         verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
         horizontalLayout = new QHBoxLayout();
@@ -156,11 +167,11 @@ public:
         studentInfoBrowser = new QLabel(mainPage);
         studentInfoBrowser->setObjectName(QStringLiteral("studentInfoBrowser"));
         studentInfoBrowser->setEnabled(true);
-        QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Expanding);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(studentInfoBrowser->sizePolicy().hasHeightForWidth());
-        studentInfoBrowser->setSizePolicy(sizePolicy1);
+        QSizePolicy sizePolicy2(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(studentInfoBrowser->sizePolicy().hasHeightForWidth());
+        studentInfoBrowser->setSizePolicy(sizePolicy2);
         QFont font2;
         font2.setPointSize(12);
         studentInfoBrowser->setFont(font2);
@@ -178,36 +189,36 @@ public:
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         viewScheduleButton = new QPushButton(mainPage);
         viewScheduleButton->setObjectName(QStringLiteral("viewScheduleButton"));
-        sizePolicy1.setHeightForWidth(viewScheduleButton->sizePolicy().hasHeightForWidth());
-        viewScheduleButton->setSizePolicy(sizePolicy1);
+        sizePolicy2.setHeightForWidth(viewScheduleButton->sizePolicy().hasHeightForWidth());
+        viewScheduleButton->setSizePolicy(sizePolicy2);
 
         verticalLayout->addWidget(viewScheduleButton);
 
         manageScheduleButton = new QPushButton(mainPage);
         manageScheduleButton->setObjectName(QStringLiteral("manageScheduleButton"));
-        sizePolicy1.setHeightForWidth(manageScheduleButton->sizePolicy().hasHeightForWidth());
-        manageScheduleButton->setSizePolicy(sizePolicy1);
+        sizePolicy2.setHeightForWidth(manageScheduleButton->sizePolicy().hasHeightForWidth());
+        manageScheduleButton->setSizePolicy(sizePolicy2);
 
         verticalLayout->addWidget(manageScheduleButton);
 
         viewClassesButton = new QPushButton(mainPage);
         viewClassesButton->setObjectName(QStringLiteral("viewClassesButton"));
-        sizePolicy1.setHeightForWidth(viewClassesButton->sizePolicy().hasHeightForWidth());
-        viewClassesButton->setSizePolicy(sizePolicy1);
+        sizePolicy2.setHeightForWidth(viewClassesButton->sizePolicy().hasHeightForWidth());
+        viewClassesButton->setSizePolicy(sizePolicy2);
 
         verticalLayout->addWidget(viewClassesButton);
 
         changePasswordButton = new QPushButton(mainPage);
         changePasswordButton->setObjectName(QStringLiteral("changePasswordButton"));
-        sizePolicy1.setHeightForWidth(changePasswordButton->sizePolicy().hasHeightForWidth());
-        changePasswordButton->setSizePolicy(sizePolicy1);
+        sizePolicy2.setHeightForWidth(changePasswordButton->sizePolicy().hasHeightForWidth());
+        changePasswordButton->setSizePolicy(sizePolicy2);
 
         verticalLayout->addWidget(changePasswordButton);
 
         logoutButton = new QPushButton(mainPage);
         logoutButton->setObjectName(QStringLiteral("logoutButton"));
-        sizePolicy1.setHeightForWidth(logoutButton->sizePolicy().hasHeightForWidth());
-        logoutButton->setSizePolicy(sizePolicy1);
+        sizePolicy2.setHeightForWidth(logoutButton->sizePolicy().hasHeightForWidth());
+        logoutButton->setSizePolicy(sizePolicy2);
         QFont font3;
         font3.setBold(true);
         font3.setWeight(75);
@@ -224,8 +235,8 @@ public:
         stackedWidget->addWidget(mainPage);
         viewSchedule = new QWidget();
         viewSchedule->setObjectName(QStringLiteral("viewSchedule"));
-        sizePolicy.setHeightForWidth(viewSchedule->sizePolicy().hasHeightForWidth());
-        viewSchedule->setSizePolicy(sizePolicy);
+        sizePolicy1.setHeightForWidth(viewSchedule->sizePolicy().hasHeightForWidth());
+        viewSchedule->setSizePolicy(sizePolicy1);
         verticalLayout_7 = new QVBoxLayout(viewSchedule);
         verticalLayout_7->setObjectName(QStringLiteral("verticalLayout_7"));
         verticalLayout_6 = new QVBoxLayout();
@@ -287,11 +298,11 @@ public:
 
         viewStudentsButton = new QPushButton(manageSchedule);
         viewStudentsButton->setObjectName(QStringLiteral("viewStudentsButton"));
-        QSizePolicy sizePolicy2(QSizePolicy::Minimum, QSizePolicy::Fixed);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(viewStudentsButton->sizePolicy().hasHeightForWidth());
-        viewStudentsButton->setSizePolicy(sizePolicy2);
+        QSizePolicy sizePolicy3(QSizePolicy::Minimum, QSizePolicy::Fixed);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(viewStudentsButton->sizePolicy().hasHeightForWidth());
+        viewStudentsButton->setSizePolicy(sizePolicy3);
 
         gridLayout_2->addWidget(viewStudentsButton, 1, 1, 1, 1);
 
@@ -314,11 +325,11 @@ public:
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
         classesSearchBox = new QComboBox(viewClasses);
         classesSearchBox->setObjectName(QStringLiteral("classesSearchBox"));
-        QSizePolicy sizePolicy3(QSizePolicy::Expanding, QSizePolicy::Preferred);
-        sizePolicy3.setHorizontalStretch(0);
-        sizePolicy3.setVerticalStretch(0);
-        sizePolicy3.setHeightForWidth(classesSearchBox->sizePolicy().hasHeightForWidth());
-        classesSearchBox->setSizePolicy(sizePolicy3);
+        QSizePolicy sizePolicy4(QSizePolicy::Expanding, QSizePolicy::Preferred);
+        sizePolicy4.setHorizontalStretch(0);
+        sizePolicy4.setVerticalStretch(0);
+        sizePolicy4.setHeightForWidth(classesSearchBox->sizePolicy().hasHeightForWidth());
+        classesSearchBox->setSizePolicy(sizePolicy4);
         QFont font4;
         font4.setPointSize(10);
         classesSearchBox->setFont(font4);
@@ -337,11 +348,11 @@ public:
 
         searchLabel = new QLabel(viewClasses);
         searchLabel->setObjectName(QStringLiteral("searchLabel"));
-        QSizePolicy sizePolicy4(QSizePolicy::Minimum, QSizePolicy::Minimum);
-        sizePolicy4.setHorizontalStretch(0);
-        sizePolicy4.setVerticalStretch(0);
-        sizePolicy4.setHeightForWidth(searchLabel->sizePolicy().hasHeightForWidth());
-        searchLabel->setSizePolicy(sizePolicy4);
+        QSizePolicy sizePolicy5(QSizePolicy::Minimum, QSizePolicy::Minimum);
+        sizePolicy5.setHorizontalStretch(0);
+        sizePolicy5.setVerticalStretch(0);
+        sizePolicy5.setHeightForWidth(searchLabel->sizePolicy().hasHeightForWidth());
+        searchLabel->setSizePolicy(sizePolicy5);
         searchLabel->setFont(font4);
         searchLabel->setAlignment(Qt::AlignCenter);
 
@@ -361,11 +372,11 @@ public:
 
         searchClassesInput = new QLineEdit(viewClasses);
         searchClassesInput->setObjectName(QStringLiteral("searchClassesInput"));
-        QSizePolicy sizePolicy5(QSizePolicy::Expanding, QSizePolicy::Minimum);
-        sizePolicy5.setHorizontalStretch(0);
-        sizePolicy5.setVerticalStretch(0);
-        sizePolicy5.setHeightForWidth(searchClassesInput->sizePolicy().hasHeightForWidth());
-        searchClassesInput->setSizePolicy(sizePolicy5);
+        QSizePolicy sizePolicy6(QSizePolicy::Expanding, QSizePolicy::Minimum);
+        sizePolicy6.setHorizontalStretch(0);
+        sizePolicy6.setVerticalStretch(0);
+        sizePolicy6.setHeightForWidth(searchClassesInput->sizePolicy().hasHeightForWidth());
+        searchClassesInput->setSizePolicy(sizePolicy6);
         searchClassesInput->setFont(font4);
 
         gridLayout->addWidget(searchClassesInput, 0, 2, 1, 1);
@@ -450,20 +461,15 @@ public:
 
         MainLayout->addWidget(stackedWidget);
 
-        backButton = new QPushButton(facultyView);
-        backButton->setObjectName(QStringLiteral("backButton"));
-        backButton->setEnabled(false);
-
-        MainLayout->addWidget(backButton);
-
 
         verticalLayout_2->addLayout(MainLayout);
 
 
         retranslateUi(facultyView);
         QObject::connect(searchClassesInput, SIGNAL(returnPressed()), searchButton, SLOT(click()));
+        QObject::connect(manageClassesView, SIGNAL(doubleClicked(QModelIndex)), viewStudentsButton, SLOT(click()));
 
-        stackedWidget->setCurrentIndex(0);
+        stackedWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(facultyView);
@@ -474,6 +480,7 @@ public:
         facultyView->setWindowTitle(QApplication::translate("facultyView", "Form", Q_NULLPTR));
         welcomeLabel->setText(QApplication::translate("facultyView", "Faculty Portal", Q_NULLPTR));
         usernameLabel->setText(QString());
+        backButton->setText(QApplication::translate("facultyView", "Back", Q_NULLPTR));
         label->setText(QApplication::translate("facultyView", "Faculty Information and Options", Q_NULLPTR));
         studentInfoBrowser->setText(QString());
         viewScheduleButton->setText(QApplication::translate("facultyView", "View Current Schedule", Q_NULLPTR));
@@ -492,7 +499,6 @@ public:
         verifyNewPasswordLabel->setText(QApplication::translate("facultyView", "Verify New Password: ", Q_NULLPTR));
         submitButton->setText(QApplication::translate("facultyView", "Submit", Q_NULLPTR));
         passwordChangeStatusLabel->setText(QString());
-        backButton->setText(QApplication::translate("facultyView", "Back", Q_NULLPTR));
     } // retranslateUi
 
 };

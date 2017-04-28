@@ -10,6 +10,7 @@
 #include "faculty.h"
 #include "classes.h"
 #include "records.h"
+#include "gradeDialog.h"
 
 
 //QT
@@ -32,6 +33,7 @@
 #include "qapplication.h"
 #include <QStyle>
 #include <QDesktopWidget>
+#include <qdialog.h>
 
 //normal libraries
 #include <string>
@@ -46,3 +48,4 @@
 #include "ui_adminView.h"
 #include "ui_loginView.h"
 #include "ui_facultyView.h"
+#include <ui_gradeDialog.h>

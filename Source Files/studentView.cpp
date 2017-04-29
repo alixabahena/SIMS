@@ -144,42 +144,15 @@ void studentView::on_manageScheduleButton_clicked()
 
 	//change header text
 	ui.welcomeLabel->setText("Add / Remove Classes");
-	
-	//create QT items
-	QStandardItemModel *model = new QStandardItemModel(this);
-	QList<QStandardItem *> items;
-	//set headers name and size
-	QStringList headers;
-	headers << "CRN" << "Subject" << "Course ID" << "Name" << "Semester" << "Day" << "Time" << "Instructor" << "Room";
-	model->setColumnCount(allClasses.size() - 1);
-	model->setHorizontalHeaderLabels(headers);
-	//populate schedule
-	for (int i = 0; i < allRecords.size(); i++)
-	{
-		if (allStudents[userlocation].userName == allRecords[i].Username)
-		{
-			items.append(new QStandardItem(QString::fromStdString(to_string(allClasses[i].CRN))));
-			items.append(new QStandardItem(QString::fromStdString(allClasses[i].Subject)));
-			items.append(new QStandardItem(QString::fromStdString(to_string(allClasses[i].courseID))));
-			items.append(new QStandardItem(QString::fromStdString(allClasses[i].Name)));
-			items.append(new QStandardItem(QString::fromStdString(allClasses[i].Semester)));
-			items.append(new QStandardItem(QString::fromStdString(allClasses[i].classDays)));
-			items.append(new QStandardItem(QString::fromStdString(allClasses[i].classTime)));
-			for (int j = 0; j < allFaculty.size(); j++)
-			{
-				if (allClasses[i].Instructor == allFaculty[j].userName)
-				{
-					items.append(new QStandardItem(QString::fromStdString(allFaculty[j].firstName) + " " + QString::fromStdString(allFaculty[j].lastName)));
-				}
-			}
-	
-			items.append(new QStandardItem(QString::fromStdString(allClasses[i].Room)));
-			model->appendRow(items);
-			items.clear();
-		}
-	}
-	ui.manageClassesView->setEditTriggers(QAbstractItemView::NoEditTriggers);
-	ui.manageClassesView->setModel(model);
+
+	QString studentUsername = QString::fromStdString(allStudents[userlocation].userName);
+	QSqlDatabase records = QSqlDatabase::addDatabase("QSQLITE");
+	records.setDatabaseName("Students.db");
+	records.open();
+
+	QSqlQueryModel *sqlitemodel = new QSqlQueryModel();
+	sqlitemodel->setQuery("SELECT r.CRN,c.Subject,c.Name,c.'Course ID',c.Semester,c.classDays AS Days,c.classTime AS Time,(f.'First Name' ||\ " "\ ||f.'Last Name') AS Instructor,c.Room FROM Records AS r LEFT OUTER JOIN Students AS s ON r.username= s.username LEFT OUTER JOIN Classes as c ON r.CRN = c.CRN LEFT OUTER JOIN Faculty AS f ON c.Instructor = f.username WHERE r.username=" + studentUsername);
+	ui.manageClassesView->setModel(sqlitemodel);
 
 	//enable back button
 	ui.backButton->show();

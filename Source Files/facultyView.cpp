@@ -1,6 +1,7 @@
 #include "Header Files\stdafx.h"
 
 int userloc = 0;
+QSqlQueryModel *sqlitemodel = new QSqlQueryModel();
 
 facultyView::facultyView(QWidget *parent)
 	: QWidget(parent)
@@ -245,43 +246,15 @@ void facultyView::on_viewStudentsButton_clicked()
 		CRN = index.sibling(row, 0).data().toString();
 	}
 
-	for (int i = 0; i < allRecords.size(); i++)
-	{
-		if (allRecords[i].Crn == CRN.toInt())
-		{
-					for (int j = 0; j < allStudents.size(); j++)
-					{
-						if (allRecords[i].Username == allStudents[j].userName)
-						{
-							items.append(new QStandardItem(QString::fromStdString(allStudents[j].firstName) + " " + QString::fromStdString(allStudents[j].lastName)));
-						}
-					}
 
-					for (int k = 0; k < allClasses.size(); k++)
-					{
-						if (allRecords[i].Crn == allClasses[k].CRN)
-						{
-							items.append(new QStandardItem(QString::fromStdString(allClasses[k].Name)));
-							items.append(new QStandardItem(QString::fromStdString(allClasses[k].Semester)));
-						}
-					}
+	QSqlDatabase records = QSqlDatabase::addDatabase("QSQLITE");
+	records.setDatabaseName("Students.db");
+	records.open();
 
-					items.append(new QStandardItem(QString::number(allRecords[i].Grade)));
 
-					model->appendRow(items);
-					items.clear();
-				}
-		else
-		{
+	sqlitemodel->setQuery("SELECT (ca.First_Name || \" \" || ca.Last_Name) AS 'Student Name', c.CRN, c.Grade FROM Records AS c LEFT OUTER JOIN Students AS ca ON c.username= ca.username WHERE CRN=" + CRN);
+	ui.manageClassesView->setModel(sqlitemodel);
 
-		}
-		
-		}
-		
-		ui.manageClassesView->setSelectionMode(QAbstractItemView::SingleSelection);
-		ui.manageClassesView->setSelectionBehavior(QAbstractItemView::SelectRows);
-		ui.manageClassesView->setEditTriggers(QAbstractItemView::NoEditTriggers);
-		ui.manageClassesView->setModel(model);
 	}
 
 void facultyView::on_editGradeButton_clicked()
@@ -309,7 +282,8 @@ void facultyView::on_editGradeButton_clicked()
 	QString faculty = QString::fromStdString(username);
 	gradeDialog *enterGrade = new gradeDialog(row, faculty, student);
 	enterGrade->show();
-	
+	sqlitemodel->query().exec();
+	ui.manageClassesView->setModel(sqlitemodel);
 }
 
 

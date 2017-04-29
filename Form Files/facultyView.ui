@@ -675,6 +675,22 @@ border: 1px solid black;</string>
    </hints>
   </connection>
   <connection>
+   <sender>manageClassesView</sender>
+   <signal>doubleClicked(QModelIndex)</signal>
+   <receiver>viewStudentsButton</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>332</x>
+     <y>341</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>688</x>
+     <y>160</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
    <sender>searchClassesInput</sender>
    <signal>textChanged(QString)</signal>
    <receiver>searchButton</receiver>

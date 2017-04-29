@@ -36,9 +36,6 @@
 #include <QDesktopWidget>
 #include <qdialog.h>
 #include <string.h>
-#include <qsqltablemodel.h>
-#include <qsqlquery.h>
-#include <qsqlquerymodel.h>
 
 //normal libraries
 #include <string>

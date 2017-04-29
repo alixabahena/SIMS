@@ -86,7 +86,7 @@
      <item>
       <widget class="QStackedWidget" name="stackedWidget">
        <property name="currentIndex">
-        <number>2</number>
+        <number>3</number>
        </property>
        <widget class="QWidget" name="mainPage">
         <property name="sizePolicy">
@@ -599,6 +599,22 @@
     </hint>
     <hint type="destinationlabel">
      <x>688</x>
+     <y>160</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>searchClassesInput</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>searchButton</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>504</x>
+     <y>160</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>689</x>
      <y>160</y>
     </hint>
    </hints>

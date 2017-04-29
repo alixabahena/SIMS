@@ -358,12 +358,13 @@ void facultyView::on_searchButton_clicked()
 	if (ui.classesSearchBox->currentIndex() == 0)
 	{
 		QString searchClass = ui.searchClassesInput->text();
-		int crn = searchClass.toInt();
+		string crn = searchClass.toStdString();
 
 		//populate table
 		for (int i = 0; i < allClasses.size() - 1; i++)
 		{
-			if (crn == allClasses[i].CRN) {
+			string vectorCRN = to_string(allClasses[i].CRN);
+			if (vectorCRN.find(crn) != string::npos) {
 				items.append(new QStandardItem(QString::fromStdString(to_string(allClasses[i].CRN))));
 				items.append(new QStandardItem(QString::fromStdString(allClasses[i].Subject)));
 				items.append(new QStandardItem(QString::fromStdString(to_string(allClasses[i].courseID))));
@@ -394,7 +395,7 @@ void facultyView::on_searchButton_clicked()
 			{
 				searchSubject += tolower(allClasses[i].Subject[j]);
 			}
-			if (subject == searchSubject) {
+			if (searchSubject.find(subject) != string::npos) {
 				items.append(new QStandardItem(QString::fromStdString(to_string(allClasses[i].CRN))));
 				items.append(new QStandardItem(QString::fromStdString(allClasses[i].Subject)));
 				items.append(new QStandardItem(QString::fromStdString(to_string(allClasses[i].courseID))));
@@ -415,12 +416,14 @@ void facultyView::on_searchButton_clicked()
 	else if (ui.classesSearchBox->currentIndex() == 2)
 	{
 		QString searchClass = ui.searchClassesInput->text();
-		int courseID = searchClass.toInt();
+		string courseID = searchClass.toStdString();
 
 		//populate table
 		for (int i = 0; i < allClasses.size() - 1; i++)
 		{
-			if (courseID == allClasses[i].courseID) {
+			string vectorID = to_string(allClasses[i].courseID);
+
+			if (vectorID.find(courseID) != string::npos) {
 				items.append(new QStandardItem(QString::fromStdString(to_string(allClasses[i].CRN))));
 				items.append(new QStandardItem(QString::fromStdString(allClasses[i].Subject)));
 				items.append(new QStandardItem(QString::fromStdString(to_string(allClasses[i].courseID))));
@@ -440,13 +443,18 @@ void facultyView::on_searchButton_clicked()
 	}
 	else if (ui.classesSearchBox->currentIndex() == 3)
 	{
-		QString searchClass = ui.searchClassesInput->text();
+		QString searchClass = ui.searchClassesInput->text().toLower();
 		string name = searchClass.toStdString();
 
 		//populate table
 		for (int i = 0; i < allClasses.size() - 1; i++)
 		{
-			if (name == allClasses[i].Name) {
+			string vectorName = "";
+			for (int j = 0; j < allClasses[i].Name.length(); j++)
+			{
+				vectorName += tolower(allClasses[i].Name[j]);
+			}
+			if (vectorName.find(name) != string::npos) {
 				items.append(new QStandardItem(QString::fromStdString(to_string(allClasses[i].CRN))));
 				items.append(new QStandardItem(QString::fromStdString(allClasses[i].Subject)));
 				items.append(new QStandardItem(QString::fromStdString(to_string(allClasses[i].courseID))));
@@ -466,13 +474,18 @@ void facultyView::on_searchButton_clicked()
 	}
 	else if (ui.classesSearchBox->currentIndex() == 4)
 	{
-		QString searchClass = ui.searchClassesInput->text();
+		QString searchClass = ui.searchClassesInput->text().toLower();
 		string semester = searchClass.toStdString();
 
 		//populate table
 		for (int i = 0; i < allClasses.size() - 1; i++)
 		{
-			if (semester == allClasses[i].Semester) {
+			string vectorSemester = "";
+			for (int j = 0; j < allClasses[i].Name.length(); j++)
+			{
+				vectorSemester += tolower(allClasses[i].Semester[j]);
+			}
+			if (vectorSemester.find(semester) != string::npos) {
 				items.append(new QStandardItem(QString::fromStdString(to_string(allClasses[i].CRN))));
 				items.append(new QStandardItem(QString::fromStdString(allClasses[i].Subject)));
 				items.append(new QStandardItem(QString::fromStdString(to_string(allClasses[i].courseID))));
@@ -492,13 +505,18 @@ void facultyView::on_searchButton_clicked()
 	}
 	else if (ui.classesSearchBox->currentIndex() == 5)
 	{
-		QString searchClass = ui.searchClassesInput->text();
+		QString searchClass = ui.searchClassesInput->text().toLower();
 		string days = searchClass.toStdString();
 
 		//populate table
 		for (int i = 0; i < allClasses.size() - 1; i++)
 		{
-			if (days == allClasses[i].classDays) {
+			string vectorDays = "";
+			for (int j = 0; j < allClasses[i].Name.length(); j++)
+			{
+				vectorDays += tolower(allClasses[i].classDays[j]);
+			}
+			if (vectorDays.find(days) != string::npos) {
 				items.append(new QStandardItem(QString::fromStdString(to_string(allClasses[i].CRN))));
 				items.append(new QStandardItem(QString::fromStdString(allClasses[i].Subject)));
 				items.append(new QStandardItem(QString::fromStdString(to_string(allClasses[i].courseID))));
@@ -518,13 +536,18 @@ void facultyView::on_searchButton_clicked()
 	}
 	else if (ui.classesSearchBox->currentIndex() == 6)
 	{
-		QString searchClass = ui.searchClassesInput->text();
+		QString searchClass = ui.searchClassesInput->text().toLower();
 		string instructor = searchClass.toStdString();
 
 		//populate table
 		for (int i = 0; i < allClasses.size() - 1; i++)
 		{
-			if (instructor == allClasses[i].Instructor) {
+			string vectorInstructor = "";
+			for (int j = 0; j < allClasses[i].Name.length(); j++)
+			{
+				vectorInstructor += tolower(allClasses[i].Instructor[j]);
+			}
+			if (vectorInstructor.find(instructor) != string::npos) {
 				items.append(new QStandardItem(QString::fromStdString(to_string(allClasses[i].CRN))));
 				items.append(new QStandardItem(QString::fromStdString(allClasses[i].Subject)));
 				items.append(new QStandardItem(QString::fromStdString(to_string(allClasses[i].courseID))));
@@ -544,13 +567,18 @@ void facultyView::on_searchButton_clicked()
 	}
 	else if (ui.classesSearchBox->currentIndex() == 7)
 	{
-		QString searchClass = ui.searchClassesInput->text();
+		QString searchClass = ui.searchClassesInput->text().toLower();
 		string room = searchClass.toStdString();
 
 		//populate table
 		for (int i = 0; i < allClasses.size() - 1; i++)
 		{
-			if (room == allClasses[i].Room) {
+			string vectorRoom = "";
+			for (int j = 0; j < allClasses[i].Name.length(); j++)
+			{
+				vectorRoom += tolower(allClasses[i].Room[j]);
+			}
+			if (vectorRoom.find(room) != string::npos) {
 				items.append(new QStandardItem(QString::fromStdString(to_string(allClasses[i].CRN))));
 				items.append(new QStandardItem(QString::fromStdString(allClasses[i].Subject)));
 				items.append(new QStandardItem(QString::fromStdString(to_string(allClasses[i].courseID))));

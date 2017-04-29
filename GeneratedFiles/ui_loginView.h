@@ -59,9 +59,13 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(loginView->sizePolicy().hasHeightForWidth());
         loginView->setSizePolicy(sizePolicy);
+        loginView->setStyleSheet(QLatin1String("border-color: rgb(85, 170, 255);\n"
+"border-top-color: rgb(85, 170, 255);"));
         loginView->setTabShape(QTabWidget::Rounded);
+        loginView->setDockNestingEnabled(true);
         centralWidget = new QWidget(loginView);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
+        centralWidget->setStyleSheet(QStringLiteral("background-color: rgb(255, 255, 255);"));
         verticalLayout = new QVBoxLayout(centralWidget);
         verticalLayout->setSpacing(6);
         verticalLayout->setContentsMargins(11, 11, 11, 11);
@@ -136,6 +140,7 @@ public:
         QFont font2;
         font2.setPointSize(9);
         cancelButton->setFont(font2);
+        cancelButton->setStyleSheet(QStringLiteral("background-color: rgb(158, 217, 255);"));
 
         horizontalLayout->addWidget(cancelButton);
 
@@ -148,6 +153,7 @@ public:
         sizePolicy1.setHeightForWidth(okButton->sizePolicy().hasHeightForWidth());
         okButton->setSizePolicy(sizePolicy1);
         okButton->setFont(font2);
+        okButton->setStyleSheet(QStringLiteral("background-color: rgb(158, 217, 255);"));
         okButton->setAutoDefault(true);
 
         horizontalLayout->addWidget(okButton);

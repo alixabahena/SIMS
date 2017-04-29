@@ -51,6 +51,7 @@ facultyView::facultyView(QString userName)
 
 	ui.usernameLabel->setText(fullName);
 	ui.stackedWidget->setCurrentIndex(0);
+	ui.searchButton->hide();
 	ui.backButton->hide();
 	//combobox implement
 	ui.classesSearchBox->addItem("CRN");
@@ -285,10 +286,19 @@ void facultyView::on_viewStudentsButton_clicked()
 
 void facultyView::on_editGradeButton_clicked()
 {
+	vector<faculty>allFaculty = populateFaculty();
 	QModelIndexList selection = ui.manageClassesView->selectionModel()->selectedRows();
 	int row;
-	
-	gradeDialog *enterGrade = new gradeDialog(row);
+	QString student;
+	for (int i = 0; i< selection.count(); i++)
+	{
+		QModelIndex index = selection.at(i);
+		row = index.row();
+		student = index.sibling(row, 0).data().toString();
+	}
+	string username = allFaculty[userloc].userName;
+	QString faculty = QString::fromStdString(username);
+	gradeDialog *enterGrade = new gradeDialog(row, faculty, student);
 	enterGrade->show();
 }
 

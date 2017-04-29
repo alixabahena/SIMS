@@ -232,3 +232,28 @@ void changePassword(string username, string password)
 	
 	int ecode = sqlite3_errcode(db);
 }
+
+void changeGrade(string username, int grade)
+{
+	sqlite3 *db;
+	char *zErrMsg = 0;
+	int rc;
+	char *sql;
+	const char* data = "";
+	const char* dbName = "Students.db";
+	sqlite3_stmt *stmt;
+	char *q;
+	const char *userName = username.c_str();
+	int Grade = grade;
+	rc = sqlite3_open(dbName, &db);
+	q = "UPDATE Records SET [Grade]=?1 WHERE [username]=?2";
+	if (rc = sqlite3_prepare_v2(db, q, strlen(q), &stmt, 0) == SQLITE_OK) {
+		sqlite3_reset(stmt);
+		sqlite3_bind_int(stmt, 1,Grade);
+		sqlite3_bind_text(stmt, 2, userName, strlen(userName), 0); // file path
+		sqlite3_step(stmt);   // prepare statemnt Ready
+		sqlite3_finalize(stmt);
+	}
+
+	int ecode = sqlite3_errcode(db);
+}

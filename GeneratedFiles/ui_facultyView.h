@@ -149,7 +149,7 @@ public:
         label->setObjectName(QStringLiteral("label"));
         QFont font1;
         font1.setPointSize(12);
-        font1.setItalic(true);
+        font1.setItalic(false);
         label->setFont(font1);
         label->setAlignment(Qt::AlignCenter);
 
@@ -500,7 +500,7 @@ public:
         QObject::connect(manageClassesView, SIGNAL(doubleClicked(QModelIndex)), viewStudentsButton, SLOT(click()));
         QObject::connect(searchClassesInput, SIGNAL(textChanged(QString)), searchButton, SLOT(click()));
 
-        stackedWidget->setCurrentIndex(4);
+        stackedWidget->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(facultyView);
@@ -508,7 +508,7 @@ public:
 
     void retranslateUi(QWidget *facultyView)
     {
-        facultyView->setWindowTitle(QApplication::translate("facultyView", "Form", Q_NULLPTR));
+        facultyView->setWindowTitle(QApplication::translate("facultyView", "Faculty Portal", Q_NULLPTR));
         welcomeLabel->setText(QApplication::translate("facultyView", "Faculty Portal", Q_NULLPTR));
         usernameLabel->setText(QString());
         backButton->setText(QApplication::translate("facultyView", "Back", Q_NULLPTR));

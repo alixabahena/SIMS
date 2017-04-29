@@ -212,7 +212,7 @@ public:
 
     void retranslateUi(QMainWindow *loginView)
     {
-        loginView->setWindowTitle(QApplication::translate("loginView", "Login", Q_NULLPTR));
+        loginView->setWindowTitle(QApplication::translate("loginView", "SIMS Login", Q_NULLPTR));
         label->setText(QApplication::translate("loginView", "Student Information Management System", Q_NULLPTR));
         cancelButton->setText(QApplication::translate("loginView", "Exit", Q_NULLPTR));
         okButton->setText(QApplication::translate("loginView", "Login", Q_NULLPTR));

@@ -11,7 +11,7 @@ class gradeDialog : public QDialog
 
 public:
 	gradeDialog(QWidget *parent = Q_NULLPTR);
-	gradeDialog(int row);
+	gradeDialog(int row,QString facultyUserName, QString student);
 
 	public slots:
 	void on_okButton_clicked();

@@ -48,7 +48,6 @@ public:
     QLabel *PasswordLabel;
     QLabel *usernameLabel;
     QLabel *loginStatus;
-    QSpacerItem *verticalSpacer_4;
 
     void setupUi(QMainWindow *loginView)
     {
@@ -183,14 +182,10 @@ public:
 
         loginStatus = new QLabel(centralWidget);
         loginStatus->setObjectName(QStringLiteral("loginStatus"));
-
         loginStatus->setAlignment(Qt::AlignCenter);
 
         formLayout->setWidget(8, QFormLayout::FieldRole, loginStatus);
 
-        verticalSpacer_4 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Maximum);
-
-        formLayout->setItem(7, QFormLayout::FieldRole, verticalSpacer_4);
 
         verticalLayout_2->addLayout(formLayout);
 

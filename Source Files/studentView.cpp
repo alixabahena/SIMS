@@ -139,21 +139,26 @@ void studentView::on_manageScheduleButton_clicked()
 	vector<classes>allClasses = populateClasses();
 	vector<records>allRecords = populateRecords();
 	vector<faculty>allFaculty = populateFaculty();
+
+	QString studUsername;
+	studUsername = QString::fromStdString(allStudents[userlocation].userName);
+	QString sqlUsername = "'" + studUsername + "'";
 	ui.label->hide();
 	ui.stackedWidget->setCurrentIndex(2);
 
 	//change header text
 	ui.welcomeLabel->setText("Add / Remove Classes");
 
-	QString studentUsername = QString::fromStdString(allStudents[userlocation].userName);
+	
+	//Open DB
 	QSqlDatabase records = QSqlDatabase::addDatabase("QSQLITE");
 	records.setDatabaseName("Students.db");
 	records.open();
 
-	QSqlQueryModel *sqlitemodel = new QSqlQueryModel();
-	sqlitemodel->setQuery("SELECT r.CRN,c.Subject,c.Name,c.'Course ID',c.Semester,c.classDays AS Days,c.classTime AS Time,(f.'First Name' ||\ " "\ ||f.'Last Name') AS Instructor,c.Room FROM Records AS r LEFT OUTER JOIN Students AS s ON r.username= s.username LEFT OUTER JOIN Classes as c ON r.CRN = c.CRN LEFT OUTER JOIN Faculty AS f ON c.Instructor = f.username WHERE r.username=" + studentUsername);
-	ui.manageClassesView->setModel(sqlitemodel);
-
+	//create model
+	QSqlQueryModel *classesModel = new QSqlQueryModel();
+	classesModel->setQuery("SELECT r.CRN,c.Subject,c.Name,c.'Course ID',c.Semester,c.classDays AS Days,c.classTime AS Time,(f.'First Name' || \" \" || f.'Last Name') AS Instructor,c.Room FROM Records AS r LEFT OUTER JOIN Students AS s ON r.username= s.username LEFT OUTER JOIN Classes as c ON r.CRN = c.CRN LEFT OUTER JOIN Faculty AS f ON c.Instructor = f.username WHERE r.username=" + sqlUsername);
+	ui.manageClassesView->setModel(classesModel);
 	//enable back button
 	ui.backButton->show();
 	ui.backButton->setEnabled(true);

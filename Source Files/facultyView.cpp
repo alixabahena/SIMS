@@ -10,6 +10,7 @@ facultyView::facultyView(QWidget *parent)
 	ui.setupUi(this);
 	ui.backButton->hide();
 	ui.stackedWidget->setCurrentIndex(0);
+	ui.viewStudentsButton->show();
 
 }
 
@@ -20,6 +21,7 @@ facultyView::facultyView(QString userName)
 	vector<classes>allClasses = populateClasses();
 	vector<records>allRecords = populateRecords();
 	vector<faculty>allFaculty = populateFaculty();
+
 	//QStrings
 	QString user = userName;
 	QString fullName;
@@ -122,6 +124,7 @@ void facultyView::on_manageScheduleButton_clicked()
 	ui.welcomeLabel->setText("Enter Class Grades");
 	ui.viewCurrentClassesButton->setEnabled(false);
 	ui.editGradeButton->setEnabled(false);
+	ui.viewStudentsButton->setEnabled(true);
 	//create QT items
 	QStandardItemModel *model = new QStandardItemModel(this);
 	QList<QStandardItem *> items;

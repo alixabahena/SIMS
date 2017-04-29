@@ -11,6 +11,8 @@
 #include "classes.h"
 #include "records.h"
 #include "gradeDialog.h"
+#include "qgraphicseffect.h"
+#include "qpropertyanimation.h"
 
 
 

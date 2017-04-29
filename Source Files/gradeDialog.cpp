@@ -4,7 +4,7 @@ int studentRow = 0;
 string facultyName = "";
 string studentname = "";
 string studentUsername = "";
-int crn;
+int crn = 0;
 gradeDialog::gradeDialog(QWidget *parent)
 	: QDialog(parent)
 {
@@ -58,8 +58,9 @@ gradeDialog::gradeDialog(int row, QString facultyUserName, QString studentName)
 void gradeDialog::on_okButton_clicked()
 {
 
-	
-
+	int grade;
+	grade = ui.lineEdit->text().toInt();
+	changeGrade(studentUsername, grade);
 	this->hide();
 
 }

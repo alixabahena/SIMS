@@ -185,40 +185,64 @@ void studentView::on_addClassButton_clicked()
 	vector<faculty>allFaculty = populateFaculty();
 	//variables
 	string username = allStudents[userlocation].userName;
-	int crnEntered = ui.crnAddRemoveLine->text().toInt();;
-	bool realClass = true;
 	//get entered CRN
+	int crnEntered = ui.crnAddRemoveLine->text().toInt();;
+	bool realClass = false;
+
+	//setup fading out of status label
+	QGraphicsOpacityEffect *effect1 = new QGraphicsOpacityEffect();
+	ui.addRemoveClassLabel->setGraphicsEffect(effect1);
+	QPropertyAnimation *fadeOut = new QPropertyAnimation(effect1, "opacity");
+	fadeOut->setDuration(4000);
+	fadeOut->setStartValue(1.0);
+	fadeOut->setEndValue(0.0);
+	fadeOut->setEasingCurve(QEasingCurve::InOutQuart);
+	connect(fadeOut, &QPropertyAnimation::finished, [=]()
+	{
+		ui.addRemoveClassLabel->setText("");
+	});
+
+	ui.addRemoveClassLabel->setText("");
+
+	//make sure the class label status banner starts off blank every time
 
 
 	for (int i = 0; i < allClasses.size(); i++)
-	{
-		//crn does not exist - error
-		
+	{	
+		//if the crn they entered = the index of the class currently loaded by index
 		if (crnEntered == allClasses[i].CRN)
 		{
+			//set realclass to true, now we will analyze this class to make sure its not in the student's schedule already
+			//checking to make sure it is a real class is the first step
 			realClass = true;
-			//class already in student schedule -error
+
+			//below is case to handle class already being in the student's schedule
+			//class already in student schedule 
 			for (int j = 0; j < allRecords.size(); j++)
 			{
 				if (crnEntered == allRecords[j].Crn && username == allRecords[j].Username)
 				{
 					ui.addRemoveClassLabel->setStyleSheet("QLabel { background-color : red; color : white; }");
 					ui.addRemoveClassLabel->setText("Class already in schedule!");
+					fadeOut->start(QAbstractAnimation::DeleteWhenStopped);
 					break;
 				}
 				
 			}
 		}
-		else if (crnEntered != allClasses[i].CRN)
+		else if (crnEntered != allClasses[i].CRN && i == allClasses.size())
 		{
 			realClass = false;
 		}
-		
+
 	}
+	
+	//on the otherhand, if the class is not real at all
 	if (!realClass)
 	{
 		ui.addRemoveClassLabel->setStyleSheet("QLabel { background-color : red; color : white; }");
 		ui.addRemoveClassLabel->setText("Class does not exist.");
+		fadeOut->start(QAbstractAnimation::DeleteWhenStopped);
 	}
 	
 }

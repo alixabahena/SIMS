@@ -560,7 +560,7 @@ public:
         QObject::connect(verifyNewPasswordField, SIGNAL(returnPressed()), submitButton, SLOT(click()));
         QObject::connect(searchClassesInput, SIGNAL(textChanged(QString)), searchButton, SLOT(click()));
 
-        stackedWidget->setCurrentIndex(0);
+        stackedWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(studentView);

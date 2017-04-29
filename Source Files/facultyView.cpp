@@ -286,20 +286,30 @@ void facultyView::on_viewStudentsButton_clicked()
 
 void facultyView::on_editGradeButton_clicked()
 {
+
+	vector<users>allUsers = populateUsers();
+	vector<Student>allStudents = populateStudents();
+	vector<classes>allClasses = populateClasses();
+	vector<records>allRecords = populateRecords();
 	vector<faculty>allFaculty = populateFaculty();
 	QModelIndexList selection = ui.manageClassesView->selectionModel()->selectedRows();
 	int row;
 	QString student;
+	QString className;
 	for (int i = 0; i< selection.count(); i++)
 	{
 		QModelIndex index = selection.at(i);
 		row = index.row();
 		student = index.sibling(row, 0).data().toString();
+		className = index.sibling(row, 1).data().toString();
 	}
+	int crn;
 	string username = allFaculty[userloc].userName;
+	string classname = className.toStdString();
 	QString faculty = QString::fromStdString(username);
 	gradeDialog *enterGrade = new gradeDialog(row, faculty, student);
 	enterGrade->show();
+	
 }
 
 

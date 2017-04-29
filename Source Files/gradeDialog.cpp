@@ -61,6 +61,7 @@ void gradeDialog::on_okButton_clicked()
 	int grade;
 	grade = ui.lineEdit->text().toInt();
 	changeGrade(studentUsername, grade);
+
 	this->hide();
 
 }

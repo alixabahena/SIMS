@@ -286,7 +286,7 @@ void facultyView::on_viewStudentsButton_clicked()
 void facultyView::on_editGradeButton_clicked()
 {
 	QModelIndexList selection = ui.manageClassesView->selectionModel()->selectedRows();
-	int row;
+	int row=0;
 	
 	gradeDialog *enterGrade = new gradeDialog(row);
 	enterGrade->show();

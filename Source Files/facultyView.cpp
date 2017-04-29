@@ -282,8 +282,15 @@ void facultyView::on_editGradeButton_clicked()
 	QString faculty = QString::fromStdString(username);
 	gradeDialog *enterGrade = new gradeDialog(row, faculty, student);
 	enterGrade->show();
-	sqlitemodel->query().exec();
-	ui.manageClassesView->setModel(sqlitemodel);
+
+	if (enterGrade->exec() == 1)
+	{
+		sqlitemodel->query().exec();
+		ui.manageClassesView->setModel(sqlitemodel);
+
+	}
+
+	
 }
 
 

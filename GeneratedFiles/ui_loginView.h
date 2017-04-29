@@ -183,6 +183,7 @@ public:
 
         loginStatus = new QLabel(centralWidget);
         loginStatus->setObjectName(QStringLiteral("loginStatus"));
+
         loginStatus->setAlignment(Qt::AlignCenter);
 
         formLayout->setWidget(8, QFormLayout::FieldRole, loginStatus);
@@ -190,7 +191,6 @@ public:
         verticalSpacer_4 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Maximum);
 
         formLayout->setItem(7, QFormLayout::FieldRole, verticalSpacer_4);
-
 
         verticalLayout_2->addLayout(formLayout);
 

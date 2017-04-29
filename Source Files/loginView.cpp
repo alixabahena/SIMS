@@ -22,6 +22,22 @@ void loginView::on_okButton_clicked()
 	int userlocation = 0;
 	bool TryUser = 0;
 
+	//setting up the animation to fade out the login status label
+	QGraphicsOpacityEffect *effect = new QGraphicsOpacityEffect();
+	ui.loginStatus->setGraphicsEffect(effect);
+	QPropertyAnimation *fadeOut = new QPropertyAnimation(effect, "opacity");
+	fadeOut->setDuration(4000);
+	fadeOut->setStartValue(1.0);
+	fadeOut->setEndValue(0.0);
+	fadeOut->setEasingCurve(QEasingCurve::InOutQuart);
+	connect(fadeOut, &QPropertyAnimation::finished, [=]()
+	{
+		ui.loginStatus->setText("");
+	});
+
+	//making sure the label clears every time
+	ui.loginStatus->setText("");
+
 	for (int i = 0; i < allusers.size(); i++)
 	{
 		if (allusers[i].username == username)
@@ -43,6 +59,8 @@ void loginView::on_okButton_clicked()
 		{
 			ui.loginStatus->setStyleSheet("QLabel { background-color : green; color : white; }");
 			ui.loginStatus->setText("Authentication Successful!");
+			fadeOut->start(QAbstractAnimation::DeleteWhenStopped);
+
 			//pull access type and go to main ui from here
 			if (allusers[userlocation].access_type == "admin")
 			{
@@ -70,12 +88,14 @@ void loginView::on_okButton_clicked()
 		else
 		{
 			ui.loginStatus->setText("Incorrect Username or Password.");
+			fadeOut->start(QAbstractAnimation::DeleteWhenStopped);
 			ui.loginStatus->setStyleSheet("QLabel { background-color : red; color : white; }");
 		}
 	}
 	else 
 	{
 		ui.loginStatus->setText("Incorrect Username or Password.");
+		fadeOut->start(QAbstractAnimation::DeleteWhenStopped);
 		ui.loginStatus->setStyleSheet("QLabel { background-color : red; color : white; }");
 	}
 }

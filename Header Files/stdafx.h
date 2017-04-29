@@ -11,6 +11,8 @@
 #include "classes.h"
 #include "records.h"
 #include "gradeDialog.h"
+#include "qgraphicseffect.h"
+#include "qpropertyanimation.h"
 
 
 
@@ -36,6 +38,7 @@
 #include <QDesktopWidget>
 #include <qdialog.h>
 #include <string.h>
+#include <qsqlquerymodel.h>
 
 //normal libraries
 #include <string>

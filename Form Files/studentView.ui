@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Student Portal</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(255, 255, 255);</string>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout_5">
    <item>
     <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -55,6 +58,16 @@
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
+       <property name="minimumSize">
+        <size>
+         <width>80</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(180, 229, 255);
+border: 1px solid black;</string>
+       </property>
        <property name="text">
         <string>Back</string>
        </property>
@@ -91,7 +104,7 @@
         </sizepolicy>
        </property>
        <property name="currentIndex">
-        <number>3</number>
+        <number>1</number>
        </property>
        <widget class="QWidget" name="mainPage">
         <property name="sizePolicy">
@@ -159,8 +172,12 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(180, 229, 255);
+border: 1px solid black;</string>
+               </property>
                <property name="text">
-                <string>View Current Schedule</string>
+                <string>View Current Schedule and Grades</string>
                </property>
               </widget>
              </item>
@@ -171,6 +188,10 @@
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(180, 229, 255);
+border: 1px solid black;</string>
                </property>
                <property name="text">
                 <string>Add / Remove Classes</string>
@@ -185,6 +206,10 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(180, 229, 255);
+border: 1px solid black;</string>
+               </property>
                <property name="text">
                 <string>View Available Classes</string>
                </property>
@@ -197,6 +222,10 @@
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(180, 229, 255);
+border: 1px solid black;</string>
                </property>
                <property name="text">
                 <string>Change Password</string>
@@ -216,6 +245,10 @@
                  <weight>75</weight>
                  <bold>true</bold>
                 </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(180, 229, 255);
+border: 1px solid black;</string>
                </property>
                <property name="text">
                 <string>Logout</string>
@@ -242,6 +275,9 @@
             <spacer name="verticalSpacer_2">
              <property name="orientation">
               <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Maximum</enum>
              </property>
              <property name="sizeHint" stdset="0">
               <size>
@@ -276,6 +312,7 @@
              </property>
              <property name="font">
               <font>
+               <pointsize>12</pointsize>
                <weight>50</weight>
                <bold>false</bold>
               </font>
@@ -286,6 +323,9 @@
             <spacer name="verticalSpacer">
              <property name="orientation">
               <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Maximum</enum>
              </property>
              <property name="sizeHint" stdset="0">
               <size>
@@ -345,8 +385,12 @@
              <property name="minimumSize">
               <size>
                <width>200</width>
-               <height>0</height>
+               <height>25</height>
               </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: rgb(180, 229, 255);
+border: 1px solid black;</string>
              </property>
              <property name="text">
               <string>Remove Class</string>
@@ -364,8 +408,12 @@
              <property name="minimumSize">
               <size>
                <width>200</width>
-               <height>0</height>
+               <height>25</height>
               </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: rgb(180, 229, 255);
+border: 1px solid black;</string>
              </property>
              <property name="text">
               <string>Add Class</string>
@@ -446,6 +494,10 @@
                <pointsize>10</pointsize>
               </font>
              </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: rgb(180, 229, 255);
+border: 1px solid black;</string>
+             </property>
             </widget>
            </item>
            <item row="0" column="3">
@@ -457,6 +509,10 @@
               <font>
                <pointsize>10</pointsize>
               </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: rgb(180, 229, 255);
+border: 1px solid black;</string>
              </property>
              <property name="text">
               <string>Submit</string>
@@ -608,10 +664,20 @@
            </item>
            <item row="5" column="1">
             <widget class="QPushButton" name="submitButton">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>20</height>
+              </size>
+             </property>
              <property name="font">
               <font>
                <pointsize>10</pointsize>
               </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: rgb(180, 229, 255);
+border: 1px solid black;</string>
              </property>
              <property name="text">
               <string>Submit</string>

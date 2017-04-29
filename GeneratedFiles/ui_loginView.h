@@ -45,9 +45,10 @@ public:
     QPushButton *cancelButton;
     QSpacerItem *horizontalSpacer;
     QPushButton *okButton;
-    QLabel *loginStatus;
     QLabel *PasswordLabel;
     QLabel *usernameLabel;
+    QLabel *loginStatus;
+    QSpacerItem *verticalSpacer_4;
 
     void setupUi(QMainWindow *loginView)
     {
@@ -83,6 +84,7 @@ public:
         QFont font;
         font.setPointSize(15);
         label->setFont(font);
+        label->setStyleSheet(QStringLiteral(""));
         label->setAlignment(Qt::AlignCenter);
         label->setWordWrap(true);
 
@@ -126,9 +128,9 @@ public:
 
         formLayout->setWidget(6, QFormLayout::FieldRole, passwordFIeld);
 
-        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        verticalSpacer = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Maximum);
 
-        formLayout->setItem(7, QFormLayout::FieldRole, verticalSpacer);
+        formLayout->setItem(9, QFormLayout::FieldRole, verticalSpacer);
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
@@ -137,10 +139,12 @@ public:
         cancelButton->setObjectName(QStringLiteral("cancelButton"));
         sizePolicy1.setHeightForWidth(cancelButton->sizePolicy().hasHeightForWidth());
         cancelButton->setSizePolicy(sizePolicy1);
+        cancelButton->setMinimumSize(QSize(0, 30));
         QFont font2;
         font2.setPointSize(9);
         cancelButton->setFont(font2);
-        cancelButton->setStyleSheet(QStringLiteral("background-color: rgb(158, 217, 255);"));
+        cancelButton->setStyleSheet(QLatin1String("background-color: rgb(180, 229, 255);\n"
+"border: 1px solid black;"));
 
         horizontalLayout->addWidget(cancelButton);
 
@@ -152,20 +156,16 @@ public:
         okButton->setObjectName(QStringLiteral("okButton"));
         sizePolicy1.setHeightForWidth(okButton->sizePolicy().hasHeightForWidth());
         okButton->setSizePolicy(sizePolicy1);
+        okButton->setMinimumSize(QSize(0, 30));
         okButton->setFont(font2);
-        okButton->setStyleSheet(QStringLiteral("background-color: rgb(158, 217, 255);"));
+        okButton->setStyleSheet(QLatin1String("background-color: rgb(180, 229, 255);\n"
+"border: 1px solid black;"));
         okButton->setAutoDefault(true);
 
         horizontalLayout->addWidget(okButton);
 
 
-        formLayout->setLayout(8, QFormLayout::FieldRole, horizontalLayout);
-
-        loginStatus = new QLabel(centralWidget);
-        loginStatus->setObjectName(QStringLiteral("loginStatus"));
-        loginStatus->setAlignment(Qt::AlignCenter);
-
-        formLayout->setWidget(9, QFormLayout::SpanningRole, loginStatus);
+        formLayout->setLayout(10, QFormLayout::FieldRole, horizontalLayout);
 
         PasswordLabel = new QLabel(centralWidget);
         PasswordLabel->setObjectName(QStringLiteral("PasswordLabel"));
@@ -181,6 +181,16 @@ public:
 
         formLayout->setWidget(2, QFormLayout::FieldRole, usernameLabel);
 
+        loginStatus = new QLabel(centralWidget);
+        loginStatus->setObjectName(QStringLiteral("loginStatus"));
+
+        loginStatus->setAlignment(Qt::AlignCenter);
+
+        formLayout->setWidget(8, QFormLayout::FieldRole, loginStatus);
+
+        verticalSpacer_4 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Maximum);
+
+        formLayout->setItem(7, QFormLayout::FieldRole, verticalSpacer_4);
 
         verticalLayout_2->addLayout(formLayout);
 
@@ -202,13 +212,13 @@ public:
 
     void retranslateUi(QMainWindow *loginView)
     {
-        loginView->setWindowTitle(QApplication::translate("loginView", "Login", Q_NULLPTR));
+        loginView->setWindowTitle(QApplication::translate("loginView", "SIMS Login", Q_NULLPTR));
         label->setText(QApplication::translate("loginView", "Student Information Management System", Q_NULLPTR));
         cancelButton->setText(QApplication::translate("loginView", "Exit", Q_NULLPTR));
         okButton->setText(QApplication::translate("loginView", "Login", Q_NULLPTR));
-        loginStatus->setText(QString());
         PasswordLabel->setText(QApplication::translate("loginView", "Password:", Q_NULLPTR));
         usernameLabel->setText(QApplication::translate("loginView", "Username:", Q_NULLPTR));
+        loginStatus->setText(QString());
     } // retranslateUi
 
 };

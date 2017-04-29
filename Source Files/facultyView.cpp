@@ -1,6 +1,7 @@
 #include "Header Files\stdafx.h"
 
 int userloc = 0;
+QSqlQueryModel *sqlitemodel = new QSqlQueryModel();
 
 facultyView::facultyView(QWidget *parent)
 	: QWidget(parent)
@@ -9,6 +10,7 @@ facultyView::facultyView(QWidget *parent)
 	ui.setupUi(this);
 	ui.backButton->hide();
 	ui.stackedWidget->setCurrentIndex(0);
+	ui.viewStudentsButton->show();
 
 }
 
@@ -19,6 +21,7 @@ facultyView::facultyView(QString userName)
 	vector<classes>allClasses = populateClasses();
 	vector<records>allRecords = populateRecords();
 	vector<faculty>allFaculty = populateFaculty();
+
 	//QStrings
 	QString user = userName;
 	QString fullName;
@@ -51,6 +54,7 @@ facultyView::facultyView(QString userName)
 
 	ui.usernameLabel->setText(fullName);
 	ui.stackedWidget->setCurrentIndex(0);
+	ui.searchButton->hide();
 	ui.backButton->hide();
 	//combobox implement
 	ui.classesSearchBox->addItem("CRN");
@@ -120,6 +124,7 @@ void facultyView::on_manageScheduleButton_clicked()
 	ui.welcomeLabel->setText("Enter Class Grades");
 	ui.viewCurrentClassesButton->setEnabled(false);
 	ui.editGradeButton->setEnabled(false);
+	ui.viewStudentsButton->setEnabled(true);
 	//create QT items
 	QStandardItemModel *model = new QStandardItemModel(this);
 	QList<QStandardItem *> items;
@@ -244,52 +249,51 @@ void facultyView::on_viewStudentsButton_clicked()
 		CRN = index.sibling(row, 0).data().toString();
 	}
 
-	for (int i = 0; i < allRecords.size(); i++)
-	{
-		if (allRecords[i].Crn == CRN.toInt())
-		{
-					for (int j = 0; j < allStudents.size(); j++)
-					{
-						if (allRecords[i].Username == allStudents[j].userName)
-						{
-							items.append(new QStandardItem(QString::fromStdString(allStudents[j].firstName) + " " + QString::fromStdString(allStudents[j].lastName)));
-						}
-					}
 
-					for (int k = 0; k < allClasses.size(); k++)
-					{
-						if (allRecords[i].Crn == allClasses[k].CRN)
-						{
-							items.append(new QStandardItem(QString::fromStdString(allClasses[k].Name)));
-							items.append(new QStandardItem(QString::fromStdString(allClasses[k].Semester)));
-						}
-					}
+	QSqlDatabase records = QSqlDatabase::addDatabase("QSQLITE");
+	records.setDatabaseName("Students.db");
+	records.open();
 
-					items.append(new QStandardItem(QString::number(allRecords[i].Grade)));
 
-					model->appendRow(items);
-					items.clear();
-				}
-		else
-		{
+	sqlitemodel->setQuery("SELECT (ca.First_Name || \" \" || ca.Last_Name) AS 'Student Name', c.CRN, c.Grade FROM Records AS c LEFT OUTER JOIN Students AS ca ON c.username= ca.username WHERE CRN=" + CRN);
+	ui.manageClassesView->setModel(sqlitemodel);
 
-		}
-		
-		}
-		
-		ui.manageClassesView->setSelectionMode(QAbstractItemView::SingleSelection);
-		ui.manageClassesView->setSelectionBehavior(QAbstractItemView::SelectRows);
-		ui.manageClassesView->setEditTriggers(QAbstractItemView::NoEditTriggers);
-		ui.manageClassesView->setModel(model);
 	}
 
 void facultyView::on_editGradeButton_clicked()
 {
+
+	vector<users>allUsers = populateUsers();
+	vector<Student>allStudents = populateStudents();
+	vector<classes>allClasses = populateClasses();
+	vector<records>allRecords = populateRecords();
+	vector<faculty>allFaculty = populateFaculty();
 	QModelIndexList selection = ui.manageClassesView->selectionModel()->selectedRows();
 	int row;
-	
-	gradeDialog *enterGrade = new gradeDialog(row);
+	QString student;
+	QString className;
+	for (int i = 0; i< selection.count(); i++)
+	{
+		QModelIndex index = selection.at(i);
+		row = index.row();
+		student = index.sibling(row, 0).data().toString();
+		className = index.sibling(row, 1).data().toString();
+	}
+	int crn;
+	string username = allFaculty[userloc].userName;
+	string classname = className.toStdString();
+	QString faculty = QString::fromStdString(username);
+	gradeDialog *enterGrade = new gradeDialog(row, faculty, student);
 	enterGrade->show();
+
+	if (enterGrade->exec() == 1)
+	{
+		sqlitemodel->query().exec();
+		ui.manageClassesView->setModel(sqlitemodel);
+
+	}
+
+	
 }
 
 

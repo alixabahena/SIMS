@@ -218,7 +218,7 @@ void studentView::on_addClassButton_clicked()
 	if (!realClass)
 	{
 		ui.addRemoveClassLabel->setStyleSheet("QLabel { background-color : red; color : white; }");
-		ui.addRemoveClassLabel->setText("No such Class exist!");
+		ui.addRemoveClassLabel->setText("Class does not exist.");
 	}
 	
 }

@@ -78,7 +78,7 @@
      <item>
       <widget class="QStackedWidget" name="stackedWidget">
        <property name="currentIndex">
-        <number>4</number>
+        <number>5</number>
        </property>
        <widget class="QWidget" name="mainPage">
         <property name="sizePolicy">
@@ -514,6 +514,37 @@
           </layout>
          </item>
         </layout>
+       </widget>
+       <widget class="QWidget" name="DBViewer">
+        <widget class="QWidget" name="layoutWidget_2">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>721</width>
+           <height>471</height>
+          </rect>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_5">
+          <item row="0" column="1">
+           <widget class="QPushButton" name="addItemButton">
+            <property name="text">
+             <string>Add Item</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QPushButton" name="removeItemButton">
+            <property name="text">
+             <string>Remove Item</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0" rowspan="3">
+           <widget class="QTableView" name="DBView"/>
+          </item>
+         </layout>
+        </widget>
        </widget>
       </widget>
      </item>

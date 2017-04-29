@@ -91,24 +91,33 @@ void studentView::on_viewScheduleButton_clicked()
 	{
 		if (allStudents[userlocation].userName == allRecords[i].Username)
 		{
-			classes += QString::fromStdString(to_string(allClasses[i].CRN)) + " - "
-				+ QString::fromStdString(allClasses[i].Subject) + " "
-				+ QString::fromStdString(to_string(allClasses[i].courseID)) + " "
-				+ QString::fromStdString(allClasses[i].Name) + "\n"
-				+ QString::fromStdString(allClasses[i].Semester) + " - "
-				+ QString::fromStdString(allClasses[i].classDays) + " "
-				+ QString::fromStdString(allClasses[i].classTime) + "\n";
-			for (int j = 0; j < allFaculty.size();j++)
+			classes += QString::fromStdString(to_string(allRecords[i].Crn)) + " - ";
+
+			for (int k = 0; k < allClasses.size(); k++)
 			{
-				if (allClasses[i].Instructor == allFaculty[j].userName )
+				if (allClasses[k].CRN == allRecords[i].Crn)
 				{
-					classes += "Instructor: " + QString::fromStdString(allFaculty[j].firstName) + " " + QString::fromStdString(allFaculty[j].lastName) + "\n";
+					classes += QString::fromStdString(allClasses[k].Subject) + " "
+						+ QString::fromStdString(to_string(allClasses[k].courseID)) + " "
+						+ QString::fromStdString(allClasses[k].Name) + "\n"
+						+ QString::fromStdString(allClasses[k].Semester) + " - "
+						+ QString::fromStdString(allClasses[k].classDays) + " "
+						+ QString::fromStdString(allClasses[k].classTime) + "\n";
+
+					for (int j = 0; j < allFaculty.size(); j++)
+					{
+						if (allClasses[k].Instructor == allFaculty[j].userName)
+						{
+							classes += "Instructor: " + QString::fromStdString(allFaculty[j].firstName) + " " + QString::fromStdString(allFaculty[j].lastName) + "\n";
+						}
+					}
+
+					classes += "Room: " + QString::fromStdString(allClasses[k].Room) + "\n";
+					classes += "Grade: " + QString::number(allRecords[i].Grade) + "\n\n";
+
 				}
 			}
-				
-			classes += "Room: " + QString::fromStdString(allClasses[i].Room)+ "\n";
-			classes += "Grade: " + QString::number(allRecords[i].Grade) + "\n\n";
-
+			
 		}
 	}
 	ui.semesterScheduleView->setText(classes);

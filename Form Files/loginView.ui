@@ -17,7 +17,7 @@
    </sizepolicy>
   </property>
   <property name="windowTitle">
-   <string>Login</string>
+   <string>SIMS Login</string>
   </property>
   <property name="styleSheet">
    <string notr="true">border-color: rgb(85, 170, 255);
@@ -48,6 +48,9 @@ border-top-color: rgb(85, 170, 255);</string>
          <font>
           <pointsize>15</pointsize>
          </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
         </property>
         <property name="text">
          <string>Student Information Management System</string>
@@ -131,20 +134,25 @@ border-top-color: rgb(85, 170, 255);</string>
           </property>
          </widget>
         </item>
-        <item row="7" column="1">
+        <item row="9" column="1">
          <spacer name="verticalSpacer">
           <property name="orientation">
            <enum>Qt::Vertical</enum>
           </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Maximum</enum>
+          </property>
           <property name="sizeHint" stdset="0">
            <size>
             <width>20</width>
-            <height>15</height>
+
+            <height>10</height>
+
            </size>
           </property>
          </spacer>
         </item>
-        <item row="9" column="1">
+        <item row="10" column="1">
          <layout class="QHBoxLayout" name="horizontalLayout">
           <item>
            <widget class="QPushButton" name="cancelButton">
@@ -154,13 +162,20 @@ border-top-color: rgb(85, 170, 255);</string>
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
             <property name="font">
              <font>
               <pointsize>9</pointsize>
              </font>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color: rgb(158, 217, 255);</string>
+             <string notr="true">background-color: rgb(180, 229, 255);
+border: 1px solid black;</string>
             </property>
             <property name="text">
              <string>Exit</string>
@@ -191,13 +206,20 @@ border-top-color: rgb(85, 170, 255);</string>
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
             <property name="font">
              <font>
               <pointsize>9</pointsize>
              </font>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color: rgb(158, 217, 255);</string>
+             <string notr="true">background-color: rgb(180, 229, 255);
+border: 1px solid black;</string>
             </property>
             <property name="text">
              <string>Login</string>
@@ -238,11 +260,6 @@ border-top-color: rgb(85, 170, 255);</string>
         </item>
         <item row="8" column="1">
          <widget class="QLabel" name="loginStatus">
-          <property name="font">
-           <font>
-            <pointsize>10</pointsize>
-           </font>
-          </property>
           <property name="text">
            <string/>
           </property>
@@ -250,6 +267,22 @@ border-top-color: rgb(85, 170, 255);</string>
            <set>Qt::AlignCenter</set>
           </property>
          </widget>
+        </item>
+
+         <spacer name="verticalSpacer_4">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Maximum</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>10</height>
+           </size>
+          </property>
+         </spacer>
         </item>
        </layout>
       </item>

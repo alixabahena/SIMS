@@ -101,6 +101,7 @@ public:
         if (studentView->objectName().isEmpty())
             studentView->setObjectName(QStringLiteral("studentView"));
         studentView->resize(747, 614);
+        studentView->setStyleSheet(QStringLiteral("background-color: rgb(255, 255, 255);"));
         verticalLayout_5 = new QVBoxLayout(studentView);
         verticalLayout_5->setSpacing(6);
         verticalLayout_5->setContentsMargins(11, 11, 11, 11);
@@ -137,6 +138,9 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(backButton->sizePolicy().hasHeightForWidth());
         backButton->setSizePolicy(sizePolicy);
+        backButton->setMinimumSize(QSize(80, 20));
+        backButton->setStyleSheet(QLatin1String("background-color: rgb(180, 229, 255);\n"
+"border: 1px solid black;"));
 
         verticalLayout_2->addWidget(backButton);
 
@@ -202,6 +206,8 @@ public:
         viewScheduleButton->setObjectName(QStringLiteral("viewScheduleButton"));
         sizePolicy3.setHeightForWidth(viewScheduleButton->sizePolicy().hasHeightForWidth());
         viewScheduleButton->setSizePolicy(sizePolicy3);
+        viewScheduleButton->setStyleSheet(QLatin1String("background-color: rgb(180, 229, 255);\n"
+"border: 1px solid black;"));
 
         verticalLayout->addWidget(viewScheduleButton);
 
@@ -209,6 +215,8 @@ public:
         manageScheduleButton->setObjectName(QStringLiteral("manageScheduleButton"));
         sizePolicy3.setHeightForWidth(manageScheduleButton->sizePolicy().hasHeightForWidth());
         manageScheduleButton->setSizePolicy(sizePolicy3);
+        manageScheduleButton->setStyleSheet(QLatin1String("background-color: rgb(180, 229, 255);\n"
+"border: 1px solid black;"));
 
         verticalLayout->addWidget(manageScheduleButton);
 
@@ -216,6 +224,8 @@ public:
         viewClassesButton->setObjectName(QStringLiteral("viewClassesButton"));
         sizePolicy3.setHeightForWidth(viewClassesButton->sizePolicy().hasHeightForWidth());
         viewClassesButton->setSizePolicy(sizePolicy3);
+        viewClassesButton->setStyleSheet(QLatin1String("background-color: rgb(180, 229, 255);\n"
+"border: 1px solid black;"));
 
         verticalLayout->addWidget(viewClassesButton);
 
@@ -223,6 +233,8 @@ public:
         changePasswordButton->setObjectName(QStringLiteral("changePasswordButton"));
         sizePolicy3.setHeightForWidth(changePasswordButton->sizePolicy().hasHeightForWidth());
         changePasswordButton->setSizePolicy(sizePolicy3);
+        changePasswordButton->setStyleSheet(QLatin1String("background-color: rgb(180, 229, 255);\n"
+"border: 1px solid black;"));
 
         verticalLayout->addWidget(changePasswordButton);
 
@@ -234,6 +246,8 @@ public:
         font2.setBold(true);
         font2.setWeight(75);
         logoutButton->setFont(font2);
+        logoutButton->setStyleSheet(QLatin1String("background-color: rgb(180, 229, 255);\n"
+"border: 1px solid black;"));
 
         verticalLayout->addWidget(logoutButton);
 
@@ -255,7 +269,7 @@ public:
         verticalLayout_6 = new QVBoxLayout();
         verticalLayout_6->setSpacing(6);
         verticalLayout_6->setObjectName(QStringLiteral("verticalLayout_6"));
-        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Maximum);
 
         verticalLayout_6->addItem(verticalSpacer_2);
 
@@ -271,13 +285,14 @@ public:
         semesterScheduleView->setObjectName(QStringLiteral("semesterScheduleView"));
         semesterScheduleView->setEnabled(false);
         QFont font3;
+        font3.setPointSize(12);
         font3.setBold(false);
         font3.setWeight(50);
         semesterScheduleView->setFont(font3);
 
         verticalLayout_6->addWidget(semesterScheduleView);
 
-        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Maximum);
 
         verticalLayout_6->addItem(verticalSpacer);
 
@@ -323,7 +338,9 @@ public:
         sizePolicy5.setVerticalStretch(0);
         sizePolicy5.setHeightForWidth(removeClassButton->sizePolicy().hasHeightForWidth());
         removeClassButton->setSizePolicy(sizePolicy5);
-        removeClassButton->setMinimumSize(QSize(200, 0));
+        removeClassButton->setMinimumSize(QSize(200, 25));
+        removeClassButton->setStyleSheet(QLatin1String("background-color: rgb(180, 229, 255);\n"
+"border: 1px solid black;"));
 
         gridLayout_2->addWidget(removeClassButton, 0, 3, 1, 1);
 
@@ -331,7 +348,9 @@ public:
         addClassButton->setObjectName(QStringLiteral("addClassButton"));
         sizePolicy5.setHeightForWidth(addClassButton->sizePolicy().hasHeightForWidth());
         addClassButton->setSizePolicy(sizePolicy5);
-        addClassButton->setMinimumSize(QSize(200, 0));
+        addClassButton->setMinimumSize(QSize(200, 25));
+        addClassButton->setStyleSheet(QLatin1String("background-color: rgb(180, 229, 255);\n"
+"border: 1px solid black;"));
 
         gridLayout_2->addWidget(addClassButton, 0, 2, 1, 1);
 
@@ -393,6 +412,8 @@ public:
         sizePolicy8.setHeightForWidth(classesSearchBox->sizePolicy().hasHeightForWidth());
         classesSearchBox->setSizePolicy(sizePolicy8);
         classesSearchBox->setFont(font4);
+        classesSearchBox->setStyleSheet(QLatin1String("background-color: rgb(180, 229, 255);\n"
+"border: 1px solid black;"));
 
         gridLayout->addWidget(classesSearchBox, 0, 1, 1, 1);
 
@@ -400,6 +421,8 @@ public:
         searchButton->setObjectName(QStringLiteral("searchButton"));
         searchButton->setEnabled(true);
         searchButton->setFont(font4);
+        searchButton->setStyleSheet(QLatin1String("background-color: rgb(180, 229, 255);\n"
+"border: 1px solid black;"));
 
         gridLayout->addWidget(searchButton, 0, 3, 1, 1);
 
@@ -503,7 +526,10 @@ public:
 
         submitButton = new QPushButton(changePassword);
         submitButton->setObjectName(QStringLiteral("submitButton"));
+        submitButton->setMinimumSize(QSize(0, 20));
         submitButton->setFont(font4);
+        submitButton->setStyleSheet(QLatin1String("background-color: rgb(180, 229, 255);\n"
+"border: 1px solid black;"));
 
         formLayout->setWidget(5, QFormLayout::FieldRole, submitButton);
 
@@ -534,7 +560,7 @@ public:
         QObject::connect(verifyNewPasswordField, SIGNAL(returnPressed()), submitButton, SLOT(click()));
         QObject::connect(searchClassesInput, SIGNAL(textChanged(QString)), searchButton, SLOT(click()));
 
-        stackedWidget->setCurrentIndex(3);
+        stackedWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(studentView);
@@ -548,7 +574,7 @@ public:
         backButton->setText(QApplication::translate("studentView", "Back", Q_NULLPTR));
         label->setText(QApplication::translate("studentView", "Student Information and Options", Q_NULLPTR));
         studentInfoBrowser->setText(QString());
-        viewScheduleButton->setText(QApplication::translate("studentView", "View Current Schedule", Q_NULLPTR));
+        viewScheduleButton->setText(QApplication::translate("studentView", "View Current Schedule and Grades", Q_NULLPTR));
         manageScheduleButton->setText(QApplication::translate("studentView", "Add / Remove Classes", Q_NULLPTR));
         viewClassesButton->setText(QApplication::translate("studentView", "View Available Classes", Q_NULLPTR));
         changePasswordButton->setText(QApplication::translate("studentView", "Change Password", Q_NULLPTR));

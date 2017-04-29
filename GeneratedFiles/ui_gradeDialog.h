@@ -37,6 +37,7 @@ public:
     {
         if (gradeDialog->objectName().isEmpty())
             gradeDialog->setObjectName(QStringLiteral("gradeDialog"));
+        gradeDialog->setWindowModality(Qt::ApplicationModal);
         gradeDialog->resize(176, 93);
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);

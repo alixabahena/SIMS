@@ -95,6 +95,12 @@ public:
     QPushButton *submitButton;
     QSpacerItem *verticalSpacer_4;
     QLabel *passwordChangeStatusLabel;
+    QWidget *DBViewer;
+    QWidget *layoutWidget_2;
+    QGridLayout *gridLayout_5;
+    QPushButton *addItemButton;
+    QPushButton *removeItemButton;
+    QTableView *DBView;
     QPushButton *backButton;
 
     void setupUi(QMainWindow *adminView)
@@ -438,6 +444,30 @@ public:
         verticalLayout_9->addLayout(formLayout);
 
         stackedWidget->addWidget(changePassword);
+        DBViewer = new QWidget();
+        DBViewer->setObjectName(QStringLiteral("DBViewer"));
+        layoutWidget_2 = new QWidget(DBViewer);
+        layoutWidget_2->setObjectName(QStringLiteral("layoutWidget_2"));
+        layoutWidget_2->setGeometry(QRect(0, 0, 721, 471));
+        gridLayout_5 = new QGridLayout(layoutWidget_2);
+        gridLayout_5->setObjectName(QStringLiteral("gridLayout_5"));
+        gridLayout_5->setContentsMargins(0, 0, 0, 0);
+        addItemButton = new QPushButton(layoutWidget_2);
+        addItemButton->setObjectName(QStringLiteral("addItemButton"));
+
+        gridLayout_5->addWidget(addItemButton, 0, 1, 1, 1);
+
+        removeItemButton = new QPushButton(layoutWidget_2);
+        removeItemButton->setObjectName(QStringLiteral("removeItemButton"));
+
+        gridLayout_5->addWidget(removeItemButton, 1, 1, 1, 1);
+
+        DBView = new QTableView(layoutWidget_2);
+        DBView->setObjectName(QStringLiteral("DBView"));
+
+        gridLayout_5->addWidget(DBView, 0, 0, 3, 1);
+
+        stackedWidget->addWidget(DBViewer);
 
         verticalLayout_2->addWidget(stackedWidget);
 
@@ -451,7 +481,7 @@ public:
 
         retranslateUi(adminView);
 
-        stackedWidget->setCurrentIndex(4);
+        stackedWidget->setCurrentIndex(5);
 
 
         QMetaObject::connectSlotsByName(adminView);
@@ -483,6 +513,8 @@ public:
         verifyNewPasswordLabel->setText(QApplication::translate("adminView", "Verify New Password: ", Q_NULLPTR));
         submitButton->setText(QApplication::translate("adminView", "Submit", Q_NULLPTR));
         passwordChangeStatusLabel->setText(QString());
+        addItemButton->setText(QApplication::translate("adminView", "Add Item", Q_NULLPTR));
+        removeItemButton->setText(QApplication::translate("adminView", "Remove Item", Q_NULLPTR));
         backButton->setText(QApplication::translate("adminView", "Back", Q_NULLPTR));
     } // retranslateUi
 

@@ -251,14 +251,7 @@ void adminView::on_submitButton_clicked()
 	string username = allData[userlocation_admin].username;
 	string newVerifyPassword;
 	//getting user password
-	for (int i = 0; i < allData.size(); i++)
-	{
-		if (allStudents[userlocation_admin].userName == allData[i].username)
-		{
-			currentPassword = QString::fromStdString(allData[i].password);
-			break;
-		}
-	}
+	currentPassword = QString::fromStdString(allData[userlocation_admin].password);
 
 	//getcurrentPassword
 	if (currentPasswordTyped == "")

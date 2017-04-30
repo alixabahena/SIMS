@@ -14,7 +14,7 @@
 #include "qgraphicseffect.h"
 #include "qpropertyanimation.h"
 
-
+#include <Windows.h>
 
 //QT
 #include <qsqldatabase.h>

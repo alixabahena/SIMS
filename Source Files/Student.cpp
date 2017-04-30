@@ -103,6 +103,7 @@ string Student::GetFirstName()
 	return firstName;
 }
 
+#undef GetUserName
 string Student::GetUserName()
 {
 	return userName;

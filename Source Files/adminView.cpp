@@ -589,6 +589,4 @@ void adminView::on_saveButton_clicked()
 	default:
 		break;
 	}
-	
-	on_backButton_clicked();
 }

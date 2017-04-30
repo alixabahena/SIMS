@@ -69,6 +69,7 @@ facultyView::facultyView(QString userName)
 
 void facultyView::on_viewScheduleButton_clicked()
 {
+	ui.label->hide();
 	ui.stackedWidget->setCurrentIndex(1);
 
 	vector<users>allUsers = populateUsers();
@@ -114,6 +115,7 @@ void facultyView::on_viewScheduleButton_clicked()
 
 void facultyView::on_manageScheduleButton_clicked()
 {
+	ui.label->hide();
 	vector<users>allUsers = populateUsers();
 	vector<Student>allStudents = populateStudents();
 	vector<classes>allClasses = populateClasses();
@@ -169,7 +171,6 @@ void facultyView::on_manageScheduleButton_clicked()
 }
 void facultyView::on_viewCurrentClassesButton_clicked()
 {
-	
 	vector<users>allUsers = populateUsers();
 	vector<Student>allStudents = populateStudents();
 	vector<classes>allClasses = populateClasses();
@@ -262,7 +263,6 @@ void facultyView::on_viewStudentsButton_clicked()
 
 void facultyView::on_editGradeButton_clicked()
 {
-
 	vector<users>allUsers = populateUsers();
 	vector<Student>allStudents = populateStudents();
 	vector<classes>allClasses = populateClasses();
@@ -299,6 +299,7 @@ void facultyView::on_editGradeButton_clicked()
 
 void facultyView::on_viewClassesButton_clicked()
 {
+	ui.label->hide();
 	ui.stackedWidget->setCurrentIndex(3);
 
 	vector<users>allUsers = populateUsers();
@@ -603,6 +604,7 @@ void facultyView::on_searchButton_clicked()
 
 void facultyView::on_changePasswordButton_clicked()
 {
+	ui.label->hide();
 	ui.stackedWidget->setCurrentIndex(4);
 	ui.welcomeLabel->setText("Change Current Password");
 	//enable back button
@@ -676,6 +678,7 @@ void facultyView::on_submitButton_clicked()
 
 void facultyView::on_logoutButton_clicked()
 {
+	ui.label->hide();
 	this->hide();
 	loginView *login = new loginView();
 	login->show();
@@ -686,4 +689,5 @@ void facultyView::on_backButton_clicked()
 	ui.welcomeLabel->setText("Faculty Portal");
 	ui.backButton->hide();
 	ui.stackedWidget->setCurrentIndex(0);
+	ui.label->show();
 }

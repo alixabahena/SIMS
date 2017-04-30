@@ -40,7 +40,8 @@ void adminView::on_editUsersButton_clicked()
 {
 	ui.backButton->show();
 	current_table = USER_TABLE;
-
+	ui.adminmodifymessage->hide();
+	ui.label->hide();
 	ui.stackedWidget->setCurrentIndex(5);
 
 	//change header text
@@ -80,9 +81,9 @@ void adminView::on_editFacultyButton_clicked()
 {
 	ui.backButton->show();
 	current_table = FACULTY_TABLE;
-
+	ui.adminmodifymessage->hide();
 	ui.stackedWidget->setCurrentIndex(5);
-
+	ui.label->hide();
 	//change header text
 	ui.welcomeLabel->setText("Edit Faculty Table");
 
@@ -121,9 +122,9 @@ void adminView::on_editStudentsButton_clicked()
 {
 	ui.backButton->show();
 	current_table = STUDENT_TABLE;
-
+	ui.adminmodifymessage->hide();
 	ui.stackedWidget->setCurrentIndex(5);
-
+	ui.label->hide();
 	//change header text
 	ui.welcomeLabel->setText("Edit Students Table");
 
@@ -168,8 +169,8 @@ void adminView::on_editRecordsButton_clicked()
 {
 	current_table = RECORD_TABLE;
 	ui.backButton->show();
-
-
+	ui.adminmodifymessage->hide();
+	ui.label->hide();
 	ui.stackedWidget->setCurrentIndex(5);
 
 	//change header text
@@ -210,8 +211,8 @@ void adminView::on_editClassesButton_clicked()
 {
 	current_table = CLASS_TABLE;
 	ui.backButton->show();
-
-
+	ui.label->hide();
+	ui.adminmodifymessage->hide();
 	ui.stackedWidget->setCurrentIndex(5);
 
 	//change header text
@@ -257,7 +258,8 @@ void adminView::on_changePasswordButton_clicked()
 {
 	ui.backButton->show();
 	ui.stackedWidget->setCurrentIndex(4);
-
+	ui.adminmodifymessage->hide();
+	ui.label->hide();
 	//change header text
 	ui.welcomeLabel->setText("Change Password");
 
@@ -336,6 +338,8 @@ void adminView::on_backButton_clicked()
 	ui.backButton->setEnabled(false);
 	ui.stackedWidget->setCurrentIndex(0);
 	ui.backButton->hide();
+	ui.adminmodifymessage->show();
+	ui.label->show();
 }
 
 void adminView::on_addItemButton_clicked()

@@ -108,6 +108,8 @@ vector<classes> populateClasses()
 
 	}
 	while ((rc = sqlite3_step(stmt)) == SQLITE_ROW) {
+
+		//there's probably a better way to cast this, but this works in c++ for now
 		const int* crn = reinterpret_cast<const int*>(sqlite3_column_int(stmt, 0));
 		int CRN = (int)crn;
 		const char* subject = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 1));

@@ -11,6 +11,7 @@ class adminView : public QMainWindow
 
 public:
 	adminView(QWidget *parent = Q_NULLPTR);
+	adminView(QString userName);
 
 	public slots:
 	
@@ -28,6 +29,7 @@ public:
 
 	void on_addItemButton_clicked();
 	void on_removeItemButton_clicked();
+	void on_saveButton_clicked();
 
 	private slots:
 private:

@@ -65,7 +65,7 @@ void loginView::on_okButton_clicked()
 			if (allusers[userlocation].access_type == "admin")
 			{
 				this->hide();
-				adminView *adminview = new adminView();
+				adminView *adminview = new adminView(user);
 				adminview->show();
 			}
 			else if (allusers[userlocation].access_type == "faculty")

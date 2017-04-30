@@ -2,9 +2,33 @@
 
 int userlocation_admin = 0;
 
+#define USER_TABLE 0
+#define FACULTY_TABLE 1
+#define STUDENT_TABLE 2
+#define RECORD_TABLE 3
+#define CLASS_TABLE 4
+#define INVALID_TABLE 5
+int current_table = INVALID_TABLE;
+
 adminView::adminView(QWidget *parent)
 	: QMainWindow(parent)
 {
+	ui.setupUi(this);
+	ui.stackedWidget->setCurrentIndex(0);
+}
+
+adminView::adminView(QString userName)
+{
+	vector<users>allUsers = populateUsers();
+
+	for (int i = 0; i < allUsers.size(); i++)
+	{
+		if (allUsers[i].username == userName.toStdString())
+		{
+			userlocation_admin = i;
+			break;
+		}
+	}
 
 	ui.setupUi(this);
 	ui.stackedWidget->setCurrentIndex(0);
@@ -12,6 +36,8 @@ adminView::adminView(QWidget *parent)
 
 void adminView::on_editUsersButton_clicked()
 {
+	current_table = USER_TABLE;
+
 	ui.stackedWidget->setCurrentIndex(5);
 
 	//change header text
@@ -49,6 +75,8 @@ void adminView::on_editUsersButton_clicked()
 
 void adminView::on_editFacultyButton_clicked()
 {
+	current_table = FACULTY_TABLE;
+
 	ui.stackedWidget->setCurrentIndex(5);
 
 	//change header text
@@ -87,6 +115,8 @@ void adminView::on_editFacultyButton_clicked()
 
 void adminView::on_editStudentsButton_clicked()
 {
+	current_table = STUDENT_TABLE;
+
 	ui.stackedWidget->setCurrentIndex(5);
 
 	//change header text
@@ -131,6 +161,8 @@ void adminView::on_editStudentsButton_clicked()
 
 void adminView::on_editRecordsButton_clicked()
 {
+	current_table = RECORD_TABLE;
+
 	ui.stackedWidget->setCurrentIndex(5);
 
 	//change header text
@@ -169,6 +201,8 @@ void adminView::on_editRecordsButton_clicked()
 
 void adminView::on_editClassesButton_clicked()
 {
+	current_table = CLASS_TABLE;
+
 	ui.stackedWidget->setCurrentIndex(5);
 
 	//change header text
@@ -235,14 +269,7 @@ void adminView::on_submitButton_clicked()
 	string username = allData[userlocation_admin].username;
 	string newVerifyPassword;
 	//getting user password
-	for (int i = 0; i < allData.size(); i++)
-	{
-		if (allStudents[userlocation_admin].userName == allData[i].username)
-		{
-			currentPassword = QString::fromStdString(allData[i].password);
-			break;
-		}
-	}
+	currentPassword = QString::fromStdString(allData[userlocation_admin].password);
 
 	//getcurrentPassword
 	if (currentPasswordTyped == "")
@@ -317,4 +344,240 @@ void adminView::on_removeItemButton_clicked()
 			ui.DBView->model()->removeRow(rows[i].row());
 		}
 	}
+}
+
+void adminView::on_saveButton_clicked()
+{
+	sqlite3 *db;
+	int rc = sqlite3_open("Students.db", &db);
+
+	QStandardItemModel* model = (QStandardItemModel*)ui.DBView->model();
+
+	switch (current_table)
+	{
+	case USER_TABLE:
+	{
+		sqlite3_stmt *stmt;
+		string q = "DELETE FROM Users";
+		if (sqlite3_prepare_v2(db, q.c_str(), -1, &stmt, 0) == SQLITE_OK)
+		{
+			sqlite3_reset(stmt);
+			sqlite3_step(stmt);   // prepare statemnt Ready
+			sqlite3_finalize(stmt);
+		}
+
+		for (int i = 0; i < model->rowCount(); i++)
+		{
+			q = "INSERT INTO Users VALUES (";
+			for (int j = 0; j < model->columnCount(); j++)
+			{
+				q += "'";
+
+				QStandardItem * item = model->item(i, j);
+				QString data = item->text();
+				q += data.toStdString();
+
+				q += "'";
+
+				if (j == model->columnCount() - 1)
+				{
+					q += ")";
+				}
+				else
+				{
+					q += ", ";
+				}
+			}
+
+
+			if (sqlite3_prepare_v2(db, q.c_str(), -1, &stmt, 0) == SQLITE_OK)
+			{
+				sqlite3_reset(stmt);
+				sqlite3_step(stmt);   // prepare statemnt Ready
+				sqlite3_finalize(stmt);
+			}
+		}
+		break;
+	}
+	case FACULTY_TABLE:
+	{
+		sqlite3_stmt *stmt;
+		string q = "DELETE FROM Faculty";
+		if (sqlite3_prepare_v2(db, q.c_str(), -1, &stmt, 0) == SQLITE_OK)
+		{
+			sqlite3_reset(stmt);
+			sqlite3_step(stmt);   // prepare statemnt Ready
+			sqlite3_finalize(stmt);
+		}
+
+		for (int i = 0; i < model->rowCount(); i++)
+		{
+			q = "INSERT INTO Faculty VALUES (";
+			for (int j = 0; j < model->columnCount(); j++)
+			{
+				q += "'";
+
+				QStandardItem * item = model->item(i, j);
+				QString data = item->text();
+				q += data.toStdString();
+
+				q += "'";
+
+				if (j == model->columnCount() - 1)
+				{
+					q += ")";
+				}
+				else
+				{
+					q += ", ";
+				}
+			}
+
+
+			if (sqlite3_prepare_v2(db, q.c_str(), -1, &stmt, 0) == SQLITE_OK)
+			{
+				sqlite3_reset(stmt);
+				sqlite3_step(stmt);   // prepare statemnt Ready
+				sqlite3_finalize(stmt);
+			}
+		}
+		break;
+	}
+	case STUDENT_TABLE:
+	{
+		sqlite3_stmt *stmt;
+		string q = "DELETE FROM Students";
+		if (sqlite3_prepare_v2(db, q.c_str(), -1, &stmt, 0) == SQLITE_OK)
+		{
+			sqlite3_reset(stmt);
+			sqlite3_step(stmt);   // prepare statemnt Ready
+			sqlite3_finalize(stmt);
+		}
+
+		for (int i = 0; i < model->rowCount(); i++)
+		{
+			q = "INSERT INTO Students VALUES (";
+			for (int j = 0; j < model->columnCount(); j++)
+			{
+				q += "'";
+
+				QStandardItem * item = model->item(i, j);
+				QString data = item->text();
+				q += data.toStdString();
+
+				q += "'";
+
+				if (j == model->columnCount() - 1)
+				{
+					q += ")";
+				}
+				else
+				{
+					q += ", ";
+				}
+			}
+
+
+			if (sqlite3_prepare_v2(db, q.c_str(), -1, &stmt, 0) == SQLITE_OK)
+			{
+				sqlite3_reset(stmt);
+				sqlite3_step(stmt);   // prepare statemnt Ready
+				sqlite3_finalize(stmt);
+			}
+		}
+		break;
+	}
+	case RECORD_TABLE:
+	{
+		sqlite3_stmt *stmt;
+		string q = "DELETE FROM Records";
+		if (sqlite3_prepare_v2(db, q.c_str(), -1, &stmt, 0) == SQLITE_OK)
+		{
+			sqlite3_reset(stmt);
+			sqlite3_step(stmt);   // prepare statemnt Ready
+			sqlite3_finalize(stmt);
+		}
+
+		for (int i = 0; i < model->rowCount(); i++)
+		{
+			q = "INSERT INTO Records VALUES (";
+			for (int j = 0; j < model->columnCount(); j++)
+			{
+				q += "'";
+
+				QStandardItem * item = model->item(i, j);
+				QString data = item->text();
+				q += data.toStdString();
+
+				q += "'";
+
+				if (j == model->columnCount() - 1)
+				{
+					q += ")";
+				}
+				else
+				{
+					q += ", ";
+				}
+			}
+
+
+			if (sqlite3_prepare_v2(db, q.c_str(), -1, &stmt, 0) == SQLITE_OK)
+			{
+				sqlite3_reset(stmt);
+				sqlite3_step(stmt);   // prepare statemnt Ready
+				sqlite3_finalize(stmt);
+			}
+		}
+		break;
+	}
+	case CLASS_TABLE:
+	{
+		sqlite3_stmt *stmt;
+		string q = "DELETE FROM Classes";
+		if (sqlite3_prepare_v2(db, q.c_str(), -1, &stmt, 0) == SQLITE_OK)
+		{
+			sqlite3_reset(stmt);
+			sqlite3_step(stmt);   // prepare statemnt Ready
+			sqlite3_finalize(stmt);
+		}
+
+		for (int i = 0; i < model->rowCount(); i++)
+		{
+			q = "INSERT INTO Classes VALUES (";
+			for (int j = 0; j < model->columnCount(); j++)
+			{
+				q += "'";
+
+				QStandardItem * item = model->item(i, j);
+				QString data = item->text();
+				q += data.toStdString();
+
+				q += "'";
+
+				if (j == model->columnCount() - 1)
+				{
+					q += ")";
+				}
+				else
+				{
+					q += ", ";
+				}
+			}
+
+
+			if (sqlite3_prepare_v2(db, q.c_str(), -1, &stmt, 0) == SQLITE_OK)
+			{
+				sqlite3_reset(stmt);
+				sqlite3_step(stmt);   // prepare statemnt Ready
+				sqlite3_finalize(stmt);
+			}
+		}
+		break;
+	}
+	default:
+		break;
+	}
+	
+	on_backButton_clicked();
 }

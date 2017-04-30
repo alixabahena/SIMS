@@ -7,7 +7,7 @@ loginView::loginView(QWidget *parent)
 {
 	
 	ui.setupUi(this);
-	//setFixedSize(sizeHint());
+	setFixedSize(500,386);
 }
 
 

@@ -61,6 +61,8 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(loginView->sizePolicy().hasHeightForWidth());
         loginView->setSizePolicy(sizePolicy);
+        loginView->setMinimumSize(QSize(510, 386));
+        loginView->setMaximumSize(QSize(510, 386));
         loginView->setStyleSheet(QLatin1String("border-color: rgb(85, 170, 255);\n"
 "border-top-color: rgb(85, 170, 255);"));
         loginView->setTabShape(QTabWidget::Rounded);

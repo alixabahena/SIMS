@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>485</width>
-    <height>331</height>
+    <width>645</width>
+    <height>407</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -18,6 +18,9 @@
   </property>
   <property name="windowTitle">
    <string>SIMS Login</string>
+  </property>
+  <property name="toolTip">
+   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;View to login.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
   </property>
   <property name="styleSheet">
    <string notr="true">border-color: rgb(85, 170, 255);
@@ -220,7 +223,7 @@ border-top-color: rgb(85, 170, 255);</string>
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>30</height>
+              <height>40</height>
              </size>
             </property>
             <property name="font">
@@ -294,7 +297,7 @@ QToolButton::menu-arrow:open {
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>30</height>
+              <height>40</height>
              </size>
             </property>
             <property name="font">

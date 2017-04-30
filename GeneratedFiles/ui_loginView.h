@@ -53,7 +53,7 @@ public:
     {
         if (loginView->objectName().isEmpty())
             loginView->setObjectName(QStringLiteral("loginView"));
-        loginView->resize(485, 331);
+        loginView->resize(645, 407);
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -170,7 +170,7 @@ public:
         cancelButton->setObjectName(QStringLiteral("cancelButton"));
         sizePolicy2.setHeightForWidth(cancelButton->sizePolicy().hasHeightForWidth());
         cancelButton->setSizePolicy(sizePolicy2);
-        cancelButton->setMinimumSize(QSize(0, 30));
+        cancelButton->setMinimumSize(QSize(0, 40));
         QFont font3;
         font3.setPointSize(9);
         cancelButton->setFont(font3);
@@ -218,7 +218,7 @@ public:
         okButton->setObjectName(QStringLiteral("okButton"));
         sizePolicy2.setHeightForWidth(okButton->sizePolicy().hasHeightForWidth());
         okButton->setSizePolicy(sizePolicy2);
-        okButton->setMinimumSize(QSize(0, 30));
+        okButton->setMinimumSize(QSize(0, 40));
         okButton->setFont(font3);
         okButton->setStyleSheet(QLatin1String("QToolButton { /* all types of tool button */\n"
 "    border: 2px solid #8f8f91;\n"
@@ -278,6 +278,9 @@ public:
     void retranslateUi(QMainWindow *loginView)
     {
         loginView->setWindowTitle(QApplication::translate("loginView", "SIMS Login", Q_NULLPTR));
+#ifndef QT_NO_TOOLTIP
+        loginView->setToolTip(QApplication::translate("loginView", "<html><head/><body><p>View to login.</p></body></html>", Q_NULLPTR));
+#endif // QT_NO_TOOLTIP
         label->setText(QApplication::translate("loginView", "Student Information Management System", Q_NULLPTR));
         usernameLabel->setText(QApplication::translate("loginView", "Username:", Q_NULLPTR));
         PasswordLabel->setText(QApplication::translate("loginView", "Password:", Q_NULLPTR));

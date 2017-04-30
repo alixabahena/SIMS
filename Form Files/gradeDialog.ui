@@ -63,6 +63,9 @@
        <pointsize>10</pointsize>
       </font>
      </property>
+     <property name="toolTip">
+      <string>Enter the student's course grade.</string>
+     </property>
     </widget>
    </item>
    <item>

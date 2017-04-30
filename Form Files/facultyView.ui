@@ -132,7 +132,7 @@ QToolButton::menu-arrow:open {
      <item>
       <widget class="QStackedWidget" name="stackedWidget">
        <property name="currentIndex">
-        <number>0</number>
+        <number>3</number>
        </property>
        <widget class="QWidget" name="mainPage">
         <property name="sizePolicy">
@@ -575,6 +575,9 @@ QScrollBar:vertical { border: 1px solid black;
                <height>30</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>Shows classes in faculty schedule.</string>
+             </property>
              <property name="styleSheet">
               <string notr="true">QToolButton { /* all types of tool button */
     border: 2px solid #8f8f91;
@@ -628,6 +631,9 @@ QToolButton::menu-arrow:open {
                <height>30</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>View students in a selected class.</string>
+             </property>
              <property name="styleSheet">
               <string notr="true">QToolButton { /* all types of tool button */
     border: 2px solid #8f8f91;
@@ -680,6 +686,9 @@ QToolButton::menu-arrow:open {
                <width>0</width>
                <height>30</height>
               </size>
+             </property>
+             <property name="toolTip">
+              <string>Edit the grade of the currently selected student.</string>
              </property>
              <property name="styleSheet">
               <string notr="true">QToolButton { /* all types of tool button */
@@ -740,6 +749,9 @@ QToolButton::menu-arrow:open {
               <font>
                <pointsize>10</pointsize>
               </font>
+             </property>
+             <property name="statusTip">
+              <string>Search for classes by any field.</string>
              </property>
              <property name="styleSheet">
               <string notr="true"> background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,

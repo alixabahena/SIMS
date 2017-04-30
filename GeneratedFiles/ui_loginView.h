@@ -13,6 +13,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QFormLayout>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QHBoxLayout>
@@ -42,18 +43,19 @@ public:
     QSpacerItem *verticalSpacer_2;
     QLabel *PasswordLabel;
     QLineEdit *passwordFIeld;
-    QLabel *loginStatus;
     QSpacerItem *verticalSpacer;
     QHBoxLayout *horizontalLayout;
     QToolButton *cancelButton;
     QSpacerItem *horizontalSpacer;
     QToolButton *okButton;
+    QCheckBox *rememberusername;
+    QLabel *loginStatus;
 
     void setupUi(QMainWindow *loginView)
     {
         if (loginView->objectName().isEmpty())
             loginView->setObjectName(QStringLiteral("loginView"));
-        loginView->resize(645, 348);
+        loginView->resize(663, 442);
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -147,20 +149,7 @@ public:
 
         formLayout->setWidget(6, QFormLayout::FieldRole, passwordFIeld);
 
-        loginStatus = new QLabel(centralWidget);
-        loginStatus->setObjectName(QStringLiteral("loginStatus"));
-        QSizePolicy sizePolicy3(QSizePolicy::Expanding, QSizePolicy::Preferred);
-        sizePolicy3.setHorizontalStretch(0);
-        sizePolicy3.setVerticalStretch(0);
-        sizePolicy3.setHeightForWidth(loginStatus->sizePolicy().hasHeightForWidth());
-        loginStatus->setSizePolicy(sizePolicy3);
-        loginStatus->setFont(font1);
-        loginStatus->setFrameShape(QFrame::NoFrame);
-        loginStatus->setAlignment(Qt::AlignCenter);
-
-        formLayout->setWidget(7, QFormLayout::FieldRole, loginStatus);
-
-        verticalSpacer = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Maximum);
+        verticalSpacer = new QSpacerItem(80, 30, QSizePolicy::Minimum, QSizePolicy::Preferred);
 
         formLayout->setItem(8, QFormLayout::FieldRole, verticalSpacer);
 
@@ -258,7 +247,25 @@ public:
         horizontalLayout->addWidget(okButton);
 
 
-        formLayout->setLayout(9, QFormLayout::FieldRole, horizontalLayout);
+        formLayout->setLayout(12, QFormLayout::FieldRole, horizontalLayout);
+
+        rememberusername = new QCheckBox(centralWidget);
+        rememberusername->setObjectName(QStringLiteral("rememberusername"));
+
+        formLayout->setWidget(9, QFormLayout::FieldRole, rememberusername);
+
+        loginStatus = new QLabel(centralWidget);
+        loginStatus->setObjectName(QStringLiteral("loginStatus"));
+        QSizePolicy sizePolicy3(QSizePolicy::Expanding, QSizePolicy::Preferred);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(loginStatus->sizePolicy().hasHeightForWidth());
+        loginStatus->setSizePolicy(sizePolicy3);
+        loginStatus->setFont(font1);
+        loginStatus->setFrameShape(QFrame::NoFrame);
+        loginStatus->setAlignment(Qt::AlignCenter);
+
+        formLayout->setWidget(10, QFormLayout::FieldRole, loginStatus);
 
 
         verticalLayout_2->addLayout(formLayout);
@@ -281,14 +288,21 @@ public:
     {
         loginView->setWindowTitle(QApplication::translate("loginView", "SIMS Login", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        loginView->setToolTip(QApplication::translate("loginView", "<html><head/><body><p>View to login.</p></body></html>", Q_NULLPTR));
+        loginView->setToolTip(QString());
 #endif // QT_NO_TOOLTIP
-        label->setText(QApplication::translate("loginView", "Student Information Management System", Q_NULLPTR));
-        usernameLabel->setText(QApplication::translate("loginView", "Username:", Q_NULLPTR));
-        PasswordLabel->setText(QApplication::translate("loginView", "Password:", Q_NULLPTR));
-        loginStatus->setText(QString());
+        label->setText(QApplication::translate("loginView", "<html><head/><body><p align=\"center\"><span style=\" font-size:12pt;\">Student Information Management System<br/>Version 0.90</span></p></body></html>", Q_NULLPTR));
+        usernameLabel->setText(QApplication::translate("loginView", "<html><head/><body><p><span style=\" font-weight:400;\">Username: (ex. martinj)</span></p></body></html>", Q_NULLPTR));
+#ifndef QT_NO_TOOLTIP
+        usernameField->setToolTip(QString());
+#endif // QT_NO_TOOLTIP
+        PasswordLabel->setText(QApplication::translate("loginView", "<html><head/><body><p><span style=\" font-weight:400;\">Password:</span></p></body></html>", Q_NULLPTR));
         cancelButton->setText(QApplication::translate("loginView", "Exit", Q_NULLPTR));
         okButton->setText(QApplication::translate("loginView", "Login", Q_NULLPTR));
+#ifndef QT_NO_TOOLTIP
+        rememberusername->setToolTip(QApplication::translate("loginView", "Remembers last username successfully logged in with.", Q_NULLPTR));
+#endif // QT_NO_TOOLTIP
+        rememberusername->setText(QApplication::translate("loginView", "Remember username?", Q_NULLPTR));
+        loginStatus->setText(QString());
     } // retranslateUi
 
 };

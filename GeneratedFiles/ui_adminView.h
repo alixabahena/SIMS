@@ -44,6 +44,7 @@ public:
     QVBoxLayout *verticalLayout_4;
     QLabel *welcomeLabel;
     QLabel *usernameLabel;
+    QLabel *label_2;
     QToolButton *backButton;
     QFrame *line_2;
     QLabel *label;
@@ -108,7 +109,7 @@ public:
     {
         if (adminView->objectName().isEmpty())
             adminView->setObjectName(QStringLiteral("adminView"));
-        adminView->resize(747, 616);
+        adminView->resize(1131, 1062);
         adminView->setStyleSheet(QStringLiteral("background-color: rgb(255, 255, 255);"));
         actionStudent_VIew = new QAction(adminView);
         actionStudent_VIew->setObjectName(QStringLiteral("actionStudent_VIew"));
@@ -141,6 +142,13 @@ public:
         usernameLabel->setAlignment(Qt::AlignCenter);
 
         verticalLayout_2->addWidget(usernameLabel);
+
+        label_2 = new QLabel(centralwidget);
+        label_2->setObjectName(QStringLiteral("label_2"));
+        label_2->setEnabled(true);
+        label_2->setAlignment(Qt::AlignCenter);
+
+        verticalLayout_2->addWidget(label_2);
 
         backButton = new QToolButton(centralwidget);
         backButton->setObjectName(QStringLiteral("backButton"));
@@ -266,6 +274,7 @@ public:
 
         editFacultyButton = new QToolButton(mainPage);
         editFacultyButton->setObjectName(QStringLiteral("editFacultyButton"));
+        editFacultyButton->setEnabled(true);
         sizePolicy2.setHeightForWidth(editFacultyButton->sizePolicy().hasHeightForWidth());
         editFacultyButton->setSizePolicy(sizePolicy2);
         editFacultyButton->setStyleSheet(QLatin1String("QToolButton { /* all types of tool button */\n"
@@ -1005,6 +1014,7 @@ public:
         sizePolicy8.setHeightForWidth(saveButton->sizePolicy().hasHeightForWidth());
         saveButton->setSizePolicy(sizePolicy8);
         saveButton->setMinimumSize(QSize(80, 30));
+        saveButton->setFont(font2);
         saveButton->setStyleSheet(QLatin1String("QToolButton { /* all types of tool button */\n"
 "    border: 2px solid #8f8f91;\n"
 "    border-radius: 6px;\n"
@@ -1055,7 +1065,7 @@ public:
 
         retranslateUi(adminView);
 
-        stackedWidget->setCurrentIndex(3);
+        stackedWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(adminView);
@@ -1069,6 +1079,10 @@ public:
         actionLogout->setText(QApplication::translate("adminView", "Logout", Q_NULLPTR));
         welcomeLabel->setText(QApplication::translate("adminView", "Admin Portal", Q_NULLPTR));
         usernameLabel->setText(QString());
+        label_2->setText(QApplication::translate("adminView", "The below functions let an admin fully modify any table by adding, removing, and modifying any record. ", Q_NULLPTR));
+#ifndef QT_NO_TOOLTIP
+        backButton->setToolTip(QApplication::translate("adminView", "Goes back one step.", Q_NULLPTR));
+#endif // QT_NO_TOOLTIP
         backButton->setText(QApplication::translate("adminView", "Back", Q_NULLPTR));
         label->setText(QApplication::translate("adminView", "Administrative Options", Q_NULLPTR));
         editUsersButton->setText(QApplication::translate("adminView", "Edit Users Table", Q_NULLPTR));
@@ -1079,8 +1093,17 @@ public:
         changePasswordButton->setText(QApplication::translate("adminView", "Change Password", Q_NULLPTR));
         logoutButton->setText(QApplication::translate("adminView", "Logout", Q_NULLPTR));
         scheduleLabel->setText(QApplication::translate("adminView", "Current Student Semester Schedule", Q_NULLPTR));
+#ifndef QT_NO_TOOLTIP
+        addClassButton->setToolTip(QApplication::translate("adminView", "Adds a record", Q_NULLPTR));
+#endif // QT_NO_TOOLTIP
         addClassButton->setText(QApplication::translate("adminView", "Add Class", Q_NULLPTR));
+#ifndef QT_NO_TOOLTIP
+        removeClassButton->setToolTip(QApplication::translate("adminView", "Removes a record.", Q_NULLPTR));
+#endif // QT_NO_TOOLTIP
         removeClassButton->setText(QApplication::translate("adminView", "Remove Class", Q_NULLPTR));
+#ifndef QT_NO_TOOLTIP
+        classesSearchBox->setToolTip(QApplication::translate("adminView", "Shows fields you can search from.", Q_NULLPTR));
+#endif // QT_NO_TOOLTIP
         searchLabel->setText(QApplication::translate("adminView", "Search: ", Q_NULLPTR));
         searchButton->setText(QApplication::translate("adminView", "Submit", Q_NULLPTR));
         currentPasswordLabel->setText(QApplication::translate("adminView", "Current Password: ", Q_NULLPTR));
@@ -1088,8 +1111,17 @@ public:
         verifyNewPasswordLabel->setText(QApplication::translate("adminView", "Verify New Password: ", Q_NULLPTR));
         passwordChangeStatusLabel->setText(QString());
         submitButton->setText(QApplication::translate("adminView", "Submit", Q_NULLPTR));
+#ifndef QT_NO_TOOLTIP
+        addItemButton->setToolTip(QApplication::translate("adminView", "Add a record.", Q_NULLPTR));
+#endif // QT_NO_TOOLTIP
         addItemButton->setText(QApplication::translate("adminView", "Add Item", Q_NULLPTR));
+#ifndef QT_NO_TOOLTIP
+        removeItemButton->setToolTip(QApplication::translate("adminView", "Removes a record.", Q_NULLPTR));
+#endif // QT_NO_TOOLTIP
         removeItemButton->setText(QApplication::translate("adminView", "Remove Item", Q_NULLPTR));
+#ifndef QT_NO_TOOLTIP
+        saveButton->setToolTip(QApplication::translate("adminView", "Saves an added record.", Q_NULLPTR));
+#endif // QT_NO_TOOLTIP
         saveButton->setText(QApplication::translate("adminView", "Save", Q_NULLPTR));
     } // retranslateUi
 

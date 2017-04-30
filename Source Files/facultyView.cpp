@@ -317,7 +317,6 @@ void facultyView::on_viewClassesButton_clicked()
 	//set headers name and size
 	QStringList headers;
 	headers << "CRN" << "Subject" << "Course ID" << "Name" << "Semester" << "Day" << "Time" << "Instructor" << "Room";
-	model->setColumnCount(allClasses.size() - 1);
 	model->setHorizontalHeaderLabels(headers);
 	//populate table
 	for (int i = 0; i < allClasses.size() - 1; i++)

@@ -8,6 +8,15 @@ loginView::loginView(QWidget *parent)
 	
 	ui.setupUi(this);
 	setFixedSize(500,350);
+	ifstream openUsername("usernameFile.txt");
+	if (openUsername)
+	{
+		string saveUsername;
+		getline(openUsername, saveUsername);
+		ui.usernameField->setText(QString::fromStdString(saveUsername));
+	}
+	openUsername.close();
+
 }
 
 
@@ -98,6 +107,14 @@ void loginView::on_okButton_clicked()
 		ui.loginStatus->setText("Incorrect Username or Password.");
 		fadeOut->start(QAbstractAnimation::DeleteWhenStopped);
 		ui.loginStatus->setStyleSheet("QLabel { background-color : red; color : white; }");
+	}
+
+	if (ui.rememberusername->isChecked())
+	{
+		ofstream usernameFile;
+		usernameFile.open("usernameFile.txt",ios::trunc);
+		usernameFile << username;
+		usernameFile.close();
 	}
 }
 

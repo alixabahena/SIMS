@@ -55,8 +55,8 @@ public:
     {
         if (loginView->objectName().isEmpty())
             loginView->setObjectName(QStringLiteral("loginView"));
-        loginView->resize(663, 442);
-        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        loginView->resize(510, 386);
+        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(loginView->sizePolicy().hasHeightForWidth());

@@ -129,7 +129,7 @@ public:
 
         backButton = new QToolButton(facultyView);
         backButton->setObjectName(QStringLiteral("backButton"));
-        backButton->setMinimumSize(QSize(90, 0));
+        backButton->setMinimumSize(QSize(80, 20));
         backButton->setStyleSheet(QLatin1String("QToolButton { /* all types of tool button */\n"
 "    border: 2px solid #8f8f91;\n"
 "    border-radius: 6px;\n"
@@ -862,9 +862,21 @@ public:
         changePasswordButton->setText(QApplication::translate("facultyView", "Change Password", Q_NULLPTR));
         logoutButton->setText(QApplication::translate("facultyView", "Logout", Q_NULLPTR));
         scheduleLabel->setText(QApplication::translate("facultyView", "Current Student Semester Schedule", Q_NULLPTR));
+#ifndef QT_NO_TOOLTIP
+        viewCurrentClassesButton->setToolTip(QApplication::translate("facultyView", "Shows classes in faculty schedule.", Q_NULLPTR));
+#endif // QT_NO_TOOLTIP
         viewCurrentClassesButton->setText(QApplication::translate("facultyView", "View Classes", Q_NULLPTR));
+#ifndef QT_NO_TOOLTIP
+        viewStudentsButton->setToolTip(QApplication::translate("facultyView", "View students in a selected class.", Q_NULLPTR));
+#endif // QT_NO_TOOLTIP
         viewStudentsButton->setText(QApplication::translate("facultyView", "View Students", Q_NULLPTR));
+#ifndef QT_NO_TOOLTIP
+        editGradeButton->setToolTip(QApplication::translate("facultyView", "Edit the grade of the currently selected student.", Q_NULLPTR));
+#endif // QT_NO_TOOLTIP
         editGradeButton->setText(QApplication::translate("facultyView", "Edit Grade", Q_NULLPTR));
+#ifndef QT_NO_STATUSTIP
+        classesSearchBox->setStatusTip(QApplication::translate("facultyView", "Search for classes by any field.", Q_NULLPTR));
+#endif // QT_NO_STATUSTIP
         searchButton->setText(QApplication::translate("facultyView", "Submit", Q_NULLPTR));
         searchLabel->setText(QApplication::translate("facultyView", "Search: ", Q_NULLPTR));
         currentPasswordLabel->setText(QApplication::translate("facultyView", "Current Password: ", Q_NULLPTR));

@@ -166,6 +166,9 @@ public:
     {
         gradeDialog->setWindowTitle(QApplication::translate("gradeDialog", "Enter Grade", Q_NULLPTR));
         gradeLabel->setText(QApplication::translate("gradeDialog", "Enter Grade:", Q_NULLPTR));
+#ifndef QT_NO_TOOLTIP
+        lineEdit->setToolTip(QApplication::translate("gradeDialog", "Enter the student's course grade.", Q_NULLPTR));
+#endif // QT_NO_TOOLTIP
         okButton->setText(QApplication::translate("gradeDialog", "OK", Q_NULLPTR));
         cancelButton->setText(QApplication::translate("gradeDialog", "Cancel", Q_NULLPTR));
     } // retranslateUi

@@ -620,7 +620,9 @@ void facultyView::on_submitButton_clicked()
 	vector<faculty>allFaculty = populateFaculty();
 
 	QString newPassword;
-	QString currentPasswordTyped = ui.currentPasswordField->text();
+	string strPassword = ui.currentPasswordField->text().toStdString();
+	string strPasswordHash = WaffleStringHash(strPassword);
+	QString currentPasswordTyped = strPasswordHash.c_str();
 	QString currentPassword;
 	string username = allStudents[userloc].userName;
 	string newVerifyPassword;
@@ -635,7 +637,7 @@ void facultyView::on_submitButton_clicked()
 	}
 
 	//getcurrentPassword
-	if (currentPasswordTyped == "")
+	if (strPassword == "")
 	{
 		ui.passwordChangeStatusLabel->setStyleSheet("QLabel { background-color : red; color : white; }");
 		ui.passwordChangeStatusLabel->setText("Current password can not be blank!");

@@ -219,7 +219,8 @@ void changePassword(string username, string password)
 	sqlite3_stmt *stmt;
 	char *q;
 	const char *userName = username.c_str();
-	const char *passWord = password.c_str();
+	string hash = WaffleStringHash(password);
+	const char *passWord = hash.c_str();
 	rc = sqlite3_open(dbName, &db);
 	q = "UPDATE Users SET [password]=?1 WHERE [username]=?2";
 	if ( rc = sqlite3_prepare_v2(db, q, strlen(q), &stmt, 0) == SQLITE_OK) {

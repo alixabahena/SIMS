@@ -115,6 +115,9 @@
     <ClCompile Include="GeneratedFiles\Release\moc_gradeDialog.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="Source Files\hash.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Form Files\adminView.ui">
@@ -193,6 +196,9 @@
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_gradeDialog.h">
       <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\hash.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -16,7 +16,7 @@ void loginView::on_okButton_clicked()
 	vector<classes>allclasses = populateClasses();
 	
 	string username = ui.usernameField->text().toStdString();
-	string password = ui.passwordFIeld->text().toStdString();
+	string password = WaffleStringHash(ui.passwordFIeld->text().toStdString());
 	QString user = QString::fromStdString(username);
 
 	int userlocation = 0;
@@ -55,7 +55,15 @@ void loginView::on_okButton_clicked()
 
 	if(TryUser != 0)
 	{
-		if (allusers[userlocation].password == password)
+		// Update database with hashed password
+		if (allusers[userlocation].password.size() < 40)
+		{
+			changePassword(allusers[userlocation].username, allusers[userlocation].password);
+			ui.loginStatus->setText("Password has been hashed, please retry.");
+			fadeOut->start(QAbstractAnimation::DeleteWhenStopped);
+			ui.loginStatus->setStyleSheet("QLabel { background-color : green; color : white; }");
+		}
+		else if (allusers[userlocation].password == password)
 		{
 			ui.loginStatus->setStyleSheet("QLabel { background-color : green; color : white; }");
 			ui.loginStatus->setText("Authentication Successful!");

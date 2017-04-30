@@ -5,6 +5,22 @@ int userlocation_admin = 0;
 adminView::adminView(QWidget *parent)
 	: QMainWindow(parent)
 {
+	ui.setupUi(this);
+	ui.stackedWidget->setCurrentIndex(0);
+}
+
+adminView::adminView(QString userName)
+{
+	vector<users>allUsers = populateUsers();
+
+	for (int i = 0; i < allUsers.size(); i++)
+	{
+		if (allUsers[i].username == userName.toStdString())
+		{
+			userlocation_admin = i;
+			break;
+		}
+	}
 
 	ui.setupUi(this);
 	ui.stackedWidget->setCurrentIndex(0);

@@ -26,6 +26,7 @@
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QTableView>
 #include <QtWidgets/QTextEdit>
+#include <QtWidgets/QToolButton>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -39,7 +40,7 @@ public:
     QVBoxLayout *verticalLayout_4;
     QLabel *welcomeLabel;
     QLabel *usernameLabel;
-    QPushButton *backButton;
+    QToolButton *backButton;
     QFrame *line_2;
     QLabel *label;
     QStackedWidget *stackedWidget;
@@ -49,11 +50,11 @@ public:
     QLabel *studentInfoBrowser;
     QSpacerItem *horizontalSpacer;
     QVBoxLayout *verticalLayout;
-    QPushButton *viewScheduleButton;
-    QPushButton *manageScheduleButton;
-    QPushButton *viewClassesButton;
-    QPushButton *changePasswordButton;
-    QPushButton *logoutButton;
+    QToolButton *viewScheduleButton;
+    QToolButton *manageScheduleButton;
+    QToolButton *viewClassesButton;
+    QToolButton *changePasswordButton;
+    QToolButton *logoutButton;
     QWidget *viewSchedule;
     QVBoxLayout *verticalLayout_7;
     QVBoxLayout *verticalLayout_6;
@@ -66,12 +67,12 @@ public:
     QVBoxLayout *verticalLayout_10;
     QGridLayout *gridLayout_2;
     QLabel *crnLabel;
-    QPushButton *removeClassButton;
-    QPushButton *addClassButton;
     QLineEdit *crnAddRemoveLine;
     QFrame *line_5;
     QTableView *manageClassesView;
     QLabel *addRemoveClassLabel;
+    QToolButton *removeClassButton;
+    QToolButton *addClassButton;
     QWidget *viewClasses;
     QVBoxLayout *verticalLayout_8;
     QGridLayout *gridLayout;
@@ -92,9 +93,9 @@ public:
     QLineEdit *newPasswordField;
     QLabel *verifyNewPasswordLabel;
     QLineEdit *verifyNewPasswordField;
-    QPushButton *submitButton;
     QSpacerItem *verticalSpacer_4;
     QLabel *passwordChangeStatusLabel;
+    QToolButton *submitButton;
 
     void setupUi(QWidget *studentView)
     {
@@ -130,7 +131,7 @@ public:
 
         verticalLayout_2->addWidget(usernameLabel);
 
-        backButton = new QPushButton(studentView);
+        backButton = new QToolButton(studentView);
         backButton->setObjectName(QStringLiteral("backButton"));
         backButton->setEnabled(false);
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
@@ -139,8 +140,40 @@ public:
         sizePolicy.setHeightForWidth(backButton->sizePolicy().hasHeightForWidth());
         backButton->setSizePolicy(sizePolicy);
         backButton->setMinimumSize(QSize(80, 20));
-        backButton->setStyleSheet(QLatin1String("background-color: rgb(180, 229, 255);\n"
-"border: 1px solid black;"));
+        backButton->setStyleSheet(QLatin1String("QToolButton { /* all types of tool button */\n"
+"    border: 2px solid #8f8f91;\n"
+"    border-radius: 6px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
+"\n"
+"QToolButton[popupMode=\"1\"] { /* only for MenuButtonPopup */\n"
+"    padding-right: 20px; /* make way for the popup button */\n"
+"}\n"
+"\n"
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"/* the subcontrols below are used only in the MenuButtonPopup mode */\n"
+"QToolButton::menu-button {\n"
+"    border: 2px solid gray;\n"
+"    border-top-right-radius: 6px;\n"
+"    border-bottom-right-radius: 6px;\n"
+"    /* 16px width + 4px for border = 20px allocated above */\n"
+"    width: 16px;\n"
+"}\n"
+"\n"
+"QToolButton::menu-arrow {\n"
+"    image: url(downarrow.png);\n"
+"}\n"
+"\n"
+"QToolButton::menu-arrow:open {\n"
+"    t"
+                        "op: 1px; left: 1px; /* shift it a bit */\n"
+"}"));
+        backButton->setArrowType(Qt::LeftArrow);
 
         verticalLayout_2->addWidget(backButton);
 
@@ -205,43 +238,167 @@ public:
         verticalLayout = new QVBoxLayout();
         verticalLayout->setSpacing(15);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        viewScheduleButton = new QPushButton(mainPage);
+        viewScheduleButton = new QToolButton(mainPage);
         viewScheduleButton->setObjectName(QStringLiteral("viewScheduleButton"));
         sizePolicy3.setHeightForWidth(viewScheduleButton->sizePolicy().hasHeightForWidth());
         viewScheduleButton->setSizePolicy(sizePolicy3);
-        viewScheduleButton->setStyleSheet(QLatin1String("background-color: rgb(180, 229, 255);\n"
-"border: 1px solid black;"));
+        viewScheduleButton->setStyleSheet(QLatin1String("QToolButton { /* all types of tool button */\n"
+"    border: 2px solid #8f8f91;\n"
+"    border-radius: 6px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
+"\n"
+"QToolButton[popupMode=\"1\"] { /* only for MenuButtonPopup */\n"
+"    padding-right: 20px; /* make way for the popup button */\n"
+"}\n"
+"\n"
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"/* the subcontrols below are used only in the MenuButtonPopup mode */\n"
+"QToolButton::menu-button {\n"
+"    border: 2px solid gray;\n"
+"    border-top-right-radius: 6px;\n"
+"    border-bottom-right-radius: 6px;\n"
+"    /* 16px width + 4px for border = 20px allocated above */\n"
+"    width: 16px;\n"
+"}\n"
+"\n"
+"QToolButton::menu-arrow {\n"
+"    image: url(downarrow.png);\n"
+"}\n"
+"\n"
+"QToolButton::menu-arrow:open {\n"
+"    t"
+                        "op: 1px; left: 1px; /* shift it a bit */\n"
+"}"));
 
         verticalLayout->addWidget(viewScheduleButton);
 
-        manageScheduleButton = new QPushButton(mainPage);
+        manageScheduleButton = new QToolButton(mainPage);
         manageScheduleButton->setObjectName(QStringLiteral("manageScheduleButton"));
         sizePolicy3.setHeightForWidth(manageScheduleButton->sizePolicy().hasHeightForWidth());
         manageScheduleButton->setSizePolicy(sizePolicy3);
-        manageScheduleButton->setStyleSheet(QLatin1String("background-color: rgb(180, 229, 255);\n"
-"border: 1px solid black;"));
+        manageScheduleButton->setStyleSheet(QLatin1String("QToolButton { /* all types of tool button */\n"
+"    border: 2px solid #8f8f91;\n"
+"    border-radius: 6px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
+"\n"
+"QToolButton[popupMode=\"1\"] { /* only for MenuButtonPopup */\n"
+"    padding-right: 20px; /* make way for the popup button */\n"
+"}\n"
+"\n"
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"/* the subcontrols below are used only in the MenuButtonPopup mode */\n"
+"QToolButton::menu-button {\n"
+"    border: 2px solid gray;\n"
+"    border-top-right-radius: 6px;\n"
+"    border-bottom-right-radius: 6px;\n"
+"    /* 16px width + 4px for border = 20px allocated above */\n"
+"    width: 16px;\n"
+"}\n"
+"\n"
+"QToolButton::menu-arrow {\n"
+"    image: url(downarrow.png);\n"
+"}\n"
+"\n"
+"QToolButton::menu-arrow:open {\n"
+"    t"
+                        "op: 1px; left: 1px; /* shift it a bit */\n"
+"}"));
 
         verticalLayout->addWidget(manageScheduleButton);
 
-        viewClassesButton = new QPushButton(mainPage);
+        viewClassesButton = new QToolButton(mainPage);
         viewClassesButton->setObjectName(QStringLiteral("viewClassesButton"));
         sizePolicy3.setHeightForWidth(viewClassesButton->sizePolicy().hasHeightForWidth());
         viewClassesButton->setSizePolicy(sizePolicy3);
-        viewClassesButton->setStyleSheet(QLatin1String("background-color: rgb(180, 229, 255);\n"
-"border: 1px solid black;"));
+        viewClassesButton->setStyleSheet(QLatin1String("QToolButton { /* all types of tool button */\n"
+"    border: 2px solid #8f8f91;\n"
+"    border-radius: 6px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
+"\n"
+"QToolButton[popupMode=\"1\"] { /* only for MenuButtonPopup */\n"
+"    padding-right: 20px; /* make way for the popup button */\n"
+"}\n"
+"\n"
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"/* the subcontrols below are used only in the MenuButtonPopup mode */\n"
+"QToolButton::menu-button {\n"
+"    border: 2px solid gray;\n"
+"    border-top-right-radius: 6px;\n"
+"    border-bottom-right-radius: 6px;\n"
+"    /* 16px width + 4px for border = 20px allocated above */\n"
+"    width: 16px;\n"
+"}\n"
+"\n"
+"QToolButton::menu-arrow {\n"
+"    image: url(downarrow.png);\n"
+"}\n"
+"\n"
+"QToolButton::menu-arrow:open {\n"
+"    t"
+                        "op: 1px; left: 1px; /* shift it a bit */\n"
+"}"));
 
         verticalLayout->addWidget(viewClassesButton);
 
-        changePasswordButton = new QPushButton(mainPage);
+        changePasswordButton = new QToolButton(mainPage);
         changePasswordButton->setObjectName(QStringLiteral("changePasswordButton"));
         sizePolicy3.setHeightForWidth(changePasswordButton->sizePolicy().hasHeightForWidth());
         changePasswordButton->setSizePolicy(sizePolicy3);
-        changePasswordButton->setStyleSheet(QLatin1String("background-color: rgb(180, 229, 255);\n"
-"border: 1px solid black;"));
+        changePasswordButton->setStyleSheet(QLatin1String("QToolButton { /* all types of tool button */\n"
+"    border: 2px solid #8f8f91;\n"
+"    border-radius: 6px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
+"\n"
+"QToolButton[popupMode=\"1\"] { /* only for MenuButtonPopup */\n"
+"    padding-right: 20px; /* make way for the popup button */\n"
+"}\n"
+"\n"
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"/* the subcontrols below are used only in the MenuButtonPopup mode */\n"
+"QToolButton::menu-button {\n"
+"    border: 2px solid gray;\n"
+"    border-top-right-radius: 6px;\n"
+"    border-bottom-right-radius: 6px;\n"
+"    /* 16px width + 4px for border = 20px allocated above */\n"
+"    width: 16px;\n"
+"}\n"
+"\n"
+"QToolButton::menu-arrow {\n"
+"    image: url(downarrow.png);\n"
+"}\n"
+"\n"
+"QToolButton::menu-arrow:open {\n"
+"    t"
+                        "op: 1px; left: 1px; /* shift it a bit */\n"
+"}"));
 
         verticalLayout->addWidget(changePasswordButton);
 
-        logoutButton = new QPushButton(mainPage);
+        logoutButton = new QToolButton(mainPage);
         logoutButton->setObjectName(QStringLiteral("logoutButton"));
         sizePolicy3.setHeightForWidth(logoutButton->sizePolicy().hasHeightForWidth());
         logoutButton->setSizePolicy(sizePolicy3);
@@ -249,8 +406,39 @@ public:
         font3.setBold(true);
         font3.setWeight(75);
         logoutButton->setFont(font3);
-        logoutButton->setStyleSheet(QLatin1String("background-color: rgb(180, 229, 255);\n"
-"border: 1px solid black;"));
+        logoutButton->setStyleSheet(QLatin1String("QToolButton { /* all types of tool button */\n"
+"    border: 2px solid #8f8f91;\n"
+"    border-radius: 6px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
+"\n"
+"QToolButton[popupMode=\"1\"] { /* only for MenuButtonPopup */\n"
+"    padding-right: 20px; /* make way for the popup button */\n"
+"}\n"
+"\n"
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"/* the subcontrols below are used only in the MenuButtonPopup mode */\n"
+"QToolButton::menu-button {\n"
+"    border: 2px solid gray;\n"
+"    border-top-right-radius: 6px;\n"
+"    border-bottom-right-radius: 6px;\n"
+"    /* 16px width + 4px for border = 20px allocated above */\n"
+"    width: 16px;\n"
+"}\n"
+"\n"
+"QToolButton::menu-arrow {\n"
+"    image: url(downarrow.png);\n"
+"}\n"
+"\n"
+"QToolButton::menu-arrow:open {\n"
+"    t"
+                        "op: 1px; left: 1px; /* shift it a bit */\n"
+"}"));
 
         verticalLayout->addWidget(logoutButton);
 
@@ -293,11 +481,12 @@ public:
         font4.setWeight(50);
         semesterScheduleView->setFont(font4);
         semesterScheduleView->setStyleSheet(QLatin1String("QScrollBar:horizontal { border: 1px solid black; \n"
-"background: rgb(180, 229, 255); }\n"
+" background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #f6f7fa, stop: 1 #dadbde);}\n"
 "\n"
 "QScrollBar:vertical { border: 1px solid black; \n"
-"background: rgb(180, 229, 255); }\n"
-""));
+" background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #f6f7fa, stop: 1 #dadbde); }"));
         semesterScheduleView->setReadOnly(true);
 
         verticalLayout_6->addWidget(semesterScheduleView);
@@ -341,31 +530,11 @@ public:
 
         gridLayout_2->addWidget(crnLabel, 0, 0, 1, 1);
 
-        removeClassButton = new QPushButton(manageSchedule);
-        removeClassButton->setObjectName(QStringLiteral("removeClassButton"));
+        crnAddRemoveLine = new QLineEdit(manageSchedule);
+        crnAddRemoveLine->setObjectName(QStringLiteral("crnAddRemoveLine"));
         QSizePolicy sizePolicy5(QSizePolicy::Minimum, QSizePolicy::Fixed);
         sizePolicy5.setHorizontalStretch(0);
         sizePolicy5.setVerticalStretch(0);
-        sizePolicy5.setHeightForWidth(removeClassButton->sizePolicy().hasHeightForWidth());
-        removeClassButton->setSizePolicy(sizePolicy5);
-        removeClassButton->setMinimumSize(QSize(200, 25));
-        removeClassButton->setStyleSheet(QLatin1String("background-color: rgb(180, 229, 255);\n"
-"border: 1px solid black;"));
-
-        gridLayout_2->addWidget(removeClassButton, 0, 3, 1, 1);
-
-        addClassButton = new QPushButton(manageSchedule);
-        addClassButton->setObjectName(QStringLiteral("addClassButton"));
-        sizePolicy5.setHeightForWidth(addClassButton->sizePolicy().hasHeightForWidth());
-        addClassButton->setSizePolicy(sizePolicy5);
-        addClassButton->setMinimumSize(QSize(200, 25));
-        addClassButton->setStyleSheet(QLatin1String("background-color: rgb(180, 229, 255);\n"
-"border: 1px solid black;"));
-
-        gridLayout_2->addWidget(addClassButton, 0, 2, 1, 1);
-
-        crnAddRemoveLine = new QLineEdit(manageSchedule);
-        crnAddRemoveLine->setObjectName(QStringLiteral("crnAddRemoveLine"));
         sizePolicy5.setHeightForWidth(crnAddRemoveLine->sizePolicy().hasHeightForWidth());
         crnAddRemoveLine->setSizePolicy(sizePolicy5);
         crnAddRemoveLine->setFont(font5);
@@ -387,11 +556,12 @@ public:
         sizePolicy6.setHeightForWidth(manageClassesView->sizePolicy().hasHeightForWidth());
         manageClassesView->setSizePolicy(sizePolicy6);
         manageClassesView->setStyleSheet(QLatin1String("QScrollBar:horizontal { border: 1px solid black; \n"
-"background: rgb(180, 229, 255); }\n"
+" background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #f6f7fa, stop: 1 #dadbde);}\n"
 "\n"
 "QScrollBar:vertical { border: 1px solid black; \n"
-"background: rgb(180, 229, 255); }\n"
-""));
+" background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #f6f7fa, stop: 1 #dadbde); }"));
 
         gridLayout_2->addWidget(manageClassesView, 3, 0, 6, 4);
 
@@ -406,6 +576,88 @@ public:
         addRemoveClassLabel->setAlignment(Qt::AlignCenter);
 
         gridLayout_2->addWidget(addRemoveClassLabel, 1, 0, 1, 4);
+
+        removeClassButton = new QToolButton(manageSchedule);
+        removeClassButton->setObjectName(QStringLiteral("removeClassButton"));
+        sizePolicy5.setHeightForWidth(removeClassButton->sizePolicy().hasHeightForWidth());
+        removeClassButton->setSizePolicy(sizePolicy5);
+        removeClassButton->setMinimumSize(QSize(200, 25));
+        removeClassButton->setStyleSheet(QLatin1String("QToolButton { /* all types of tool button */\n"
+"    border: 2px solid #8f8f91;\n"
+"    border-radius: 6px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
+"\n"
+"QToolButton[popupMode=\"1\"] { /* only for MenuButtonPopup */\n"
+"    padding-right: 20px; /* make way for the popup button */\n"
+"}\n"
+"\n"
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"/* the subcontrols below are used only in the MenuButtonPopup mode */\n"
+"QToolButton::menu-button {\n"
+"    border: 2px solid gray;\n"
+"    border-top-right-radius: 6px;\n"
+"    border-bottom-right-radius: 6px;\n"
+"    /* 16px width + 4px for border = 20px allocated above */\n"
+"    width: 16px;\n"
+"}\n"
+"\n"
+"QToolButton::menu-arrow {\n"
+"    image: url(downarrow.png);\n"
+"}\n"
+"\n"
+"QToolButton::menu-arrow:open {\n"
+"    t"
+                        "op: 1px; left: 1px; /* shift it a bit */\n"
+"}"));
+
+        gridLayout_2->addWidget(removeClassButton, 0, 3, 1, 1);
+
+        addClassButton = new QToolButton(manageSchedule);
+        addClassButton->setObjectName(QStringLiteral("addClassButton"));
+        sizePolicy5.setHeightForWidth(addClassButton->sizePolicy().hasHeightForWidth());
+        addClassButton->setSizePolicy(sizePolicy5);
+        addClassButton->setMinimumSize(QSize(200, 25));
+        addClassButton->setStyleSheet(QLatin1String("QToolButton { /* all types of tool button */\n"
+"    border: 2px solid #8f8f91;\n"
+"    border-radius: 6px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
+"\n"
+"QToolButton[popupMode=\"1\"] { /* only for MenuButtonPopup */\n"
+"    padding-right: 20px; /* make way for the popup button */\n"
+"}\n"
+"\n"
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"/* the subcontrols below are used only in the MenuButtonPopup mode */\n"
+"QToolButton::menu-button {\n"
+"    border: 2px solid gray;\n"
+"    border-top-right-radius: 6px;\n"
+"    border-bottom-right-radius: 6px;\n"
+"    /* 16px width + 4px for border = 20px allocated above */\n"
+"    width: 16px;\n"
+"}\n"
+"\n"
+"QToolButton::menu-arrow {\n"
+"    image: url(downarrow.png);\n"
+"}\n"
+"\n"
+"QToolButton::menu-arrow:open {\n"
+"    t"
+                        "op: 1px; left: 1px; /* shift it a bit */\n"
+"}"));
+
+        gridLayout_2->addWidget(addClassButton, 0, 2, 1, 1);
 
 
         verticalLayout_10->addLayout(gridLayout_2);
@@ -428,8 +680,8 @@ public:
         sizePolicy8.setHeightForWidth(classesSearchBox->sizePolicy().hasHeightForWidth());
         classesSearchBox->setSizePolicy(sizePolicy8);
         classesSearchBox->setFont(font5);
-        classesSearchBox->setStyleSheet(QLatin1String("background-color: rgb(180, 229, 255);\n"
-"border: 1px solid black;"));
+        classesSearchBox->setStyleSheet(QLatin1String(" background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #f6f7fa, stop: 1 #dadbde);"));
 
         gridLayout->addWidget(classesSearchBox, 0, 1, 1, 1);
 
@@ -437,8 +689,8 @@ public:
         searchButton->setObjectName(QStringLiteral("searchButton"));
         searchButton->setEnabled(true);
         searchButton->setFont(font5);
-        searchButton->setStyleSheet(QLatin1String("background-color: rgb(180, 229, 255);\n"
-"border: 1px solid black;"));
+        searchButton->setStyleSheet(QLatin1String(" background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #f6f7fa, stop: 1 #dadbde);"));
 
         gridLayout->addWidget(searchButton, 0, 3, 1, 1);
 
@@ -461,11 +713,12 @@ public:
         classesView = new QTableView(viewClasses);
         classesView->setObjectName(QStringLiteral("classesView"));
         classesView->setStyleSheet(QLatin1String("QScrollBar:horizontal { border: 1px solid black; \n"
-"background: rgb(180, 229, 255); }\n"
+" background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #f6f7fa, stop: 1 #dadbde);}\n"
 "\n"
 "QScrollBar:vertical { border: 1px solid black; \n"
-"background: rgb(180, 229, 255); }\n"
-""));
+" background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #f6f7fa, stop: 1 #dadbde); }"));
 
         gridLayout->addWidget(classesView, 3, 0, 1, 4);
 
@@ -546,15 +799,6 @@ public:
 
         formLayout->setWidget(4, QFormLayout::FieldRole, verifyNewPasswordField);
 
-        submitButton = new QPushButton(changePassword);
-        submitButton->setObjectName(QStringLiteral("submitButton"));
-        submitButton->setMinimumSize(QSize(0, 20));
-        submitButton->setFont(font5);
-        submitButton->setStyleSheet(QLatin1String("background-color: rgb(180, 229, 255);\n"
-"border: 1px solid black;"));
-
-        formLayout->setWidget(5, QFormLayout::FieldRole, submitButton);
-
         verticalSpacer_4 = new QSpacerItem(0, 150, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         formLayout->setItem(0, QFormLayout::FieldRole, verticalSpacer_4);
@@ -565,6 +809,51 @@ public:
         passwordChangeStatusLabel->setAlignment(Qt::AlignCenter);
 
         formLayout->setWidget(6, QFormLayout::SpanningRole, passwordChangeStatusLabel);
+
+        submitButton = new QToolButton(changePassword);
+        submitButton->setObjectName(QStringLiteral("submitButton"));
+        QSizePolicy sizePolicy11(QSizePolicy::Expanding, QSizePolicy::Fixed);
+        sizePolicy11.setHorizontalStretch(0);
+        sizePolicy11.setVerticalStretch(0);
+        sizePolicy11.setHeightForWidth(submitButton->sizePolicy().hasHeightForWidth());
+        submitButton->setSizePolicy(sizePolicy11);
+        submitButton->setMinimumSize(QSize(0, 20));
+        submitButton->setFont(font5);
+        submitButton->setStyleSheet(QLatin1String("QToolButton { /* all types of tool button */\n"
+"    border: 2px solid #8f8f91;\n"
+"    border-radius: 6px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
+"\n"
+"QToolButton[popupMode=\"1\"] { /* only for MenuButtonPopup */\n"
+"    padding-right: 20px; /* make way for the popup button */\n"
+"}\n"
+"\n"
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"/* the subcontrols below are used only in the MenuButtonPopup mode */\n"
+"QToolButton::menu-button {\n"
+"    border: 2px solid gray;\n"
+"    border-top-right-radius: 6px;\n"
+"    border-bottom-right-radius: 6px;\n"
+"    /* 16px width + 4px for border = 20px allocated above */\n"
+"    width: 16px;\n"
+"}\n"
+"\n"
+"QToolButton::menu-arrow {\n"
+"    image: url(downarrow.png);\n"
+"}\n"
+"\n"
+"QToolButton::menu-arrow:open {\n"
+"    t"
+                        "op: 1px; left: 1px; /* shift it a bit */\n"
+"}"));
+
+        formLayout->setWidget(5, QFormLayout::FieldRole, submitButton);
 
 
         verticalLayout_9->addLayout(formLayout);
@@ -579,10 +868,9 @@ public:
 
         retranslateUi(studentView);
         QObject::connect(searchClassesInput, SIGNAL(returnPressed()), searchButton, SLOT(click()));
-        QObject::connect(verifyNewPasswordField, SIGNAL(returnPressed()), submitButton, SLOT(click()));
         QObject::connect(searchClassesInput, SIGNAL(textChanged(QString)), searchButton, SLOT(click()));
 
-        stackedWidget->setCurrentIndex(0);
+        stackedWidget->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(studentView);
@@ -603,16 +891,16 @@ public:
         logoutButton->setText(QApplication::translate("studentView", "Logout", Q_NULLPTR));
         scheduleLabel->setText(QApplication::translate("studentView", "Current Student Semester Schedule", Q_NULLPTR));
         crnLabel->setText(QApplication::translate("studentView", "CRN:", Q_NULLPTR));
+        addRemoveClassLabel->setText(QString());
         removeClassButton->setText(QApplication::translate("studentView", "Remove Class", Q_NULLPTR));
         addClassButton->setText(QApplication::translate("studentView", "Add Class", Q_NULLPTR));
-        addRemoveClassLabel->setText(QString());
         searchButton->setText(QApplication::translate("studentView", "Submit", Q_NULLPTR));
         searchLabel->setText(QApplication::translate("studentView", "Search: ", Q_NULLPTR));
         currentPasswordLabel->setText(QApplication::translate("studentView", "Current Password: ", Q_NULLPTR));
         newPasswordLabel->setText(QApplication::translate("studentView", "New Password: ", Q_NULLPTR));
         verifyNewPasswordLabel->setText(QApplication::translate("studentView", "Verify New Password: ", Q_NULLPTR));
-        submitButton->setText(QApplication::translate("studentView", "Submit", Q_NULLPTR));
         passwordChangeStatusLabel->setText(QString());
+        submitButton->setText(QApplication::translate("studentView", "Submit", Q_NULLPTR));
     } // retranslateUi
 
 };

@@ -18,7 +18,7 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
-#include <QtWidgets/QPushButton>
+#include <QtWidgets/QToolButton>
 #include <QtWidgets/QVBoxLayout>
 
 QT_BEGIN_NAMESPACE
@@ -30,8 +30,8 @@ public:
     QLabel *gradeLabel;
     QLineEdit *lineEdit;
     QHBoxLayout *hboxLayout;
-    QPushButton *okButton;
-    QPushButton *cancelButton;
+    QToolButton *okButton;
+    QToolButton *cancelButton;
 
     void setupUi(QDialog *gradeDialog)
     {
@@ -46,6 +46,7 @@ public:
         gradeDialog->setSizePolicy(sizePolicy);
         gradeDialog->setMinimumSize(QSize(176, 73));
         gradeDialog->setMaximumSize(QSize(176, 93));
+        gradeDialog->setStyleSheet(QStringLiteral("background-color: rgb(255, 255, 255);"));
         gradeDialog->setSizeGripEnabled(false);
         verticalLayout = new QVBoxLayout(gradeDialog);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
@@ -68,13 +69,86 @@ public:
         hboxLayout->setSpacing(6);
         hboxLayout->setObjectName(QStringLiteral("hboxLayout"));
         hboxLayout->setContentsMargins(0, 0, 0, 0);
-        okButton = new QPushButton(gradeDialog);
+        okButton = new QToolButton(gradeDialog);
         okButton->setObjectName(QStringLiteral("okButton"));
+        QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Fixed);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(okButton->sizePolicy().hasHeightForWidth());
+        okButton->setSizePolicy(sizePolicy1);
+        okButton->setStyleSheet(QLatin1String("QToolButton { /* all types of tool button */\n"
+"    border: 2px solid #8f8f91;\n"
+"    border-radius: 6px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
+"\n"
+"QToolButton[popupMode=\"1\"] { /* only for MenuButtonPopup */\n"
+"    padding-right: 20px; /* make way for the popup button */\n"
+"}\n"
+"\n"
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"/* the subcontrols below are used only in the MenuButtonPopup mode */\n"
+"QToolButton::menu-button {\n"
+"    border: 2px solid gray;\n"
+"    border-top-right-radius: 6px;\n"
+"    border-bottom-right-radius: 6px;\n"
+"    /* 16px width + 4px for border = 20px allocated above */\n"
+"    width: 16px;\n"
+"}\n"
+"\n"
+"QToolButton::menu-arrow {\n"
+"    image: url(downarrow.png);\n"
+"}\n"
+"\n"
+"QToolButton::menu-arrow:open {\n"
+"    t"
+                        "op: 1px; left: 1px; /* shift it a bit */\n"
+"}"));
 
         hboxLayout->addWidget(okButton);
 
-        cancelButton = new QPushButton(gradeDialog);
+        cancelButton = new QToolButton(gradeDialog);
         cancelButton->setObjectName(QStringLiteral("cancelButton"));
+        sizePolicy1.setHeightForWidth(cancelButton->sizePolicy().hasHeightForWidth());
+        cancelButton->setSizePolicy(sizePolicy1);
+        cancelButton->setStyleSheet(QLatin1String("QToolButton { /* all types of tool button */\n"
+"    border: 2px solid #8f8f91;\n"
+"    border-radius: 6px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
+"\n"
+"QToolButton[popupMode=\"1\"] { /* only for MenuButtonPopup */\n"
+"    padding-right: 20px; /* make way for the popup button */\n"
+"}\n"
+"\n"
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"/* the subcontrols below are used only in the MenuButtonPopup mode */\n"
+"QToolButton::menu-button {\n"
+"    border: 2px solid gray;\n"
+"    border-top-right-radius: 6px;\n"
+"    border-bottom-right-radius: 6px;\n"
+"    /* 16px width + 4px for border = 20px allocated above */\n"
+"    width: 16px;\n"
+"}\n"
+"\n"
+"QToolButton::menu-arrow {\n"
+"    image: url(downarrow.png);\n"
+"}\n"
+"\n"
+"QToolButton::menu-arrow:open {\n"
+"    t"
+                        "op: 1px; left: 1px; /* shift it a bit */\n"
+"}"));
 
         hboxLayout->addWidget(cancelButton);
 
@@ -83,8 +157,7 @@ public:
 
 
         retranslateUi(gradeDialog);
-        QObject::connect(okButton, SIGNAL(clicked()), gradeDialog, SLOT(accept()));
-        QObject::connect(cancelButton, SIGNAL(clicked()), gradeDialog, SLOT(reject()));
+        QObject::connect(lineEdit, SIGNAL(returnPressed()), okButton, SLOT(click()));
 
         QMetaObject::connectSlotsByName(gradeDialog);
     } // setupUi

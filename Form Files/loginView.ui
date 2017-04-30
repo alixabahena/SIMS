@@ -145,9 +145,7 @@ border-top-color: rgb(85, 170, 255);</string>
           <property name="sizeHint" stdset="0">
            <size>
             <width>20</width>
-
             <height>10</height>
-
            </size>
           </property>
          </spacer>
@@ -155,7 +153,7 @@ border-top-color: rgb(85, 170, 255);</string>
         <item row="10" column="1">
          <layout class="QHBoxLayout" name="horizontalLayout">
           <item>
-           <widget class="QPushButton" name="cancelButton">
+           <widget class="QToolButton" name="cancelButton">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
               <horstretch>0</horstretch>
@@ -174,8 +172,38 @@ border-top-color: rgb(85, 170, 255);</string>
              </font>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color: rgb(180, 229, 255);
-border: 1px solid black;</string>
+             <string notr="true">QToolButton { /* all types of tool button */
+    border: 2px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
+
+QToolButton[popupMode=&quot;1&quot;] { /* only for MenuButtonPopup */
+    padding-right: 20px; /* make way for the popup button */
+}
+
+QToolButton:pressed {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+/* the subcontrols below are used only in the MenuButtonPopup mode */
+QToolButton::menu-button {
+    border: 2px solid gray;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    /* 16px width + 4px for border = 20px allocated above */
+    width: 16px;
+}
+
+QToolButton::menu-arrow {
+    image: url(downarrow.png);
+}
+
+QToolButton::menu-arrow:open {
+    top: 1px; left: 1px; /* shift it a bit */
+}</string>
             </property>
             <property name="text">
              <string>Exit</string>
@@ -199,7 +227,7 @@ border: 1px solid black;</string>
            </spacer>
           </item>
           <item>
-           <widget class="QPushButton" name="okButton">
+           <widget class="QToolButton" name="okButton">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
               <horstretch>0</horstretch>
@@ -218,17 +246,41 @@ border: 1px solid black;</string>
              </font>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color: rgb(180, 229, 255);
-border: 1px solid black;</string>
+             <string notr="true">QToolButton { /* all types of tool button */
+    border: 2px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
+
+QToolButton[popupMode=&quot;1&quot;] { /* only for MenuButtonPopup */
+    padding-right: 20px; /* make way for the popup button */
+}
+
+QToolButton:pressed {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+/* the subcontrols below are used only in the MenuButtonPopup mode */
+QToolButton::menu-button {
+    border: 2px solid gray;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    /* 16px width + 4px for border = 20px allocated above */
+    width: 16px;
+}
+
+QToolButton::menu-arrow {
+    image: url(downarrow.png);
+}
+
+QToolButton::menu-arrow:open {
+    top: 1px; left: 1px; /* shift it a bit */
+}</string>
             </property>
             <property name="text">
              <string>Login</string>
-            </property>
-            <property name="autoDefault">
-             <bool>true</bool>
-            </property>
-            <property name="default">
-             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -285,18 +337,18 @@ border: 1px solid black;</string>
  </resources>
  <connections>
   <connection>
-   <sender>cancelButton</sender>
-   <signal>clicked()</signal>
-   <receiver>loginView</receiver>
-   <slot>close()</slot>
+   <sender>usernameField</sender>
+   <signal>returnPressed()</signal>
+   <receiver>okButton</receiver>
+   <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>355</x>
-     <y>293</y>
+     <x>245</x>
+     <y>191</y>
     </hint>
     <hint type="destinationlabel">
-     <x>248</x>
-     <y>174</y>
+     <x>372</x>
+     <y>335</y>
     </hint>
    </hints>
   </connection>
@@ -307,12 +359,12 @@ border: 1px solid black;</string>
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>288</x>
-     <y>144</y>
+     <x>245</x>
+     <y>260</y>
     </hint>
     <hint type="destinationlabel">
-     <x>386</x>
-     <y>197</y>
+     <x>372</x>
+     <y>335</y>
     </hint>
    </hints>
   </connection>

@@ -20,8 +20,8 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
+#include <QtWidgets/QToolButton>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -42,9 +42,9 @@ public:
     QLineEdit *passwordFIeld;
     QSpacerItem *verticalSpacer;
     QHBoxLayout *horizontalLayout;
-    QPushButton *cancelButton;
+    QToolButton *cancelButton;
     QSpacerItem *horizontalSpacer;
-    QPushButton *okButton;
+    QToolButton *okButton;
     QLabel *PasswordLabel;
     QLabel *usernameLabel;
     QLabel *loginStatus;
@@ -134,7 +134,7 @@ public:
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        cancelButton = new QPushButton(centralWidget);
+        cancelButton = new QToolButton(centralWidget);
         cancelButton->setObjectName(QStringLiteral("cancelButton"));
         sizePolicy1.setHeightForWidth(cancelButton->sizePolicy().hasHeightForWidth());
         cancelButton->setSizePolicy(sizePolicy1);
@@ -142,8 +142,39 @@ public:
         QFont font2;
         font2.setPointSize(9);
         cancelButton->setFont(font2);
-        cancelButton->setStyleSheet(QLatin1String("background-color: rgb(180, 229, 255);\n"
-"border: 1px solid black;"));
+        cancelButton->setStyleSheet(QLatin1String("QToolButton { /* all types of tool button */\n"
+"    border: 2px solid #8f8f91;\n"
+"    border-radius: 6px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
+"\n"
+"QToolButton[popupMode=\"1\"] { /* only for MenuButtonPopup */\n"
+"    padding-right: 20px; /* make way for the popup button */\n"
+"}\n"
+"\n"
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"/* the subcontrols below are used only in the MenuButtonPopup mode */\n"
+"QToolButton::menu-button {\n"
+"    border: 2px solid gray;\n"
+"    border-top-right-radius: 6px;\n"
+"    border-bottom-right-radius: 6px;\n"
+"    /* 16px width + 4px for border = 20px allocated above */\n"
+"    width: 16px;\n"
+"}\n"
+"\n"
+"QToolButton::menu-arrow {\n"
+"    image: url(downarrow.png);\n"
+"}\n"
+"\n"
+"QToolButton::menu-arrow:open {\n"
+"    t"
+                        "op: 1px; left: 1px; /* shift it a bit */\n"
+"}"));
 
         horizontalLayout->addWidget(cancelButton);
 
@@ -151,15 +182,45 @@ public:
 
         horizontalLayout->addItem(horizontalSpacer);
 
-        okButton = new QPushButton(centralWidget);
+        okButton = new QToolButton(centralWidget);
         okButton->setObjectName(QStringLiteral("okButton"));
         sizePolicy1.setHeightForWidth(okButton->sizePolicy().hasHeightForWidth());
         okButton->setSizePolicy(sizePolicy1);
         okButton->setMinimumSize(QSize(0, 30));
         okButton->setFont(font2);
-        okButton->setStyleSheet(QLatin1String("background-color: rgb(180, 229, 255);\n"
-"border: 1px solid black;"));
-        okButton->setAutoDefault(true);
+        okButton->setStyleSheet(QLatin1String("QToolButton { /* all types of tool button */\n"
+"    border: 2px solid #8f8f91;\n"
+"    border-radius: 6px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
+"\n"
+"QToolButton[popupMode=\"1\"] { /* only for MenuButtonPopup */\n"
+"    padding-right: 20px; /* make way for the popup button */\n"
+"}\n"
+"\n"
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"/* the subcontrols below are used only in the MenuButtonPopup mode */\n"
+"QToolButton::menu-button {\n"
+"    border: 2px solid gray;\n"
+"    border-top-right-radius: 6px;\n"
+"    border-bottom-right-radius: 6px;\n"
+"    /* 16px width + 4px for border = 20px allocated above */\n"
+"    width: 16px;\n"
+"}\n"
+"\n"
+"QToolButton::menu-arrow {\n"
+"    image: url(downarrow.png);\n"
+"}\n"
+"\n"
+"QToolButton::menu-arrow:open {\n"
+"    t"
+                        "op: 1px; left: 1px; /* shift it a bit */\n"
+"}"));
 
         horizontalLayout->addWidget(okButton);
 
@@ -196,11 +257,8 @@ public:
         QWidget::setTabOrder(cancelButton, okButton);
 
         retranslateUi(loginView);
-        QObject::connect(cancelButton, SIGNAL(clicked()), loginView, SLOT(close()));
+        QObject::connect(usernameField, SIGNAL(returnPressed()), okButton, SLOT(click()));
         QObject::connect(passwordFIeld, SIGNAL(returnPressed()), okButton, SLOT(click()));
-
-        okButton->setDefault(true);
-
 
         QMetaObject::connectSlotsByName(loginView);
     } // setupUi

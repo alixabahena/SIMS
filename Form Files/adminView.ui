@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>747</width>
-    <height>616</height>
+    <width>1131</width>
+    <height>1062</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -49,6 +49,19 @@
        </widget>
       </item>
       <item>
+       <widget class="QLabel" name="adminmodifymessage">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="text">
+         <string>The below functions let an admin fully modify any table by adding, removing, and modifying any record. </string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QToolButton" name="backButton">
         <property name="enabled">
          <bool>false</bool>
@@ -64,6 +77,9 @@
           <width>80</width>
           <height>20</height>
          </size>
+        </property>
+        <property name="toolTip">
+         <string>Goes back to main menu.</string>
         </property>
         <property name="styleSheet">
          <string notr="true">QToolButton { /* all types of tool button */
@@ -199,6 +215,9 @@ QToolButton::menu-arrow:open {
               </item>
               <item>
                <widget class="QToolButton" name="editFacultyButton">
+                <property name="enabled">
+                 <bool>true</bool>
+                </property>
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                   <horstretch>0</horstretch>
@@ -614,6 +633,9 @@ QScrollBar:vertical { border: 1px solid black;
                 <height>30</height>
                </size>
               </property>
+              <property name="toolTip">
+               <string>Adds a record</string>
+              </property>
               <property name="styleSheet">
                <string notr="true">QToolButton { /* all types of tool button */
     border: 2px solid #8f8f91;
@@ -666,6 +688,9 @@ QToolButton::menu-arrow:open {
                 <width>0</width>
                 <height>30</height>
                </size>
+              </property>
+              <property name="toolTip">
+               <string>Removes a record.</string>
               </property>
               <property name="styleSheet">
                <string notr="true">QToolButton { /* all types of tool button */
@@ -732,6 +757,9 @@ QToolButton::menu-arrow:open {
                <font>
                 <pointsize>10</pointsize>
                </font>
+              </property>
+              <property name="toolTip">
+               <string>Search for classes by any field.</string>
               </property>
               <property name="styleSheet">
                <string notr="true"> background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
@@ -1062,6 +1090,9 @@ QScrollBar:vertical { border: 1px solid black;
                 <height>30</height>
                </size>
               </property>
+              <property name="toolTip">
+               <string>Add a record.</string>
+              </property>
               <property name="styleSheet">
                <string notr="true">QToolButton { /* all types of tool button */
     border: 2px solid #8f8f91;
@@ -1115,6 +1146,9 @@ QToolButton::menu-arrow:open {
                 <height>30</height>
                </size>
               </property>
+              <property name="toolTip">
+               <string>Removes a record.</string>
+              </property>
               <property name="styleSheet">
                <string notr="true">QToolButton { /* all types of tool button */
     border: 2px solid #8f8f91;
@@ -1167,6 +1201,15 @@ QToolButton::menu-arrow:open {
                 <width>80</width>
                 <height>30</height>
                </size>
+              </property>
+              <property name="font">
+               <font>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="toolTip">
+               <string>Saves an added record.</string>
               </property>
               <property name="styleSheet">
                <string notr="true">QToolButton { /* all types of tool button */

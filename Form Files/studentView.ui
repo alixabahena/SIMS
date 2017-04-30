@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>747</width>
+    <width>785</width>
     <height>614</height>
    </rect>
   </property>
@@ -63,6 +63,9 @@
          <width>80</width>
          <height>20</height>
         </size>
+       </property>
+       <property name="toolTip">
+        <string>Goes back to main menu.</string>
        </property>
        <property name="styleSheet">
         <string notr="true">QToolButton { /* all types of tool button */
@@ -138,7 +141,7 @@ QToolButton::menu-arrow:open {
         </sizepolicy>
        </property>
        <property name="currentIndex">
-        <number>3</number>
+        <number>2</number>
        </property>
        <widget class="QWidget" name="mainPage">
         <property name="sizePolicy">
@@ -583,6 +586,9 @@ QScrollBar:vertical { border: 1px solid black;
                <pointsize>10</pointsize>
               </font>
              </property>
+             <property name="toolTip">
+              <string>Enter CRN of class to register to.</string>
+             </property>
             </widget>
            </item>
            <item row="2" column="0" colspan="4">
@@ -646,6 +652,9 @@ QScrollBar:vertical { border: 1px solid black;
                <height>25</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>After entering CRN, click to remove class.</string>
+             </property>
              <property name="styleSheet">
               <string notr="true">QToolButton { /* all types of tool button */
     border: 2px solid #8f8f91;
@@ -698,6 +707,9 @@ QToolButton::menu-arrow:open {
                <width>200</width>
                <height>25</height>
               </size>
+             </property>
+             <property name="toolTip">
+              <string>After entering CRN, click to add class.</string>
              </property>
              <property name="styleSheet">
               <string notr="true">QToolButton { /* all types of tool button */
@@ -758,6 +770,9 @@ QToolButton::menu-arrow:open {
               <font>
                <pointsize>10</pointsize>
               </font>
+             </property>
+             <property name="toolTip">
+              <string>Search for classes by any field.</string>
              </property>
              <property name="styleSheet">
               <string notr="true"> background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,

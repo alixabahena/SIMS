@@ -48,15 +48,14 @@ public:
     QToolButton *cancelButton;
     QSpacerItem *horizontalSpacer;
     QToolButton *okButton;
-    QLabel *loginStatus;
     QCheckBox *rememberusername;
-    QSpacerItem *verticalSpacer_4;
+    QLabel *loginStatus;
 
     void setupUi(QMainWindow *loginView)
     {
         if (loginView->objectName().isEmpty())
             loginView->setObjectName(QStringLiteral("loginView"));
-        loginView->resize(663, 476);
+        loginView->resize(663, 442);
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -150,22 +149,9 @@ public:
 
         formLayout->setWidget(6, QFormLayout::FieldRole, passwordFIeld);
 
-        loginStatus = new QLabel(centralWidget);
-        loginStatus->setObjectName(QStringLiteral("loginStatus"));
-        QSizePolicy sizePolicy3(QSizePolicy::Expanding, QSizePolicy::Preferred);
-        sizePolicy3.setHorizontalStretch(0);
-        sizePolicy3.setVerticalStretch(0);
-        sizePolicy3.setHeightForWidth(loginStatus->sizePolicy().hasHeightForWidth());
-        loginStatus->setSizePolicy(sizePolicy3);
-        loginStatus->setFont(font1);
-        loginStatus->setFrameShape(QFrame::NoFrame);
-        loginStatus->setAlignment(Qt::AlignCenter);
+        verticalSpacer = new QSpacerItem(80, 30, QSizePolicy::Minimum, QSizePolicy::Preferred);
 
-        formLayout->setWidget(7, QFormLayout::FieldRole, loginStatus);
-
-        verticalSpacer = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Maximum);
-
-        formLayout->setItem(10, QFormLayout::FieldRole, verticalSpacer);
+        formLayout->setItem(8, QFormLayout::FieldRole, verticalSpacer);
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
@@ -263,6 +249,11 @@ public:
 
         formLayout->setLayout(12, QFormLayout::FieldRole, horizontalLayout);
 
+        rememberusername = new QCheckBox(centralWidget);
+        rememberusername->setObjectName(QStringLiteral("rememberusername"));
+
+        formLayout->setWidget(9, QFormLayout::FieldRole, rememberusername);
+
         loginStatus = new QLabel(centralWidget);
         loginStatus->setObjectName(QStringLiteral("loginStatus"));
         QSizePolicy sizePolicy3(QSizePolicy::Expanding, QSizePolicy::Preferred);
@@ -271,18 +262,10 @@ public:
         sizePolicy3.setHeightForWidth(loginStatus->sizePolicy().hasHeightForWidth());
         loginStatus->setSizePolicy(sizePolicy3);
         loginStatus->setFont(font1);
+        loginStatus->setFrameShape(QFrame::NoFrame);
         loginStatus->setAlignment(Qt::AlignCenter);
 
-        formLayout->setWidget(11, QFormLayout::FieldRole, loginStatus);
-
-        rememberusername = new QCheckBox(centralWidget);
-        rememberusername->setObjectName(QStringLiteral("rememberusername"));
-
-        formLayout->setWidget(9, QFormLayout::FieldRole, rememberusername);
-
-        verticalSpacer_4 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        formLayout->setItem(8, QFormLayout::FieldRole, verticalSpacer_4);
+        formLayout->setWidget(10, QFormLayout::FieldRole, loginStatus);
 
 
         verticalLayout_2->addLayout(formLayout);
@@ -315,8 +298,11 @@ public:
         PasswordLabel->setText(QApplication::translate("loginView", "<html><head/><body><p><span style=\" font-weight:400;\">Password:</span></p></body></html>", Q_NULLPTR));
         cancelButton->setText(QApplication::translate("loginView", "Exit", Q_NULLPTR));
         okButton->setText(QApplication::translate("loginView", "Login", Q_NULLPTR));
-        loginStatus->setText(QString());
+#ifndef QT_NO_TOOLTIP
+        rememberusername->setToolTip(QApplication::translate("loginView", "Remembers last username successfully logged in with.", Q_NULLPTR));
+#endif // QT_NO_TOOLTIP
         rememberusername->setText(QApplication::translate("loginView", "Remember username?", Q_NULLPTR));
+        loginStatus->setText(QString());
     } // retranslateUi
 
 };

@@ -85,15 +85,14 @@ public:
     QVBoxLayout *verticalLayout_9;
     QFormLayout *formLayout;
     QLabel *currentPasswordLabel;
+    QLineEdit *currentPasswordField;
     QFrame *line_4;
     QLabel *newPasswordLabel;
-    QLineEdit *currentPasswordField;
     QLineEdit *newPasswordField;
     QLabel *verifyNewPasswordLabel;
     QLineEdit *verifyNewPasswordField;
-    QSpacerItem *verticalSpacer_4;
-    QLabel *passwordChangeStatusLabel;
     QToolButton *submitButton;
+    QLabel *passwordChangeStatusLabel;
 
     void setupUi(QWidget *facultyView)
     {
@@ -728,58 +727,47 @@ public:
         currentPasswordLabel->setObjectName(QStringLiteral("currentPasswordLabel"));
         currentPasswordLabel->setFont(font2);
 
-        formLayout->setWidget(1, QFormLayout::LabelRole, currentPasswordLabel);
-
-        line_4 = new QFrame(changePassword);
-        line_4->setObjectName(QStringLiteral("line_4"));
-        line_4->setFrameShape(QFrame::HLine);
-        line_4->setFrameShadow(QFrame::Sunken);
-
-        formLayout->setWidget(2, QFormLayout::SpanningRole, line_4);
-
-        newPasswordLabel = new QLabel(changePassword);
-        newPasswordLabel->setObjectName(QStringLiteral("newPasswordLabel"));
-        newPasswordLabel->setFont(font2);
-
-        formLayout->setWidget(3, QFormLayout::LabelRole, newPasswordLabel);
+        formLayout->setWidget(0, QFormLayout::LabelRole, currentPasswordLabel);
 
         currentPasswordField = new QLineEdit(changePassword);
         currentPasswordField->setObjectName(QStringLiteral("currentPasswordField"));
         currentPasswordField->setInputMethodHints(Qt::ImhHiddenText|Qt::ImhNoAutoUppercase|Qt::ImhNoPredictiveText|Qt::ImhSensitiveData);
         currentPasswordField->setEchoMode(QLineEdit::Password);
 
-        formLayout->setWidget(1, QFormLayout::FieldRole, currentPasswordField);
+        formLayout->setWidget(0, QFormLayout::FieldRole, currentPasswordField);
+
+        line_4 = new QFrame(changePassword);
+        line_4->setObjectName(QStringLiteral("line_4"));
+        line_4->setFrameShape(QFrame::HLine);
+        line_4->setFrameShadow(QFrame::Sunken);
+
+        formLayout->setWidget(1, QFormLayout::SpanningRole, line_4);
+
+        newPasswordLabel = new QLabel(changePassword);
+        newPasswordLabel->setObjectName(QStringLiteral("newPasswordLabel"));
+        newPasswordLabel->setFont(font2);
+
+        formLayout->setWidget(2, QFormLayout::LabelRole, newPasswordLabel);
 
         newPasswordField = new QLineEdit(changePassword);
         newPasswordField->setObjectName(QStringLiteral("newPasswordField"));
         newPasswordField->setInputMethodHints(Qt::ImhHiddenText|Qt::ImhNoAutoUppercase|Qt::ImhNoPredictiveText|Qt::ImhSensitiveData);
         newPasswordField->setEchoMode(QLineEdit::Password);
 
-        formLayout->setWidget(3, QFormLayout::FieldRole, newPasswordField);
+        formLayout->setWidget(2, QFormLayout::FieldRole, newPasswordField);
 
         verifyNewPasswordLabel = new QLabel(changePassword);
         verifyNewPasswordLabel->setObjectName(QStringLiteral("verifyNewPasswordLabel"));
         verifyNewPasswordLabel->setFont(font2);
 
-        formLayout->setWidget(4, QFormLayout::LabelRole, verifyNewPasswordLabel);
+        formLayout->setWidget(3, QFormLayout::LabelRole, verifyNewPasswordLabel);
 
         verifyNewPasswordField = new QLineEdit(changePassword);
         verifyNewPasswordField->setObjectName(QStringLiteral("verifyNewPasswordField"));
         verifyNewPasswordField->setInputMethodHints(Qt::ImhHiddenText|Qt::ImhNoAutoUppercase|Qt::ImhNoPredictiveText|Qt::ImhSensitiveData);
         verifyNewPasswordField->setEchoMode(QLineEdit::Password);
 
-        formLayout->setWidget(4, QFormLayout::FieldRole, verifyNewPasswordField);
-
-        verticalSpacer_4 = new QSpacerItem(0, 150, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        formLayout->setItem(0, QFormLayout::FieldRole, verticalSpacer_4);
-
-        passwordChangeStatusLabel = new QLabel(changePassword);
-        passwordChangeStatusLabel->setObjectName(QStringLiteral("passwordChangeStatusLabel"));
-        passwordChangeStatusLabel->setFont(font4);
-        passwordChangeStatusLabel->setAlignment(Qt::AlignCenter);
-
-        formLayout->setWidget(6, QFormLayout::SpanningRole, passwordChangeStatusLabel);
+        formLayout->setWidget(3, QFormLayout::FieldRole, verifyNewPasswordField);
 
         submitButton = new QToolButton(changePassword);
         submitButton->setObjectName(QStringLiteral("submitButton"));
@@ -824,7 +812,14 @@ public:
                         "op: 1px; left: 1px; /* shift it a bit */\n"
 "}"));
 
-        formLayout->setWidget(5, QFormLayout::FieldRole, submitButton);
+        formLayout->setWidget(4, QFormLayout::FieldRole, submitButton);
+
+        passwordChangeStatusLabel = new QLabel(changePassword);
+        passwordChangeStatusLabel->setObjectName(QStringLiteral("passwordChangeStatusLabel"));
+        passwordChangeStatusLabel->setFont(font4);
+        passwordChangeStatusLabel->setAlignment(Qt::AlignCenter);
+
+        formLayout->setWidget(5, QFormLayout::SpanningRole, passwordChangeStatusLabel);
 
 
         verticalLayout_9->addLayout(formLayout);
@@ -842,7 +837,7 @@ public:
         QObject::connect(searchClassesInput, SIGNAL(textChanged(QString)), searchButton, SLOT(click()));
         QObject::connect(manageClassesView, SIGNAL(doubleClicked(QModelIndex)), viewStudentsButton, SLOT(click()));
 
-        stackedWidget->setCurrentIndex(0);
+        stackedWidget->setCurrentIndex(4);
 
 
         QMetaObject::connectSlotsByName(facultyView);
@@ -882,8 +877,8 @@ public:
         currentPasswordLabel->setText(QApplication::translate("facultyView", "Current Password: ", Q_NULLPTR));
         newPasswordLabel->setText(QApplication::translate("facultyView", "New Password: ", Q_NULLPTR));
         verifyNewPasswordLabel->setText(QApplication::translate("facultyView", "Verify New Password: ", Q_NULLPTR));
-        passwordChangeStatusLabel->setText(QString());
         submitButton->setText(QApplication::translate("facultyView", "Submit", Q_NULLPTR));
+        passwordChangeStatusLabel->setText(QString());
     } // retranslateUi
 
 };

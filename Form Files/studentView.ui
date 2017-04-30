@@ -141,7 +141,7 @@ QToolButton::menu-arrow:open {
         </sizepolicy>
        </property>
        <property name="currentIndex">
-        <number>0</number>
+        <number>4</number>
        </property>
        <widget class="QWidget" name="mainPage">
         <property name="sizePolicy">
@@ -879,7 +879,7 @@ QScrollBar:vertical { border: 1px solid black;
         <layout class="QVBoxLayout" name="verticalLayout_9">
          <item>
           <layout class="QFormLayout" name="formLayout">
-           <item row="1" column="0">
+           <item row="0" column="0">
             <widget class="QLabel" name="currentPasswordLabel">
              <property name="font">
               <font>
@@ -891,14 +891,24 @@ QScrollBar:vertical { border: 1px solid black;
              </property>
             </widget>
            </item>
-           <item row="2" column="0" colspan="2">
+           <item row="0" column="1">
+            <widget class="QLineEdit" name="currentPasswordField">
+             <property name="inputMethodHints">
+              <set>Qt::ImhHiddenText|Qt::ImhNoAutoUppercase|Qt::ImhNoPredictiveText|Qt::ImhSensitiveData</set>
+             </property>
+             <property name="echoMode">
+              <enum>QLineEdit::Password</enum>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0" colspan="2">
             <widget class="Line" name="line_4">
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
              </property>
             </widget>
            </item>
-           <item row="3" column="0">
+           <item row="2" column="0">
             <widget class="QLabel" name="newPasswordLabel">
              <property name="font">
               <font>
@@ -910,17 +920,7 @@ QScrollBar:vertical { border: 1px solid black;
              </property>
             </widget>
            </item>
-           <item row="1" column="1">
-            <widget class="QLineEdit" name="currentPasswordField">
-             <property name="inputMethodHints">
-              <set>Qt::ImhHiddenText|Qt::ImhNoAutoUppercase|Qt::ImhNoPredictiveText|Qt::ImhSensitiveData</set>
-             </property>
-             <property name="echoMode">
-              <enum>QLineEdit::Password</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="1">
+           <item row="2" column="1">
             <widget class="QLineEdit" name="newPasswordField">
              <property name="inputMethodHints">
               <set>Qt::ImhHiddenText|Qt::ImhNoAutoUppercase|Qt::ImhNoPredictiveText|Qt::ImhSensitiveData</set>
@@ -930,7 +930,7 @@ QScrollBar:vertical { border: 1px solid black;
              </property>
             </widget>
            </item>
-           <item row="4" column="0">
+           <item row="3" column="0">
             <widget class="QLabel" name="verifyNewPasswordLabel">
              <property name="font">
               <font>
@@ -942,7 +942,7 @@ QScrollBar:vertical { border: 1px solid black;
              </property>
             </widget>
            </item>
-           <item row="4" column="1">
+           <item row="3" column="1">
             <widget class="QLineEdit" name="verifyNewPasswordField">
              <property name="inputMethodHints">
               <set>Qt::ImhHiddenText|Qt::ImhNoAutoUppercase|Qt::ImhNoPredictiveText|Qt::ImhSensitiveData</set>
@@ -952,35 +952,7 @@ QScrollBar:vertical { border: 1px solid black;
              </property>
             </widget>
            </item>
-           <item row="0" column="1">
-            <spacer name="verticalSpacer_4">
-             <property name="orientation">
-              <enum>Qt::Vertical</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>0</width>
-               <height>150</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item row="6" column="0" colspan="2">
-            <widget class="QLabel" name="passwordChangeStatusLabel">
-             <property name="font">
-              <font>
-               <pointsize>10</pointsize>
-              </font>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="1">
+           <item row="4" column="1">
             <widget class="QToolButton" name="submitButton">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
@@ -1035,6 +1007,21 @@ QToolButton::menu-arrow:open {
              </property>
              <property name="text">
               <string>Submit</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="0" colspan="2">
+            <widget class="QLabel" name="passwordChangeStatusLabel">
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
              </property>
             </widget>
            </item>

@@ -175,9 +175,13 @@ void studentView::on_addClassButton_clicked()
 	vector<faculty>allFaculty = populateFaculty();
 	//variables
 	string username = allStudents[userlocation].userName;
+	QString studUsername;
+	studUsername = QString::fromStdString(allStudents[userlocation].userName);
+	QString sqlUsername = "'" + studUsername + "'";
 	//get entered CRN
 	int crnEntered = ui.crnAddRemoveLine->text().toInt();;
 	bool realClass = false;
+	bool validClass = false;
 
 	//setup fading out of status label
 	QGraphicsOpacityEffect *effect1 = new QGraphicsOpacityEffect();
@@ -217,6 +221,11 @@ void studentView::on_addClassButton_clicked()
 					fadeOut->start(QAbstractAnimation::DeleteWhenStopped);
 					break;
 				}
+				//Add class since it is not in student schedule
+				else
+				{
+					validClass = true;
+				}
 				
 			}
 		}
@@ -224,6 +233,7 @@ void studentView::on_addClassButton_clicked()
 		{
 			realClass = false;
 		}
+
 
 	}
 	
@@ -235,6 +245,23 @@ void studentView::on_addClassButton_clicked()
 		fadeOut->start(QAbstractAnimation::DeleteWhenStopped);
 	}
 	
+	if (validClass)
+	{
+		addClass(username, crnEntered);
+		ui.addRemoveClassLabel->setStyleSheet("QLabel { background-color : green; color : white; }");
+		ui.addRemoveClassLabel->setText("Class Added!");
+		fadeOut->start(QAbstractAnimation::DeleteWhenStopped);
+		//Open DB
+		QSqlDatabase records = QSqlDatabase::addDatabase("QSQLITE");
+		records.setDatabaseName("Students.db");
+		records.open();
+
+		//create model
+		QSqlQueryModel *classesModel = new QSqlQueryModel();
+		classesModel->setQuery("SELECT r.CRN,c.Subject,c.Name,c.'Course ID',c.Semester,c.classDays AS Days,c.classTime AS Time,(f.'First Name' || \" \" || f.'Last Name') AS Instructor,c.Room FROM Records AS r LEFT OUTER JOIN Students AS s ON r.username= s.username LEFT OUTER JOIN Classes as c ON r.CRN = c.CRN LEFT OUTER JOIN Faculty AS f ON c.Instructor = f.username WHERE r.username=" + sqlUsername);
+		ui.manageClassesView->setModel(classesModel);
+	}
+
 }
 
 void studentView::on_removeClassButton_clicked()

@@ -257,3 +257,28 @@ void changeGrade(string username, int grade)
 
 	int ecode = sqlite3_errcode(db);
 }
+
+void addClass(string username, int CRN)
+{
+	sqlite3 *db;
+	char *zErrMsg = 0;
+	int rc;
+	char *sql;
+	const char* data = "";
+	const char* dbName = "Students.db";
+	sqlite3_stmt *stmt;
+	char *q;
+	const char *userName = username.c_str();
+	int crn = CRN;
+	rc = sqlite3_open(dbName, &db);
+	q = "INSERT INTO Records (CRN,username) VALUES (?1,?2)";
+	if (rc = sqlite3_prepare_v2(db, q, strlen(q), &stmt, 0) == SQLITE_OK) {
+		sqlite3_reset(stmt);
+		sqlite3_bind_int(stmt, 1, CRN);
+		sqlite3_bind_text(stmt, 2, userName, strlen(userName), 0); // file path
+		sqlite3_step(stmt);   // prepare statemnt Ready
+		sqlite3_finalize(stmt);
+	}
+
+	int ecode = sqlite3_errcode(db);
+}

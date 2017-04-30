@@ -291,6 +291,11 @@ void adminView::on_submitButton_clicked()
 		ui.passwordChangeStatusLabel->setStyleSheet("QLabel { background-color : red; color : white; }");
 		ui.passwordChangeStatusLabel->setText("Current password can not be blank!");
 	}
+	else if (strPassword.size() > 39)
+	{
+		ui.passwordChangeStatusLabel->setStyleSheet("QLabel { background-color : yellow; color : white; }");
+		ui.passwordChangeStatusLabel->setText("Password cannot be over 39 characters!");
+	}
 	else if ((currentPasswordTyped) != currentPassword)
 	{
 		ui.passwordChangeStatusLabel->setStyleSheet("QLabel { background-color : red; color : white; }");

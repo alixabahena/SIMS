@@ -150,7 +150,20 @@ public:
 
         formLayout->setWidget(6, QFormLayout::FieldRole, passwordFIeld);
 
-        verticalSpacer = new QSpacerItem(80, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        loginStatus = new QLabel(centralWidget);
+        loginStatus->setObjectName(QStringLiteral("loginStatus"));
+        QSizePolicy sizePolicy3(QSizePolicy::Expanding, QSizePolicy::Preferred);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(loginStatus->sizePolicy().hasHeightForWidth());
+        loginStatus->setSizePolicy(sizePolicy3);
+        loginStatus->setFont(font1);
+        loginStatus->setFrameShape(QFrame::NoFrame);
+        loginStatus->setAlignment(Qt::AlignCenter);
+
+        formLayout->setWidget(7, QFormLayout::FieldRole, loginStatus);
+
+        verticalSpacer = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Maximum);
 
         formLayout->setItem(10, QFormLayout::FieldRole, verticalSpacer);
 
@@ -283,6 +296,7 @@ public:
         retranslateUi(loginView);
         QObject::connect(usernameField, SIGNAL(returnPressed()), okButton, SLOT(click()));
         QObject::connect(passwordFIeld, SIGNAL(returnPressed()), okButton, SLOT(click()));
+        QObject::connect(cancelButton, SIGNAL(clicked()), loginView, SLOT(close()));
 
         QMetaObject::connectSlotsByName(loginView);
     } // setupUi

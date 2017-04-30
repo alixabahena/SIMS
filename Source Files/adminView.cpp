@@ -14,6 +14,7 @@ adminView::adminView(QWidget *parent)
 	: QMainWindow(parent)
 {
 	ui.setupUi(this);
+	ui.backButton->hide();
 	ui.stackedWidget->setCurrentIndex(0);
 }
 
@@ -31,11 +32,13 @@ adminView::adminView(QString userName)
 	}
 
 	ui.setupUi(this);
+	ui.backButton->hide();
 	ui.stackedWidget->setCurrentIndex(0);
 }
 
 void adminView::on_editUsersButton_clicked()
 {
+	ui.backButton->show();
 	current_table = USER_TABLE;
 
 	ui.stackedWidget->setCurrentIndex(5);
@@ -75,6 +78,7 @@ void adminView::on_editUsersButton_clicked()
 
 void adminView::on_editFacultyButton_clicked()
 {
+	ui.backButton->show();
 	current_table = FACULTY_TABLE;
 
 	ui.stackedWidget->setCurrentIndex(5);
@@ -115,6 +119,7 @@ void adminView::on_editFacultyButton_clicked()
 
 void adminView::on_editStudentsButton_clicked()
 {
+	ui.backButton->show();
 	current_table = STUDENT_TABLE;
 
 	ui.stackedWidget->setCurrentIndex(5);
@@ -162,6 +167,8 @@ void adminView::on_editStudentsButton_clicked()
 void adminView::on_editRecordsButton_clicked()
 {
 	current_table = RECORD_TABLE;
+	ui.backButton->show();
+
 
 	ui.stackedWidget->setCurrentIndex(5);
 
@@ -202,6 +209,8 @@ void adminView::on_editRecordsButton_clicked()
 void adminView::on_editClassesButton_clicked()
 {
 	current_table = CLASS_TABLE;
+	ui.backButton->show();
+
 
 	ui.stackedWidget->setCurrentIndex(5);
 
@@ -246,6 +255,7 @@ void adminView::on_editClassesButton_clicked()
 
 void adminView::on_changePasswordButton_clicked()
 {
+	ui.backButton->show();
 	ui.stackedWidget->setCurrentIndex(4);
 
 	//change header text
@@ -325,6 +335,7 @@ void adminView::on_backButton_clicked()
 	ui.welcomeLabel->setText("Admin Portal");
 	ui.backButton->setEnabled(false);
 	ui.stackedWidget->setCurrentIndex(0);
+	ui.backButton->hide();
 }
 
 void adminView::on_addItemButton_clicked()

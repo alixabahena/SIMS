@@ -53,7 +53,7 @@ public:
     {
         if (loginView->objectName().isEmpty())
             loginView->setObjectName(QStringLiteral("loginView"));
-        loginView->resize(645, 407);
+        loginView->resize(645, 348);
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -155,6 +155,7 @@ public:
         sizePolicy3.setHeightForWidth(loginStatus->sizePolicy().hasHeightForWidth());
         loginStatus->setSizePolicy(sizePolicy3);
         loginStatus->setFont(font1);
+        loginStatus->setFrameShape(QFrame::NoFrame);
         loginStatus->setAlignment(Qt::AlignCenter);
 
         formLayout->setWidget(7, QFormLayout::FieldRole, loginStatus);
@@ -271,6 +272,7 @@ public:
         retranslateUi(loginView);
         QObject::connect(usernameField, SIGNAL(returnPressed()), okButton, SLOT(click()));
         QObject::connect(passwordFIeld, SIGNAL(returnPressed()), okButton, SLOT(click()));
+        QObject::connect(cancelButton, SIGNAL(clicked()), loginView, SLOT(close()));
 
         QMetaObject::connectSlotsByName(loginView);
     } // setupUi

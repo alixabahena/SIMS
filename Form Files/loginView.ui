@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>645</width>
-    <height>407</height>
+    <height>348</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -185,6 +185,9 @@ border-top-color: rgb(85, 170, 255);</string>
             <weight>75</weight>
             <bold>true</bold>
            </font>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::NoFrame</enum>
           </property>
           <property name="text">
            <string/>
@@ -391,6 +394,22 @@ QToolButton::menu-arrow:open {
     <hint type="destinationlabel">
      <x>372</x>
      <y>335</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cancelButton</sender>
+   <signal>clicked()</signal>
+   <receiver>loginView</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>158</x>
+     <y>302</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>322</x>
+     <y>203</y>
     </hint>
    </hints>
   </connection>

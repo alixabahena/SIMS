@@ -20,8 +20,8 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
+#include <QtWidgets/QToolButton>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -37,23 +37,23 @@ public:
     QFormLayout *formLayout;
     QFrame *line;
     QSpacerItem *verticalSpacer_3;
+    QLabel *usernameLabel;
     QLineEdit *usernameField;
     QSpacerItem *verticalSpacer_2;
+    QLabel *PasswordLabel;
     QLineEdit *passwordFIeld;
+    QLabel *loginStatus;
     QSpacerItem *verticalSpacer;
     QHBoxLayout *horizontalLayout;
-    QPushButton *cancelButton;
+    QToolButton *cancelButton;
     QSpacerItem *horizontalSpacer;
-    QPushButton *okButton;
-    QLabel *PasswordLabel;
-    QLabel *usernameLabel;
-    QLabel *loginStatus;
+    QToolButton *okButton;
 
     void setupUi(QMainWindow *loginView)
     {
         if (loginView->objectName().isEmpty())
             loginView->setObjectName(QStringLiteral("loginView"));
-        loginView->resize(485, 363);
+        loginView->resize(485, 331);
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -75,13 +75,14 @@ public:
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
         label = new QLabel(centralWidget);
         label->setObjectName(QStringLiteral("label"));
-        QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Minimum);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(0);
         sizePolicy1.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
         label->setSizePolicy(sizePolicy1);
+        label->setMinimumSize(QSize(0, 80));
         QFont font;
-        font.setPointSize(15);
+        font.setPointSize(18);
         label->setFont(font);
         label->setStyleSheet(QStringLiteral(""));
         label->setAlignment(Qt::AlignCenter);
@@ -103,13 +104,26 @@ public:
 
         formLayout->setItem(1, QFormLayout::FieldRole, verticalSpacer_3);
 
+        usernameLabel = new QLabel(centralWidget);
+        usernameLabel->setObjectName(QStringLiteral("usernameLabel"));
+        QFont font1;
+        font1.setPointSize(10);
+        font1.setBold(true);
+        font1.setWeight(75);
+        usernameLabel->setFont(font1);
+
+        formLayout->setWidget(2, QFormLayout::FieldRole, usernameLabel);
+
         usernameField = new QLineEdit(centralWidget);
         usernameField->setObjectName(QStringLiteral("usernameField"));
-        sizePolicy1.setHeightForWidth(usernameField->sizePolicy().hasHeightForWidth());
-        usernameField->setSizePolicy(sizePolicy1);
-        QFont font1;
-        font1.setPointSize(12);
-        usernameField->setFont(font1);
+        QSizePolicy sizePolicy2(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(usernameField->sizePolicy().hasHeightForWidth());
+        usernameField->setSizePolicy(sizePolicy2);
+        QFont font2;
+        font2.setPointSize(12);
+        usernameField->setFont(font2);
 
         formLayout->setWidget(3, QFormLayout::FieldRole, usernameField);
 
@@ -117,33 +131,82 @@ public:
 
         formLayout->setItem(4, QFormLayout::FieldRole, verticalSpacer_2);
 
+        PasswordLabel = new QLabel(centralWidget);
+        PasswordLabel->setObjectName(QStringLiteral("PasswordLabel"));
+        PasswordLabel->setFont(font1);
+
+        formLayout->setWidget(5, QFormLayout::FieldRole, PasswordLabel);
+
         passwordFIeld = new QLineEdit(centralWidget);
         passwordFIeld->setObjectName(QStringLiteral("passwordFIeld"));
-        sizePolicy1.setHeightForWidth(passwordFIeld->sizePolicy().hasHeightForWidth());
-        passwordFIeld->setSizePolicy(sizePolicy1);
-        passwordFIeld->setFont(font1);
+        sizePolicy2.setHeightForWidth(passwordFIeld->sizePolicy().hasHeightForWidth());
+        passwordFIeld->setSizePolicy(sizePolicy2);
+        passwordFIeld->setFont(font2);
         passwordFIeld->setEchoMode(QLineEdit::Password);
         passwordFIeld->setClearButtonEnabled(false);
 
         formLayout->setWidget(6, QFormLayout::FieldRole, passwordFIeld);
 
+        loginStatus = new QLabel(centralWidget);
+        loginStatus->setObjectName(QStringLiteral("loginStatus"));
+        QSizePolicy sizePolicy3(QSizePolicy::Expanding, QSizePolicy::Preferred);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(loginStatus->sizePolicy().hasHeightForWidth());
+        loginStatus->setSizePolicy(sizePolicy3);
+        loginStatus->setFont(font1);
+        loginStatus->setAlignment(Qt::AlignCenter);
+
+        formLayout->setWidget(7, QFormLayout::FieldRole, loginStatus);
+
         verticalSpacer = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Maximum);
 
-        formLayout->setItem(9, QFormLayout::FieldRole, verticalSpacer);
+        formLayout->setItem(8, QFormLayout::FieldRole, verticalSpacer);
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        cancelButton = new QPushButton(centralWidget);
+        cancelButton = new QToolButton(centralWidget);
         cancelButton->setObjectName(QStringLiteral("cancelButton"));
-        sizePolicy1.setHeightForWidth(cancelButton->sizePolicy().hasHeightForWidth());
-        cancelButton->setSizePolicy(sizePolicy1);
+        sizePolicy2.setHeightForWidth(cancelButton->sizePolicy().hasHeightForWidth());
+        cancelButton->setSizePolicy(sizePolicy2);
         cancelButton->setMinimumSize(QSize(0, 30));
-        QFont font2;
-        font2.setPointSize(9);
-        cancelButton->setFont(font2);
-        cancelButton->setStyleSheet(QLatin1String("background-color: rgb(180, 229, 255);\n"
-"border: 1px solid black;"));
+        QFont font3;
+        font3.setPointSize(9);
+        cancelButton->setFont(font3);
+        cancelButton->setStyleSheet(QLatin1String("QToolButton { /* all types of tool button */\n"
+"    border: 2px solid #8f8f91;\n"
+"    border-radius: 6px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
+"\n"
+"QToolButton[popupMode=\"1\"] { /* only for MenuButtonPopup */\n"
+"    padding-right: 20px; /* make way for the popup button */\n"
+"}\n"
+"\n"
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"/* the subcontrols below are used only in the MenuButtonPopup mode */\n"
+"QToolButton::menu-button {\n"
+"    border: 2px solid gray;\n"
+"    border-top-right-radius: 6px;\n"
+"    border-bottom-right-radius: 6px;\n"
+"    /* 16px width + 4px for border = 20px allocated above */\n"
+"    width: 16px;\n"
+"}\n"
+"\n"
+"QToolButton::menu-arrow {\n"
+"    image: url(downarrow.png);\n"
+"}\n"
+"\n"
+"QToolButton::menu-arrow:open {\n"
+"    t"
+                        "op: 1px; left: 1px; /* shift it a bit */\n"
+"}"));
 
         horizontalLayout->addWidget(cancelButton);
 
@@ -151,40 +214,50 @@ public:
 
         horizontalLayout->addItem(horizontalSpacer);
 
-        okButton = new QPushButton(centralWidget);
+        okButton = new QToolButton(centralWidget);
         okButton->setObjectName(QStringLiteral("okButton"));
-        sizePolicy1.setHeightForWidth(okButton->sizePolicy().hasHeightForWidth());
-        okButton->setSizePolicy(sizePolicy1);
+        sizePolicy2.setHeightForWidth(okButton->sizePolicy().hasHeightForWidth());
+        okButton->setSizePolicy(sizePolicy2);
         okButton->setMinimumSize(QSize(0, 30));
-        okButton->setFont(font2);
-        okButton->setStyleSheet(QLatin1String("background-color: rgb(180, 229, 255);\n"
-"border: 1px solid black;"));
-        okButton->setAutoDefault(true);
+        okButton->setFont(font3);
+        okButton->setStyleSheet(QLatin1String("QToolButton { /* all types of tool button */\n"
+"    border: 2px solid #8f8f91;\n"
+"    border-radius: 6px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
+"\n"
+"QToolButton[popupMode=\"1\"] { /* only for MenuButtonPopup */\n"
+"    padding-right: 20px; /* make way for the popup button */\n"
+"}\n"
+"\n"
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"/* the subcontrols below are used only in the MenuButtonPopup mode */\n"
+"QToolButton::menu-button {\n"
+"    border: 2px solid gray;\n"
+"    border-top-right-radius: 6px;\n"
+"    border-bottom-right-radius: 6px;\n"
+"    /* 16px width + 4px for border = 20px allocated above */\n"
+"    width: 16px;\n"
+"}\n"
+"\n"
+"QToolButton::menu-arrow {\n"
+"    image: url(downarrow.png);\n"
+"}\n"
+"\n"
+"QToolButton::menu-arrow:open {\n"
+"    t"
+                        "op: 1px; left: 1px; /* shift it a bit */\n"
+"}"));
 
         horizontalLayout->addWidget(okButton);
 
 
-        formLayout->setLayout(10, QFormLayout::FieldRole, horizontalLayout);
-
-        PasswordLabel = new QLabel(centralWidget);
-        PasswordLabel->setObjectName(QStringLiteral("PasswordLabel"));
-        QFont font3;
-        font3.setPointSize(10);
-        PasswordLabel->setFont(font3);
-
-        formLayout->setWidget(5, QFormLayout::FieldRole, PasswordLabel);
-
-        usernameLabel = new QLabel(centralWidget);
-        usernameLabel->setObjectName(QStringLiteral("usernameLabel"));
-        usernameLabel->setFont(font3);
-
-        formLayout->setWidget(2, QFormLayout::FieldRole, usernameLabel);
-
-        loginStatus = new QLabel(centralWidget);
-        loginStatus->setObjectName(QStringLiteral("loginStatus"));
-        loginStatus->setAlignment(Qt::AlignCenter);
-
-        formLayout->setWidget(8, QFormLayout::FieldRole, loginStatus);
+        formLayout->setLayout(9, QFormLayout::FieldRole, horizontalLayout);
 
 
         verticalLayout_2->addLayout(formLayout);
@@ -196,11 +269,8 @@ public:
         QWidget::setTabOrder(cancelButton, okButton);
 
         retranslateUi(loginView);
-        QObject::connect(cancelButton, SIGNAL(clicked()), loginView, SLOT(close()));
+        QObject::connect(usernameField, SIGNAL(returnPressed()), okButton, SLOT(click()));
         QObject::connect(passwordFIeld, SIGNAL(returnPressed()), okButton, SLOT(click()));
-
-        okButton->setDefault(true);
-
 
         QMetaObject::connectSlotsByName(loginView);
     } // setupUi
@@ -209,11 +279,11 @@ public:
     {
         loginView->setWindowTitle(QApplication::translate("loginView", "SIMS Login", Q_NULLPTR));
         label->setText(QApplication::translate("loginView", "Student Information Management System", Q_NULLPTR));
+        usernameLabel->setText(QApplication::translate("loginView", "Username:", Q_NULLPTR));
+        PasswordLabel->setText(QApplication::translate("loginView", "Password:", Q_NULLPTR));
+        loginStatus->setText(QString());
         cancelButton->setText(QApplication::translate("loginView", "Exit", Q_NULLPTR));
         okButton->setText(QApplication::translate("loginView", "Login", Q_NULLPTR));
-        PasswordLabel->setText(QApplication::translate("loginView", "Password:", Q_NULLPTR));
-        usernameLabel->setText(QApplication::translate("loginView", "Username:", Q_NULLPTR));
-        loginStatus->setText(QString());
     } // retranslateUi
 
 };

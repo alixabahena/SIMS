@@ -48,7 +48,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="backButton">
+      <widget class="QToolButton" name="backButton">
        <property name="enabled">
         <bool>false</bool>
        </property>
@@ -65,11 +65,44 @@
         </size>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(180, 229, 255);
-border: 1px solid black;</string>
+        <string notr="true">QToolButton { /* all types of tool button */
+    border: 2px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
+
+QToolButton[popupMode=&quot;1&quot;] { /* only for MenuButtonPopup */
+    padding-right: 20px; /* make way for the popup button */
+}
+
+QToolButton:pressed {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+/* the subcontrols below are used only in the MenuButtonPopup mode */
+QToolButton::menu-button {
+    border: 2px solid gray;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    /* 16px width + 4px for border = 20px allocated above */
+    width: 16px;
+}
+
+QToolButton::menu-arrow {
+    image: url(downarrow.png);
+}
+
+QToolButton::menu-arrow:open {
+    top: 1px; left: 1px; /* shift it a bit */
+}</string>
        </property>
        <property name="text">
         <string>Back</string>
+       </property>
+       <property name="arrowType">
+        <enum>Qt::LeftArrow</enum>
        </property>
       </widget>
      </item>
@@ -85,6 +118,7 @@ border: 1px solid black;</string>
        <property name="font">
         <font>
          <pointsize>12</pointsize>
+         <italic>true</italic>
         </font>
        </property>
        <property name="text">
@@ -104,7 +138,7 @@ border: 1px solid black;</string>
         </sizepolicy>
        </property>
        <property name="currentIndex">
-        <number>1</number>
+        <number>3</number>
        </property>
        <widget class="QWidget" name="mainPage">
         <property name="sizePolicy">
@@ -165,7 +199,7 @@ border: 1px solid black;</string>
               <number>15</number>
              </property>
              <item>
-              <widget class="QPushButton" name="viewScheduleButton">
+              <widget class="QToolButton" name="viewScheduleButton">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                  <horstretch>0</horstretch>
@@ -173,8 +207,38 @@ border: 1px solid black;</string>
                 </sizepolicy>
                </property>
                <property name="styleSheet">
-                <string notr="true">background-color: rgb(180, 229, 255);
-border: 1px solid black;</string>
+                <string notr="true">QToolButton { /* all types of tool button */
+    border: 2px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
+
+QToolButton[popupMode=&quot;1&quot;] { /* only for MenuButtonPopup */
+    padding-right: 20px; /* make way for the popup button */
+}
+
+QToolButton:pressed {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+/* the subcontrols below are used only in the MenuButtonPopup mode */
+QToolButton::menu-button {
+    border: 2px solid gray;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    /* 16px width + 4px for border = 20px allocated above */
+    width: 16px;
+}
+
+QToolButton::menu-arrow {
+    image: url(downarrow.png);
+}
+
+QToolButton::menu-arrow:open {
+    top: 1px; left: 1px; /* shift it a bit */
+}</string>
                </property>
                <property name="text">
                 <string>View Current Schedule and Grades</string>
@@ -182,7 +246,7 @@ border: 1px solid black;</string>
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="manageScheduleButton">
+              <widget class="QToolButton" name="manageScheduleButton">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                  <horstretch>0</horstretch>
@@ -190,8 +254,38 @@ border: 1px solid black;</string>
                 </sizepolicy>
                </property>
                <property name="styleSheet">
-                <string notr="true">background-color: rgb(180, 229, 255);
-border: 1px solid black;</string>
+                <string notr="true">QToolButton { /* all types of tool button */
+    border: 2px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
+
+QToolButton[popupMode=&quot;1&quot;] { /* only for MenuButtonPopup */
+    padding-right: 20px; /* make way for the popup button */
+}
+
+QToolButton:pressed {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+/* the subcontrols below are used only in the MenuButtonPopup mode */
+QToolButton::menu-button {
+    border: 2px solid gray;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    /* 16px width + 4px for border = 20px allocated above */
+    width: 16px;
+}
+
+QToolButton::menu-arrow {
+    image: url(downarrow.png);
+}
+
+QToolButton::menu-arrow:open {
+    top: 1px; left: 1px; /* shift it a bit */
+}</string>
                </property>
                <property name="text">
                 <string>Add / Remove Classes</string>
@@ -199,7 +293,7 @@ border: 1px solid black;</string>
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="viewClassesButton">
+              <widget class="QToolButton" name="viewClassesButton">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                  <horstretch>0</horstretch>
@@ -207,8 +301,38 @@ border: 1px solid black;</string>
                 </sizepolicy>
                </property>
                <property name="styleSheet">
-                <string notr="true">background-color: rgb(180, 229, 255);
-border: 1px solid black;</string>
+                <string notr="true">QToolButton { /* all types of tool button */
+    border: 2px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
+
+QToolButton[popupMode=&quot;1&quot;] { /* only for MenuButtonPopup */
+    padding-right: 20px; /* make way for the popup button */
+}
+
+QToolButton:pressed {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+/* the subcontrols below are used only in the MenuButtonPopup mode */
+QToolButton::menu-button {
+    border: 2px solid gray;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    /* 16px width + 4px for border = 20px allocated above */
+    width: 16px;
+}
+
+QToolButton::menu-arrow {
+    image: url(downarrow.png);
+}
+
+QToolButton::menu-arrow:open {
+    top: 1px; left: 1px; /* shift it a bit */
+}</string>
                </property>
                <property name="text">
                 <string>View Available Classes</string>
@@ -216,7 +340,7 @@ border: 1px solid black;</string>
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="changePasswordButton">
+              <widget class="QToolButton" name="changePasswordButton">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                  <horstretch>0</horstretch>
@@ -224,8 +348,38 @@ border: 1px solid black;</string>
                 </sizepolicy>
                </property>
                <property name="styleSheet">
-                <string notr="true">background-color: rgb(180, 229, 255);
-border: 1px solid black;</string>
+                <string notr="true">QToolButton { /* all types of tool button */
+    border: 2px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
+
+QToolButton[popupMode=&quot;1&quot;] { /* only for MenuButtonPopup */
+    padding-right: 20px; /* make way for the popup button */
+}
+
+QToolButton:pressed {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+/* the subcontrols below are used only in the MenuButtonPopup mode */
+QToolButton::menu-button {
+    border: 2px solid gray;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    /* 16px width + 4px for border = 20px allocated above */
+    width: 16px;
+}
+
+QToolButton::menu-arrow {
+    image: url(downarrow.png);
+}
+
+QToolButton::menu-arrow:open {
+    top: 1px; left: 1px; /* shift it a bit */
+}</string>
                </property>
                <property name="text">
                 <string>Change Password</string>
@@ -233,7 +387,7 @@ border: 1px solid black;</string>
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="logoutButton">
+              <widget class="QToolButton" name="logoutButton">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                  <horstretch>0</horstretch>
@@ -247,8 +401,38 @@ border: 1px solid black;</string>
                 </font>
                </property>
                <property name="styleSheet">
-                <string notr="true">background-color: rgb(180, 229, 255);
-border: 1px solid black;</string>
+                <string notr="true">QToolButton { /* all types of tool button */
+    border: 2px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
+
+QToolButton[popupMode=&quot;1&quot;] { /* only for MenuButtonPopup */
+    padding-right: 20px; /* make way for the popup button */
+}
+
+QToolButton:pressed {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+/* the subcontrols below are used only in the MenuButtonPopup mode */
+QToolButton::menu-button {
+    border: 2px solid gray;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    /* 16px width + 4px for border = 20px allocated above */
+    width: 16px;
+}
+
+QToolButton::menu-arrow {
+    image: url(downarrow.png);
+}
+
+QToolButton::menu-arrow:open {
+    top: 1px; left: 1px; /* shift it a bit */
+}</string>
                </property>
                <property name="text">
                 <string>Logout</string>
@@ -308,7 +492,7 @@ border: 1px solid black;</string>
            <item>
             <widget class="QTextEdit" name="semesterScheduleView">
              <property name="enabled">
-              <bool>false</bool>
+              <bool>true</bool>
              </property>
              <property name="font">
               <font>
@@ -316,6 +500,18 @@ border: 1px solid black;</string>
                <weight>50</weight>
                <bold>false</bold>
               </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QScrollBar:horizontal { border: 1px solid black; 
+ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #f6f7fa, stop: 1 #dadbde);}
+
+QScrollBar:vertical { border: 1px solid black; 
+ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #f6f7fa, stop: 1 #dadbde); }</string>
+             </property>
+             <property name="readOnly">
+              <bool>true</bool>
              </property>
             </widget>
            </item>
@@ -374,52 +570,6 @@ border: 1px solid black;</string>
              </property>
             </widget>
            </item>
-           <item row="0" column="3">
-            <widget class="QPushButton" name="removeClassButton">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="minimumSize">
-              <size>
-               <width>200</width>
-               <height>25</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">background-color: rgb(180, 229, 255);
-border: 1px solid black;</string>
-             </property>
-             <property name="text">
-              <string>Remove Class</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="2">
-            <widget class="QPushButton" name="addClassButton">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="minimumSize">
-              <size>
-               <width>200</width>
-               <height>25</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">background-color: rgb(180, 229, 255);
-border: 1px solid black;</string>
-             </property>
-             <property name="text">
-              <string>Add Class</string>
-             </property>
-            </widget>
-           </item>
            <item row="0" column="1">
             <widget class="QLineEdit" name="crnAddRemoveLine">
              <property name="sizePolicy">
@@ -450,6 +600,15 @@ border: 1px solid black;</string>
                <verstretch>0</verstretch>
               </sizepolicy>
              </property>
+             <property name="styleSheet">
+              <string notr="true">QScrollBar:horizontal { border: 1px solid black; 
+ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #f6f7fa, stop: 1 #dadbde);}
+
+QScrollBar:vertical { border: 1px solid black; 
+ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #f6f7fa, stop: 1 #dadbde); }</string>
+             </property>
             </widget>
            </item>
            <item row="1" column="0" colspan="4">
@@ -470,6 +629,112 @@ border: 1px solid black;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="3">
+            <widget class="QToolButton" name="removeClassButton">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>200</width>
+               <height>25</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QToolButton { /* all types of tool button */
+    border: 2px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
+
+QToolButton[popupMode=&quot;1&quot;] { /* only for MenuButtonPopup */
+    padding-right: 20px; /* make way for the popup button */
+}
+
+QToolButton:pressed {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+/* the subcontrols below are used only in the MenuButtonPopup mode */
+QToolButton::menu-button {
+    border: 2px solid gray;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    /* 16px width + 4px for border = 20px allocated above */
+    width: 16px;
+}
+
+QToolButton::menu-arrow {
+    image: url(downarrow.png);
+}
+
+QToolButton::menu-arrow:open {
+    top: 1px; left: 1px; /* shift it a bit */
+}</string>
+             </property>
+             <property name="text">
+              <string>Remove Class</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QToolButton" name="addClassButton">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>200</width>
+               <height>25</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QToolButton { /* all types of tool button */
+    border: 2px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
+
+QToolButton[popupMode=&quot;1&quot;] { /* only for MenuButtonPopup */
+    padding-right: 20px; /* make way for the popup button */
+}
+
+QToolButton:pressed {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+/* the subcontrols below are used only in the MenuButtonPopup mode */
+QToolButton::menu-button {
+    border: 2px solid gray;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    /* 16px width + 4px for border = 20px allocated above */
+    width: 16px;
+}
+
+QToolButton::menu-arrow {
+    image: url(downarrow.png);
+}
+
+QToolButton::menu-arrow:open {
+    top: 1px; left: 1px; /* shift it a bit */
+}</string>
+             </property>
+             <property name="text">
+              <string>Add Class</string>
              </property>
             </widget>
            </item>
@@ -495,8 +760,8 @@ border: 1px solid black;</string>
               </font>
              </property>
              <property name="styleSheet">
-              <string notr="true">background-color: rgb(180, 229, 255);
-border: 1px solid black;</string>
+              <string notr="true"> background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #f6f7fa, stop: 1 #dadbde);</string>
              </property>
             </widget>
            </item>
@@ -511,8 +776,8 @@ border: 1px solid black;</string>
               </font>
              </property>
              <property name="styleSheet">
-              <string notr="true">background-color: rgb(180, 229, 255);
-border: 1px solid black;</string>
+              <string notr="true"> background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #f6f7fa, stop: 1 #dadbde);</string>
              </property>
              <property name="text">
               <string>Submit</string>
@@ -557,7 +822,17 @@ border: 1px solid black;</string>
             </widget>
            </item>
            <item row="3" column="0" colspan="4">
-            <widget class="QTableView" name="classesView"/>
+            <widget class="QTableView" name="classesView">
+             <property name="styleSheet">
+              <string notr="true">QScrollBar:horizontal { border: 1px solid black; 
+ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #f6f7fa, stop: 1 #dadbde);}
+
+QScrollBar:vertical { border: 1px solid black; 
+ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #f6f7fa, stop: 1 #dadbde); }</string>
+             </property>
+            </widget>
            </item>
            <item row="1" column="0" colspan="4">
             <widget class="Line" name="line_3">
@@ -662,28 +937,6 @@ border: 1px solid black;</string>
              </property>
             </widget>
            </item>
-           <item row="5" column="1">
-            <widget class="QPushButton" name="submitButton">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>20</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <pointsize>10</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">background-color: rgb(180, 229, 255);
-border: 1px solid black;</string>
-             </property>
-             <property name="text">
-              <string>Submit</string>
-             </property>
-            </widget>
-           </item>
            <item row="0" column="1">
             <spacer name="verticalSpacer_4">
              <property name="orientation">
@@ -709,6 +962,64 @@ border: 1px solid black;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="1">
+            <widget class="QToolButton" name="submitButton">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>20</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QToolButton { /* all types of tool button */
+    border: 2px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
+
+QToolButton[popupMode=&quot;1&quot;] { /* only for MenuButtonPopup */
+    padding-right: 20px; /* make way for the popup button */
+}
+
+QToolButton:pressed {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+/* the subcontrols below are used only in the MenuButtonPopup mode */
+QToolButton::menu-button {
+    border: 2px solid gray;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    /* 16px width + 4px for border = 20px allocated above */
+    width: 16px;
+}
+
+QToolButton::menu-arrow {
+    image: url(downarrow.png);
+}
+
+QToolButton::menu-arrow:open {
+    top: 1px; left: 1px; /* shift it a bit */
+}</string>
+             </property>
+             <property name="text">
+              <string>Submit</string>
              </property>
             </widget>
            </item>
@@ -738,22 +1049,6 @@ border: 1px solid black;</string>
     <hint type="destinationlabel">
      <x>662</x>
      <y>191</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>verifyNewPasswordField</sender>
-   <signal>returnPressed()</signal>
-   <receiver>submitButton</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>498</x>
-     <y>433</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>498</x>
-     <y>476</y>
     </hint>
    </hints>
   </connection>

@@ -890,7 +890,13 @@ public:
         facultyView->setWindowTitle(QApplication::translate("facultyView", "Faculty Portal", Q_NULLPTR));
         welcomeLabel->setText(QApplication::translate("facultyView", "Faculty Portal", Q_NULLPTR));
         usernameLabel->setText(QString());
+#ifndef QT_NO_TOOLTIP
+        backButton->setToolTip(QApplication::translate("facultyView", "<html><head/><body><p>Goes back to main menu.</p></body></html>", Q_NULLPTR));
+#endif // QT_NO_TOOLTIP
         backButton->setText(QApplication::translate("facultyView", "Back", Q_NULLPTR));
+#ifndef QT_NO_TOOLTIP
+        returnViewClassesButton->setToolTip(QApplication::translate("facultyView", "<html><head/><body><p>Goes back to View Classes.</p></body></html>", Q_NULLPTR));
+#endif // QT_NO_TOOLTIP
         returnViewClassesButton->setText(QApplication::translate("facultyView", "...", Q_NULLPTR));
         label->setText(QApplication::translate("facultyView", "Faculty Information and Options", Q_NULLPTR));
         studentInfoBrowser->setText(QString());

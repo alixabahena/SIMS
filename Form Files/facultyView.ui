@@ -85,7 +85,7 @@ border: 1px solid black;</string>
        <property name="font">
         <font>
          <pointsize>12</pointsize>
-         <italic>false</italic>
+         <italic>true</italic>
         </font>
        </property>
        <property name="text">
@@ -99,7 +99,7 @@ border: 1px solid black;</string>
      <item>
       <widget class="QStackedWidget" name="stackedWidget">
        <property name="currentIndex">
-        <number>2</number>
+        <number>0</number>
        </property>
        <widget class="QWidget" name="mainPage">
         <property name="sizePolicy">
@@ -303,12 +303,24 @@ border: 1px solid black;</string>
            <item>
             <widget class="QTextEdit" name="semesterScheduleView">
              <property name="enabled">
-              <bool>false</bool>
+              <bool>true</bool>
              </property>
              <property name="font">
               <font>
                <pointsize>12</pointsize>
               </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QScrollBar:horizontal { border: 1px solid black; 
+background: rgb(180, 229, 255); }
+
+QScrollBar:vertical { border: 1px solid black; 
+background: rgb(180, 229, 255); }
+
+</string>
+             </property>
+             <property name="readOnly">
+              <bool>true</bool>
              </property>
             </widget>
            </item>
@@ -361,7 +373,16 @@ border: 1px solid black;</string>
             </widget>
            </item>
            <item row="0" column="0" rowspan="5">
-            <widget class="QTableView" name="manageClassesView"/>
+            <widget class="QTableView" name="manageClassesView">
+             <property name="styleSheet">
+              <string notr="true">QScrollBar:horizontal { border: 1px solid black; 
+background: rgb(180, 229, 255); }
+
+QScrollBar:vertical { border: 1px solid black; 
+background: rgb(180, 229, 255); }
+</string>
+             </property>
+            </widget>
            </item>
            <item row="0" column="1">
             <widget class="QPushButton" name="viewCurrentClassesButton">
@@ -491,7 +512,16 @@ border: 1px solid black;</string>
             </widget>
            </item>
            <item row="3" column="0" colspan="4">
-            <widget class="QTableView" name="classesView"/>
+            <widget class="QTableView" name="classesView">
+             <property name="styleSheet">
+              <string notr="true">QScrollBar:horizontal { border: 1px solid black; 
+background: rgb(180, 229, 255); }
+
+QScrollBar:vertical { border: 1px solid black; 
+background: rgb(180, 229, 255); }
+</string>
+             </property>
+            </widget>
            </item>
            <item row="1" column="0" colspan="4">
             <widget class="Line" name="line_3">

@@ -149,7 +149,7 @@ public:
         label->setObjectName(QStringLiteral("label"));
         QFont font1;
         font1.setPointSize(12);
-        font1.setItalic(false);
+        font1.setItalic(true);
         label->setFont(font1);
         label->setAlignment(Qt::AlignCenter);
 
@@ -269,8 +269,16 @@ public:
 
         semesterScheduleView = new QTextEdit(viewSchedule);
         semesterScheduleView->setObjectName(QStringLiteral("semesterScheduleView"));
-        semesterScheduleView->setEnabled(false);
+        semesterScheduleView->setEnabled(true);
         semesterScheduleView->setFont(font2);
+        semesterScheduleView->setStyleSheet(QLatin1String("QScrollBar:horizontal { border: 1px solid black; \n"
+"background: rgb(180, 229, 255); }\n"
+"\n"
+"QScrollBar:vertical { border: 1px solid black; \n"
+"background: rgb(180, 229, 255); }\n"
+"\n"
+""));
+        semesterScheduleView->setReadOnly(true);
 
         verticalLayout_6->addWidget(semesterScheduleView);
 
@@ -305,6 +313,12 @@ public:
 
         manageClassesView = new QTableView(manageSchedule);
         manageClassesView->setObjectName(QStringLiteral("manageClassesView"));
+        manageClassesView->setStyleSheet(QLatin1String("QScrollBar:horizontal { border: 1px solid black; \n"
+"background: rgb(180, 229, 255); }\n"
+"\n"
+"QScrollBar:vertical { border: 1px solid black; \n"
+"background: rgb(180, 229, 255); }\n"
+""));
 
         gridLayout_2->addWidget(manageClassesView, 0, 0, 5, 1);
 
@@ -387,6 +401,12 @@ public:
 
         classesView = new QTableView(viewClasses);
         classesView->setObjectName(QStringLiteral("classesView"));
+        classesView->setStyleSheet(QLatin1String("QScrollBar:horizontal { border: 1px solid black; \n"
+"background: rgb(180, 229, 255); }\n"
+"\n"
+"QScrollBar:vertical { border: 1px solid black; \n"
+"background: rgb(180, 229, 255); }\n"
+""));
 
         gridLayout->addWidget(classesView, 3, 0, 1, 4);
 
@@ -500,7 +520,7 @@ public:
         QObject::connect(manageClassesView, SIGNAL(doubleClicked(QModelIndex)), viewStudentsButton, SLOT(click()));
         QObject::connect(searchClassesInput, SIGNAL(textChanged(QString)), searchButton, SLOT(click()));
 
-        stackedWidget->setCurrentIndex(2);
+        stackedWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(facultyView);

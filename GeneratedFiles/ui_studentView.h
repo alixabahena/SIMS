@@ -155,6 +155,7 @@ public:
         label->setObjectName(QStringLiteral("label"));
         QFont font1;
         font1.setPointSize(12);
+        font1.setItalic(true);
         label->setFont(font1);
         label->setAlignment(Qt::AlignCenter);
 
@@ -189,7 +190,9 @@ public:
         sizePolicy3.setVerticalStretch(0);
         sizePolicy3.setHeightForWidth(studentInfoBrowser->sizePolicy().hasHeightForWidth());
         studentInfoBrowser->setSizePolicy(sizePolicy3);
-        studentInfoBrowser->setFont(font1);
+        QFont font2;
+        font2.setPointSize(12);
+        studentInfoBrowser->setFont(font2);
         studentInfoBrowser->setFrameShape(QFrame::StyledPanel);
         studentInfoBrowser->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
 
@@ -242,10 +245,10 @@ public:
         logoutButton->setObjectName(QStringLiteral("logoutButton"));
         sizePolicy3.setHeightForWidth(logoutButton->sizePolicy().hasHeightForWidth());
         logoutButton->setSizePolicy(sizePolicy3);
-        QFont font2;
-        font2.setBold(true);
-        font2.setWeight(75);
-        logoutButton->setFont(font2);
+        QFont font3;
+        font3.setBold(true);
+        font3.setWeight(75);
+        logoutButton->setFont(font3);
         logoutButton->setStyleSheet(QLatin1String("background-color: rgb(180, 229, 255);\n"
 "border: 1px solid black;"));
 
@@ -275,7 +278,7 @@ public:
 
         scheduleLabel = new QLabel(viewSchedule);
         scheduleLabel->setObjectName(QStringLiteral("scheduleLabel"));
-        scheduleLabel->setFont(font1);
+        scheduleLabel->setFont(font2);
         scheduleLabel->setMidLineWidth(4);
         scheduleLabel->setAlignment(Qt::AlignCenter);
 
@@ -283,12 +286,19 @@ public:
 
         semesterScheduleView = new QTextEdit(viewSchedule);
         semesterScheduleView->setObjectName(QStringLiteral("semesterScheduleView"));
-        semesterScheduleView->setEnabled(false);
-        QFont font3;
-        font3.setPointSize(12);
-        font3.setBold(false);
-        font3.setWeight(50);
-        semesterScheduleView->setFont(font3);
+        semesterScheduleView->setEnabled(true);
+        QFont font4;
+        font4.setPointSize(12);
+        font4.setBold(false);
+        font4.setWeight(50);
+        semesterScheduleView->setFont(font4);
+        semesterScheduleView->setStyleSheet(QLatin1String("QScrollBar:horizontal { border: 1px solid black; \n"
+"background: rgb(180, 229, 255); }\n"
+"\n"
+"QScrollBar:vertical { border: 1px solid black; \n"
+"background: rgb(180, 229, 255); }\n"
+""));
+        semesterScheduleView->setReadOnly(true);
 
         verticalLayout_6->addWidget(semesterScheduleView);
 
@@ -325,9 +335,9 @@ public:
         sizePolicy4.setVerticalStretch(0);
         sizePolicy4.setHeightForWidth(crnLabel->sizePolicy().hasHeightForWidth());
         crnLabel->setSizePolicy(sizePolicy4);
-        QFont font4;
-        font4.setPointSize(10);
-        crnLabel->setFont(font4);
+        QFont font5;
+        font5.setPointSize(10);
+        crnLabel->setFont(font5);
 
         gridLayout_2->addWidget(crnLabel, 0, 0, 1, 1);
 
@@ -358,7 +368,7 @@ public:
         crnAddRemoveLine->setObjectName(QStringLiteral("crnAddRemoveLine"));
         sizePolicy5.setHeightForWidth(crnAddRemoveLine->sizePolicy().hasHeightForWidth());
         crnAddRemoveLine->setSizePolicy(sizePolicy5);
-        crnAddRemoveLine->setFont(font4);
+        crnAddRemoveLine->setFont(font5);
 
         gridLayout_2->addWidget(crnAddRemoveLine, 0, 1, 1, 1);
 
@@ -376,6 +386,12 @@ public:
         sizePolicy6.setVerticalStretch(0);
         sizePolicy6.setHeightForWidth(manageClassesView->sizePolicy().hasHeightForWidth());
         manageClassesView->setSizePolicy(sizePolicy6);
+        manageClassesView->setStyleSheet(QLatin1String("QScrollBar:horizontal { border: 1px solid black; \n"
+"background: rgb(180, 229, 255); }\n"
+"\n"
+"QScrollBar:vertical { border: 1px solid black; \n"
+"background: rgb(180, 229, 255); }\n"
+""));
 
         gridLayout_2->addWidget(manageClassesView, 3, 0, 6, 4);
 
@@ -386,7 +402,7 @@ public:
         sizePolicy7.setVerticalStretch(0);
         sizePolicy7.setHeightForWidth(addRemoveClassLabel->sizePolicy().hasHeightForWidth());
         addRemoveClassLabel->setSizePolicy(sizePolicy7);
-        addRemoveClassLabel->setFont(font4);
+        addRemoveClassLabel->setFont(font5);
         addRemoveClassLabel->setAlignment(Qt::AlignCenter);
 
         gridLayout_2->addWidget(addRemoveClassLabel, 1, 0, 1, 4);
@@ -411,7 +427,7 @@ public:
         sizePolicy8.setVerticalStretch(0);
         sizePolicy8.setHeightForWidth(classesSearchBox->sizePolicy().hasHeightForWidth());
         classesSearchBox->setSizePolicy(sizePolicy8);
-        classesSearchBox->setFont(font4);
+        classesSearchBox->setFont(font5);
         classesSearchBox->setStyleSheet(QLatin1String("background-color: rgb(180, 229, 255);\n"
 "border: 1px solid black;"));
 
@@ -420,7 +436,7 @@ public:
         searchButton = new QPushButton(viewClasses);
         searchButton->setObjectName(QStringLiteral("searchButton"));
         searchButton->setEnabled(true);
-        searchButton->setFont(font4);
+        searchButton->setFont(font5);
         searchButton->setStyleSheet(QLatin1String("background-color: rgb(180, 229, 255);\n"
 "border: 1px solid black;"));
 
@@ -437,13 +453,19 @@ public:
         sizePolicy9.setVerticalStretch(0);
         sizePolicy9.setHeightForWidth(searchLabel->sizePolicy().hasHeightForWidth());
         searchLabel->setSizePolicy(sizePolicy9);
-        searchLabel->setFont(font4);
+        searchLabel->setFont(font5);
         searchLabel->setAlignment(Qt::AlignCenter);
 
         gridLayout->addWidget(searchLabel, 0, 0, 1, 1);
 
         classesView = new QTableView(viewClasses);
         classesView->setObjectName(QStringLiteral("classesView"));
+        classesView->setStyleSheet(QLatin1String("QScrollBar:horizontal { border: 1px solid black; \n"
+"background: rgb(180, 229, 255); }\n"
+"\n"
+"QScrollBar:vertical { border: 1px solid black; \n"
+"background: rgb(180, 229, 255); }\n"
+""));
 
         gridLayout->addWidget(classesView, 3, 0, 1, 4);
 
@@ -461,7 +483,7 @@ public:
         sizePolicy10.setVerticalStretch(0);
         sizePolicy10.setHeightForWidth(searchClassesInput->sizePolicy().hasHeightForWidth());
         searchClassesInput->setSizePolicy(sizePolicy10);
-        searchClassesInput->setFont(font4);
+        searchClassesInput->setFont(font5);
 
         gridLayout->addWidget(searchClassesInput, 0, 2, 1, 1);
 
@@ -480,7 +502,7 @@ public:
         formLayout->setObjectName(QStringLiteral("formLayout"));
         currentPasswordLabel = new QLabel(changePassword);
         currentPasswordLabel->setObjectName(QStringLiteral("currentPasswordLabel"));
-        currentPasswordLabel->setFont(font1);
+        currentPasswordLabel->setFont(font2);
 
         formLayout->setWidget(1, QFormLayout::LabelRole, currentPasswordLabel);
 
@@ -493,7 +515,7 @@ public:
 
         newPasswordLabel = new QLabel(changePassword);
         newPasswordLabel->setObjectName(QStringLiteral("newPasswordLabel"));
-        newPasswordLabel->setFont(font1);
+        newPasswordLabel->setFont(font2);
 
         formLayout->setWidget(3, QFormLayout::LabelRole, newPasswordLabel);
 
@@ -513,7 +535,7 @@ public:
 
         verifyNewPasswordLabel = new QLabel(changePassword);
         verifyNewPasswordLabel->setObjectName(QStringLiteral("verifyNewPasswordLabel"));
-        verifyNewPasswordLabel->setFont(font1);
+        verifyNewPasswordLabel->setFont(font2);
 
         formLayout->setWidget(4, QFormLayout::LabelRole, verifyNewPasswordLabel);
 
@@ -527,7 +549,7 @@ public:
         submitButton = new QPushButton(changePassword);
         submitButton->setObjectName(QStringLiteral("submitButton"));
         submitButton->setMinimumSize(QSize(0, 20));
-        submitButton->setFont(font4);
+        submitButton->setFont(font5);
         submitButton->setStyleSheet(QLatin1String("background-color: rgb(180, 229, 255);\n"
 "border: 1px solid black;"));
 
@@ -539,7 +561,7 @@ public:
 
         passwordChangeStatusLabel = new QLabel(changePassword);
         passwordChangeStatusLabel->setObjectName(QStringLiteral("passwordChangeStatusLabel"));
-        passwordChangeStatusLabel->setFont(font4);
+        passwordChangeStatusLabel->setFont(font5);
         passwordChangeStatusLabel->setAlignment(Qt::AlignCenter);
 
         formLayout->setWidget(6, QFormLayout::SpanningRole, passwordChangeStatusLabel);
@@ -560,7 +582,7 @@ public:
         QObject::connect(verifyNewPasswordField, SIGNAL(returnPressed()), submitButton, SLOT(click()));
         QObject::connect(searchClassesInput, SIGNAL(textChanged(QString)), searchButton, SLOT(click()));
 
-        stackedWidget->setCurrentIndex(1);
+        stackedWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(studentView);

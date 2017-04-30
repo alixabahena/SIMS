@@ -57,8 +57,8 @@
       <widget class="QToolButton" name="backButton">
        <property name="minimumSize">
         <size>
-         <width>90</width>
-         <height>0</height>
+         <width>80</width>
+         <height>20</height>
         </size>
        </property>
        <property name="styleSheet">
@@ -132,7 +132,7 @@ QToolButton::menu-arrow:open {
      <item>
       <widget class="QStackedWidget" name="stackedWidget">
        <property name="currentIndex">
-        <number>3</number>
+        <number>0</number>
        </property>
        <widget class="QWidget" name="mainPage">
         <property name="sizePolicy">

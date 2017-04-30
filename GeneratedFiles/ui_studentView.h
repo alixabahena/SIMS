@@ -101,7 +101,7 @@ public:
     {
         if (studentView->objectName().isEmpty())
             studentView->setObjectName(QStringLiteral("studentView"));
-        studentView->resize(747, 614);
+        studentView->resize(755, 616);
         studentView->setStyleSheet(QStringLiteral("background-color: rgb(255, 255, 255);"));
         verticalLayout_5 = new QVBoxLayout(studentView);
         verticalLayout_5->setSpacing(6);
@@ -870,7 +870,7 @@ public:
         QObject::connect(searchClassesInput, SIGNAL(returnPressed()), searchButton, SLOT(click()));
         QObject::connect(searchClassesInput, SIGNAL(textChanged(QString)), searchButton, SLOT(click()));
 
-        stackedWidget->setCurrentIndex(3);
+        stackedWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(studentView);
@@ -881,6 +881,9 @@ public:
         studentView->setWindowTitle(QApplication::translate("studentView", "Student Portal", Q_NULLPTR));
         welcomeLabel->setText(QApplication::translate("studentView", "Student Portal", Q_NULLPTR));
         usernameLabel->setText(QString());
+#ifndef QT_NO_TOOLTIP
+        backButton->setToolTip(QApplication::translate("studentView", "Goes back to main menu.", Q_NULLPTR));
+#endif // QT_NO_TOOLTIP
         backButton->setText(QApplication::translate("studentView", "Back", Q_NULLPTR));
         label->setText(QApplication::translate("studentView", "Student Information and Options", Q_NULLPTR));
         studentInfoBrowser->setText(QString());
@@ -891,9 +894,21 @@ public:
         logoutButton->setText(QApplication::translate("studentView", "Logout", Q_NULLPTR));
         scheduleLabel->setText(QApplication::translate("studentView", "Current Student Semester Schedule", Q_NULLPTR));
         crnLabel->setText(QApplication::translate("studentView", "CRN:", Q_NULLPTR));
+#ifndef QT_NO_TOOLTIP
+        crnAddRemoveLine->setToolTip(QApplication::translate("studentView", "Enter CRN of class to register to.", Q_NULLPTR));
+#endif // QT_NO_TOOLTIP
         addRemoveClassLabel->setText(QString());
+#ifndef QT_NO_TOOLTIP
+        removeClassButton->setToolTip(QApplication::translate("studentView", "After entering CRN, click to remove class.", Q_NULLPTR));
+#endif // QT_NO_TOOLTIP
         removeClassButton->setText(QApplication::translate("studentView", "Remove Class", Q_NULLPTR));
+#ifndef QT_NO_TOOLTIP
+        addClassButton->setToolTip(QApplication::translate("studentView", "After entering CRN, click to add class.", Q_NULLPTR));
+#endif // QT_NO_TOOLTIP
         addClassButton->setText(QApplication::translate("studentView", "Add Class", Q_NULLPTR));
+#ifndef QT_NO_TOOLTIP
+        classesSearchBox->setToolTip(QApplication::translate("studentView", "Search for classes by any field.", Q_NULLPTR));
+#endif // QT_NO_TOOLTIP
         searchButton->setText(QApplication::translate("studentView", "Submit", Q_NULLPTR));
         searchLabel->setText(QApplication::translate("studentView", "Search: ", Q_NULLPTR));
         currentPasswordLabel->setText(QApplication::translate("studentView", "Current Password: ", Q_NULLPTR));

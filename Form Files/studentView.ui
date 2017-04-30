@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>785</width>
-    <height>614</height>
+    <width>755</width>
+    <height>616</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -141,7 +141,7 @@ QToolButton::menu-arrow:open {
         </sizepolicy>
        </property>
        <property name="currentIndex">
-        <number>2</number>
+        <number>0</number>
        </property>
        <widget class="QWidget" name="mainPage">
         <property name="sizePolicy">

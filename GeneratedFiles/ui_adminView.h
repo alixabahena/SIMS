@@ -44,7 +44,7 @@ public:
     QVBoxLayout *verticalLayout_4;
     QLabel *welcomeLabel;
     QLabel *usernameLabel;
-    QLabel *label_2;
+    QLabel *adminmodifymessage;
     QToolButton *backButton;
     QFrame *line_2;
     QLabel *label;
@@ -109,7 +109,7 @@ public:
     {
         if (adminView->objectName().isEmpty())
             adminView->setObjectName(QStringLiteral("adminView"));
-        adminView->resize(1131, 1062);
+        adminView->resize(749, 614);
         adminView->setStyleSheet(QStringLiteral("background-color: rgb(255, 255, 255);"));
         actionStudent_VIew = new QAction(adminView);
         actionStudent_VIew->setObjectName(QStringLiteral("actionStudent_VIew"));
@@ -143,12 +143,12 @@ public:
 
         verticalLayout_2->addWidget(usernameLabel);
 
-        label_2 = new QLabel(centralwidget);
-        label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setEnabled(true);
-        label_2->setAlignment(Qt::AlignCenter);
+        adminmodifymessage = new QLabel(centralwidget);
+        adminmodifymessage->setObjectName(QStringLiteral("adminmodifymessage"));
+        adminmodifymessage->setEnabled(true);
+        adminmodifymessage->setAlignment(Qt::AlignCenter);
 
-        verticalLayout_2->addWidget(label_2);
+        verticalLayout_2->addWidget(adminmodifymessage);
 
         backButton = new QToolButton(centralwidget);
         backButton->setObjectName(QStringLiteral("backButton"));
@@ -1079,9 +1079,9 @@ public:
         actionLogout->setText(QApplication::translate("adminView", "Logout", Q_NULLPTR));
         welcomeLabel->setText(QApplication::translate("adminView", "Admin Portal", Q_NULLPTR));
         usernameLabel->setText(QString());
-        label_2->setText(QApplication::translate("adminView", "The below functions let an admin fully modify any table by adding, removing, and modifying any record. ", Q_NULLPTR));
+        adminmodifymessage->setText(QApplication::translate("adminView", "The below functions let an admin fully modify any table by adding, removing, and modifying any record. ", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        backButton->setToolTip(QApplication::translate("adminView", "Goes back one step.", Q_NULLPTR));
+        backButton->setToolTip(QApplication::translate("adminView", "Goes back to main menu.", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
         backButton->setText(QApplication::translate("adminView", "Back", Q_NULLPTR));
         label->setText(QApplication::translate("adminView", "Administrative Options", Q_NULLPTR));
@@ -1102,7 +1102,7 @@ public:
 #endif // QT_NO_TOOLTIP
         removeClassButton->setText(QApplication::translate("adminView", "Remove Class", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        classesSearchBox->setToolTip(QApplication::translate("adminView", "Shows fields you can search from.", Q_NULLPTR));
+        classesSearchBox->setToolTip(QApplication::translate("adminView", "Search for classes by any field.", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
         searchLabel->setText(QApplication::translate("adminView", "Search: ", Q_NULLPTR));
         searchButton->setText(QApplication::translate("adminView", "Submit", Q_NULLPTR));

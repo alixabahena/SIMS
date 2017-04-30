@@ -273,7 +273,95 @@ void studentView::on_removeClassButton_clicked()
 	vector<records>allRecords = populateRecords();
 	vector<faculty>allFaculty = populateFaculty();
 
+	//variables
+	string username = allStudents[userlocation].userName;
+	QString studUsername;
+	studUsername = QString::fromStdString(allStudents[userlocation].userName);
+	QString sqlUsername = "'" + studUsername + "'";
+	//get entered CRN
+	int crnEntered = ui.crnAddRemoveLine->text().toInt();;
+	bool realClass = false;
+	bool validClass = false;
 
+	//setup fading out of status label
+	QGraphicsOpacityEffect *effect1 = new QGraphicsOpacityEffect();
+	ui.addRemoveClassLabel->setGraphicsEffect(effect1);
+	QPropertyAnimation *fadeOut = new QPropertyAnimation(effect1, "opacity");
+	fadeOut->setDuration(4000);
+	fadeOut->setStartValue(1.0);
+	fadeOut->setEndValue(0.0);
+	fadeOut->setEasingCurve(QEasingCurve::InOutQuart);
+	connect(fadeOut, &QPropertyAnimation::finished, [=]()
+	{
+		ui.addRemoveClassLabel->setText("");
+	});
+
+	ui.addRemoveClassLabel->setText("");
+
+	//make sure the class label status banner starts off blank every time
+
+
+	for (int i = 0; i < allClasses.size(); i++)
+	{
+		//if the crn they entered = the index of the class currently loaded by index
+		if (crnEntered == allClasses[i].CRN)
+		{
+			//set realclass to true, now we will analyze this class to make sure its not in the student's schedule already
+			//checking to make sure it is a real class is the first step
+			realClass = true;
+
+			//below is case to handle class already being in the student's schedule
+			//class already in student schedule 
+			for (int j = 0; j < allRecords.size(); j++)
+			{
+				if (crnEntered == allRecords[j].Crn && username == allRecords[j].Username)
+				{
+					ui.addRemoveClassLabel->setStyleSheet("QLabel { background-color : green; color : white; }");
+					ui.addRemoveClassLabel->setText("Class Removed!");
+					fadeOut->start(QAbstractAnimation::DeleteWhenStopped);
+					validClass = true;
+					break;
+				}
+				//Add class since it is not in student schedule
+				else
+				{
+					ui.addRemoveClassLabel->setStyleSheet("QLabel { background-color : red; color : white; }");
+					ui.addRemoveClassLabel->setText("Class not in schedule!");
+					fadeOut->start(QAbstractAnimation::DeleteWhenStopped);
+					validClass = false;
+				}
+
+			}
+		}
+		else if (crnEntered != allClasses[i].CRN && i == allClasses.size())
+		{
+			realClass = false;
+		}
+
+
+	}
+
+	//on the otherhand, if the class is not real at all
+	if (!realClass)
+	{
+		ui.addRemoveClassLabel->setStyleSheet("QLabel { background-color : red; color : white; }");
+		ui.addRemoveClassLabel->setText("Class does not exist.");
+		fadeOut->start(QAbstractAnimation::DeleteWhenStopped);
+	}
+
+	if (validClass)
+	{
+		removeClass(username, crnEntered);
+		//Open DB
+		QSqlDatabase records = QSqlDatabase::addDatabase("QSQLITE");
+		records.setDatabaseName("Students.db");
+		records.open();
+
+		//create model
+		QSqlQueryModel *classesModel = new QSqlQueryModel();
+		classesModel->setQuery("SELECT r.CRN,c.Subject,c.Name,c.'Course ID',c.Semester,c.classDays AS Days,c.classTime AS Time,(f.'First Name' || \" \" || f.'Last Name') AS Instructor,c.Room FROM Records AS r LEFT OUTER JOIN Students AS s ON r.username= s.username LEFT OUTER JOIN Classes as c ON r.CRN = c.CRN LEFT OUTER JOIN Faculty AS f ON c.Instructor = f.username WHERE r.username=" + sqlUsername);
+		ui.manageClassesView->setModel(classesModel);
+	}
 }
 
 void studentView::on_viewClassesButton_clicked()

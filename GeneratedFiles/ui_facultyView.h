@@ -41,6 +41,7 @@ public:
     QLabel *welcomeLabel;
     QLabel *usernameLabel;
     QToolButton *backButton;
+    QToolButton *returnViewClassesButton;
     QFrame *line_2;
     QLabel *label;
     QStackedWidget *stackedWidget;
@@ -165,6 +166,46 @@ public:
         backButton->setArrowType(Qt::LeftArrow);
 
         MainLayout->addWidget(backButton);
+
+        returnViewClassesButton = new QToolButton(facultyView);
+        returnViewClassesButton->setObjectName(QStringLiteral("returnViewClassesButton"));
+        returnViewClassesButton->setMinimumSize(QSize(80, 20));
+        returnViewClassesButton->setStyleSheet(QLatin1String("QToolButton { /* all types of tool button */\n"
+"    border: 2px solid #8f8f91;\n"
+"    border-radius: 6px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
+"\n"
+"QToolButton[popupMode=\"1\"] { /* only for MenuButtonPopup */\n"
+"    padding-right: 20px; /* make way for the popup button */\n"
+"}\n"
+"\n"
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"/* the subcontrols below are used only in the MenuButtonPopup mode */\n"
+"QToolButton::menu-button {\n"
+"    border: 2px solid gray;\n"
+"    border-top-right-radius: 6px;\n"
+"    border-bottom-right-radius: 6px;\n"
+"    /* 16px width + 4px for border = 20px allocated above */\n"
+"    width: 16px;\n"
+"}\n"
+"\n"
+"QToolButton::menu-arrow {\n"
+"    image: url(downarrow.png);\n"
+"}\n"
+"\n"
+"QToolButton::menu-arrow:open {\n"
+"    t"
+                        "op: 1px; left: 1px; /* shift it a bit */\n"
+"}"));
+        returnViewClassesButton->setArrowType(Qt::LeftArrow);
+
+        MainLayout->addWidget(returnViewClassesButton);
 
         line_2 = new QFrame(facultyView);
         line_2->setObjectName(QStringLiteral("line_2"));
@@ -836,8 +877,9 @@ public:
         QObject::connect(searchClassesInput, SIGNAL(returnPressed()), searchButton, SLOT(click()));
         QObject::connect(searchClassesInput, SIGNAL(textChanged(QString)), searchButton, SLOT(click()));
         QObject::connect(manageClassesView, SIGNAL(doubleClicked(QModelIndex)), viewStudentsButton, SLOT(click()));
+        QObject::connect(returnViewClassesButton, SIGNAL(clicked()), viewCurrentClassesButton, SLOT(click()));
 
-        stackedWidget->setCurrentIndex(4);
+        stackedWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(facultyView);
@@ -848,7 +890,14 @@ public:
         facultyView->setWindowTitle(QApplication::translate("facultyView", "Faculty Portal", Q_NULLPTR));
         welcomeLabel->setText(QApplication::translate("facultyView", "Faculty Portal", Q_NULLPTR));
         usernameLabel->setText(QString());
+#ifndef QT_NO_TOOLTIP
+        backButton->setToolTip(QApplication::translate("facultyView", "<html><head/><body><p>Goes back to main menu.</p></body></html>", Q_NULLPTR));
+#endif // QT_NO_TOOLTIP
         backButton->setText(QApplication::translate("facultyView", "Back", Q_NULLPTR));
+#ifndef QT_NO_TOOLTIP
+        returnViewClassesButton->setToolTip(QApplication::translate("facultyView", "<html><head/><body><p>Goes back to View Classes.</p></body></html>", Q_NULLPTR));
+#endif // QT_NO_TOOLTIP
+        returnViewClassesButton->setText(QApplication::translate("facultyView", "...", Q_NULLPTR));
         label->setText(QApplication::translate("facultyView", "Faculty Information and Options", Q_NULLPTR));
         studentInfoBrowser->setText(QString());
         viewScheduleButton->setText(QApplication::translate("facultyView", "View Current Schedule", Q_NULLPTR));

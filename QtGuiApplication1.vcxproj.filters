@@ -52,9 +52,6 @@
     <ClCompile Include="GeneratedFiles\Release\moc_adminView.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\qrc_loginView.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
     <ClCompile Include="Source Files\adminView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -134,9 +131,6 @@
     </CustomBuild>
     <CustomBuild Include="Header Files\studentView.h">
       <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Resource Files\loginView.qrc">
-      <Filter>Resource Files</Filter>
     </CustomBuild>
     <CustomBuild Include="Header Files\loginView.h">
       <Filter>Header Files</Filter>

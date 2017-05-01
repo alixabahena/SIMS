@@ -59,7 +59,27 @@ studentView::studentView(QString userName)
 
 	ui.setupUi(this);
 
-	ui.studentInfoBrowser->setText("Name: " + fullName + "\nUsername: "+ user +"\nStudent ID: "+ id +"\n\nDate of Birth: "+ dob +"\nHome Address: "+homeAddress+"\nPhone Number: "+phoneNumber+"\nEmail: "+emaiAddress+"\n\nMajor: "+Major+"\nSemester Enrolled: "+ semester +"\nSemester GPA: ");
+	int class_count = 0;
+	double grade = 0;
+	for (int i = 0; i < allRecords.size(); i++)
+	{
+		if (allStudents[userlocation].userName == allRecords[i].Username)
+		{
+			for (int k = 0; k < allClasses.size(); k++)
+			{
+				if (allClasses[k].CRN == allRecords[i].Crn)
+				{
+					grade += allRecords[i].Grade;
+					class_count++;
+				}
+			}
+
+		}
+	}
+	grade = (grade / class_count) / 25;
+	QString GPA = QString::number(grade);
+
+	ui.studentInfoBrowser->setText("Name: " + fullName + "\nUsername: "+ user +"\nStudent ID: "+ id +"\n\nDate of Birth: "+ dob +"\nHome Address: "+homeAddress+"\nPhone Number: "+phoneNumber+"\nEmail: "+emaiAddress+"\n\nMajor: "+Major+"\nSemester Enrolled: "+ semester +"\nSemester GPA: " + GPA);
 
 	ui.usernameLabel->setText(fullName);
 	ui.searchButton->hide();
@@ -712,6 +732,11 @@ void studentView::on_submitButton_clicked()
 	{
 		ui.passwordChangeStatusLabel->setStyleSheet("QLabel { background-color : red; color : white; }");
 		ui.passwordChangeStatusLabel->setText("Current password can not be blank!");
+	}
+	else if (strPassword.size() > 39)
+	{
+		ui.passwordChangeStatusLabel->setStyleSheet("QLabel { background-color : yellow; color : white; }");
+		ui.passwordChangeStatusLabel->setText("Password cannot be over 39 characters!");
 	}
 	else if (currentPasswordTyped !=currentPassword )
 	{

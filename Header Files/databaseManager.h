@@ -12,3 +12,5 @@ vector<classes> populateClasses();
 vector<records> populateRecords();
 void changePassword(string username,string password);
 void changeGrade(string username, int grade);
+void addClass(string username, int CRN);
+void removeClass(string username, int CRN);

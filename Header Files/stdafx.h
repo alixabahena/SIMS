@@ -39,11 +39,14 @@
 #include <qdialog.h>
 #include <string.h>
 #include <qsqlquerymodel.h>
+#include <qsqlquery.h>
+#include <qsqltablemodel.h>
 
 //normal libraries
 #include <string>
 #include <vector>
 #include <iostream>
+#include <fstream>
 
 
 //Sqlite

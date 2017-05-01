@@ -11,6 +11,7 @@ facultyView::facultyView(QWidget *parent)
 	ui.backButton->hide();
 	ui.stackedWidget->setCurrentIndex(0);
 	ui.viewStudentsButton->show();
+	ui.returnViewClassesButton->hide();
 
 }
 
@@ -56,6 +57,7 @@ facultyView::facultyView(QString userName)
 	ui.stackedWidget->setCurrentIndex(0);
 	ui.searchButton->hide();
 	ui.backButton->hide();
+	ui.returnViewClassesButton->hide();
 	//combobox implement
 	ui.classesSearchBox->addItem("CRN");
 	ui.classesSearchBox->addItem("Subject");
@@ -69,6 +71,7 @@ facultyView::facultyView(QString userName)
 
 void facultyView::on_viewScheduleButton_clicked()
 {
+	ui.label->hide();
 	ui.stackedWidget->setCurrentIndex(1);
 
 	vector<users>allUsers = populateUsers();
@@ -114,6 +117,7 @@ void facultyView::on_viewScheduleButton_clicked()
 
 void facultyView::on_manageScheduleButton_clicked()
 {
+	ui.label->hide();
 	vector<users>allUsers = populateUsers();
 	vector<Student>allStudents = populateStudents();
 	vector<classes>allClasses = populateClasses();
@@ -169,7 +173,6 @@ void facultyView::on_manageScheduleButton_clicked()
 }
 void facultyView::on_viewCurrentClassesButton_clicked()
 {
-	
 	vector<users>allUsers = populateUsers();
 	vector<Student>allStudents = populateStudents();
 	vector<classes>allClasses = populateClasses();
@@ -216,6 +219,9 @@ void facultyView::on_viewCurrentClassesButton_clicked()
 	ui.manageClassesView->setSelectionBehavior(QAbstractItemView::SelectRows);
 	ui.manageClassesView->setEditTriggers(QAbstractItemView::NoEditTriggers);
 	ui.manageClassesView->setModel(model);
+	ui.backButton->show();
+	ui.editGradeButton->setEnabled(false);
+	ui.returnViewClassesButton->hide();
 
 }
 
@@ -228,6 +234,8 @@ void facultyView::on_viewStudentsButton_clicked()
 	vector<faculty>allFaculty = populateFaculty();
 
 	//disable view students button
+	ui.backButton->hide();
+	ui.returnViewClassesButton->show();
 	ui.viewStudentsButton->setEnabled(false);
 	ui.viewCurrentClassesButton->setEnabled(true);
 	ui.editGradeButton->setEnabled(true);
@@ -262,7 +270,6 @@ void facultyView::on_viewStudentsButton_clicked()
 
 void facultyView::on_editGradeButton_clicked()
 {
-
 	vector<users>allUsers = populateUsers();
 	vector<Student>allStudents = populateStudents();
 	vector<classes>allClasses = populateClasses();
@@ -299,8 +306,8 @@ void facultyView::on_editGradeButton_clicked()
 
 void facultyView::on_viewClassesButton_clicked()
 {
+	ui.label->hide();
 	ui.stackedWidget->setCurrentIndex(3);
-
 	vector<users>allUsers = populateUsers();
 	vector<Student>allStudents = populateStudents();
 	vector<classes>allClasses = populateClasses();
@@ -317,7 +324,6 @@ void facultyView::on_viewClassesButton_clicked()
 	//set headers name and size
 	QStringList headers;
 	headers << "CRN" << "Subject" << "Course ID" << "Name" << "Semester" << "Day" << "Time" << "Instructor" << "Room";
-	model->setColumnCount(allClasses.size() - 1);
 	model->setHorizontalHeaderLabels(headers);
 	//populate table
 	for (int i = 0; i < allClasses.size() - 1; i++)
@@ -604,6 +610,7 @@ void facultyView::on_searchButton_clicked()
 
 void facultyView::on_changePasswordButton_clicked()
 {
+	ui.label->hide();
 	ui.stackedWidget->setCurrentIndex(4);
 	ui.welcomeLabel->setText("Change Current Password");
 	//enable back button
@@ -679,6 +686,7 @@ void facultyView::on_submitButton_clicked()
 
 void facultyView::on_logoutButton_clicked()
 {
+	ui.label->hide();
 	this->hide();
 	loginView *login = new loginView();
 	login->show();
@@ -689,4 +697,6 @@ void facultyView::on_backButton_clicked()
 	ui.welcomeLabel->setText("Faculty Portal");
 	ui.backButton->hide();
 	ui.stackedWidget->setCurrentIndex(0);
+	ui.label->show();
+	ui.returnViewClassesButton->hide();
 }

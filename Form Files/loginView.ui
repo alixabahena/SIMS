@@ -6,18 +6,33 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>485</width>
-    <height>363</height>
+    <width>510</width>
+    <height>386</height>
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>510</width>
+    <height>386</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>510</width>
+    <height>386</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>SIMS Login</string>
+  </property>
+  <property name="toolTip">
+   <string/>
   </property>
   <property name="styleSheet">
    <string notr="true">border-color: rgb(85, 170, 255);
@@ -39,21 +54,27 @@ border-top-color: rgb(85, 170, 255);</string>
       <item>
        <widget class="QLabel" name="label">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>80</height>
+         </size>
+        </property>
         <property name="font">
          <font>
-          <pointsize>15</pointsize>
+          <pointsize>18</pointsize>
          </font>
         </property>
         <property name="styleSheet">
          <string notr="true"/>
         </property>
         <property name="text">
-         <string>Student Information Management System</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Student Information Management System&lt;br/&gt;Version 0.90&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -85,6 +106,20 @@ border-top-color: rgb(85, 170, 255);</string>
           </property>
          </spacer>
         </item>
+        <item row="2" column="1">
+         <widget class="QLabel" name="usernameLabel">
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:400;&quot;&gt;Username: (ex. martinj)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+        </item>
         <item row="3" column="1">
          <widget class="QLineEdit" name="usernameField">
           <property name="sizePolicy">
@@ -97,6 +132,9 @@ border-top-color: rgb(85, 170, 255);</string>
            <font>
             <pointsize>12</pointsize>
            </font>
+          </property>
+          <property name="toolTip">
+           <string/>
           </property>
          </widget>
         </item>
@@ -112,6 +150,20 @@ border-top-color: rgb(85, 170, 255);</string>
            </size>
           </property>
          </spacer>
+        </item>
+        <item row="5" column="1">
+         <widget class="QLabel" name="PasswordLabel">
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:400;&quot;&gt;Password:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
         </item>
         <item row="6" column="1">
          <widget class="QLineEdit" name="passwordFIeld">
@@ -134,28 +186,26 @@ border-top-color: rgb(85, 170, 255);</string>
           </property>
          </widget>
         </item>
-        <item row="9" column="1">
+        <item row="8" column="1">
          <spacer name="verticalSpacer">
           <property name="orientation">
            <enum>Qt::Vertical</enum>
           </property>
           <property name="sizeType">
-           <enum>QSizePolicy::Maximum</enum>
+           <enum>QSizePolicy::Preferred</enum>
           </property>
           <property name="sizeHint" stdset="0">
            <size>
-            <width>20</width>
-
-            <height>10</height>
-
+            <width>80</width>
+            <height>30</height>
            </size>
           </property>
          </spacer>
         </item>
-        <item row="10" column="1">
+        <item row="12" column="1">
          <layout class="QHBoxLayout" name="horizontalLayout">
           <item>
-           <widget class="QPushButton" name="cancelButton">
+           <widget class="QToolButton" name="cancelButton">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
               <horstretch>0</horstretch>
@@ -165,7 +215,7 @@ border-top-color: rgb(85, 170, 255);</string>
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>30</height>
+              <height>40</height>
              </size>
             </property>
             <property name="font">
@@ -174,8 +224,38 @@ border-top-color: rgb(85, 170, 255);</string>
              </font>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color: rgb(180, 229, 255);
-border: 1px solid black;</string>
+             <string notr="true">QToolButton { /* all types of tool button */
+    border: 2px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
+
+QToolButton[popupMode=&quot;1&quot;] { /* only for MenuButtonPopup */
+    padding-right: 20px; /* make way for the popup button */
+}
+
+QToolButton:pressed {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+/* the subcontrols below are used only in the MenuButtonPopup mode */
+QToolButton::menu-button {
+    border: 2px solid gray;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    /* 16px width + 4px for border = 20px allocated above */
+    width: 16px;
+}
+
+QToolButton::menu-arrow {
+    image: url(downarrow.png);
+}
+
+QToolButton::menu-arrow:open {
+    top: 1px; left: 1px; /* shift it a bit */
+}</string>
             </property>
             <property name="text">
              <string>Exit</string>
@@ -199,7 +279,7 @@ border: 1px solid black;</string>
            </spacer>
           </item>
           <item>
-           <widget class="QPushButton" name="okButton">
+           <widget class="QToolButton" name="okButton">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
               <horstretch>0</horstretch>
@@ -209,7 +289,7 @@ border: 1px solid black;</string>
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>30</height>
+              <height>40</height>
              </size>
             </property>
             <property name="font">
@@ -218,48 +298,74 @@ border: 1px solid black;</string>
              </font>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color: rgb(180, 229, 255);
-border: 1px solid black;</string>
+             <string notr="true">QToolButton { /* all types of tool button */
+    border: 2px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
+
+QToolButton[popupMode=&quot;1&quot;] { /* only for MenuButtonPopup */
+    padding-right: 20px; /* make way for the popup button */
+}
+
+QToolButton:pressed {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+/* the subcontrols below are used only in the MenuButtonPopup mode */
+QToolButton::menu-button {
+    border: 2px solid gray;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    /* 16px width + 4px for border = 20px allocated above */
+    width: 16px;
+}
+
+QToolButton::menu-arrow {
+    image: url(downarrow.png);
+}
+
+QToolButton::menu-arrow:open {
+    top: 1px; left: 1px; /* shift it a bit */
+}</string>
             </property>
             <property name="text">
              <string>Login</string>
-            </property>
-            <property name="autoDefault">
-             <bool>true</bool>
-            </property>
-            <property name="default">
-             <bool>true</bool>
             </property>
            </widget>
           </item>
          </layout>
         </item>
-        <item row="5" column="1">
-         <widget class="QLabel" name="PasswordLabel">
-          <property name="font">
-           <font>
-            <pointsize>10</pointsize>
-           </font>
+        <item row="9" column="1">
+         <widget class="QCheckBox" name="rememberusername">
+          <property name="toolTip">
+           <string>Remembers last username successfully logged in with.</string>
           </property>
           <property name="text">
-           <string>Password:</string>
+           <string>Remember username?</string>
           </property>
          </widget>
         </item>
-        <item row="2" column="1">
-         <widget class="QLabel" name="usernameLabel">
-          <property name="font">
-           <font>
-            <pointsize>10</pointsize>
-           </font>
-          </property>
-          <property name="text">
-           <string>Username:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="8" column="1">
+        <item row="10" column="1">
          <widget class="QLabel" name="loginStatus">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::NoFrame</enum>
+          </property>
           <property name="text">
            <string/>
           </property>
@@ -267,22 +373,6 @@ border: 1px solid black;</string>
            <set>Qt::AlignCenter</set>
           </property>
          </widget>
-        </item>
-
-         <spacer name="verticalSpacer_4">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Maximum</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>10</height>
-           </size>
-          </property>
-         </spacer>
         </item>
        </layout>
       </item>
@@ -301,18 +391,18 @@ border: 1px solid black;</string>
  </resources>
  <connections>
   <connection>
-   <sender>cancelButton</sender>
-   <signal>clicked()</signal>
-   <receiver>loginView</receiver>
-   <slot>close()</slot>
+   <sender>usernameField</sender>
+   <signal>returnPressed()</signal>
+   <receiver>okButton</receiver>
+   <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>355</x>
-     <y>293</y>
+     <x>245</x>
+     <y>191</y>
     </hint>
     <hint type="destinationlabel">
-     <x>248</x>
-     <y>174</y>
+     <x>372</x>
+     <y>335</y>
     </hint>
    </hints>
   </connection>
@@ -323,12 +413,28 @@ border: 1px solid black;</string>
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>288</x>
-     <y>144</y>
+     <x>245</x>
+     <y>260</y>
     </hint>
     <hint type="destinationlabel">
-     <x>386</x>
-     <y>197</y>
+     <x>372</x>
+     <y>335</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cancelButton</sender>
+   <signal>clicked()</signal>
+   <receiver>loginView</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>158</x>
+     <y>302</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>322</x>
+     <y>203</y>
     </hint>
    </hints>
   </connection>

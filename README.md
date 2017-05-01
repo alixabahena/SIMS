@@ -7,11 +7,11 @@ Student Information Management System
 
 Created by:
 
-	-Jonathan Martin (team lead, repo maintainer, programmer)
-	-Alixa Bahena (chief programmer)
-	-Javier Rivera (documentation)
-	-Yuntian Zhang (QA and programmer)
-	-Nhu Nguyen (diagramming and testing)
+	Jonathan Martin (team lead, repo maintainer, programmer)
+	Alixa Bahena (chief programmer)
+	Javier Rivera (documentation)
+	Yuntian Zhang (QA and programmer)
+	Nhu Nguyen (diagramming and testing)
 
 Github Repo:
 https://github.com/alixabahena/SIMS.git
@@ -43,7 +43,8 @@ System Requirements and Setup:
 
 	2. QT
 
-		QT is a C++ based frameword of libraries and tools that enables the development of powerful interactive cross-platform 			applications and devices. QT is open-source software. You do not need to create QT account to download the software.
+		QT is a C++ based frameword of libraries and tools that enables the development of powerful interactive cross-platform applications and devices. 
+		QT is open-source software. You do not need to create QT account to download the software.
 	
 		-Go to this link: https://www.qt.io/download-open-source/ 
 		-Click "Download Now" and keep their default settings when installing.
@@ -54,9 +55,9 @@ System Requirements and Setup:
 	
 		-Follow the documentation here: https://docs.google.com/document/d/19wl1C4GbSmPnjDThf_oIKv57EZzoUNInRacnHIcgiQA
 
-		4. GitHub account
+	4. GitHub account
 	
-	Github allows different collaborators to edit and contribute to different parts of the code.
+		Github allows different collaborators to edit and contribute to different parts of the code.
 	
 		-Navigate to github website: https://github.com/ to create an account.
 		-Sign up with any valid email address.
@@ -68,7 +69,8 @@ System Requirements and Setup:
 		For this project we used the Github extension alongside Visual Studio 2015. 
 		The extension helped us collaborate with one another in an efficient manner by letting each of us work on the project collaboratively.
 	
-		-This can be installed from Tools - > Extensions and Updates area of Visual Studio 2015. Search for "github" and the first result is the one that you want.
+		-This can be installed from Tools - > Extensions and Updates area of Visual Studio 2015. 
+		-Search for "github" and the first result is the one that you want.
 		-Restart VS 2015
 		-You can clone, commit, push, branch and perform most git functions through Visual Studio now!
 

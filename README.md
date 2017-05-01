@@ -1,5 +1,4 @@
-# SIMS
-<b>Student Information Management System</b>
+# SIMS (Student Information Management System)
 
 	This file is part of SIMS (Student Information Management System).
 

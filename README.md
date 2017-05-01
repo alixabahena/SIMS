@@ -16,7 +16,6 @@
 	along with SIMS.If not, see http://www.gnu.org/licenses.
 
 *****************************************************
-Student Information Management System
 
 	Created by:
 

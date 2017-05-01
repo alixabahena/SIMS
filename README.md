@@ -7,13 +7,11 @@ Student Information Management System
 
 Created by:
 
-Jonathan Martin (team lead, repo maintainer)
-Alixa Bahena (chief programmer)
-Javier Rivera (documentation)
-Yuntian Zhang (QA and programmer)
-Nhu Nguyen (diagramming and testing)
-
-This project was created by a
+-Jonathan Martin (team lead, repo maintainer, programmer)
+-Alixa Bahena (chief programmer)
+-Javier Rivera (documentation)
+-Yuntian Zhang (QA and programmer)
+-Nhu Nguyen (diagramming and testing)
 
 Github Repo:
 https://github.com/alixabahena/SIMS.git

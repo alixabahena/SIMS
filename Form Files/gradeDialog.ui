@@ -201,5 +201,37 @@ QToolButton::menu-arrow:open {
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>okButton</sender>
+   <signal>clicked()</signal>
+   <receiver>gradeDialog</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>47</x>
+     <y>72</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>87</x>
+     <y>46</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cancelButton</sender>
+   <signal>clicked()</signal>
+   <receiver>gradeDialog</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>128</x>
+     <y>72</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>87</x>
+     <y>46</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
 </ui>

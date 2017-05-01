@@ -158,6 +158,8 @@ public:
 
         retranslateUi(gradeDialog);
         QObject::connect(lineEdit, SIGNAL(returnPressed()), okButton, SLOT(click()));
+        QObject::connect(okButton, SIGNAL(clicked()), gradeDialog, SLOT(accept()));
+        QObject::connect(cancelButton, SIGNAL(clicked()), gradeDialog, SLOT(reject()));
 
         QMetaObject::connectSlotsByName(gradeDialog);
     } // setupUi

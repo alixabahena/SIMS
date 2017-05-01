@@ -58,3 +58,5 @@
 #include "ui_loginView.h"
 #include "ui_facultyView.h"
 #include <ui_gradeDialog.h>
+
+#include "Header Files\hash.h"

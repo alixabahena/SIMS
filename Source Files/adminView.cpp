@@ -1,5 +1,23 @@
 #include "Header Files\stdafx.h"
 
+/*This file is part of SIMS (Student Information Management System).
+
+SIMS is free software : you can redistribute it and / or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+SIMS is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with SIMS.If not, see <http://www.gnu.org/licenses/>.
+*/
+
+
+
 int userlocation_admin = 0;
 
 #define USER_TABLE 0
@@ -276,7 +294,9 @@ void adminView::on_submitButton_clicked()
 	vector<faculty>allFaculty = populateFaculty();
 
 	QString newPassword;
-	QString currentPasswordTyped = ui.currentPasswordField->text();
+	string strPassword = ui.currentPasswordField->text().toStdString();
+	string strPasswordHash = WaffleStringHash(strPassword);
+	QString currentPasswordTyped = strPasswordHash.c_str();
 	QString currentPassword;
 	string username = allData[userlocation_admin].username;
 	string newVerifyPassword;
@@ -284,12 +304,17 @@ void adminView::on_submitButton_clicked()
 	currentPassword = QString::fromStdString(allData[userlocation_admin].password);
 
 	//getcurrentPassword
-	if (currentPasswordTyped == "")
+	if (strPassword == "")
 	{
 		ui.passwordChangeStatusLabel->setStyleSheet("QLabel { background-color : red; color : white; }");
 		ui.passwordChangeStatusLabel->setText("Current password can not be blank!");
 	}
-	else if (currentPasswordTyped != currentPassword)
+	else if (strPassword.size() > 39)
+	{
+		ui.passwordChangeStatusLabel->setStyleSheet("QLabel { background-color : yellow; color : white; }");
+		ui.passwordChangeStatusLabel->setText("Password cannot be over 39 characters!");
+	}
+	else if ((currentPasswordTyped) != currentPassword)
 	{
 		ui.passwordChangeStatusLabel->setStyleSheet("QLabel { background-color : red; color : white; }");
 		ui.passwordChangeStatusLabel->setText("Incorrect current password!");

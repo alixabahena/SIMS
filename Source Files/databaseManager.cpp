@@ -1,5 +1,21 @@
 #include "Header Files\stdafx.h"
 
+/*This file is part of SIMS (Student Information Management System).
+
+SIMS is free software : you can redistribute it and / or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+SIMS is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with SIMS.If not, see <http://www.gnu.org/licenses/>.
+*/
+
 using namespace std;
 
 
@@ -221,7 +237,8 @@ void changePassword(string username, string password)
 	sqlite3_stmt *stmt;
 	char *q;
 	const char *userName = username.c_str();
-	const char *passWord = password.c_str();
+	string hash = WaffleStringHash(password);
+	const char *passWord = hash.c_str();
 	rc = sqlite3_open(dbName, &db);
 	q = "UPDATE Users SET [password]=?1 WHERE [username]=?2";
 	if ( rc = sqlite3_prepare_v2(db, q, strlen(q), &stmt, 0) == SQLITE_OK) {

@@ -1,5 +1,21 @@
 #include "Header Files\stdafx.h"
 
+/*This file is part of SIMS (Student Information Management System).
+
+SIMS is free software : you can redistribute it and / or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+SIMS is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with SIMS.If not, see <http://www.gnu.org/licenses/>.
+*/
+
 int userloc = 0;
 QSqlQueryModel *sqlitemodel = new QSqlQueryModel();
 
@@ -11,6 +27,7 @@ facultyView::facultyView(QWidget *parent)
 	ui.backButton->hide();
 	ui.stackedWidget->setCurrentIndex(0);
 	ui.viewStudentsButton->show();
+	ui.returnViewClassesButton->hide();
 
 }
 
@@ -56,6 +73,7 @@ facultyView::facultyView(QString userName)
 	ui.stackedWidget->setCurrentIndex(0);
 	ui.searchButton->hide();
 	ui.backButton->hide();
+	ui.returnViewClassesButton->hide();
 	//combobox implement
 	ui.classesSearchBox->addItem("CRN");
 	ui.classesSearchBox->addItem("Subject");
@@ -217,6 +235,9 @@ void facultyView::on_viewCurrentClassesButton_clicked()
 	ui.manageClassesView->setSelectionBehavior(QAbstractItemView::SelectRows);
 	ui.manageClassesView->setEditTriggers(QAbstractItemView::NoEditTriggers);
 	ui.manageClassesView->setModel(model);
+	ui.backButton->show();
+	ui.editGradeButton->setEnabled(false);
+	ui.returnViewClassesButton->hide();
 
 }
 
@@ -229,6 +250,8 @@ void facultyView::on_viewStudentsButton_clicked()
 	vector<faculty>allFaculty = populateFaculty();
 
 	//disable view students button
+	ui.backButton->hide();
+	ui.returnViewClassesButton->show();
 	ui.viewStudentsButton->setEnabled(false);
 	ui.viewCurrentClassesButton->setEnabled(true);
 	ui.editGradeButton->setEnabled(true);
@@ -301,7 +324,6 @@ void facultyView::on_viewClassesButton_clicked()
 {
 	ui.label->hide();
 	ui.stackedWidget->setCurrentIndex(3);
-
 	vector<users>allUsers = populateUsers();
 	vector<Student>allStudents = populateStudents();
 	vector<classes>allClasses = populateClasses();
@@ -621,7 +643,9 @@ void facultyView::on_submitButton_clicked()
 	vector<faculty>allFaculty = populateFaculty();
 
 	QString newPassword;
-	QString currentPasswordTyped = ui.currentPasswordField->text();
+	string strPassword = ui.currentPasswordField->text().toStdString();
+	string strPasswordHash = WaffleStringHash(strPassword);
+	QString currentPasswordTyped = strPasswordHash.c_str();
 	QString currentPassword;
 	string username = allStudents[userloc].userName;
 	string newVerifyPassword;
@@ -636,10 +660,15 @@ void facultyView::on_submitButton_clicked()
 	}
 
 	//getcurrentPassword
-	if (currentPasswordTyped == "")
+	if (strPassword == "")
 	{
 		ui.passwordChangeStatusLabel->setStyleSheet("QLabel { background-color : red; color : white; }");
 		ui.passwordChangeStatusLabel->setText("Current password can not be blank!");
+	}
+	else if (strPassword.size() > 39)
+	{
+		ui.passwordChangeStatusLabel->setStyleSheet("QLabel { background-color : yellow; color : white; }");
+		ui.passwordChangeStatusLabel->setText("Password cannot be over 39 characters!");
 	}
 	else if (currentPasswordTyped != currentPassword)
 	{
@@ -690,4 +719,5 @@ void facultyView::on_backButton_clicked()
 	ui.backButton->hide();
 	ui.stackedWidget->setCurrentIndex(0);
 	ui.label->show();
+	ui.returnViewClassesButton->hide();
 }

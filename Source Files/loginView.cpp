@@ -1,6 +1,20 @@
 #include "Header Files\stdafx.h"
 
+/*This file is part of SIMS (Student Information Management System).
 
+SIMS is free software : you can redistribute it and / or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+SIMS is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with SIMS.If not, see <http://www.gnu.org/licenses/>.
+*/
 
 loginView::loginView(QWidget *parent)
 	: QMainWindow(parent)
@@ -26,7 +40,7 @@ void loginView::on_okButton_clicked()
 	vector<classes>allclasses = populateClasses();
 	
 	string username = ui.usernameField->text().toStdString();
-	string password = ui.passwordFIeld->text().toStdString();
+	string password = WaffleStringHash(ui.passwordFIeld->text().toStdString());
 	QString user = QString::fromStdString(username);
 
 	int userlocation = 0;
@@ -65,7 +79,15 @@ void loginView::on_okButton_clicked()
 
 	if(TryUser != 0)
 	{
-		if (allusers[userlocation].password == password)
+		// Update database with hashed password
+		if (allusers[userlocation].password.size() < 40)
+		{
+			changePassword(allusers[userlocation].username, allusers[userlocation].password);
+			ui.loginStatus->setText("Password has been hashed, please retry.");
+			fadeOut->start(QAbstractAnimation::DeleteWhenStopped);
+			ui.loginStatus->setStyleSheet("QLabel { background-color : green; color : white; }");
+		}
+		else if (allusers[userlocation].password == password)
 		{
 			ui.loginStatus->setStyleSheet("QLabel { background-color : green; color : white; }");
 			ui.loginStatus->setText("Authentication Successful!");

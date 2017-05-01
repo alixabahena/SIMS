@@ -1,19 +1,31 @@
-# SIMS
-Student Information Management System
+# SIMS (Student Information Management System)
+
+	This file is part of SIMS (Student Information Management System).
+
+	SIMS is free software : you can redistribute it and / or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+
+	SIMS is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with SIMS.If not, see http://www.gnu.org/licenses.
 
 *****************************************************
-README!!!
-Student Information Management System
 
-Created by:
+	Created by:
 
--Jonathan Martin (team lead, repo maintainer, programmer)
--Alixa Bahena (chief programmer)
--Javier Rivera (documentation)
--Yuntian Zhang (QA and programmer)
--Nhu Nguyen (diagramming and testing)
+	Jonathan Martin (team lead, repo maintainer, programmer)
+	Alixa Bahena (chief programmer)
+	Javier Rivera (documentation)
+	Yuntian Zhang (QA and programmer)
+	Nhu Nguyen (diagramming and testing)
 
-Github Repo:
+ Github Repo:
 https://github.com/alixabahena/SIMS.git
 
 For more detailed information about the Student Information Management System, please read our full documentation on this program at the following link:
@@ -26,54 +38,60 @@ Management System. A client or user should follow these guidelines.
 
 
 *****************************************************
-System Requirements and Setup:
+### <b>System Requirements and Setup:</b>
 
-1. Microsoft Visual Studio 2015 
+	1. Microsoft Visual Studio 2015 
 
-	ELMS WebStores is available for the distribution of Microsoft Imagine software through agreement between University of Houston 		and Microsoft. Visual Studio provided us with a fast and simple IDE that facilitated the coding process.
+		ELMS WebStores is available for the distribution of Microsoft Imagine software through agreement between University of Houston and Microsoft. 
+		Visual Studio provided us with a fast and simple IDE that facilitated the coding process.
 	
-	-If you are UHD students, faculty, or staff, you can use UHD email address or username to sign in and download. Visual Studio 		Community 2015 licensed under Microsoft Imagine program. 
-	-Otherwise, you must use VS 2015 (not VS 2017) to work on this project until 
-	-If you do not have an account, you can click on "register" or "request an account".
-	-Go to this link to download VS2015 https://e5.onthehub.com/WebStore/ProductsByMajorVersionList.aspx?ws=c6ac855e-e69b-e011-969d-	0030487d8897
-	-Install Visual Studio 2015 Community Edition w/ Update 3
-	-Restart your computer.
+		-If you are UHD students, faculty, or staff, you can use UHD email address or username to sign in and download. 
+		Visual 	Studio Community 2015 licensed under Microsoft Imagine program. 
+		-Otherwise, you must use VS 2015 (not VS 2017) to work on this project until 
+		-If you do not have an account, you can click on "register" or "request an account".
+		-Go to this link to download VS2015 
+		https://e5.onthehub.com/WebStore/ProductsByMajorVersionList.aspx?ws=c6ac855e-e69b-e011-969d-0030487d8897
+		-Install Visual Studio 2015 Community Edition w/ Update 3
+		-Restart your computer.
 
-2. QT
+	2. QT
 
-	QT is a C++ based frameword of libraries and tools that enables the development of powerful interactive cross-platform 			applications and devices. QT is open-source software. You do not need to create QT account to download the software.
+		QT is a C++ based frameword of libraries and tools that enables the development of powerful interactive cross-platform applications and devices. 
+		QT is open-source software. You do not need to create QT account to download the software.
 	
-	-Go to this link: https://www.qt.io/download-open-source/ 
-	-Click "Download Now" and keep their default settings when installing.
+		-Go to this link: https://www.qt.io/download-open-source/ 
+		-Click "Download Now" and keep their default settings when installing.
 	
-3. QT extension for Visual Studio 2015
+	3. QT extension for Visual Studio 2015
 
-	This will allow you to integrate QT with Visual Studio 2015.
+		This will allow you to integrate QT with Visual Studio 2015.
 	
-	-Follow the documentation here: https://docs.google.com/document/d/19wl1C4GbSmPnjDThf_oIKv57EZzoUNInRacnHIcgiQA
+		-Follow the documentation here: https://docs.google.com/document/d/19wl1C4GbSmPnjDThf_oIKv57EZzoUNInRacnHIcgiQA
 
-3. GitHub account
+	4. GitHub account
 	
-	Github allows different collaborators to edit and contribute to different parts of the code.
+		Github allows different collaborators to edit and contribute to different parts of the code.
 	
-	-Navigate to github website: https://github.com/ to create an account.
-	-Sign up with any valid email address.
-	-You can fork the project, or simply copy the URL to clone the repo.
-	-Be sure to learn or know the basics of how to use github and/or git.
+		-Navigate to github website: https://github.com/ to create an account.
+		-Sign up with any valid email address.
+		-You can fork the project, or simply copy the URL to clone the repo.
+		-Be sure to learn or know the basics of how to use github and/or git.
 	
-4. Github Extension for Visual Studio
+	5. Github Extension for Visual Studio
 
-	For this project we used the Github extension alongside Visual Studio 2015. The extension helped us collaborate with one another 	 in an efficient manner by letting each of us work on the project collaboratively.
+		For this project we used the Github extension alongside Visual Studio 2015. 
+		The extension helped us collaborate with one another in an efficient manner by letting each of us work on the project collaboratively.
 	
-	-This can be installed from Tools - > Extensions and Updates area of Visual Studio 2015. Search for "github" and the first 		result is the one that you want.
-	-Restart VS 2015
-	-You can clone, commit, push, branch and perform most git functions through Visual Studio now!
+		-This can be installed from Tools - > Extensions and Updates area of Visual Studio 2015. 
+		-Search for "github" and the first result is the one that you want.
+		-Restart VS 2015
+		-You can clone, commit, push, branch and perform most git functions through Visual Studio now!
 
 After setup, the following steps will help you build and run the program.
 
 
 *****************************************************
-Clone GitHub Repository
+### <b>Clone GitHub Repository</b>
 
  	-Open Visual Studio 2015
 	-Click "Team Explorer tab"
@@ -86,7 +104,7 @@ Clone GitHub Repository
 
 
 *****************************************************
-Run the Program
+### <b>Run the Program</b>
 
 	-After you clone the Repositories, go to "Team Explorer"
 	-Under the "Solutions" tab
@@ -97,7 +115,7 @@ Run the Program
 	
 
 *****************************************************
-Update Instructions (if changes have been made to the repo)	
+### <b>Update Instructions (if changes have been made to the repo)</b>
 	
 	-Open Visual Studio 2015
 	-Click "Team Explorer"
@@ -109,13 +127,13 @@ Update Instructions (if changes have been made to the repo)
 
 
 *****************************************************
-Future Improvements:
+### <b>Future Improvements:</b>
 
 In the future we would like to implement several additional features to our system such as greater security measures to ensure the user's data maintains its integrity and improve the boundary checking process to ascertain if the user is performing a legal action.
 
 
 *****************************************************
-Contact Us:
+### <b>Contact Us:</b>
 
 If you have any questions about our Student Information Management System, please email us:
 

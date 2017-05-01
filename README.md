@@ -1,5 +1,5 @@
 # SIMS
-Student Information Management System
+<b>Student Information Management System</b>
 
 *****************************************************
 README!!!
@@ -13,7 +13,7 @@ Created by:
 	Yuntian Zhang (QA and programmer)
 	Nhu Nguyen (diagramming and testing)
 
-Github Repo:
+ Github Repo:
 https://github.com/alixabahena/SIMS.git
 
 For more detailed information about the Student Information Management System, please read our full documentation on this program at the following link:
@@ -26,11 +26,12 @@ Management System. A client or user should follow these guidelines.
 
 
 *****************************************************
-System Requirements and Setup:
+### <b>System Requirements and Setup:</b>
 
 	1. Microsoft Visual Studio 2015 
 
-		ELMS WebStores is available for the distribution of Microsoft Imagine software through agreement between University of Houston 		and Microsoft. Visual Studio provided us with a fast and simple IDE that facilitated the coding process.
+		ELMS WebStores is available for the distribution of Microsoft Imagine software through agreement between University of Houston and Microsoft. 
+		Visual Studio provided us with a fast and simple IDE that facilitated the coding process.
 	
 		-If you are UHD students, faculty, or staff, you can use UHD email address or username to sign in and download. 
 		Visual 	Studio Community 2015 licensed under Microsoft Imagine program. 
@@ -78,7 +79,7 @@ After setup, the following steps will help you build and run the program.
 
 
 *****************************************************
-Clone GitHub Repository
+### <b>Clone GitHub Repository</b>
 
  	-Open Visual Studio 2015
 	-Click "Team Explorer tab"
@@ -91,7 +92,7 @@ Clone GitHub Repository
 
 
 *****************************************************
-Run the Program
+### <b>Run the Program</b>
 
 	-After you clone the Repositories, go to "Team Explorer"
 	-Under the "Solutions" tab
@@ -102,7 +103,7 @@ Run the Program
 	
 
 *****************************************************
-Update Instructions (if changes have been made to the repo)	
+### <b>Update Instructions (if changes have been made to the repo)</b>
 	
 	-Open Visual Studio 2015
 	-Click "Team Explorer"
@@ -114,13 +115,13 @@ Update Instructions (if changes have been made to the repo)
 
 
 *****************************************************
-Future Improvements:
+### <b>Future Improvements:</b>
 
 In the future we would like to implement several additional features to our system such as greater security measures to ensure the user's data maintains its integrity and improve the boundary checking process to ascertain if the user is performing a legal action.
 
 
 *****************************************************
-Contact Us:
+### <b>Contact Us:</b>
 
 If you have any questions about our Student Information Management System, please email us:
 

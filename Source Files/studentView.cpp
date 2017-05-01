@@ -254,6 +254,7 @@ void studentView::on_addClassButton_clicked()
 					ui.addRemoveClassLabel->setStyleSheet("QLabel { background-color : red; color : white; }");
 					ui.addRemoveClassLabel->setText("Class already in schedule!");
 					fadeOut->start(QAbstractAnimation::DeleteWhenStopped);
+					validClass = false;
 					break;
 				}
 				//Add class since it is not in student schedule
